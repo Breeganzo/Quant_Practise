@@ -2877,6 +2877,7 @@ def write_json_index(root: Path, plans: list[WeekPlan]) -> None:
                     "durationHours": duration,
                     "type": day_type,
                     "lessonPath": lesson_path(week_no, day_no),
+                    "notebookPath": f"notebooks/{week_id}/day-{day_no:02d}-learning.ipynb",
                     "continuity": continuity,
                 }
             )

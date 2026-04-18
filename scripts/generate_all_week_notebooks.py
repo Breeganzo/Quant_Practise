@@ -308,6 +308,91 @@ print('  gross_return_expected  =', {gross_return:.6f})
 """
 
 
+def demo_code_for_day(week_no: int, day_no: int) -> str:
+    if day_no <= 5:
+        return demo_code_for_week(week_no, day_no)
+
+    if day_no == 6:
+        seed = week_no * 100 + day_no
+        return f"""# Revision sprint demo: rebuild weekly core diagnostics
+np.random.seed({seed})
+prices = load_market_prices(['SPY', 'QQQ', 'AAPL'], start='2018-01-01')
+returns = prices.pct_change().dropna()
+
+summary = pd.DataFrame({{
+    'annual_return': returns.mean() * 252,
+    'annual_vol': returns.std() * np.sqrt(252),
+    'max_drawdown': (prices / prices.cummax() - 1).min(),
+}})
+summary['sharpe_proxy'] = (summary['annual_return'] - 0.03) / summary['annual_vol'].replace(0, np.nan)
+summary = summary.sort_values('sharpe_proxy', ascending=False)
+
+print('Revision diagnostics (best risk-adjusted first):')
+summary.round(4)
+"""
+
+    seed = week_no * 100 + day_no
+    return f"""# Project day demo: mini portfolio report with trade recommendation
+np.random.seed({seed})
+assets = ['SPY', 'QQQ', 'TLT', 'GLD']
+prices = load_market_prices(assets, start='2019-01-01')
+returns = prices.pct_change().dropna()
+
+annual_return = returns.mean() * 252
+annual_vol = returns.std() * np.sqrt(252)
+score = (annual_return - 0.03) / annual_vol.replace(0, np.nan)
+
+report = pd.DataFrame({{
+    'annual_return': annual_return,
+    'annual_vol': annual_vol,
+    'sharpe_proxy': score,
+}}).sort_values('sharpe_proxy', ascending=False)
+
+top_asset = report.index[0]
+print('Project summary:')
+print(report.round(4))
+print(f"\\nSuggested focus asset for follow-up research: {{top_asset}}")
+"""
+
+
+def create_day_notebook(
+    week_no: int,
+    day_no: int,
+    week_dir: Path,
+    notebook_path: Path,
+) -> None:
+    lesson_path = week_dir / f"day-{day_no:02d}" / "lesson.md"
+    lesson_text = lesson_path.read_text(encoding="utf-8")
+    topic = topic_from_lesson(lesson_text, week_no, day_no)
+
+    cells = [
+        new_markdown_cell(
+            f"# Week {week_no:02d} Day {day_no:02d} Learning Notebook\n\n"
+            "This day notebook is fully executable and aligned to the lesson content."
+        ),
+        new_code_cell(setup_code()),
+        new_markdown_cell(lesson_text),
+        new_markdown_cell(
+            f"## Runnable Day Example\n"
+            f"Run this example for Week {week_no:02d} Day {day_no:02d}, inspect outputs, then complete the quiz."
+        ),
+        new_code_cell(demo_code_for_day(week_no, day_no)),
+        new_markdown_cell(quiz_markdown_for_day(week_no, day_no, topic)),
+        new_code_cell(quiz_solution_code_for_day(week_no, day_no, topic)),
+    ]
+
+    nb = new_notebook(
+        cells=cells,
+        metadata={
+            "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+            "language_info": {"name": "python", "version": "3.12"},
+        },
+    )
+
+    notebook_path.parent.mkdir(parents=True, exist_ok=True)
+    nbformat.write(nb, notebook_path)
+
+
 def create_week_notebook(week_no: int, week_dir: Path, notebook_path: Path) -> None:
     cells = [
         new_markdown_cell(
@@ -322,16 +407,15 @@ def create_week_notebook(week_no: int, week_dir: Path, notebook_path: Path) -> N
         lesson_text = lesson_path.read_text(encoding="utf-8")
         topic = topic_from_lesson(lesson_text, week_no, day_no)
         cells.append(new_markdown_cell(lesson_text))
-        if day_no <= 5:
-            cells.append(
-                new_markdown_cell(
-                    f"## Week {week_no:02d} Day {day_no:02d} Runnable Example\n"
-                    "Run this cell, inspect outputs, then answer the quiz."
-                )
+        cells.append(
+            new_markdown_cell(
+                f"## Week {week_no:02d} Day {day_no:02d} Runnable Example\n"
+                "Run this cell, inspect outputs, then answer the quiz."
             )
-            cells.append(new_code_cell(demo_code_for_week(week_no, day_no)))
-            cells.append(new_markdown_cell(quiz_markdown_for_day(week_no, day_no, topic)))
-            cells.append(new_code_cell(quiz_solution_code_for_day(week_no, day_no, topic)))
+        )
+        cells.append(new_code_cell(demo_code_for_day(week_no, day_no)))
+        cells.append(new_markdown_cell(quiz_markdown_for_day(week_no, day_no, topic)))
+        cells.append(new_code_cell(quiz_solution_code_for_day(week_no, day_no, topic)))
 
     nb = new_notebook(
         cells=cells,
@@ -355,8 +439,11 @@ def main() -> None:
         week_dir = weeks_root / week_id
         nb_path = notebooks_root / week_id / f"{week_id}-learning.ipynb"
         create_week_notebook(week_no, week_dir, nb_path)
+        for day_no in range(1, 8):
+            day_nb_path = notebooks_root / week_id / f"day-{day_no:02d}-learning.ipynb"
+            create_day_notebook(week_no, day_no, week_dir, day_nb_path)
 
-    print("Generated notebooks for weeks 01-24.")
+    print("Generated week and day notebooks for weeks 01-24.")
 
 
 if __name__ == "__main__":

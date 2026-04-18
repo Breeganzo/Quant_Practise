@@ -91,6 +91,18 @@ def main() -> None:
                 missing_lessons += 1
                 continue
 
+            notebook_path = day.get("notebookPath")
+            if not isinstance(notebook_path, str) or not notebook_path.strip():
+                content_issues.append(
+                    f"week-{week_no:02d} day-{day_no:02d} missing notebookPath"
+                )
+            else:
+                day_nb = root / "web" / "public" / notebook_path
+                if not day_nb.exists():
+                    content_issues.append(
+                        f"week-{week_no:02d} day-{day_no:02d} day notebook missing: {notebook_path}"
+                    )
+
             continuity = day.get("continuity")
             if not isinstance(continuity, dict):
                 content_issues.append(f"week-{week_no:02d} day-{day_no:02d} missing continuity block")
@@ -174,21 +186,33 @@ def main() -> None:
     if content_issues:
         fail("Content quality issues: " + "; ".join(content_issues[:20]))
 
-    notebooks = sorted((root / "notebooks").glob("week-*/week-*-learning.ipynb"))
-    if len(notebooks) != 24:
-        fail(f"Expected 24 learning notebooks, found {len(notebooks)}")
+    weekly_notebooks = sorted((root / "notebooks").glob("week-*/week-*-learning.ipynb"))
+    if len(weekly_notebooks) != 24:
+        fail(f"Expected 24 weekly learning notebooks, found {len(weekly_notebooks)}")
+    daily_notebooks = sorted((root / "notebooks").glob("week-*/day-*-learning.ipynb"))
+    if len(daily_notebooks) != 24 * 7:
+        fail(f"Expected 168 daily learning notebooks, found {len(daily_notebooks)}")
 
-    web_notebooks = sorted((root / "web" / "public" / "notebooks").glob("week-*/*.ipynb"))
-    if len(web_notebooks) != 24:
-        fail(f"Expected 24 web notebook assets, found {len(web_notebooks)}")
+    web_weekly_notebooks = sorted(
+        (root / "web" / "public" / "notebooks").glob("week-*/week-*-learning.ipynb")
+    )
+    if len(web_weekly_notebooks) != 24:
+        fail(f"Expected 24 web weekly notebook assets, found {len(web_weekly_notebooks)}")
+    web_daily_notebooks = sorted(
+        (root / "web" / "public" / "notebooks").glob("week-*/day-*-learning.ipynb")
+    )
+    if len(web_daily_notebooks) != 24 * 7:
+        fail(f"Expected 168 web daily notebook assets, found {len(web_daily_notebooks)}")
 
     print("[OK] Validation passed")
     print(f"weeks={len(weeks)}")
     print("durations=weekday-4h/weekend-2h")
     print(f"web_lessons={168 - missing_lessons}")
     print(f"weekday_lessons_with_quality_checks={checked_weekday_lessons}")
-    print(f"notebooks={len(notebooks)}")
-    print(f"web_notebooks={len(web_notebooks)}")
+    print(f"weekly_notebooks={len(weekly_notebooks)}")
+    print(f"daily_notebooks={len(daily_notebooks)}")
+    print(f"web_weekly_notebooks={len(web_weekly_notebooks)}")
+    print(f"web_daily_notebooks={len(web_daily_notebooks)}")
 
 
 if __name__ == "__main__":

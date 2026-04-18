@@ -22,6 +22,7 @@ export interface DayEntry {
   durationHours: number;
   type: DayType;
   lessonPath: string;
+  notebookPath: string;
   continuity?: DayContinuity;
 }
 

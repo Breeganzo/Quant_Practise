@@ -12,6 +12,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-01/day-01.md",
+          "notebookPath": "notebooks/week-01/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Program kickoff: environment, data loader, and assumption baseline.",
             "previousLessonPath": null,
@@ -26,6 +27,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-01/day-02.md",
+          "notebookPath": "notebooks/week-01/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 01 Day 01: Environment reproducibility and data loading",
             "previousLessonPath": "content/week-01/day-01.md",
@@ -40,6 +42,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-01/day-03.md",
+          "notebookPath": "notebooks/week-01/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 01 Day 02: Algebraic transformations for returns",
             "previousLessonPath": "content/week-01/day-02.md",
@@ -54,6 +57,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-01/day-04.md",
+          "notebookPath": "notebooks/week-01/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 01 Day 03: Calculus intuition for optimization",
             "previousLessonPath": "content/week-01/day-03.md",
@@ -68,6 +72,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-01/day-05.md",
+          "notebookPath": "notebooks/week-01/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 01 Day 04: Market structure and asset classes",
             "previousLessonPath": "content/week-01/day-04.md",
@@ -82,6 +87,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-01/day-06.md",
+          "notebookPath": "notebooks/week-01/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 01 Day 05: Risk and performance metrics",
             "previousLessonPath": "content/week-01/day-05.md",
@@ -96,6 +102,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-01/day-07.md",
+          "notebookPath": "notebooks/week-01/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 01 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-01/day-06.md",
@@ -125,6 +132,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-02/day-01.md",
+          "notebookPath": "notebooks/week-02/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 01 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-01/day-07.md",
@@ -139,6 +147,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-02/day-02.md",
+          "notebookPath": "notebooks/week-02/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 02 Day 01: Random variables and key distributions",
             "previousLessonPath": "content/week-02/day-01.md",
@@ -153,6 +162,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-02/day-03.md",
+          "notebookPath": "notebooks/week-02/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 02 Day 02: Expectation, variance, and covariance",
             "previousLessonPath": "content/week-02/day-02.md",
@@ -167,6 +177,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-02/day-04.md",
+          "notebookPath": "notebooks/week-02/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 02 Day 03: Sampling and estimation",
             "previousLessonPath": "content/week-02/day-03.md",
@@ -181,6 +192,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-02/day-05.md",
+          "notebookPath": "notebooks/week-02/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 02 Day 04: Confidence intervals and hypothesis testing",
             "previousLessonPath": "content/week-02/day-04.md",
@@ -195,6 +207,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-02/day-06.md",
+          "notebookPath": "notebooks/week-02/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 02 Day 05: Statistical communication for finance decisions",
             "previousLessonPath": "content/week-02/day-05.md",
@@ -209,6 +222,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-02/day-07.md",
+          "notebookPath": "notebooks/week-02/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 02 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-02/day-06.md",
@@ -238,6 +252,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-03/day-01.md",
+          "notebookPath": "notebooks/week-03/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 02 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-02/day-07.md",
@@ -252,6 +267,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-03/day-02.md",
+          "notebookPath": "notebooks/week-03/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 03 Day 01: Vectors, matrices, and transformations",
             "previousLessonPath": "content/week-03/day-01.md",
@@ -266,6 +282,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-03/day-03.md",
+          "notebookPath": "notebooks/week-03/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 03 Day 02: Eigenvalues, eigenvectors, and PCA intuition",
             "previousLessonPath": "content/week-03/day-02.md",
@@ -280,6 +297,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-03/day-04.md",
+          "notebookPath": "notebooks/week-03/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 03 Day 03: Optimization fundamentals",
             "previousLessonPath": "content/week-03/day-03.md",
@@ -294,6 +312,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-03/day-05.md",
+          "notebookPath": "notebooks/week-03/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 03 Day 04: Pandas data engineering workflow",
             "previousLessonPath": "content/week-03/day-04.md",
@@ -308,6 +327,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-03/day-06.md",
+          "notebookPath": "notebooks/week-03/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 03 Day 05: SQL basics for quant datasets",
             "previousLessonPath": "content/week-03/day-05.md",
@@ -322,6 +342,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-03/day-07.md",
+          "notebookPath": "notebooks/week-03/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 03 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-03/day-06.md",
@@ -351,6 +372,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-04/day-01.md",
+          "notebookPath": "notebooks/week-04/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 03 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-03/day-07.md",
@@ -365,6 +387,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-04/day-02.md",
+          "notebookPath": "notebooks/week-04/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 04 Day 01: Return decomposition and compounding effects",
             "previousLessonPath": "content/week-04/day-01.md",
@@ -379,6 +402,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-04/day-03.md",
+          "notebookPath": "notebooks/week-04/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 04 Day 02: Risk distribution diagnostics",
             "previousLessonPath": "content/week-04/day-02.md",
@@ -393,6 +417,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-04/day-04.md",
+          "notebookPath": "notebooks/week-04/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 04 Day 03: Correlation structure and diversification",
             "previousLessonPath": "content/week-04/day-03.md",
@@ -407,6 +432,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-04/day-05.md",
+          "notebookPath": "notebooks/week-04/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 04 Day 04: Exploratory visualization for strategy intuition",
             "previousLessonPath": "content/week-04/day-04.md",
@@ -421,6 +447,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-04/day-06.md",
+          "notebookPath": "notebooks/week-04/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 04 Day 05: Capstone design and reporting",
             "previousLessonPath": "content/week-04/day-05.md",
@@ -435,6 +462,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-04/day-07.md",
+          "notebookPath": "notebooks/week-04/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 04 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-04/day-06.md",
@@ -464,6 +492,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-05/day-01.md",
+          "notebookPath": "notebooks/week-05/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 04 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-04/day-07.md",
@@ -478,6 +507,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-05/day-02.md",
+          "notebookPath": "notebooks/week-05/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 05 Day 01: Supervised learning setup and leakage controls",
             "previousLessonPath": "content/week-05/day-01.md",
@@ -492,6 +522,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-05/day-03.md",
+          "notebookPath": "notebooks/week-05/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 05 Day 02: Linear regression baselines",
             "previousLessonPath": "content/week-05/day-02.md",
@@ -506,6 +537,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-05/day-04.md",
+          "notebookPath": "notebooks/week-05/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 05 Day 03: Logistic regression for directional signals",
             "previousLessonPath": "content/week-05/day-03.md",
@@ -520,6 +552,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-05/day-05.md",
+          "notebookPath": "notebooks/week-05/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 05 Day 04: Model evaluation metrics",
             "previousLessonPath": "content/week-05/day-04.md",
@@ -534,6 +567,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-05/day-06.md",
+          "notebookPath": "notebooks/week-05/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 05 Day 05: Regularization and generalization",
             "previousLessonPath": "content/week-05/day-05.md",
@@ -548,6 +582,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-05/day-07.md",
+          "notebookPath": "notebooks/week-05/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 05 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-05/day-06.md",
@@ -577,6 +612,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-06/day-01.md",
+          "notebookPath": "notebooks/week-06/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 05 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-05/day-07.md",
@@ -591,6 +627,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-06/day-02.md",
+          "notebookPath": "notebooks/week-06/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 06 Day 01: Decision trees and feature interactions",
             "previousLessonPath": "content/week-06/day-01.md",
@@ -605,6 +642,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-06/day-03.md",
+          "notebookPath": "notebooks/week-06/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 06 Day 02: Random forests",
             "previousLessonPath": "content/week-06/day-02.md",
@@ -619,6 +657,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-06/day-04.md",
+          "notebookPath": "notebooks/week-06/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 06 Day 03: Gradient boosting intuition",
             "previousLessonPath": "content/week-06/day-03.md",
@@ -633,6 +672,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-06/day-05.md",
+          "notebookPath": "notebooks/week-06/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 06 Day 04: Feature engineering and selection",
             "previousLessonPath": "content/week-06/day-04.md",
@@ -647,6 +687,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-06/day-06.md",
+          "notebookPath": "notebooks/week-06/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 06 Day 05: Model diagnostics and monitoring",
             "previousLessonPath": "content/week-06/day-05.md",
@@ -661,6 +702,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-06/day-07.md",
+          "notebookPath": "notebooks/week-06/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 06 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-06/day-06.md",
@@ -690,6 +732,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-07/day-01.md",
+          "notebookPath": "notebooks/week-07/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 06 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-06/day-07.md",
@@ -704,6 +747,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-07/day-02.md",
+          "notebookPath": "notebooks/week-07/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 07 Day 01: Unsupervised problem framing",
             "previousLessonPath": "content/week-07/day-01.md",
@@ -718,6 +762,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-07/day-03.md",
+          "notebookPath": "notebooks/week-07/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 07 Day 02: K-means and hierarchical clustering",
             "previousLessonPath": "content/week-07/day-02.md",
@@ -732,6 +777,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-07/day-04.md",
+          "notebookPath": "notebooks/week-07/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 07 Day 03: PCA for regime and factor hints",
             "previousLessonPath": "content/week-07/day-03.md",
@@ -746,6 +792,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-07/day-05.md",
+          "notebookPath": "notebooks/week-07/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 07 Day 04: Anomaly detection basics",
             "previousLessonPath": "content/week-07/day-04.md",
@@ -760,6 +807,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-07/day-06.md",
+          "notebookPath": "notebooks/week-07/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 07 Day 05: Regime interpretation and actionability",
             "previousLessonPath": "content/week-07/day-05.md",
@@ -774,6 +822,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-07/day-07.md",
+          "notebookPath": "notebooks/week-07/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 07 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-07/day-06.md",
@@ -803,6 +852,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-08/day-01.md",
+          "notebookPath": "notebooks/week-08/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 07 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-07/day-07.md",
@@ -817,6 +867,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-08/day-02.md",
+          "notebookPath": "notebooks/week-08/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 08 Day 01: Pipeline architecture and feature store design",
             "previousLessonPath": "content/week-08/day-01.md",
@@ -831,6 +882,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-08/day-03.md",
+          "notebookPath": "notebooks/week-08/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 08 Day 02: Temporal cross-validation and walk-forward tests",
             "previousLessonPath": "content/week-08/day-02.md",
@@ -845,6 +897,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-08/day-04.md",
+          "notebookPath": "notebooks/week-08/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 08 Day 03: Thresholding and decision rules",
             "previousLessonPath": "content/week-08/day-03.md",
@@ -859,6 +912,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-08/day-05.md",
+          "notebookPath": "notebooks/week-08/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 08 Day 04: Explainability and model governance",
             "previousLessonPath": "content/week-08/day-04.md",
@@ -873,6 +927,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-08/day-06.md",
+          "notebookPath": "notebooks/week-08/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 08 Day 05: Capstone packaging and reproducibility",
             "previousLessonPath": "content/week-08/day-05.md",
@@ -887,6 +942,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-08/day-07.md",
+          "notebookPath": "notebooks/week-08/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 08 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-08/day-06.md",
@@ -916,6 +972,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-09/day-01.md",
+          "notebookPath": "notebooks/week-09/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 08 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-08/day-07.md",
@@ -930,6 +987,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-09/day-02.md",
+          "notebookPath": "notebooks/week-09/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 09 Day 01: Stationarity and transformations",
             "previousLessonPath": "content/week-09/day-01.md",
@@ -944,6 +1002,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-09/day-03.md",
+          "notebookPath": "notebooks/week-09/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 09 Day 02: Autocorrelation and partial autocorrelation",
             "previousLessonPath": "content/week-09/day-02.md",
@@ -958,6 +1017,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-09/day-04.md",
+          "notebookPath": "notebooks/week-09/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 09 Day 03: AR, MA, and ARMA intuition",
             "previousLessonPath": "content/week-09/day-03.md",
@@ -972,6 +1032,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-09/day-05.md",
+          "notebookPath": "notebooks/week-09/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 09 Day 04: ARIMA workflow",
             "previousLessonPath": "content/week-09/day-04.md",
@@ -986,6 +1047,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-09/day-06.md",
+          "notebookPath": "notebooks/week-09/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 09 Day 05: Forecast evaluation and communication",
             "previousLessonPath": "content/week-09/day-05.md",
@@ -1000,6 +1062,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-09/day-07.md",
+          "notebookPath": "notebooks/week-09/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 09 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-09/day-06.md",
@@ -1029,6 +1092,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-10/day-01.md",
+          "notebookPath": "notebooks/week-10/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 09 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-09/day-07.md",
@@ -1043,6 +1107,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-10/day-02.md",
+          "notebookPath": "notebooks/week-10/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 10 Day 01: Volatility stylized facts",
             "previousLessonPath": "content/week-10/day-01.md",
@@ -1057,6 +1122,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-10/day-03.md",
+          "notebookPath": "notebooks/week-10/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 10 Day 02: EWMA volatility estimation",
             "previousLessonPath": "content/week-10/day-02.md",
@@ -1071,6 +1137,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-10/day-04.md",
+          "notebookPath": "notebooks/week-10/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 10 Day 03: GARCH intuition",
             "previousLessonPath": "content/week-10/day-03.md",
@@ -1085,6 +1152,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-10/day-05.md",
+          "notebookPath": "notebooks/week-10/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 10 Day 04: Regime detection and change points",
             "previousLessonPath": "content/week-10/day-04.md",
@@ -1099,6 +1167,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-10/day-06.md",
+          "notebookPath": "notebooks/week-10/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 10 Day 05: Volatility-aware decisioning",
             "previousLessonPath": "content/week-10/day-05.md",
@@ -1113,6 +1182,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-10/day-07.md",
+          "notebookPath": "notebooks/week-10/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 10 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-10/day-06.md",
@@ -1142,6 +1212,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-11/day-01.md",
+          "notebookPath": "notebooks/week-11/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 10 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-10/day-07.md",
@@ -1156,6 +1227,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-11/day-02.md",
+          "notebookPath": "notebooks/week-11/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 11 Day 01: Backtest design patterns",
             "previousLessonPath": "content/week-11/day-01.md",
@@ -1170,6 +1242,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-11/day-03.md",
+          "notebookPath": "notebooks/week-11/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 11 Day 02: Data and look-ahead bias controls",
             "previousLessonPath": "content/week-11/day-02.md",
@@ -1184,6 +1257,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-11/day-04.md",
+          "notebookPath": "notebooks/week-11/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 11 Day 03: Transaction costs and slippage",
             "previousLessonPath": "content/week-11/day-03.md",
@@ -1198,6 +1272,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-11/day-05.md",
+          "notebookPath": "notebooks/week-11/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 11 Day 04: Position sizing and risk constraints",
             "previousLessonPath": "content/week-11/day-04.md",
@@ -1212,6 +1287,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-11/day-06.md",
+          "notebookPath": "notebooks/week-11/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 11 Day 05: Performance attribution and diagnostics",
             "previousLessonPath": "content/week-11/day-05.md",
@@ -1226,6 +1302,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-11/day-07.md",
+          "notebookPath": "notebooks/week-11/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 11 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-11/day-06.md",
@@ -1255,6 +1332,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-12/day-01.md",
+          "notebookPath": "notebooks/week-12/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 11 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-11/day-07.md",
@@ -1269,6 +1347,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-12/day-02.md",
+          "notebookPath": "notebooks/week-12/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 12 Day 01: Momentum strategy design",
             "previousLessonPath": "content/week-12/day-01.md",
@@ -1283,6 +1362,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-12/day-03.md",
+          "notebookPath": "notebooks/week-12/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 12 Day 02: Mean reversion strategy design",
             "previousLessonPath": "content/week-12/day-02.md",
@@ -1297,6 +1377,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-12/day-04.md",
+          "notebookPath": "notebooks/week-12/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 12 Day 03: Unified backtest comparison",
             "previousLessonPath": "content/week-12/day-03.md",
@@ -1311,6 +1392,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-12/day-05.md",
+          "notebookPath": "notebooks/week-12/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 12 Day 04: Robustness and sensitivity analysis",
             "previousLessonPath": "content/week-12/day-04.md",
@@ -1325,6 +1407,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-12/day-06.md",
+          "notebookPath": "notebooks/week-12/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 12 Day 05: Capstone narrative and decision",
             "previousLessonPath": "content/week-12/day-05.md",
@@ -1339,6 +1422,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-12/day-07.md",
+          "notebookPath": "notebooks/week-12/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 12 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-12/day-06.md",
@@ -1368,6 +1452,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-13/day-01.md",
+          "notebookPath": "notebooks/week-13/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 12 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-12/day-07.md",
@@ -1382,6 +1467,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-13/day-02.md",
+          "notebookPath": "notebooks/week-13/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 13 Day 01: Portfolio objective design",
             "previousLessonPath": "content/week-13/day-01.md",
@@ -1396,6 +1482,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-13/day-03.md",
+          "notebookPath": "notebooks/week-13/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 13 Day 02: Mean-variance optimization",
             "previousLessonPath": "content/week-13/day-02.md",
@@ -1410,6 +1497,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-13/day-04.md",
+          "notebookPath": "notebooks/week-13/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 13 Day 03: Risk parity and equal-risk contribution",
             "previousLessonPath": "content/week-13/day-03.md",
@@ -1424,6 +1512,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-13/day-05.md",
+          "notebookPath": "notebooks/week-13/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 13 Day 04: Covariance robustness techniques",
             "previousLessonPath": "content/week-13/day-04.md",
@@ -1438,6 +1527,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-13/day-06.md",
+          "notebookPath": "notebooks/week-13/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 13 Day 05: Portfolio monitoring and rebalance policy",
             "previousLessonPath": "content/week-13/day-05.md",
@@ -1452,6 +1542,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-13/day-07.md",
+          "notebookPath": "notebooks/week-13/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 13 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-13/day-06.md",
@@ -1481,6 +1572,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-14/day-01.md",
+          "notebookPath": "notebooks/week-14/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 13 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-13/day-07.md",
@@ -1495,6 +1587,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-14/day-02.md",
+          "notebookPath": "notebooks/week-14/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 14 Day 01: Bond cashflows and pricing mechanics",
             "previousLessonPath": "content/week-14/day-01.md",
@@ -1509,6 +1602,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-14/day-03.md",
+          "notebookPath": "notebooks/week-14/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 14 Day 02: Yield curve structure",
             "previousLessonPath": "content/week-14/day-02.md",
@@ -1523,6 +1617,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-14/day-04.md",
+          "notebookPath": "notebooks/week-14/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 14 Day 03: Duration and convexity",
             "previousLessonPath": "content/week-14/day-03.md",
@@ -1537,6 +1632,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-14/day-05.md",
+          "notebookPath": "notebooks/week-14/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 14 Day 04: Rate-risk scenario analysis",
             "previousLessonPath": "content/week-14/day-04.md",
@@ -1551,6 +1647,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-14/day-06.md",
+          "notebookPath": "notebooks/week-14/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 14 Day 05: Fixed-income portfolio interpretation",
             "previousLessonPath": "content/week-14/day-05.md",
@@ -1565,6 +1662,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-14/day-07.md",
+          "notebookPath": "notebooks/week-14/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 14 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-14/day-06.md",
@@ -1594,6 +1692,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-15/day-01.md",
+          "notebookPath": "notebooks/week-15/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 14 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-14/day-07.md",
@@ -1608,6 +1707,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-15/day-02.md",
+          "notebookPath": "notebooks/week-15/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 15 Day 01: Option payoff structure",
             "previousLessonPath": "content/week-15/day-01.md",
@@ -1622,6 +1722,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-15/day-03.md",
+          "notebookPath": "notebooks/week-15/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 15 Day 02: Greeks intuition",
             "previousLessonPath": "content/week-15/day-02.md",
@@ -1636,6 +1737,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-15/day-04.md",
+          "notebookPath": "notebooks/week-15/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 15 Day 03: Volatility surface basics",
             "previousLessonPath": "content/week-15/day-03.md",
@@ -1650,6 +1752,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-15/day-05.md",
+          "notebookPath": "notebooks/week-15/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 15 Day 04: Hedging workflow basics",
             "previousLessonPath": "content/week-15/day-04.md",
@@ -1664,6 +1767,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-15/day-06.md",
+          "notebookPath": "notebooks/week-15/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 15 Day 05: Options strategy framing",
             "previousLessonPath": "content/week-15/day-05.md",
@@ -1678,6 +1782,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-15/day-07.md",
+          "notebookPath": "notebooks/week-15/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 15 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-15/day-06.md",
@@ -1707,6 +1812,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-16/day-01.md",
+          "notebookPath": "notebooks/week-16/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 15 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-15/day-07.md",
@@ -1721,6 +1827,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-16/day-02.md",
+          "notebookPath": "notebooks/week-16/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 16 Day 01: Risk framework architecture",
             "previousLessonPath": "content/week-16/day-01.md",
@@ -1735,6 +1842,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-16/day-03.md",
+          "notebookPath": "notebooks/week-16/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 16 Day 02: VaR approaches",
             "previousLessonPath": "content/week-16/day-02.md",
@@ -1749,6 +1857,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-16/day-04.md",
+          "notebookPath": "notebooks/week-16/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 16 Day 03: CVaR and tail focus",
             "previousLessonPath": "content/week-16/day-03.md",
@@ -1763,6 +1872,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-16/day-05.md",
+          "notebookPath": "notebooks/week-16/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 16 Day 04: Stress testing framework",
             "previousLessonPath": "content/week-16/day-04.md",
@@ -1777,6 +1887,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-16/day-06.md",
+          "notebookPath": "notebooks/week-16/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 16 Day 05: Risk governance reporting",
             "previousLessonPath": "content/week-16/day-05.md",
@@ -1791,6 +1902,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-16/day-07.md",
+          "notebookPath": "notebooks/week-16/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 16 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-16/day-06.md",
@@ -1820,6 +1932,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-17/day-01.md",
+          "notebookPath": "notebooks/week-17/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 16 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-16/day-07.md",
@@ -1834,6 +1947,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-17/day-02.md",
+          "notebookPath": "notebooks/week-17/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 17 Day 01: Factor investing framework",
             "previousLessonPath": "content/week-17/day-01.md",
@@ -1848,6 +1962,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-17/day-03.md",
+          "notebookPath": "notebooks/week-17/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 17 Day 02: Cross-sectional regressions",
             "previousLessonPath": "content/week-17/day-02.md",
@@ -1862,6 +1977,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-17/day-04.md",
+          "notebookPath": "notebooks/week-17/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 17 Day 03: Information coefficient and decay",
             "previousLessonPath": "content/week-17/day-03.md",
@@ -1876,6 +1992,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-17/day-05.md",
+          "notebookPath": "notebooks/week-17/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 17 Day 04: Portfolio construction for factors",
             "previousLessonPath": "content/week-17/day-04.md",
@@ -1890,6 +2007,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-17/day-06.md",
+          "notebookPath": "notebooks/week-17/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 17 Day 05: Factor robustness",
             "previousLessonPath": "content/week-17/day-05.md",
@@ -1904,6 +2022,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-17/day-07.md",
+          "notebookPath": "notebooks/week-17/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 17 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-17/day-06.md",
@@ -1933,6 +2052,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-18/day-01.md",
+          "notebookPath": "notebooks/week-18/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 17 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-17/day-07.md",
@@ -1947,6 +2067,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-18/day-02.md",
+          "notebookPath": "notebooks/week-18/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 18 Day 01: Stat-arb problem framing",
             "previousLessonPath": "content/week-18/day-01.md",
@@ -1961,6 +2082,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-18/day-03.md",
+          "notebookPath": "notebooks/week-18/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 18 Day 02: Cointegration basics",
             "previousLessonPath": "content/week-18/day-02.md",
@@ -1975,6 +2097,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-18/day-04.md",
+          "notebookPath": "notebooks/week-18/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 18 Day 03: Signal generation and execution rules",
             "previousLessonPath": "content/week-18/day-03.md",
@@ -1989,6 +2112,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-18/day-05.md",
+          "notebookPath": "notebooks/week-18/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 18 Day 04: Backtest and cost-aware evaluation",
             "previousLessonPath": "content/week-18/day-04.md",
@@ -2003,6 +2127,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-18/day-06.md",
+          "notebookPath": "notebooks/week-18/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 18 Day 05: Failure modes and safeguards",
             "previousLessonPath": "content/week-18/day-05.md",
@@ -2017,6 +2142,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-18/day-07.md",
+          "notebookPath": "notebooks/week-18/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 18 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-18/day-06.md",
@@ -2046,6 +2172,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-19/day-01.md",
+          "notebookPath": "notebooks/week-19/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 18 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-18/day-07.md",
@@ -2060,6 +2187,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-19/day-02.md",
+          "notebookPath": "notebooks/week-19/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 19 Day 01: Agentic workflow design for research",
             "previousLessonPath": "content/week-19/day-01.md",
@@ -2074,6 +2202,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-19/day-03.md",
+          "notebookPath": "notebooks/week-19/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 19 Day 02: Research summarization and retrieval",
             "previousLessonPath": "content/week-19/day-02.md",
@@ -2088,6 +2217,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-19/day-04.md",
+          "notebookPath": "notebooks/week-19/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 19 Day 03: Feature idea generation and validation",
             "previousLessonPath": "content/week-19/day-03.md",
@@ -2102,6 +2232,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-19/day-05.md",
+          "notebookPath": "notebooks/week-19/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 19 Day 04: Code review and experiment tracking agents",
             "previousLessonPath": "content/week-19/day-04.md",
@@ -2116,6 +2247,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-19/day-06.md",
+          "notebookPath": "notebooks/week-19/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 19 Day 05: Guardrails and risk management for AI use",
             "previousLessonPath": "content/week-19/day-05.md",
@@ -2130,6 +2262,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-19/day-07.md",
+          "notebookPath": "notebooks/week-19/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 19 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-19/day-06.md",
@@ -2159,6 +2292,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-20/day-01.md",
+          "notebookPath": "notebooks/week-20/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 19 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-19/day-07.md",
@@ -2173,6 +2307,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-20/day-02.md",
+          "notebookPath": "notebooks/week-20/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 20 Day 01: Market microstructure essentials",
             "previousLessonPath": "content/week-20/day-01.md",
@@ -2187,6 +2322,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-20/day-03.md",
+          "notebookPath": "notebooks/week-20/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 20 Day 02: Execution cost modeling",
             "previousLessonPath": "content/week-20/day-02.md",
@@ -2201,6 +2337,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-20/day-04.md",
+          "notebookPath": "notebooks/week-20/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 20 Day 03: Strategy blending and diversification",
             "previousLessonPath": "content/week-20/day-03.md",
@@ -2215,6 +2352,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-20/day-05.md",
+          "notebookPath": "notebooks/week-20/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 20 Day 04: Rebalancing and execution scheduling",
             "previousLessonPath": "content/week-20/day-04.md",
@@ -2229,6 +2367,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-20/day-06.md",
+          "notebookPath": "notebooks/week-20/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 20 Day 05: Capstone assembly and governance",
             "previousLessonPath": "content/week-20/day-05.md",
@@ -2243,6 +2382,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-20/day-07.md",
+          "notebookPath": "notebooks/week-20/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 20 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-20/day-06.md",
@@ -2272,6 +2412,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-21/day-01.md",
+          "notebookPath": "notebooks/week-21/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 20 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-20/day-07.md",
@@ -2286,6 +2427,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-21/day-02.md",
+          "notebookPath": "notebooks/week-21/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 21 Day 01: Program targeting and fit matrix",
             "previousLessonPath": "content/week-21/day-01.md",
@@ -2300,6 +2442,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-21/day-03.md",
+          "notebookPath": "notebooks/week-21/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 21 Day 02: Statement of purpose architecture",
             "previousLessonPath": "content/week-21/day-02.md",
@@ -2314,6 +2457,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-21/day-04.md",
+          "notebookPath": "notebooks/week-21/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 21 Day 03: CV and project storytelling",
             "previousLessonPath": "content/week-21/day-03.md",
@@ -2328,6 +2472,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-21/day-05.md",
+          "notebookPath": "notebooks/week-21/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 21 Day 04: Recommendation and supporting documents",
             "previousLessonPath": "content/week-21/day-04.md",
@@ -2342,6 +2487,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-21/day-06.md",
+          "notebookPath": "notebooks/week-21/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 21 Day 05: Scholarship optimization workflow",
             "previousLessonPath": "content/week-21/day-05.md",
@@ -2356,6 +2502,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-21/day-07.md",
+          "notebookPath": "notebooks/week-21/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 21 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-21/day-06.md",
@@ -2385,6 +2532,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-22/day-01.md",
+          "notebookPath": "notebooks/week-22/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 21 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-21/day-07.md",
@@ -2399,6 +2547,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-22/day-02.md",
+          "notebookPath": "notebooks/week-22/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 22 Day 01: Probability drill framework",
             "previousLessonPath": "content/week-22/day-01.md",
@@ -2413,6 +2562,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-22/day-03.md",
+          "notebookPath": "notebooks/week-22/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 22 Day 02: Statistics and estimation interview drills",
             "previousLessonPath": "content/week-22/day-02.md",
@@ -2427,6 +2577,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-22/day-04.md",
+          "notebookPath": "notebooks/week-22/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 22 Day 03: Python coding speed drills",
             "previousLessonPath": "content/week-22/day-03.md",
@@ -2441,6 +2592,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-22/day-05.md",
+          "notebookPath": "notebooks/week-22/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 22 Day 04: SQL and data manipulation interview drills",
             "previousLessonPath": "content/week-22/day-04.md",
@@ -2455,6 +2607,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-22/day-06.md",
+          "notebookPath": "notebooks/week-22/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 22 Day 05: Mock round synthesis",
             "previousLessonPath": "content/week-22/day-05.md",
@@ -2469,6 +2622,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-22/day-07.md",
+          "notebookPath": "notebooks/week-22/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 22 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-22/day-06.md",
@@ -2498,6 +2652,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-23/day-01.md",
+          "notebookPath": "notebooks/week-23/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 22 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-22/day-07.md",
@@ -2512,6 +2667,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-23/day-02.md",
+          "notebookPath": "notebooks/week-23/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 23 Day 01: Market intuition drills",
             "previousLessonPath": "content/week-23/day-01.md",
@@ -2526,6 +2682,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-23/day-03.md",
+          "notebookPath": "notebooks/week-23/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 23 Day 02: Trade idea structuring",
             "previousLessonPath": "content/week-23/day-02.md",
@@ -2540,6 +2697,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-23/day-04.md",
+          "notebookPath": "notebooks/week-23/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 23 Day 03: Risk-first communication",
             "previousLessonPath": "content/week-23/day-03.md",
@@ -2554,6 +2712,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-23/day-05.md",
+          "notebookPath": "notebooks/week-23/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 23 Day 04: Behavioral and fit interview prep",
             "previousLessonPath": "content/week-23/day-04.md",
@@ -2568,6 +2727,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-23/day-06.md",
+          "notebookPath": "notebooks/week-23/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 23 Day 05: Final mock panel",
             "previousLessonPath": "content/week-23/day-05.md",
@@ -2582,6 +2742,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-23/day-07.md",
+          "notebookPath": "notebooks/week-23/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 23 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-23/day-06.md",
@@ -2611,6 +2772,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-24/day-01.md",
+          "notebookPath": "notebooks/week-24/day-01-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 23 Day 07: Portfolio Project",
             "previousLessonPath": "content/week-23/day-07.md",
@@ -2625,6 +2787,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-24/day-02.md",
+          "notebookPath": "notebooks/week-24/day-02-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 24 Day 01: Portfolio curation and selection",
             "previousLessonPath": "content/week-24/day-01.md",
@@ -2639,6 +2802,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-24/day-03.md",
+          "notebookPath": "notebooks/week-24/day-03-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 24 Day 02: End-to-end reproducibility pass",
             "previousLessonPath": "content/week-24/day-02.md",
@@ -2653,6 +2817,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-24/day-04.md",
+          "notebookPath": "notebooks/week-24/day-04-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 24 Day 03: Final capstone integration",
             "previousLessonPath": "content/week-24/day-03.md",
@@ -2667,6 +2832,7 @@
           "durationHours": 4,
           "type": "lesson",
           "lessonPath": "content/week-24/day-05.md",
+          "notebookPath": "notebooks/week-24/day-05-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 24 Day 04: Presentation polishing",
             "previousLessonPath": "content/week-24/day-04.md",
@@ -2681,6 +2847,7 @@
           "durationHours": 2,
           "type": "revision",
           "lessonPath": "content/week-24/day-06.md",
+          "notebookPath": "notebooks/week-24/day-06-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 24 Day 05: Launch checklist and next-90-day roadmap",
             "previousLessonPath": "content/week-24/day-05.md",
@@ -2695,6 +2862,7 @@
           "durationHours": 2,
           "type": "project",
           "lessonPath": "content/week-24/day-07.md",
+          "notebookPath": "notebooks/week-24/day-07-learning.ipynb",
           "continuity": {
             "previousLabel": "Week 24 Day 06: Revision Sprint",
             "previousLessonPath": "content/week-24/day-06.md",

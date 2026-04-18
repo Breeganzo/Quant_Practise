@@ -87,10 +87,14 @@ export default function DayDetail({
     );
   }
 
-  const notebookPath = `notebooks/week-${weekNo.toString().padStart(2, "0")}/week-${weekNo
+  const weekNotebookPath = `notebooks/week-${weekNo.toString().padStart(2, "0")}/week-${weekNo
     .toString()
     .padStart(2, "0")}-learning.ipynb`;
-  const webNotebookPath = week.resources?.notebookPath ?? notebookPath;
+  const dayNotebookPath =
+    day.notebookPath ??
+    `notebooks/week-${weekNo.toString().padStart(2, "0")}/day-${dayNo.toString().padStart(2, "0")}-learning.ipynb`;
+  const webDayNotebookPath = dayNotebookPath;
+  const webWeekNotebookPath = week.resources?.notebookPath ?? weekNotebookPath;
   const weekRepoRoot = `curriculum/weeks/week-${weekNo.toString().padStart(2, "0")}`;
   const lessonRepoPath = `curriculum/weeks/week-${weekNo
     .toString()
@@ -187,10 +191,16 @@ export default function DayDetail({
           <a href={githubBlobUrl(lessonRepoPath)} target="_blank" rel="noreferrer">
             Open lesson source (GitHub)
           </a>
-          <a href={githubBlobUrl(notebookPath)} target="_blank" rel="noreferrer">
+          <a href={githubBlobUrl(dayNotebookPath)} target="_blank" rel="noreferrer">
+            Open day notebook (GitHub, executed)
+          </a>
+          <a href={withBase(webDayNotebookPath)} target="_blank" rel="noreferrer">
+            Open day notebook (local file, executed)
+          </a>
+          <a href={githubBlobUrl(weekNotebookPath)} target="_blank" rel="noreferrer">
             Open week notebook (GitHub)
           </a>
-          <a href={withBase(webNotebookPath)} target="_blank" rel="noreferrer">
+          <a href={withBase(webWeekNotebookPath)} target="_blank" rel="noreferrer">
             Open week notebook (local file)
           </a>
           <a href={withBase(day.lessonPath)} target="_blank" rel="noreferrer">

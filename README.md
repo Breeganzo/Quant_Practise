@@ -13,6 +13,7 @@ Schedule design:
 - Full curriculum for weeks 01-24 in `curriculum/weeks`
 - 168 day lesson files (`lesson.md`) with theory, examples, coding, and reflection
 - 24 weekly learning notebooks in `notebooks/week-XX/week-XX-learning.ipynb`
+- 168 day-level learning notebooks in `notebooks/week-XX/day-YY-learning.ipynb` (fully executable per day)
 - Weekly resource pack per week (overview, quiz, revision checklist, mini-project brief) published to web assets
 - React + TypeScript tracker app in `web`
 - SQL schema for long-term persistence in `supabase/schema.sql`
@@ -118,13 +119,13 @@ Vite base path is configured for `Quant_Practise`.
 ## 7) Open Notebooks in VS Code or Jupyter
 
 - From VS Code:
-   - open any file under `notebooks/week-XX/week-XX-learning.ipynb`.
+   - open any file under `notebooks/week-XX/day-YY-learning.ipynb` or `notebooks/week-XX/week-XX-learning.ipynb`.
    - run cells directly in the VS Code Notebook UI.
 - From Jupyter locally:
    - `uv run jupyter lab`
-   - open `notebooks/week-XX/week-XX-learning.ipynb`.
+   - open `notebooks/week-XX/day-YY-learning.ipynb` for day-level study or `notebooks/week-XX/week-XX-learning.ipynb` for full-week view.
 
-The web app also links each day to its corresponding weekly notebook and supporting weekly resources.
+The web app links each day to its corresponding **day-level executed notebook** and also provides weekly notebook/resources.
 
 ## 8) Generated Architecture (Canonical vs Mirrored)
 
@@ -146,7 +147,7 @@ Always regenerate from canonical sources and then mirror:
 ## Repository Layout
 
 - `curriculum/`: canonical week/day learning content and capstones
-- `notebooks/`: generated weekly notebooks
+- `notebooks/`: generated weekly and day-level notebooks
 - `admissions/`: weekly admissions-focused tasks
 - `interview/`: weekly interview prep tasks
 - `docs/`: setup and onboarding guides

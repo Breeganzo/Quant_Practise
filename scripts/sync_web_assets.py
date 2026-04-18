@@ -11,6 +11,8 @@ def expected_source_paths(root: Path) -> list[Path]:
         week_dir = root / "curriculum" / "weeks" / week_id
 
         paths.append(root / "notebooks" / week_id / f"{week_id}-learning.ipynb")
+        for day_no in range(1, 8):
+            paths.append(root / "notebooks" / week_id / f"day-{day_no:02d}-learning.ipynb")
         paths.append(week_dir / "README.md")
         paths.append(week_dir / f"{week_id}-quiz.md")
         paths.append(week_dir / f"{week_id}-revision-checklist.md")
@@ -50,10 +52,10 @@ def main() -> None:
         week_id = f"week-{week_no:02d}"
         week_dir = root / "curriculum" / "weeks" / week_id
 
-        notebook_src = root / "notebooks" / week_id / f"{week_id}-learning.ipynb"
-        notebook_dst = root / "web" / "public" / "notebooks" / week_id / f"{week_id}-learning.ipynb"
-        copy_file(notebook_src, notebook_dst)
-        copied_notebooks += 1
+        for notebook_src in sorted((root / "notebooks" / week_id).glob("*.ipynb")):
+            notebook_dst = root / "web" / "public" / "notebooks" / week_id / notebook_src.name
+            copy_file(notebook_src, notebook_dst)
+            copied_notebooks += 1
 
         resource_pairs = [
             (week_dir / "README.md", root / "web" / "public" / "resources" / week_id / "overview.md"),
