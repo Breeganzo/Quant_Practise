@@ -49,16 +49,30 @@ select now();
    - Enabled: users must confirm email.
    - Disabled: users can sign in immediately (easier for local testing).
 
-## 4) Find Your Project URL and Anon Key (Important)
+## 4) Find Your Project URL and Client Key (Important)
 
-1. In Supabase sidebar, click Settings.
-2. Click API.
+1. In Supabase sidebar, open Settings.
+2. Open API (or Data API in some dashboard versions).
 3. Copy these two values:
-   - Project URL -> use as VITE_SUPABASE_URL
-   - Project API Keys -> anon public -> use as VITE_SUPABASE_ANON_KEY
+   - URL (sometimes labeled Project URL) -> use as VITE_SUPABASE_URL
+   - Publishable key -> use as VITE_SUPABASE_ANON_KEY
 
-Use only the anon public key in the frontend.
-Do not put the service_role key in frontend files, GitHub Pages secrets for Vite frontend, or client code.
+If your dashboard does not show URL/Project URL:
+
+1. Look at your browser address while inside the Supabase project dashboard.
+2. You will see a path like /project/PROJECT_REF/...
+3. Build the URL manually as:
+   - https://PROJECT_REF.supabase.co
+4. Use that as VITE_SUPABASE_URL.
+
+If your project UI still shows legacy labels, use:
+- anon public key -> VITE_SUPABASE_ANON_KEY
+
+Use only the publishable (client-safe) key in the frontend.
+Do not put the secret key (or legacy service_role key) in frontend files, GitHub Pages secrets for Vite frontend, or client code.
+
+Security note:
+- If a secret key was ever shared in chat or screenshots, rotate it in Supabase immediately.
 
 ## 5) Configure Local Environment
 
@@ -72,7 +86,7 @@ Open web/.env and fill:
 
 ```env
 VITE_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
-VITE_SUPABASE_ANON_KEY=YOUR_ANON_PUBLIC_KEY
+VITE_SUPABASE_ANON_KEY=YOUR_PUBLISHABLE_KEY
 VITE_REPO_URL=https://github.com/Breeganzo/Quant_Practise
 ```
 
@@ -130,7 +144,7 @@ In your GitHub repository:
    - If you still see warning text, inspect for old pasted content and clear editor before re-pasting.
 
 - Error: Invalid API key
-  - Confirm you used anon public key, not service_role.
+   - Confirm you used the publishable key for VITE_SUPABASE_ANON_KEY, not secret/service_role.
 
 - Error: Failed to fetch or CORS/network issues
   - Verify VITE_SUPABASE_URL value and no trailing spaces.

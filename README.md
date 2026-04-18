@@ -54,9 +54,11 @@ Quick version:
 1. Create a Supabase project.
 2. Run `supabase/schema.sql` in Supabase SQL Editor (non-destructive and safe to re-run).
 3. Enable Email provider under Supabase Authentication.
-4. In Supabase Settings -> API, copy:
-   - Project URL -> `VITE_SUPABASE_URL`
-   - anon public key -> `VITE_SUPABASE_ANON_KEY`
+4. In Supabase Settings -> API (or Data API), copy:
+   - URL/Project URL -> `VITE_SUPABASE_URL`
+   - Publishable key -> `VITE_SUPABASE_ANON_KEY`
+   - (If your project still shows legacy labels, use `anon public` for `VITE_SUPABASE_ANON_KEY`.)
+   - (If URL is not shown, use your dashboard path `/project/PROJECT_REF/...` and build `https://PROJECT_REF.supabase.co`.)
 5. Create web env file:
    - `cp web/.env.example web/.env`
 6. Fill values in `web/.env`:
@@ -91,7 +93,7 @@ Workflow file: `.github/workflows/deploy-pages.yml`
 Required repository secrets:
 
 - `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY`
+- `VITE_SUPABASE_ANON_KEY` (set this to your Supabase publishable key)
 
 See `docs/SUPABASE_SETUP_BEGINNER.md` for exact secret setup path in GitHub UI.
 
