@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 REQUIRED_WEEKDAY_SECTIONS = [
-    "## 4-Hour Lesson Flow",
+    "## 5-Block Daily Structure",
     "## Mathematical Foundations (LaTeX)",
     "## Symbol Definitions",
     "## Real Trading Example",

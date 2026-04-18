@@ -3,11 +3,12 @@
 ## Study Duration
 - Planned effort: 4 hours
 
-## 4-Hour Lesson Flow
-- 60 minutes: concept breakdown and formula derivation
-- 75 minutes: real-market case study with data alignment checks
-- 60 minutes: step-by-step quantitative problem solving
-- 45 minutes: coding walkthrough and output verification
+## 5-Block Daily Structure
+- **Block 1 (45 min):** Reset notation (prices, returns, percentages, symbols, units).
+- **Block 2 (60 min):** Core formulas and compounding intuition with plain-language explanations.
+- **Block 3 (45 min):** Hand-calculated solved examples plus common traps.
+- **Block 4 (60 min):** Python/pandas implementation and output verification.
+- **Block 5 (30 min):** Practice questions, interview drill, and reflection.
 
 ## Why It Matters in Quant
 Build options intuition for payoffs, Greeks, and hedging workflows.
@@ -22,41 +23,49 @@ Build options intuition for payoffs, Greeks, and hedging workflows.
 ## Theory Concepts
 
 ### Concept 1: Calls and puts
-Calls and puts should be treated as a measurable component of 'Derivatives and options basics'. For this week, emphasize allocation constraints, risk decomposition, and capital efficiency. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Calls and puts is a core part of 'Derivatives and options basics'. Start with notation discipline: define weights, constraints, and risk units before solving the allocation problem. Then focus on allocation constraints, risk decomposition, and capital efficiency by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ### Concept 2: Long vs short payoff asymmetry
-Long vs short payoff asymmetry should be treated as a measurable component of 'Derivatives and options basics'. For this week, emphasize allocation constraints, risk decomposition, and capital efficiency. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Long vs short payoff asymmetry is a core part of 'Derivatives and options basics'. Start with notation discipline: define weights, constraints, and risk units before solving the allocation problem. Then focus on allocation constraints, risk decomposition, and capital efficiency by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ### Concept 3: Moneyness intuition
-Moneyness intuition should be treated as a measurable component of 'Derivatives and options basics'. For this week, emphasize allocation constraints, risk decomposition, and capital efficiency. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Moneyness intuition is a core part of 'Derivatives and options basics'. Start with notation discipline: define weights, constraints, and risk units before solving the allocation problem. Then focus on allocation constraints, risk decomposition, and capital efficiency by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ## Mathematical Foundations (LaTeX)
 ### Formula 1: Portfolio Return
 $$
 \mu_p=w^\top\mu
 $$
-Expected return from weighted assets.
+**Plain-English interpretation:** Expected return from weighted assets.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Evaluate the metric on at least three assets and document which constraint changes the final portfolio most.
 
 ### Formula 2: Portfolio Variance
 $$
 \sigma_p^2=w^\top\Sigma w
 $$
-Quadratic risk engine.
+**Plain-English interpretation:** Quadratic risk engine.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Evaluate the metric on at least three assets and document which constraint changes the final portfolio most.
 
 ### Formula 3: Risk Contribution
 $$
 RC_i=w_i\frac{(\Sigma w)_i}{\sigma_p}
 $$
-Per-position risk budget.
+**Plain-English interpretation:** Per-position risk budget.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Evaluate the metric on at least three assets and document which constraint changes the final portfolio most.
 
 ## Symbol Definitions
-- $P_t$: price at time $t$
-- $r_t$: simple return
-- $\mu$: expected return
-- $\sigma$: volatility
-- $w$: portfolio weights
-- $\Sigma$: covariance matrix
-- $D_{mod}$: modified duration
+| Symbol | Meaning | Units | Example |
+| --- | --- | --- | --- |
+| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
+| $\mu$ | Expected return | annualized decimal | 0.14 |
+| $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |
+| $w$ | Portfolio weights | sum to 1 | [0.35,0.25,0.40] |
+| $\Sigma$ | Covariance matrix | return^2 | 3x3 matrix |
+| $D_{mod}$ | Modified duration | years | 5.8 |
 
 ## Real Trading Example
 - Instruments: SPY, TLT, GLD, HYG
@@ -79,6 +88,8 @@ Solution:
 1. $\mu_p=w^\top\mu$.
 2. mu_p = 0.6*0.12 + 0.4*0.08 = 0.104.
 Final answer: Portfolio expected return = 10.4%.
+Common trap: Ignoring covariance and focusing only on expected return, which underestimates portfolio risk.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ### Solved Problem 2: Portfolio volatility
 Given:
@@ -88,6 +99,8 @@ Solution:
 2. sigma_p^2 = 0.02048.
 3. sigma_p = sqrt(0.02048) = 0.1431.
 Final answer: Portfolio volatility = 14.31%.
+Common trap: Ignoring covariance and focusing only on expected return, which underestimates portfolio risk.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ### Solved Problem 3: Duration shock
 Given:
@@ -96,6 +109,8 @@ Solution:
 1. $\Delta P/P\approx-D_{mod}\Delta y$.
 2. DeltaP/P = -5.8*0.0025 = -0.0145.
 Final answer: Approximate bond price change = -1.45%.
+Common trap: Ignoring covariance and focusing only on expected return, which underestimates portfolio risk.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ## Coding Walkthrough
 1. Build an explicit data-ingestion layer with timestamp and schema checks.
@@ -112,11 +127,31 @@ risk_budget = risk_contributions(weights, cov)
 rebalance_flag = should_rebalance(weights, target_weights, threshold=0.03)
 ```
 
-## Practice Problems
-1. Re-derive all formulas manually and explain each variable.
-2. Re-run the real trading example using one alternate ticker.
-3. Stress-test one assumption and write a risk-control rule.
-4. Extend the code walkthrough with one new validation test.
+## Block 5: Practice, Quiz, and Interview Drill
+
+### Practice Problems
+1. Re-derive today's formulas manually and define every variable and unit.
+2. Re-run the real trading example with one alternate ticker and compare outputs.
+3. Stress-test one assumption and write one explicit risk-control rule.
+4. Extend the coding walkthrough with one validation test and one edge-case test.
+5. Record one interview-ready explanation in less than 60 seconds.
+
+### Daily Quiz (Realistic Interview Style)
+1. In Week 15 Day 01, explain one formula from today's lesson in plain language and define every symbol used.
+2. Using one real asset from today's universe, compute the metric and state one risk guardrail you would enforce.
+3. Interview drill: In 60 seconds, explain why 'Option payoff structure' matters for production trading systems.
+
+Answer key template:
+- Q1: Formula + symbol table + units.
+- Q2: Numeric result + interpretation + guardrail.
+- Q3: One concise story linking model, risk, and execution.
+
+### Interview Drill
+- Prompt: "Walk me through Option payoff structure as if you are presenting to a PM who cares about risk-adjusted returns."
+- What interviewers look for:
+  1. Correct notation and units.
+  2. Ability to connect theory to a real trade decision.
+  3. Awareness of edge cases, costs, and failure modes.
 
 ## Reflection Question
 Which payoff shape best fits downside protection goals?

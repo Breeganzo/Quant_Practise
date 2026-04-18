@@ -3,11 +3,12 @@
 ## Study Duration
 - Planned effort: 4 hours
 
-## 4-Hour Lesson Flow
-- 60 minutes: concept breakdown and formula derivation
-- 75 minutes: real-market case study with data alignment checks
-- 60 minutes: step-by-step quantitative problem solving
-- 45 minutes: coding walkthrough and output verification
+## 5-Block Daily Structure
+- **Block 1 (45 min):** Reset notation (prices, returns, percentages, symbols, units).
+- **Block 2 (60 min):** Core formulas and compounding intuition with plain-language explanations.
+- **Block 3 (45 min):** Hand-calculated solved examples plus common traps.
+- **Block 4 (60 min):** Python/pandas implementation and output verification.
+- **Block 5 (30 min):** Practice questions, interview drill, and reflection.
 
 ## Why It Matters in Quant
 Sharpen front-office communication and strategy discussion readiness.
@@ -22,41 +23,49 @@ Sharpen front-office communication and strategy discussion readiness.
 ## Theory Concepts
 
 ### Concept 1: Story consistency
-Story consistency should be treated as a measurable component of 'Quant interview prep II and strats communication'. For this week, emphasize decision quality, communication rigor, and reproducible evidence. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Story consistency is a core part of 'Quant interview prep II and strats communication'. Start with notation discipline: define readiness metrics, scoring weights, and evidence thresholds before making final decisions. Then focus on decision quality, communication rigor, and reproducible evidence by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ### Concept 2: Evidence-backed strengths
-Evidence-backed strengths should be treated as a measurable component of 'Quant interview prep II and strats communication'. For this week, emphasize decision quality, communication rigor, and reproducible evidence. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Evidence-backed strengths is a core part of 'Quant interview prep II and strats communication'. Start with notation discipline: define readiness metrics, scoring weights, and evidence thresholds before making final decisions. Then focus on decision quality, communication rigor, and reproducible evidence by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ### Concept 3: Growth narrative
-Growth narrative should be treated as a measurable component of 'Quant interview prep II and strats communication'. For this week, emphasize decision quality, communication rigor, and reproducible evidence. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Growth narrative is a core part of 'Quant interview prep II and strats communication'. Start with notation discipline: define readiness metrics, scoring weights, and evidence thresholds before making final decisions. Then focus on decision quality, communication rigor, and reproducible evidence by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ## Mathematical Foundations (LaTeX)
 ### Formula 1: CAGR
 $$
 CAGR=\left(\frac{V_T}{V_0}\right)^{1/T}-1
 $$
-Long-horizon growth target.
+**Plain-English interpretation:** Long-horizon growth target.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Translate the metric into a go/no-go decision with explicit thresholds and risk guardrails.
 
 ### Formula 2: Gap
 $$
 Gap_j=Target_j-Current_j
 $$
-Remaining improvement workload.
+**Plain-English interpretation:** Remaining improvement workload.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Translate the metric into a go/no-go decision with explicit thresholds and risk guardrails.
 
 ### Formula 3: Expected Value
 $$
 EV=p\cdot Gain-(1-p)\cdot Loss
 $$
-Decision-quality baseline.
+**Plain-English interpretation:** Decision-quality baseline.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Translate the metric into a go/no-go decision with explicit thresholds and risk guardrails.
 
 ## Symbol Definitions
-- $P_t$: price at time $t$
-- $r_t$: simple return
-- $\mu$: expected return
-- $\sigma$: volatility
-- $S$: readiness score
-- $EV$: expected value
-- $Gap_j$: target gap by skill
+| Symbol | Meaning | Units | Example |
+| --- | --- | --- | --- |
+| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
+| $\mu$ | Expected return | annualized decimal | 0.14 |
+| $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |
+| $S$ | Readiness score | 0 to 100 scale | 83.4 |
+| $EV$ | Expected value | R-multiple | 0.45R |
+| $Gap_j$ | Target-current skill gap | score points | 7.5 |
 
 ## Real Trading Example
 - Instruments: SPY, QQQ, TLT
@@ -79,6 +88,8 @@ Solution:
 1. $EV=p\cdot Gain-(1-p)\cdot Loss$.
 2. EV = 0.58*1.5 - 0.42*1.0 = 0.45R.
 Final answer: Expected value = 0.45R per trade.
+Common trap: Using one metric in isolation instead of combining expected value, risk limits, and readiness score.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ### Solved Problem 2: Readiness score
 Given:
@@ -87,6 +98,8 @@ Solution:
 1. $S=\sum_jw_js_j$.
 2. S = 0.45*82 + 0.35*87 + 0.20*80 = 83.35.
 Final answer: Readiness score = 83.35/100.
+Common trap: Using one metric in isolation instead of combining expected value, risk limits, and readiness score.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ### Solved Problem 3: CAGR target
 Given:
@@ -95,6 +108,8 @@ Solution:
 1. $CAGR=(V_T/V_0)^{1/T}-1$.
 2. CAGR = (1.32/1.00)^(1/3)-1 = 0.0969.
 Final answer: Required CAGR = 9.69%.
+Common trap: Using one metric in isolation instead of combining expected value, risk limits, and readiness score.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ## Coding Walkthrough
 1. Build an explicit data-ingestion layer with timestamp and schema checks.
@@ -111,11 +126,31 @@ roadmap = build_90_day_plan(readiness, posterior)
 export_launch_checklist(roadmap)
 ```
 
-## Practice Problems
-1. Re-derive all formulas manually and explain each variable.
-2. Re-run the real trading example using one alternate ticker.
-3. Stress-test one assumption and write a risk-control rule.
-4. Extend the code walkthrough with one new validation test.
+## Block 5: Practice, Quiz, and Interview Drill
+
+### Practice Problems
+1. Re-derive today's formulas manually and define every variable and unit.
+2. Re-run the real trading example with one alternate ticker and compare outputs.
+3. Stress-test one assumption and write one explicit risk-control rule.
+4. Extend the coding walkthrough with one validation test and one edge-case test.
+5. Record one interview-ready explanation in less than 60 seconds.
+
+### Daily Quiz (Realistic Interview Style)
+1. In Week 23 Day 04, explain one formula from today's lesson in plain language and define every symbol used.
+2. Using one real asset from today's universe, compute the metric and state one risk guardrail you would enforce.
+3. Interview drill: In 60 seconds, explain why 'Behavioral and fit interview prep' matters for production trading systems.
+
+Answer key template:
+- Q1: Formula + symbol table + units.
+- Q2: Numeric result + interpretation + guardrail.
+- Q3: One concise story linking model, risk, and execution.
+
+### Interview Drill
+- Prompt: "Walk me through Behavioral and fit interview prep as if you are presenting to a PM who cares about risk-adjusted returns."
+- What interviewers look for:
+  1. Correct notation and units.
+  2. Ability to connect theory to a real trade decision.
+  3. Awareness of edge cases, costs, and failure modes.
 
 ## Reflection Question
 Where does your narrative still sound generic?

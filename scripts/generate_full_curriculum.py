@@ -1963,11 +1963,20 @@ def concept_explanation(concept: str, week_theme: str, week_no: int) -> str:
         "advanced": "alpha stability, execution realism, and risk-governed deployment",
         "launch": "decision quality, communication rigor, and reproducible evidence",
     }
+    notation_emphasis = {
+        "foundations": "define prices, returns, percentages, and all symbols before doing any arithmetic",
+        "ml": "define labels, feature windows, and leakage boundaries before fitting any model",
+        "time_series": "define time index, lag notation, and forecast horizon before estimating dependence",
+        "portfolio": "define weights, constraints, and risk units before solving the allocation problem",
+        "advanced": "define universe construction, signal scaling, and execution units before evaluating alpha",
+        "launch": "define readiness metrics, scoring weights, and evidence thresholds before making final decisions",
+    }
     phase = phase_for_week(week_no)
     return (
-        f"{concept} should be treated as a measurable component of '{week_theme}'. "
-        f"For this week, emphasize {phase_focus[phase]}. "
-        "State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption."
+        f"{concept} is a core part of '{week_theme}'. "
+        f"Start with notation discipline: {notation_emphasis[phase]}. "
+        f"Then focus on {phase_focus[phase]} by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), "
+        "verifying units, and documenting one failure mode that appears in stressed regimes."
     )
 
 
@@ -2027,26 +2036,75 @@ def formula_entries(week_no: int, day_no: int) -> list[tuple[str, str, str]]:
 def symbol_definitions(week_no: int) -> list[str]:
     phase = phase_for_week(week_no)
     common = [
-        "- $P_t$: price at time $t$",
-        "- $r_t$: simple return",
-        "- $\\mu$: expected return",
-        "- $\\sigma$: volatility",
+        ("$P_t$", "Price at time $t$", "USD/share", "$110.50"),
+        ("$r_t$", "Simple return", "decimal or %", "0.012 = 1.2%"),
+        ("$\\mu$", "Expected return", "annualized decimal", "0.14"),
+        ("$\\sigma$", "Volatility (std. dev.)", "annualized decimal", "0.18"),
     ]
     extras = {
-        "foundations": ["- $R_f$: risk-free rate", "- $TO_t$: portfolio turnover"],
-        "ml": ["- $\\hat{y}$: model prediction", "- $\\lambda$: regularization parameter", "- $TP,FP,FN$: confusion counts"],
-        "time_series": ["- $\\phi$: autoregressive coefficient", "- $e_t$: forecast residual", "- $\\lambda$: EWMA decay"],
-        "portfolio": ["- $w$: portfolio weights", "- $\\Sigma$: covariance matrix", "- $D_{mod}$: modified duration"],
-        "advanced": ["- $IC$: information coefficient", "- $ADV$: average daily volume", "- $IS$: implementation shortfall"],
-        "launch": ["- $S$: readiness score", "- $EV$: expected value", "- $Gap_j$: target gap by skill"],
+        "foundations": [
+            ("$R_f$", "Risk-free rate", "annualized decimal", "0.03"),
+            ("$TO_t$", "Portfolio turnover", "fraction of portfolio", "0.12"),
+        ],
+        "ml": [
+            ("$\\hat{y}$", "Model prediction", "class/probability", "0.73"),
+            ("$\\lambda$", "Regularization strength", "non-negative scalar", "0.10"),
+            ("$TP,FP,FN$", "Confusion matrix counts", "integer count", "TP=52"),
+        ],
+        "time_series": [
+            ("$\\phi$", "Autoregressive coefficient", "dimensionless", "0.64"),
+            ("$e_t$", "Forecast residual", "return units", "-0.003"),
+            ("$\\lambda$", "EWMA decay factor", "0 to 1", "0.94"),
+        ],
+        "portfolio": [
+            ("$w$", "Portfolio weights", "sum to 1", "[0.35,0.25,0.40]"),
+            ("$\\Sigma$", "Covariance matrix", "return^2", "3x3 matrix"),
+            ("$D_{mod}$", "Modified duration", "years", "5.8"),
+        ],
+        "advanced": [
+            ("$IC$", "Information coefficient", "correlation", "0.04"),
+            ("$ADV$", "Average daily volume", "shares/day", "12M"),
+            ("$IS$", "Implementation shortfall", "basis points", "14.2 bps"),
+        ],
+        "launch": [
+            ("$S$", "Readiness score", "0 to 100 scale", "83.4"),
+            ("$EV$", "Expected value", "R-multiple", "0.45R"),
+            ("$Gap_j$", "Target-current skill gap", "score points", "7.5"),
+        ],
     }
-    return common + extras[phase]
+    rows = common + extras[phase]
+    lines = [
+        "| Symbol | Meaning | Units | Example |",
+        "| --- | --- | --- | --- |",
+    ]
+    lines.extend(f"| {sym} | {meaning} | {units} | {example} |" for sym, meaning, units, example in rows)
+    return lines
 
 
 def render_formula_section(week_no: int, day_no: int) -> list[str]:
+    phase = phase_for_week(week_no)
+    anchor = {
+        "foundations": "Compute this on SPY and QQQ daily closes, then compare how one volatile day changes the metric.",
+        "ml": "Use a walk-forward split and verify the metric does not leak future labels into feature construction.",
+        "time_series": "Run the formula on rolling windows and inspect whether the value is stable across calm and stress periods.",
+        "portfolio": "Evaluate the metric on at least three assets and document which constraint changes the final portfolio most.",
+        "advanced": "Measure pre-cost and post-cost values to verify execution frictions do not erase signal edge.",
+        "launch": "Translate the metric into a go/no-go decision with explicit thresholds and risk guardrails.",
+    }
     lines: list[str] = []
     for idx, (name, latex, interpretation) in enumerate(formula_entries(week_no, day_no), start=1):
-        lines.extend([f"### Formula {idx}: {name}", "$$", latex, "$$", interpretation, ""])
+        lines.extend(
+            [
+                f"### Formula {idx}: {name}",
+                "$$",
+                latex,
+                "$$",
+                f"**Plain-English interpretation:** {interpretation}",
+                "**Notation check:** Identify each symbol and its units before coding this formula.",
+                f"**Real-world anchor:** {anchor[phase]}",
+                "",
+            ]
+        )
     return lines
 
 
@@ -2255,6 +2313,15 @@ def solved_problems(week_no: int, day_no: int) -> list[tuple[str, list[str], lis
 
 
 def render_solved_problems(week_no: int, day_no: int) -> list[str]:
+    phase = phase_for_week(week_no)
+    trap_by_phase = {
+        "foundations": "Confusing percentage return with absolute dollar change or forgetting that returns compound multiplicatively.",
+        "ml": "Using forward labels with backward-filled features, which silently introduces leakage.",
+        "time_series": "Treating a non-stationary series as stationary and over-trusting one in-sample fit.",
+        "portfolio": "Ignoring covariance and focusing only on expected return, which underestimates portfolio risk.",
+        "advanced": "Reporting gross signal performance without implementation costs or capacity constraints.",
+        "launch": "Using one metric in isolation instead of combining expected value, risk limits, and readiness score.",
+    }
     lines: list[str] = []
     for idx, (title, given, steps, answer) in enumerate(solved_problems(week_no, day_no), start=1):
         lines.append(f"### Solved Problem {idx}: {title}")
@@ -2263,6 +2330,8 @@ def render_solved_problems(week_no: int, day_no: int) -> list[str]:
         lines.append("Solution:")
         lines.extend(steps)
         lines.append(f"Final answer: {answer}")
+        lines.append(f"Common trap: {trap_by_phase[phase]}")
+        lines.append("Interpretation: Write one sentence describing how this result would change a real trading decision.")
         lines.append("")
     return lines
 
@@ -2329,6 +2398,30 @@ def coding_walkthrough(week_no: int, day: DayPlan) -> list[str]:
         "",
         "Reference implementation sketch:",
         *snippets[phase],
+    ]
+
+
+def daily_quiz_questions(week_no: int, day_no: int, day: DayPlan) -> list[str]:
+    week_label = f"Week {week_no:02d} Day {day_no:02d}"
+    return [
+        f"1. In {week_label}, explain one formula from today's lesson in plain language and define every symbol used.",
+        "2. Using one real asset from today's universe, compute the metric and state one risk guardrail you would enforce.",
+        f"3. Interview drill: In 60 seconds, explain why '{day.topic}' matters for production trading systems.",
+        "",
+        "Answer key template:",
+        "- Q1: Formula + symbol table + units.",
+        "- Q2: Numeric result + interpretation + guardrail.",
+        "- Q3: One concise story linking model, risk, and execution.",
+    ]
+
+
+def interview_drill_prompt(day: DayPlan) -> list[str]:
+    return [
+        f"- Prompt: \"Walk me through {day.topic} as if you are presenting to a PM who cares about risk-adjusted returns.\"",
+        "- What interviewers look for:",
+        "  1. Correct notation and units.",
+        "  2. Ability to connect theory to a real trade decision.",
+        "  3. Awareness of edge cases, costs, and failure modes.",
     ]
 
 
@@ -2435,17 +2528,19 @@ def day_markdown(
         concepts_block.append("")
 
     hour_plan: list[str] = [
-        "- 60 minutes: concept breakdown and formula derivation",
-        "- 75 minutes: real-market case study with data alignment checks",
-        "- 60 minutes: step-by-step quantitative problem solving",
-        "- 45 minutes: coding walkthrough and output verification",
+        "- **Block 1 (45 min):** Reset notation (prices, returns, percentages, symbols, units).",
+        "- **Block 2 (60 min):** Core formulas and compounding intuition with plain-language explanations.",
+        "- **Block 3 (45 min):** Hand-calculated solved examples plus common traps.",
+        "- **Block 4 (60 min):** Python/pandas implementation and output verification.",
+        "- **Block 5 (30 min):** Practice questions, interview drill, and reflection.",
     ]
 
     practice: list[str] = [
-        "1. Re-derive all formulas manually and explain each variable.",
-        "2. Re-run the real trading example using one alternate ticker.",
-        "3. Stress-test one assumption and write a risk-control rule.",
-        "4. Extend the code walkthrough with one new validation test.",
+        "1. Re-derive today's formulas manually and define every variable and unit.",
+        "2. Re-run the real trading example with one alternate ticker and compare outputs.",
+        "3. Stress-test one assumption and write one explicit risk-control rule.",
+        "4. Extend the coding walkthrough with one validation test and one edge-case test.",
+        "5. Record one interview-ready explanation in less than 60 seconds.",
     ]
 
     return "\n".join(
@@ -2455,7 +2550,7 @@ def day_markdown(
             "## Study Duration",
             "- Planned effort: 4 hours",
             "",
-            "## 4-Hour Lesson Flow",
+            "## 5-Block Daily Structure",
             *hour_plan,
             "",
             "## Why It Matters in Quant",
@@ -2479,8 +2574,16 @@ def day_markdown(
             "## Coding Walkthrough",
             *coding_walkthrough(week_no, day),
             "",
-            "## Practice Problems",
+            "## Block 5: Practice, Quiz, and Interview Drill",
+            "",
+            "### Practice Problems",
             *practice,
+            "",
+            "### Daily Quiz (Realistic Interview Style)",
+            *daily_quiz_questions(week_no, day_no, day),
+            "",
+            "### Interview Drill",
+            *interview_drill_prompt(day),
             "",
             "## Reflection Question",
             day.reflection,

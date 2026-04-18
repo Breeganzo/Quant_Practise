@@ -3,11 +3,12 @@
 ## Study Duration
 - Planned effort: 4 hours
 
-## 4-Hour Lesson Flow
-- 60 minutes: concept breakdown and formula derivation
-- 75 minutes: real-market case study with data alignment checks
-- 60 minutes: step-by-step quantitative problem solving
-- 45 minutes: coding walkthrough and output verification
+## 5-Block Daily Structure
+- **Block 1 (45 min):** Reset notation (prices, returns, percentages, symbols, units).
+- **Block 2 (60 min):** Core formulas and compounding intuition with plain-language explanations.
+- **Block 3 (45 min):** Hand-calculated solved examples plus common traps.
+- **Block 4 (60 min):** Python/pandas implementation and output verification.
+- **Block 5 (30 min):** Practice questions, interview drill, and reflection.
 
 ## Why It Matters in Quant
 Understand volatility dynamics and regime-change handling for risk-aware strategies.
@@ -22,41 +23,49 @@ Understand volatility dynamics and regime-change handling for risk-aware strateg
 ## Theory Concepts
 
 ### Concept 1: Structural breaks
-Structural breaks should be treated as a measurable component of 'Volatility modeling and regime shifts'. For this week, emphasize temporal dependence structure and out-of-sample forecast discipline. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Structural breaks is a core part of 'Volatility modeling and regime shifts'. Start with notation discipline: define time index, lag notation, and forecast horizon before estimating dependence. Then focus on temporal dependence structure and out-of-sample forecast discipline by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ### Concept 2: Change-point algorithms
-Change-point algorithms should be treated as a measurable component of 'Volatility modeling and regime shifts'. For this week, emphasize temporal dependence structure and out-of-sample forecast discipline. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Change-point algorithms is a core part of 'Volatility modeling and regime shifts'. Start with notation discipline: define time index, lag notation, and forecast horizon before estimating dependence. Then focus on temporal dependence structure and out-of-sample forecast discipline by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ### Concept 3: Regime labeling workflows
-Regime labeling workflows should be treated as a measurable component of 'Volatility modeling and regime shifts'. For this week, emphasize temporal dependence structure and out-of-sample forecast discipline. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Regime labeling workflows is a core part of 'Volatility modeling and regime shifts'. Start with notation discipline: define time index, lag notation, and forecast horizon before estimating dependence. Then focus on temporal dependence structure and out-of-sample forecast discipline by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ## Mathematical Foundations (LaTeX)
 ### Formula 1: EWMA Vol
 $$
 \sigma_t^2=\lambda\sigma_{t-1}^2+(1-\lambda)r_{t-1}^2
 $$
-Adaptive volatility estimate.
+**Plain-English interpretation:** Adaptive volatility estimate.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Run the formula on rolling windows and inspect whether the value is stable across calm and stress periods.
 
 ### Formula 2: RMSE
 $$
 RMSE=\sqrt{\frac{1}{n}\sum_t e_t^2}
 $$
-Forecast error benchmark.
+**Plain-English interpretation:** Forecast error benchmark.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Run the formula on rolling windows and inspect whether the value is stable across calm and stress periods.
 
 ### Formula 3: First Difference
 $$
 \Delta x_t=x_t-x_{t-1}
 $$
-Removes non-stationary level drift.
+**Plain-English interpretation:** Removes non-stationary level drift.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Run the formula on rolling windows and inspect whether the value is stable across calm and stress periods.
 
 ## Symbol Definitions
-- $P_t$: price at time $t$
-- $r_t$: simple return
-- $\mu$: expected return
-- $\sigma$: volatility
-- $\phi$: autoregressive coefficient
-- $e_t$: forecast residual
-- $\lambda$: EWMA decay
+| Symbol | Meaning | Units | Example |
+| --- | --- | --- | --- |
+| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
+| $\mu$ | Expected return | annualized decimal | 0.14 |
+| $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |
+| $\phi$ | Autoregressive coefficient | dimensionless | 0.64 |
+| $e_t$ | Forecast residual | return units | -0.003 |
+| $\lambda$ | EWMA decay factor | 0 to 1 | 0.94 |
 
 ## Real Trading Example
 - Instruments: SPY, TLT, GLD
@@ -79,6 +88,8 @@ Solution:
 1. $x_{t+1}=c+\phi x_t$.
 2. Forecast = 0.001 + 0.64*0.015 = 0.010600.
 Final answer: Forecasted value = 1.06%.
+Common trap: Treating a non-stationary series as stationary and over-trusting one in-sample fit.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ### Solved Problem 2: EWMA volatility update
 Given:
@@ -88,6 +99,8 @@ Solution:
 2. sigma_t^2 = 0.94*(0.020^2) + 0.06*(0.012^2) = 0.00038464.
 3. sigma_t = sqrt(0.00038464) = 0.01961.
 Final answer: Updated volatility = 1.96%.
+Common trap: Treating a non-stationary series as stationary and over-trusting one in-sample fit.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ### Solved Problem 3: Compute RMSE
 Given:
@@ -97,6 +110,8 @@ Solution:
 2. Mean squared error = 0.000018.
 3. RMSE = sqrt(0.000018) = 0.00424.
 Final answer: RMSE = 0.424%.
+Common trap: Treating a non-stationary series as stationary and over-trusting one in-sample fit.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ## Coding Walkthrough
 1. Build an explicit data-ingestion layer with timestamp and schema checks.
@@ -113,11 +128,31 @@ errors = series.loc[forecast.index] - forecast
 rmse = np.sqrt(np.mean(errors**2))
 ```
 
-## Practice Problems
-1. Re-derive all formulas manually and explain each variable.
-2. Re-run the real trading example using one alternate ticker.
-3. Stress-test one assumption and write a risk-control rule.
-4. Extend the code walkthrough with one new validation test.
+## Block 5: Practice, Quiz, and Interview Drill
+
+### Practice Problems
+1. Re-derive today's formulas manually and define every variable and unit.
+2. Re-run the real trading example with one alternate ticker and compare outputs.
+3. Stress-test one assumption and write one explicit risk-control rule.
+4. Extend the coding walkthrough with one validation test and one edge-case test.
+5. Record one interview-ready explanation in less than 60 seconds.
+
+### Daily Quiz (Realistic Interview Style)
+1. In Week 10 Day 04, explain one formula from today's lesson in plain language and define every symbol used.
+2. Using one real asset from today's universe, compute the metric and state one risk guardrail you would enforce.
+3. Interview drill: In 60 seconds, explain why 'Regime detection and change points' matters for production trading systems.
+
+Answer key template:
+- Q1: Formula + symbol table + units.
+- Q2: Numeric result + interpretation + guardrail.
+- Q3: One concise story linking model, risk, and execution.
+
+### Interview Drill
+- Prompt: "Walk me through Regime detection and change points as if you are presenting to a PM who cares about risk-adjusted returns."
+- What interviewers look for:
+  1. Correct notation and units.
+  2. Ability to connect theory to a real trade decision.
+  3. Awareness of edge cases, costs, and failure modes.
 
 ## Reflection Question
 How should strategy exposure adapt at detected breakpoints?

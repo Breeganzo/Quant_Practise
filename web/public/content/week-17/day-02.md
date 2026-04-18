@@ -3,11 +3,12 @@
 ## Study Duration
 - Planned effort: 4 hours
 
-## 4-Hour Lesson Flow
-- 60 minutes: concept breakdown and formula derivation
-- 75 minutes: real-market case study with data alignment checks
-- 60 minutes: step-by-step quantitative problem solving
-- 45 minutes: coding walkthrough and output verification
+## 5-Block Daily Structure
+- **Block 1 (45 min):** Reset notation (prices, returns, percentages, symbols, units).
+- **Block 2 (60 min):** Core formulas and compounding intuition with plain-language explanations.
+- **Block 3 (45 min):** Hand-calculated solved examples plus common traps.
+- **Block 4 (60 min):** Python/pandas implementation and output verification.
+- **Block 5 (30 min):** Practice questions, interview drill, and reflection.
 
 ## Why It Matters in Quant
 Develop cross-sectional signal research skills using factor-style workflows.
@@ -22,41 +23,49 @@ Develop cross-sectional signal research skills using factor-style workflows.
 ## Theory Concepts
 
 ### Concept 1: Exposure estimation
-Exposure estimation should be treated as a measurable component of 'Factor models and cross-sectional alpha'. For this week, emphasize alpha stability, execution realism, and risk-governed deployment. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Exposure estimation is a core part of 'Factor models and cross-sectional alpha'. Start with notation discipline: define universe construction, signal scaling, and execution units before evaluating alpha. Then focus on alpha stability, execution realism, and risk-governed deployment by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ### Concept 2: Residual return interpretation
-Residual return interpretation should be treated as a measurable component of 'Factor models and cross-sectional alpha'. For this week, emphasize alpha stability, execution realism, and risk-governed deployment. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Residual return interpretation is a core part of 'Factor models and cross-sectional alpha'. Start with notation discipline: define universe construction, signal scaling, and execution units before evaluating alpha. Then focus on alpha stability, execution realism, and risk-governed deployment by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ### Concept 3: Model specification caveats
-Model specification caveats should be treated as a measurable component of 'Factor models and cross-sectional alpha'. For this week, emphasize alpha stability, execution realism, and risk-governed deployment. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
+Model specification caveats is a core part of 'Factor models and cross-sectional alpha'. Start with notation discipline: define universe construction, signal scaling, and execution units before evaluating alpha. Then focus on alpha stability, execution realism, and risk-governed deployment by pairing at least one formula with one real market example (SPY/QQQ/AAPL or phase-relevant assets), verifying units, and documenting one failure mode that appears in stressed regimes.
 
 ## Mathematical Foundations (LaTeX)
 ### Formula 1: Information Coefficient
 $$
 IC_t=Corr(score_{i,t},r_{i,t+1})
 $$
-Signal/forward-return linkage.
+**Plain-English interpretation:** Signal/forward-return linkage.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Measure pre-cost and post-cost values to verify execution frictions do not erase signal edge.
 
 ### Formula 2: IC t-Statistic
 $$
 t_{IC}=\frac{\bar{IC}}{Std(IC)/\sqrt{T}}
 $$
-Signal persistence test.
+**Plain-English interpretation:** Signal persistence test.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Measure pre-cost and post-cost values to verify execution frictions do not erase signal edge.
 
 ### Formula 3: Spread Z-Score
 $$
 z_t=\frac{s_t-\mu_s}{\sigma_s}
 $$
-Stat-arb entry normalization.
+**Plain-English interpretation:** Stat-arb entry normalization.
+**Notation check:** Identify each symbol and its units before coding this formula.
+**Real-world anchor:** Measure pre-cost and post-cost values to verify execution frictions do not erase signal edge.
 
 ## Symbol Definitions
-- $P_t$: price at time $t$
-- $r_t$: simple return
-- $\mu$: expected return
-- $\sigma$: volatility
-- $IC$: information coefficient
-- $ADV$: average daily volume
-- $IS$: implementation shortfall
+| Symbol | Meaning | Units | Example |
+| --- | --- | --- | --- |
+| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
+| $\mu$ | Expected return | annualized decimal | 0.14 |
+| $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |
+| $IC$ | Information coefficient | correlation | 0.04 |
+| $ADV$ | Average daily volume | shares/day | 12M |
+| $IS$ | Implementation shortfall | basis points | 14.2 bps |
 
 ## Real Trading Example
 - Instruments: SPY, IWM, EFA, EEM
@@ -79,6 +88,8 @@ Solution:
 1. $z=\frac{x-\mu}{\sigma}$.
 2. z=(1.60-0.70)/0.45 = 2.00.
 Final answer: Signal z-score = 2.00.
+Common trap: Reporting gross signal performance without implementation costs or capacity constraints.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ### Solved Problem 2: IC t-stat
 Given:
@@ -87,6 +98,8 @@ Solution:
 1. $t=\frac{\bar{IC}}{s/\sqrt{T}}$.
 2. t = 0.045/(0.018/sqrt(12)) = 8.66.
 Final answer: IC t-stat = 8.66.
+Common trap: Reporting gross signal performance without implementation costs or capacity constraints.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ### Solved Problem 3: Implementation shortfall
 Given:
@@ -95,6 +108,8 @@ Solution:
 1. $IS_{bps}=10^4\frac{p_{exec}-p_{arr}}{p_{arr}}$.
 2. IS_bps = 10000*(0.16/101.20) = 15.81.
 Final answer: Implementation shortfall = 15.81 bps.
+Common trap: Reporting gross signal performance without implementation costs or capacity constraints.
+Interpretation: Write one sentence describing how this result would change a real trading decision.
 
 ## Coding Walkthrough
 1. Build an explicit data-ingestion layer with timestamp and schema checks.
@@ -111,11 +126,31 @@ execution_cost = estimate_slippage(signals, adv_frame)
 net_pnl = backtest_with_costs(signals, returns, execution_cost)
 ```
 
-## Practice Problems
-1. Re-derive all formulas manually and explain each variable.
-2. Re-run the real trading example using one alternate ticker.
-3. Stress-test one assumption and write a risk-control rule.
-4. Extend the code walkthrough with one new validation test.
+## Block 5: Practice, Quiz, and Interview Drill
+
+### Practice Problems
+1. Re-derive today's formulas manually and define every variable and unit.
+2. Re-run the real trading example with one alternate ticker and compare outputs.
+3. Stress-test one assumption and write one explicit risk-control rule.
+4. Extend the coding walkthrough with one validation test and one edge-case test.
+5. Record one interview-ready explanation in less than 60 seconds.
+
+### Daily Quiz (Realistic Interview Style)
+1. In Week 17 Day 02, explain one formula from today's lesson in plain language and define every symbol used.
+2. Using one real asset from today's universe, compute the metric and state one risk guardrail you would enforce.
+3. Interview drill: In 60 seconds, explain why 'Cross-sectional regressions' matters for production trading systems.
+
+Answer key template:
+- Q1: Formula + symbol table + units.
+- Q2: Numeric result + interpretation + guardrail.
+- Q3: One concise story linking model, risk, and execution.
+
+### Interview Drill
+- Prompt: "Walk me through Cross-sectional regressions as if you are presenting to a PM who cares about risk-adjusted returns."
+- What interviewers look for:
+  1. Correct notation and units.
+  2. Ability to connect theory to a real trade decision.
+  3. Awareness of edge cases, costs, and failure modes.
 
 ## Reflection Question
 Which regression assumption is most fragile in live markets?

@@ -249,6 +249,48 @@ macro_level = float(macro_unrate.iloc[-1]) if not macro_unrate.empty else float(
 """
 
 
+def quiz_markdown_for_day(week_no: int, day_no: int) -> str:
+    return "\n".join(
+        [
+            f"## Week {week_no:02d} Day {day_no:02d} Quiz",
+            "",
+            "Answer these before revealing the solution cell:",
+            "1. Write one formula from today in plain language and define each symbol.",
+            "2. Use one real ticker from today's examples and state one risk guardrail.",
+            "3. In one sentence: why does this concept matter for live trading decisions?",
+            "",
+            "Then run the next code cell to compare against a reference answer template.",
+        ]
+    )
+
+
+def quiz_solution_code_for_day(week_no: int, day_no: int) -> str:
+    base_price = 100 + week_no + day_no
+    next_price = round(base_price * (1 + 0.008 + 0.0005 * day_no), 3)
+    simple_return = (next_price - base_price) / base_price
+    gross_return = 1 + simple_return
+    return f"""# Quiz reference solution template (auto-generated)
+price_t_minus_1 = {base_price:.3f}
+price_t = {next_price:.3f}
+r_t = (price_t - price_t_minus_1) / price_t_minus_1
+gross = 1 + r_t
+
+print('Reference symbols:')
+print('  P_(t-1):', price_t_minus_1)
+print('  P_t    :', price_t)
+print('  r_t    :', round(r_t, 6), '=>', f'{{r_t*100:.2f}}%')
+print('  1+r_t  :', round(gross, 6))
+
+print('\\nExpected numeric check:')
+print('  simple_return_expected =', {simple_return:.6f})
+print('  gross_return_expected  =', {gross_return:.6f})
+
+print('\\nInterview-style answer template:')
+print('  Formula in words: return = price change / starting price')
+print('  Risk guardrail: reject signals when volatility regime shifts above threshold')
+"""
+
+
 def create_week_notebook(week_no: int, week_dir: Path, notebook_path: Path) -> None:
     cells = [
         new_markdown_cell(
@@ -263,7 +305,15 @@ def create_week_notebook(week_no: int, week_dir: Path, notebook_path: Path) -> N
         lesson_text = lesson_path.read_text(encoding="utf-8")
         cells.append(new_markdown_cell(lesson_text))
         if day_no <= 5:
+            cells.append(
+                new_markdown_cell(
+                    f"## Week {week_no:02d} Day {day_no:02d} Runnable Example\n"
+                    "Run this cell, inspect outputs, then answer the quiz."
+                )
+            )
             cells.append(new_code_cell(demo_code_for_week(week_no, day_no)))
+            cells.append(new_markdown_cell(quiz_markdown_for_day(week_no, day_no)))
+            cells.append(new_code_cell(quiz_solution_code_for_day(week_no, day_no)))
 
     nb = new_notebook(
         cells=cells,
