@@ -249,45 +249,62 @@ macro_level = float(macro_unrate.iloc[-1]) if not macro_unrate.empty else float(
 """
 
 
-def quiz_markdown_for_day(week_no: int, day_no: int) -> str:
+def topic_from_lesson(lesson_text: str, week_no: int, day_no: int) -> str:
+    default_topic = f"Week {week_no:02d} Day {day_no:02d}"
+    for line in lesson_text.splitlines():
+        if line.startswith("# Week ") and ":" in line:
+            return line.split(":", maxsplit=1)[1].strip()
+    return default_topic
+
+
+def quiz_markdown_for_day(week_no: int, day_no: int, topic: str) -> str:
     return "\n".join(
         [
             f"## Week {week_no:02d} Day {day_no:02d} Quiz",
             "",
-            "Answer these before revealing the solution cell:",
-            "1. Write one formula from today in plain language and define each symbol.",
-            "2. Use one real ticker from today's examples and state one risk guardrail.",
-            "3. In one sentence: why does this concept matter for live trading decisions?",
+            f"Topic: **{topic}**",
             "",
-            "Then run the next code cell to compare against a reference answer template.",
+            "Real-world interview questions (answer first, then run the next cell for model answers):",
+            "1. PM question: Which formula from today's lesson directly drives a trade decision, and what does each symbol mean?",
+            "2. Risk question: Using one real ticker from today's example, what hard guardrail would you enforce before live deployment?",
+            "3. Communication question: In one minute, explain why this topic matters for production trading systems.",
+            "",
+            "Scoring: full credit requires notation correctness, one numeric example, and one explicit risk control.",
         ]
     )
 
 
-def quiz_solution_code_for_day(week_no: int, day_no: int) -> str:
+def quiz_solution_code_for_day(week_no: int, day_no: int, topic: str) -> str:
     base_price = 100 + week_no + day_no
     next_price = round(base_price * (1 + 0.008 + 0.0005 * day_no), 3)
     simple_return = (next_price - base_price) / base_price
     gross_return = 1 + simple_return
-    return f"""# Quiz reference solution template (auto-generated)
+    return f"""# Quiz model answers (auto-generated)
 price_t_minus_1 = {base_price:.3f}
 price_t = {next_price:.3f}
 r_t = (price_t - price_t_minus_1) / price_t_minus_1
 gross = 1 + r_t
 
-print('Reference symbols:')
+print('Interview Question 1 (model answer):')
+print('  I would use simple return to convert price moves into decision-ready percentages.')
+print('  Formula: r_t = (P_t - P_(t-1)) / P_(t-1)')
 print('  P_(t-1):', price_t_minus_1)
 print('  P_t    :', price_t)
 print('  r_t    :', round(r_t, 6), '=>', f'{{r_t*100:.2f}}%')
 print('  1+r_t  :', round(gross, 6))
 
-print('\\nExpected numeric check:')
+print('\\nInterview Question 2 (model answer):')
+print('  For a real ticker like SPY, I would enforce a volatility guardrail: reduce position size')
+print('  when realized volatility rises above regime threshold, then re-validate the signal logic.')
+
+print('\\nInterview Question 3 (model answer):')
+print('  Topic:', {topic!r})
+print('  This matters because production systems need reproducible metrics, explicit risk controls,')
+print('  and clear decision rules that survive stressed market regimes.')
+
+print('\\nNumeric verification:')
 print('  simple_return_expected =', {simple_return:.6f})
 print('  gross_return_expected  =', {gross_return:.6f})
-
-print('\\nInterview-style answer template:')
-print('  Formula in words: return = price change / starting price')
-print('  Risk guardrail: reject signals when volatility regime shifts above threshold')
 """
 
 
@@ -303,6 +320,7 @@ def create_week_notebook(week_no: int, week_dir: Path, notebook_path: Path) -> N
     for day_no in range(1, 8):
         lesson_path = week_dir / f"day-{day_no:02d}" / "lesson.md"
         lesson_text = lesson_path.read_text(encoding="utf-8")
+        topic = topic_from_lesson(lesson_text, week_no, day_no)
         cells.append(new_markdown_cell(lesson_text))
         if day_no <= 5:
             cells.append(
@@ -312,8 +330,8 @@ def create_week_notebook(week_no: int, week_dir: Path, notebook_path: Path) -> N
                 )
             )
             cells.append(new_code_cell(demo_code_for_week(week_no, day_no)))
-            cells.append(new_markdown_cell(quiz_markdown_for_day(week_no, day_no)))
-            cells.append(new_code_cell(quiz_solution_code_for_day(week_no, day_no)))
+            cells.append(new_markdown_cell(quiz_markdown_for_day(week_no, day_no, topic)))
+            cells.append(new_code_cell(quiz_solution_code_for_day(week_no, day_no, topic)))
 
     nb = new_notebook(
         cells=cells,

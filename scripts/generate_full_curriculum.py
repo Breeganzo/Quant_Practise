@@ -2403,15 +2403,21 @@ def coding_walkthrough(week_no: int, day: DayPlan) -> list[str]:
 
 def daily_quiz_questions(week_no: int, day_no: int, day: DayPlan) -> list[str]:
     week_label = f"Week {week_no:02d} Day {day_no:02d}"
+    formula_name, formula_latex, _ = formula_entries(week_no, day_no)[0]
     return [
-        f"1. In {week_label}, explain one formula from today's lesson in plain language and define every symbol used.",
-        "2. Using one real asset from today's universe, compute the metric and state one risk guardrail you would enforce.",
-        f"3. Interview drill: In 60 seconds, explain why '{day.topic}' matters for production trading systems.",
+        f"1. PM interview question ({week_label}): Explain {formula_name} and define every symbol clearly.",
+        f"   - Model answer: \"I use {formula_name} to convert raw prices into a decision-ready metric. "
+        f"The formula is ${formula_latex}$. I define each symbol before computing it, verify units, and then interpret "
+        "the output as a risk-adjusted trading input rather than a standalone signal.\"",
+        "2. Risk manager question: Using one real ticker from this lesson, what risk guardrail would you enforce?",
+        "   - Model answer: \"I would run the metric on SPY and one higher-volatility asset, then enforce a volatility or drawdown cap. "
+        "If the metric degrades in stressed regimes, I reduce gross exposure and require confirmation from a second risk check.\"",
+        f"3. Production question: Why does '{day.topic}' matter in live trading systems?",
+        f"   - Model answer: \"{day.topic} matters because it links model logic to real execution constraints. "
+        "In production, I need reproducible calculations, explicit guardrails, and decision rules that stay stable when regime conditions change.\"",
         "",
-        "Answer key template:",
-        "- Q1: Formula + symbol table + units.",
-        "- Q2: Numeric result + interpretation + guardrail.",
-        "- Q3: One concise story linking model, risk, and execution.",
+        "Scoring rubric:",
+        "- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and a production decision statement.",
     ]
 
 
@@ -2422,6 +2428,10 @@ def interview_drill_prompt(day: DayPlan) -> list[str]:
         "  1. Correct notation and units.",
         "  2. Ability to connect theory to a real trade decision.",
         "  3. Awareness of edge cases, costs, and failure modes.",
+        "- Model answer framework:",
+        "  - Context: define business objective and market regime.",
+        "  - Method: state formula and variables clearly.",
+        "  - Decision: explain one actionable rule and one risk guardrail.",
     ]
 
 
@@ -2688,16 +2698,41 @@ def week_readme(week_no: int, week: WeekPlan) -> str:
 
 
 def week_quiz(week_no: int, week: WeekPlan) -> str:
-    questions: list[str] = []
+    qas: list[tuple[str, str]] = []
     for idx, day in enumerate(week.weekday_days, start=1):
-        questions.append(f"{idx}. Explain the practical purpose of '{day.topic}' in quant workflows.")
-    questions.extend(
+        qas.append(
+            (
+                f"{idx}. Real interview question: How would you explain '{day.topic}' to a PM in under one minute?",
+                (
+                    f"\"I frame {day.topic.lower()} as a production decision tool, not just a classroom concept. "
+                    "First, I define the core notation and units. Second, I run one real-market example and state the numeric result. "
+                    "Third, I translate the output into a trade action plus one explicit risk guardrail. "
+                    f"For implementation, I build reusable code to {day.coding_task.lower()} and log edge cases.\""
+                ),
+            )
+        )
+    qas.extend(
         [
-            "6. List two assumptions in this week that could fail in volatile regimes.",
-            "7. Which metric from this week best captures your main objective and why?",
-            "8. Describe one implementation risk and one guardrail.",
-            "9. Write a concise summary of your weekly project hypothesis.",
-            "10. What should be your first verification step before paper trading this work?",
+            (
+                "6. Regime-risk question: What assumptions from this week fail first during stress markets?",
+                "\"The first failures are distribution stability and execution-cost assumptions. In stress regimes, volatility clustering, slippage, and correlation breakdown can invalidate clean backtest behavior. I would widen thresholds, reduce leverage, and require secondary confirmation before new entries.\"",
+            ),
+            (
+                "7. Metric-selection question: Which metric from this week would you prioritize for live monitoring, and why?",
+                "\"I prioritize the metric that directly links expected edge to controllable risk. It must be interpretable, stable across windows, and easy to validate daily. I pair it with a hard risk limit metric so performance and protection are monitored together.\"",
+            ),
+            (
+                "8. Implementation question: Give one concrete production guardrail you would enforce.",
+                "\"I enforce a hard stop on position sizing when realized volatility exceeds a pre-defined threshold relative to the training regime. This prevents model overconfidence during volatility expansion and keeps drawdowns bounded while diagnostics are rerun.\"",
+            ),
+            (
+                "9. Communication question: How do you summarize this week's project to non-technical stakeholders?",
+                "\"I summarize in three lines: objective, measured result, and risk control. I avoid jargon, state one verified number, and explain the decision implication. Then I show the fallback rule if the metric deteriorates.\"",
+            ),
+            (
+                "10. Verification question: What is your first check before paper-trading this week's output?",
+                "\"My first check is full reproducibility: rerun notebook cells end-to-end and verify outputs, data timestamps, and assumptions match documented logic. If any mismatch appears, I block deployment until resolved.\"",
+            ),
         ]
     )
 
@@ -2706,11 +2741,21 @@ def week_quiz(week_no: int, week: WeekPlan) -> str:
             f"# Week {week_no:02d} Quiz",
             "",
             "## Instructions",
-            "- Attempt without notes first.",
-            "- Target score: 80 or higher.",
+            "- Attempt each question in interview format first (spoken answer in <60 seconds).",
+            "- Then compare with the model answer and self-score for clarity, correctness, and risk awareness.",
+            "- Target score: 8/10 or higher.",
             "",
-            "## Questions",
-            *questions,
+            "## Interview Questions and Exact Model Answers",
+            *[
+                "\n".join(
+                    [
+                        f"### {q}",
+                        "Model answer:",
+                        a,
+                    ]
+                )
+                for q, a in qas
+            ],
         ]
     ) + "\n"
 

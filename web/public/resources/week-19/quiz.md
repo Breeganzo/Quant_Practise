@@ -1,17 +1,38 @@
 # Week 19 Quiz
 
 ## Instructions
-- Attempt without notes first.
-- Target score: 80 or higher.
+- Attempt each question in interview format first (spoken answer in <60 seconds).
+- Then compare with the model answer and self-score for clarity, correctness, and risk awareness.
+- Target score: 8/10 or higher.
 
-## Questions
-1. Explain the practical purpose of 'Agentic workflow design for research' in quant workflows.
-2. Explain the practical purpose of 'Research summarization and retrieval' in quant workflows.
-3. Explain the practical purpose of 'Feature idea generation and validation' in quant workflows.
-4. Explain the practical purpose of 'Code review and experiment tracking agents' in quant workflows.
-5. Explain the practical purpose of 'Guardrails and risk management for AI use' in quant workflows.
-6. List two assumptions in this week that could fail in volatile regimes.
-7. Which metric from this week best captures your main objective and why?
-8. Describe one implementation risk and one guardrail.
-9. Write a concise summary of your weekly project hypothesis.
-10. What should be your first verification step before paper trading this work?
+## Interview Questions and Exact Model Answers
+### 1. Real interview question: How would you explain 'Agentic workflow design for research' to a PM in under one minute?
+Model answer:
+"I frame agentic workflow design for research as a production decision tool, not just a classroom concept. First, I define the core notation and units. Second, I run one real-market example and state the numeric result. Third, I translate the output into a trade action plus one explicit risk guardrail. For implementation, I build reusable code to write prompt templates with strict output schema. and log edge cases."
+### 2. Real interview question: How would you explain 'Research summarization and retrieval' to a PM in under one minute?
+Model answer:
+"I frame research summarization and retrieval as a production decision tool, not just a classroom concept. First, I define the core notation and units. Second, I run one real-market example and state the numeric result. Third, I translate the output into a trade action plus one explicit risk guardrail. For implementation, I build reusable code to create a retrieval-and-summary template with citation slots. and log edge cases."
+### 3. Real interview question: How would you explain 'Feature idea generation and validation' to a PM in under one minute?
+Model answer:
+"I frame feature idea generation and validation as a production decision tool, not just a classroom concept. First, I define the core notation and units. Second, I run one real-market example and state the numeric result. Third, I translate the output into a trade action plus one explicit risk guardrail. For implementation, I build reusable code to build a feature ideation checklist from agent outputs. and log edge cases."
+### 4. Real interview question: How would you explain 'Code review and experiment tracking agents' to a PM in under one minute?
+Model answer:
+"I frame code review and experiment tracking agents as a production decision tool, not just a classroom concept. First, I define the core notation and units. Second, I run one real-market example and state the numeric result. Third, I translate the output into a trade action plus one explicit risk guardrail. For implementation, I build reusable code to generate experiment log template with required fields. and log edge cases."
+### 5. Real interview question: How would you explain 'Guardrails and risk management for AI use' to a PM in under one minute?
+Model answer:
+"I frame guardrails and risk management for ai use as a production decision tool, not just a classroom concept. First, I define the core notation and units. Second, I run one real-market example and state the numeric result. Third, I translate the output into a trade action plus one explicit risk guardrail. For implementation, I build reusable code to implement an agent-output validation checklist file. and log edge cases."
+### 6. Regime-risk question: What assumptions from this week fail first during stress markets?
+Model answer:
+"The first failures are distribution stability and execution-cost assumptions. In stress regimes, volatility clustering, slippage, and correlation breakdown can invalidate clean backtest behavior. I would widen thresholds, reduce leverage, and require secondary confirmation before new entries."
+### 7. Metric-selection question: Which metric from this week would you prioritize for live monitoring, and why?
+Model answer:
+"I prioritize the metric that directly links expected edge to controllable risk. It must be interpretable, stable across windows, and easy to validate daily. I pair it with a hard risk limit metric so performance and protection are monitored together."
+### 8. Implementation question: Give one concrete production guardrail you would enforce.
+Model answer:
+"I enforce a hard stop on position sizing when realized volatility exceeds a pre-defined threshold relative to the training regime. This prevents model overconfidence during volatility expansion and keeps drawdowns bounded while diagnostics are rerun."
+### 9. Communication question: How do you summarize this week's project to non-technical stakeholders?
+Model answer:
+"I summarize in three lines: objective, measured result, and risk control. I avoid jargon, state one verified number, and explain the decision implication. Then I show the fallback rule if the metric deteriorates."
+### 10. Verification question: What is your first check before paper-trading this week's output?
+Model answer:
+"My first check is full reproducibility: rerun notebook cells end-to-end and verify outputs, data timestamps, and assumptions match documented logic. If any mismatch appears, I block deployment until resolved."

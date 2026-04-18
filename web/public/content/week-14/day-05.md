@@ -137,14 +137,15 @@ rebalance_flag = should_rebalance(weights, target_weights, threshold=0.03)
 5. Record one interview-ready explanation in less than 60 seconds.
 
 ### Daily Quiz (Realistic Interview Style)
-1. In Week 14 Day 05, explain one formula from today's lesson in plain language and define every symbol used.
-2. Using one real asset from today's universe, compute the metric and state one risk guardrail you would enforce.
-3. Interview drill: In 60 seconds, explain why 'Fixed-income portfolio interpretation' matters for production trading systems.
+1. PM interview question (Week 14 Day 05): Explain CVaR and define every symbol clearly.
+   - Model answer: "I use CVaR to convert raw prices into a decision-ready metric. The formula is $CVaR_\alpha=E[L\mid L\ge VaR_\alpha]$. I define each symbol before computing it, verify units, and then interpret the output as a risk-adjusted trading input rather than a standalone signal."
+2. Risk manager question: Using one real ticker from this lesson, what risk guardrail would you enforce?
+   - Model answer: "I would run the metric on SPY and one higher-volatility asset, then enforce a volatility or drawdown cap. If the metric degrades in stressed regimes, I reduce gross exposure and require confirmation from a second risk check."
+3. Production question: Why does 'Fixed-income portfolio interpretation' matter in live trading systems?
+   - Model answer: "Fixed-income portfolio interpretation matters because it links model logic to real execution constraints. In production, I need reproducible calculations, explicit guardrails, and decision rules that stay stable when regime conditions change."
 
-Answer key template:
-- Q1: Formula + symbol table + units.
-- Q2: Numeric result + interpretation + guardrail.
-- Q3: One concise story linking model, risk, and execution.
+Scoring rubric:
+- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and a production decision statement.
 
 ### Interview Drill
 - Prompt: "Walk me through Fixed-income portfolio interpretation as if you are presenting to a PM who cares about risk-adjusted returns."
@@ -152,6 +153,10 @@ Answer key template:
   1. Correct notation and units.
   2. Ability to connect theory to a real trade decision.
   3. Awareness of edge cases, costs, and failure modes.
+- Model answer framework:
+  - Context: define business objective and market regime.
+  - Method: state formula and variables clearly.
+  - Decision: explain one actionable rule and one risk guardrail.
 
 ## Reflection Question
 How would you communicate fixed-income risk to an equity-focused PM?
