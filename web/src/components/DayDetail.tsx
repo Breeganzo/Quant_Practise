@@ -17,6 +17,19 @@ function progressKey(weekNo: number, dayNo: number): string {
   return `${weekNo}-${dayNo}`;
 }
 
+function routeFromLessonPath(lessonPath: string | null | undefined): string | null {
+  if (!lessonPath) {
+    return null;
+  }
+  const match = lessonPath.match(/^content\/week-(\d{2})\/day-(\d{2})\.md$/);
+  if (!match) {
+    return null;
+  }
+  const week = Number(match[1]);
+  const day = Number(match[2]);
+  return `/week/${week}/day/${day}`;
+}
+
 export default function DayDetail({
   curriculum,
   userId,
@@ -38,6 +51,7 @@ export default function DayDetail({
   const [completed, setCompleted] = useState(Boolean(currentProgress?.completed));
   const [notes, setNotes] = useState(currentProgress?.notes ?? "");
   const [status, setStatus] = useState("");
+  const [statusTone, setStatusTone] = useState<"ok" | "error" | "">("");
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
@@ -76,18 +90,26 @@ export default function DayDetail({
   const notebookPath = `notebooks/week-${weekNo.toString().padStart(2, "0")}/week-${weekNo
     .toString()
     .padStart(2, "0")}-learning.ipynb`;
+  const webNotebookPath = week.resources?.notebookPath ?? notebookPath;
+  const weekRepoRoot = `curriculum/weeks/week-${weekNo.toString().padStart(2, "0")}`;
   const lessonRepoPath = `curriculum/weeks/week-${weekNo
     .toString()
     .padStart(2, "0")}/day-${dayNo.toString().padStart(2, "0")}/lesson.md`;
+  const continuity = day.continuity;
+  const previousRoute = routeFromLessonPath(continuity?.previousLessonPath);
+  const nextRoute = routeFromLessonPath(continuity?.nextLessonPath);
 
   async function handleSave(): Promise<void> {
     setSaving(true);
     setStatus("");
+    setStatusTone("");
     try {
       await onSave(weekNo, dayNo, completed, notes);
       setStatus("Progress saved successfully.");
+      setStatusTone("ok");
     } catch (error) {
       setStatus(`Save failed: ${String(error)}`);
+      setStatusTone("error");
     } finally {
       setSaving(false);
     }
@@ -113,6 +135,31 @@ export default function DayDetail({
       </article>
 
       <aside className="card lesson-side">
+        {continuity ? (
+          <section className="continuity-panel">
+            <h3>Continuity Map</h3>
+            <p>
+              <strong>Previous checkpoint:</strong> {continuity.previousLabel}
+            </p>
+            {previousRoute ? (
+              <Link to={previousRoute} className="secondary-link">
+                Open previous day
+              </Link>
+            ) : null}
+            <p>
+              <strong>Today deliverable:</strong> {continuity.todayDeliverable}
+            </p>
+            <p>
+              <strong>Next handoff:</strong> {continuity.nextLabel}
+            </p>
+            {nextRoute ? (
+              <Link to={nextRoute} className="secondary-link">
+                Open next day
+              </Link>
+            ) : null}
+          </section>
+        ) : null}
+
         <h3>Progress Controls</h3>
         <p>User: {userId}</p>
 
@@ -133,7 +180,7 @@ export default function DayDetail({
         <button onClick={handleSave} disabled={saving}>
           {saving ? "Saving..." : "Save Progress"}
         </button>
-        {status ? <p className="status">{status}</p> : null}
+        {status ? <p className={`status ${statusTone}`}>{status}</p> : null}
 
         <div className="resource-links">
           <h4>Open Resources</h4>
@@ -143,12 +190,38 @@ export default function DayDetail({
           <a href={githubBlobUrl(notebookPath)} target="_blank" rel="noreferrer">
             Open week notebook (GitHub)
           </a>
-          <a href={withBase(notebookPath)} target="_blank" rel="noreferrer">
+          <a href={withBase(webNotebookPath)} target="_blank" rel="noreferrer">
             Open week notebook (local file)
           </a>
           <a href={withBase(day.lessonPath)} target="_blank" rel="noreferrer">
             Open rendered lesson file
           </a>
+          {week.resources ? (
+            <>
+              <a href={withBase(week.resources.overviewPath)} target="_blank" rel="noreferrer">
+                Open weekly overview
+              </a>
+              <a href={withBase(week.resources.quizPath)} target="_blank" rel="noreferrer">
+                Open weekly quiz
+              </a>
+              <a href={withBase(week.resources.revisionChecklistPath)} target="_blank" rel="noreferrer">
+                Open revision checklist
+              </a>
+              <a href={withBase(week.resources.miniProjectPath)} target="_blank" rel="noreferrer">
+                Open mini-project template
+              </a>
+              <a href={githubBlobUrl(`${weekRepoRoot}/README.md`)} target="_blank" rel="noreferrer">
+                Open weekly overview source (GitHub)
+              </a>
+              <a
+                href={githubBlobUrl(`${weekRepoRoot}/week-${weekNo.toString().padStart(2, "0")}-quiz.md`)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open weekly quiz source (GitHub)
+              </a>
+            </>
+          ) : null}
         </div>
       </aside>
     </section>

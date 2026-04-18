@@ -3,37 +3,127 @@
 ## Study Duration
 - Planned effort: 4 hours
 
+## 4-Hour Lesson Flow
+- 60 minutes: concept breakdown and formula derivation
+- 75 minutes: real-market case study with data alignment checks
+- 60 minutes: step-by-step quantitative problem solving
+- 45 minutes: coding walkthrough and output verification
+
 ## Why It Matters in Quant
 Develop working fixed-income intuition for pricing, curve dynamics, and interest-rate risk.
+
+## Continuity and Handoff
+- Previous checkpoint: Week 14 Day 04: Rate-risk scenario analysis
+- Previous lesson file: content/week-14/day-04.md
+- Today's deliverable: Generate fixed-income risk report with key sensitivities.
+- Next handoff target: Week 14 Day 06: Revision Sprint
+- Next lesson file: content/week-14/day-06.md
 
 ## Theory Concepts
 
 ### Concept 1: Carry and roll-down intuition
-Carry and roll-down intuition is treated as a practical tool inside the broader week theme 'Fixed income basics for quant workflows'. Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. Always note where this concept can fail under noisy or regime-shifting market data.
+Carry and roll-down intuition should be treated as a measurable component of 'Fixed income basics for quant workflows'. For this week, emphasize allocation constraints, risk decomposition, and capital efficiency. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
 
 ### Concept 2: Interest-rate hedging basics
-Interest-rate hedging basics is treated as a practical tool inside the broader week theme 'Fixed income basics for quant workflows'. Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. Always note where this concept can fail under noisy or regime-shifting market data.
+Interest-rate hedging basics should be treated as a measurable component of 'Fixed income basics for quant workflows'. For this week, emphasize allocation constraints, risk decomposition, and capital efficiency. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
 
 ### Concept 3: Risk-report communication
-Risk-report communication is treated as a practical tool inside the broader week theme 'Fixed income basics for quant workflows'. Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. Always note where this concept can fail under noisy or regime-shifting market data.
+Risk-report communication should be treated as a measurable component of 'Fixed income basics for quant workflows'. For this week, emphasize allocation constraints, risk decomposition, and capital efficiency. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
 
-## Worked Example
-Summarize fixed-income portfolio behavior under changing rates.
+## Mathematical Foundations (LaTeX)
+### Formula 1: CVaR
+$$
+CVaR_\alpha=E[L\mid L\ge VaR_\alpha]
+$$
+Tail-risk expectation.
+
+### Formula 2: Portfolio Return
+$$
+\mu_p=w^\top\mu
+$$
+Expected return from weighted assets.
+
+### Formula 3: Portfolio Variance
+$$
+\sigma_p^2=w^\top\Sigma w
+$$
+Quadratic risk engine.
+
+## Symbol Definitions
+- $P_t$: price at time $t$
+- $r_t$: simple return
+- $\mu$: expected return
+- $\sigma$: volatility
+- $w$: portfolio weights
+- $\Sigma$: covariance matrix
+- $D_{mod}$: modified duration
+
+## Real Trading Example
+- Instruments: SPY, TLT, GLD, HYG
+- Macro overlay (FRED): DGS10, T10YIE
+- Suggested window: 2018-01-01 to 2026-03-31
+- Day objective: Summarize fixed-income portfolio behavior under changing rates.
+
+Execution narrative:
+1. Pull market data from Yahoo Finance and align calendars.
+2. Pull the listed FRED series and join strictly by release-aware timestamps.
+3. Compute today's formulas and compare behavior in stress sub-periods.
+4. Translate quantitative results into one explicit trading decision and one risk guardrail.
+5. Validate that the decision is consistent with topic 'Fixed-income portfolio interpretation'.
+
+## Step-by-Step Solved Problems
+### Solved Problem 1: Portfolio expected return
+Given:
+- w=[0.6,0.4], mu=[0.12,0.08].
+Solution:
+1. $\mu_p=w^\top\mu$.
+2. mu_p = 0.6*0.12 + 0.4*0.08 = 0.104.
+Final answer: Portfolio expected return = 10.4%.
+
+### Solved Problem 2: Portfolio volatility
+Given:
+- sigma1=0.20, sigma2=0.12, rho=0.30, w1=0.6, w2=0.4.
+Solution:
+1. $\sigma_p^2=w_1^2\sigma_1^2+w_2^2\sigma_2^2+2w_1w_2\rho\sigma_1\sigma_2$.
+2. sigma_p^2 = 0.02048.
+3. sigma_p = sqrt(0.02048) = 0.1431.
+Final answer: Portfolio volatility = 14.31%.
+
+### Solved Problem 3: Duration shock
+Given:
+- Modified duration = 5.8, yield shift = +0.25%.
+Solution:
+1. $\Delta P/P\approx-D_{mod}\Delta y$.
+2. DeltaP/P = -5.8*0.0025 = -0.0145.
+Final answer: Approximate bond price change = -1.45%.
+
+## Coding Walkthrough
+1. Build an explicit data-ingestion layer with timestamp and schema checks.
+2. Implement today's objective as reusable functions: Generate fixed-income risk report with key sensitivities.
+3. Add validation tests for leakage, NaNs, and unrealistic outliers.
+4. Produce diagnostic plots and summarize one actionable trading rule.
+5. Record one failure mode and one mitigation in comments.
+
+Reference implementation sketch:
+```python
+mu, cov = estimate_moments(asset_returns)
+weights = solve_constrained_mv(mu, cov, max_weight=0.35)
+risk_budget = risk_contributions(weights, cov)
+rebalance_flag = should_rebalance(weights, target_weights, threshold=0.03)
+```
 
 ## Practice Problems
-1. Define each concept in your own words with one finance example.
-2. Solve two short numerical/logic exercises related to today's topic.
-3. Write one failure-case assumption and one mitigation step.
-4. Summarize what you would test before using this in paper trading.
-
-## Coding Task
-Generate fixed-income risk report with key sensitivities.
+1. Re-derive all formulas manually and explain each variable.
+2. Re-run the real trading example using one alternate ticker.
+3. Stress-test one assumption and write a risk-control rule.
+4. Extend the code walkthrough with one new validation test.
 
 ## Reflection Question
 How would you communicate fixed-income risk to an equity-focused PM?
 
 ## Completion Checklist
-- [ ] Theory studied with notes
-- [ ] Worked example replicated
-- [ ] Coding task completed
+- [ ] Formula derivations re-worked manually
+- [ ] Real trading example reproduced with data checks
+- [ ] Solved problems reviewed and understood
+- [ ] Coding walkthrough executed and verified
 - [ ] Reflection logged in progress tracker

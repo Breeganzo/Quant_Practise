@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 13 Day 06: Revision Sprint
+- Previous lesson file: content/week-13/day-06.md
+- Today's deliverable: Portfolio allocator comparison
+- Next handoff target: Week 14 Day 01: Bond cashflows and pricing mechanics
+- Next lesson file: content/week-14/day-01.md
+
 ## Project Title
 Portfolio allocator comparison
 

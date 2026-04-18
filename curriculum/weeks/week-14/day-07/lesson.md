@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 14 Day 06: Revision Sprint
+- Previous lesson file: content/week-14/day-06.md
+- Today's deliverable: Bond sensitivity analysis
+- Next handoff target: Week 15 Day 01: Option payoff structure
+- Next lesson file: content/week-15/day-01.md
+
 ## Project Title
 Bond sensitivity analysis
 

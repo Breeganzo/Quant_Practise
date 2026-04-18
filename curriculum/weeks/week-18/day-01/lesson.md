@@ -3,37 +3,126 @@
 ## Study Duration
 - Planned effort: 4 hours
 
+## 4-Hour Lesson Flow
+- 60 minutes: concept breakdown and formula derivation
+- 75 minutes: real-market case study with data alignment checks
+- 60 minutes: step-by-step quantitative problem solving
+- 45 minutes: coding walkthrough and output verification
+
 ## Why It Matters in Quant
 Learn stat-arb foundations including spreads, cointegration, and execution-aware controls.
+
+## Continuity and Handoff
+- Previous checkpoint: Week 17 Day 07: Portfolio Project
+- Previous lesson file: content/week-17/day-07.md
+- Today's deliverable: Implement spread builder with normalization options.
+- Next handoff target: Week 18 Day 02: Cointegration basics
+- Next lesson file: content/week-18/day-02.md
 
 ## Theory Concepts
 
 ### Concept 1: Relative-value logic
-Relative-value logic is treated as a practical tool inside the broader week theme 'Statistical arbitrage intuition'. Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. Always note where this concept can fail under noisy or regime-shifting market data.
+Relative-value logic should be treated as a measurable component of 'Statistical arbitrage intuition'. For this week, emphasize alpha stability, execution realism, and risk-governed deployment. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
 
 ### Concept 2: Spread construction
-Spread construction is treated as a practical tool inside the broader week theme 'Statistical arbitrage intuition'. Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. Always note where this concept can fail under noisy or regime-shifting market data.
+Spread construction should be treated as a measurable component of 'Statistical arbitrage intuition'. For this week, emphasize alpha stability, execution realism, and risk-governed deployment. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
 
 ### Concept 3: Stationarity requirement
-Stationarity requirement is treated as a practical tool inside the broader week theme 'Statistical arbitrage intuition'. Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. Always note where this concept can fail under noisy or regime-shifting market data.
+Stationarity requirement should be treated as a measurable component of 'Statistical arbitrage intuition'. For this week, emphasize alpha stability, execution realism, and risk-governed deployment. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
 
-## Worked Example
-Create a synthetic spread candidate and inspect mean behavior.
+## Mathematical Foundations (LaTeX)
+### Formula 1: Cross-Sectional Z
+$$
+z_{i,t}=\frac{x_{i,t}-\mu_t}{\sigma_t}
+$$
+Universe-normalized signal.
+
+### Formula 2: Information Coefficient
+$$
+IC_t=Corr(score_{i,t},r_{i,t+1})
+$$
+Signal/forward-return linkage.
+
+### Formula 3: IC t-Statistic
+$$
+t_{IC}=\frac{\bar{IC}}{Std(IC)/\sqrt{T}}
+$$
+Signal persistence test.
+
+## Symbol Definitions
+- $P_t$: price at time $t$
+- $r_t$: simple return
+- $\mu$: expected return
+- $\sigma$: volatility
+- $IC$: information coefficient
+- $ADV$: average daily volume
+- $IS$: implementation shortfall
+
+## Real Trading Example
+- Instruments: SPY, IWM, EFA, EEM
+- Macro overlay (FRED): DFF, BAMLH0A0HYM2
+- Suggested window: 2018-01-01 to 2026-03-31
+- Day objective: Create a synthetic spread candidate and inspect mean behavior.
+
+Execution narrative:
+1. Pull market data from Yahoo Finance and align calendars.
+2. Pull the listed FRED series and join strictly by release-aware timestamps.
+3. Compute today's formulas and compare behavior in stress sub-periods.
+4. Translate quantitative results into one explicit trading decision and one risk guardrail.
+5. Validate that the decision is consistent with topic 'Stat-arb problem framing'.
+
+## Step-by-Step Solved Problems
+### Solved Problem 1: Factor z-score
+Given:
+- Signal=1.60, mean=0.70, std=0.45.
+Solution:
+1. $z=\frac{x-\mu}{\sigma}$.
+2. z=(1.60-0.70)/0.45 = 2.00.
+Final answer: Signal z-score = 2.00.
+
+### Solved Problem 2: IC t-stat
+Given:
+- Mean IC=0.045, std(IC)=0.018, T=12 months.
+Solution:
+1. $t=\frac{\bar{IC}}{s/\sqrt{T}}$.
+2. t = 0.045/(0.018/sqrt(12)) = 8.66.
+Final answer: IC t-stat = 8.66.
+
+### Solved Problem 3: Implementation shortfall
+Given:
+- Arrival=101.20, execution=101.36.
+Solution:
+1. $IS_{bps}=10^4\frac{p_{exec}-p_{arr}}{p_{arr}}$.
+2. IS_bps = 10000*(0.16/101.20) = 15.81.
+Final answer: Implementation shortfall = 15.81 bps.
+
+## Coding Walkthrough
+1. Build an explicit data-ingestion layer with timestamp and schema checks.
+2. Implement today's objective as reusable functions: Implement spread builder with normalization options.
+3. Add validation tests for leakage, NaNs, and unrealistic outliers.
+4. Produce diagnostic plots and summarize one actionable trading rule.
+5. Record one failure mode and one mitigation in comments.
+
+Reference implementation sketch:
+```python
+factor_scores = compute_factor_scores(universe_frame)
+signals = build_long_short_buckets(factor_scores, q=0.2)
+execution_cost = estimate_slippage(signals, adv_frame)
+net_pnl = backtest_with_costs(signals, returns, execution_cost)
+```
 
 ## Practice Problems
-1. Define each concept in your own words with one finance example.
-2. Solve two short numerical/logic exercises related to today's topic.
-3. Write one failure-case assumption and one mitigation step.
-4. Summarize what you would test before using this in paper trading.
-
-## Coding Task
-Implement spread builder with normalization options.
+1. Re-derive all formulas manually and explain each variable.
+2. Re-run the real trading example using one alternate ticker.
+3. Stress-test one assumption and write a risk-control rule.
+4. Extend the code walkthrough with one new validation test.
 
 ## Reflection Question
 Why is spread stationarity central for mean-reversion stat-arb?
 
 ## Completion Checklist
-- [ ] Theory studied with notes
-- [ ] Worked example replicated
-- [ ] Coding task completed
+- [ ] Formula derivations re-worked manually
+- [ ] Real trading example reproduced with data checks
+- [ ] Solved problems reviewed and understood
+- [ ] Coding walkthrough executed and verified
 - [ ] Reflection logged in progress tracker

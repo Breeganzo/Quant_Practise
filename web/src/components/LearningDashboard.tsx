@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { githubBlobUrl, withBase } from "../lib/path";
 import type { CurriculumIndex, ProgressMap } from "../types";
 
 interface LearningDashboardProps {
@@ -19,6 +20,7 @@ export default function LearningDashboard({
       {curriculum.weeks.map((week) => {
         const completedDays = week.days.filter((day) => progress[keyFor(week.week, day.day)]?.completed).length;
         const completionRate = Math.round((completedDays / week.days.length) * 100);
+        const weekNotebookRepoPath = `notebooks/${week.id}/${week.id}-learning.ipynb`;
 
         return (
           <article key={week.id} className="card week-card">
@@ -53,6 +55,34 @@ export default function LearningDashboard({
                   </Link>
                 );
               })}
+            </div>
+
+            <div className="week-resources">
+              <h4>Week Resources</h4>
+              {week.resources ? (
+                <>
+                  <a href={withBase(week.resources.notebookPath)} target="_blank" rel="noreferrer">
+                    Open week notebook (web)
+                  </a>
+                  <a href={withBase(week.resources.overviewPath)} target="_blank" rel="noreferrer">
+                    Open weekly overview
+                  </a>
+                  <a href={withBase(week.resources.quizPath)} target="_blank" rel="noreferrer">
+                    Open weekly quiz
+                  </a>
+                  <a href={withBase(week.resources.revisionChecklistPath)} target="_blank" rel="noreferrer">
+                    Open revision checklist
+                  </a>
+                  <a href={withBase(week.resources.miniProjectPath)} target="_blank" rel="noreferrer">
+                    Open mini-project template
+                  </a>
+                  <a href={githubBlobUrl(weekNotebookRepoPath)} target="_blank" rel="noreferrer">
+                    Open week notebook source (GitHub)
+                  </a>
+                </>
+              ) : (
+                <p className="resource-muted">Week resource links will appear after curriculum sync.</p>
+              )}
             </div>
           </article>
         );

@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 07 Day 06: Revision Sprint
+- Previous lesson file: content/week-07/day-06.md
+- Today's deliverable: Regime clustering notebook
+- Next handoff target: Week 08 Day 01: Pipeline architecture and feature store design
+- Next lesson file: content/week-08/day-01.md
+
 ## Project Title
 Regime clustering notebook
 

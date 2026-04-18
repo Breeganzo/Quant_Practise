@@ -1,0 +1,23 @@
+# Week 22: Quant interview prep I
+
+## Weekly Objective
+Build speed and accuracy for core quantitative interview domains.
+
+## Time Budget
+| Day | Focus | Planned Hours |
+| --- | --- | --- |
+| Day 01 | Probability drill framework | 4h |
+| Day 02 | Statistics and estimation interview drills | 4h |
+| Day 03 | Python coding speed drills | 4h |
+| Day 04 | SQL and data manipulation interview drills | 4h |
+| Day 05 | Mock round synthesis | 4h |
+| Day 06 | Revision Sprint | 2h |
+| Day 07 | Portfolio Project | 2h |
+
+## Weekly Outcome
+- Deliverable: Interview drill notebook pack
+- Build one measurable improvement in technical depth and communication.
+
+## Parallel Tracks
+- Admissions: Align interview prep outcomes with application narrative confidence statements.
+- Interview: Complete one full timed mixed-domain mock round.

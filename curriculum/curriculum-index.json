@@ -11,51 +11,107 @@
           "title": "Environment reproducibility and data loading",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-01/day-01.md"
+          "lessonPath": "content/week-01/day-01.md",
+          "continuity": {
+            "previousLabel": "Program kickoff: environment, data loader, and assumption baseline.",
+            "previousLessonPath": null,
+            "todayDeliverable": "Build a reusable function that loads prices and validates schema assumptions.",
+            "nextLabel": "Week 01 Day 02: Algebraic transformations for returns",
+            "nextLessonPath": "content/week-01/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Algebraic transformations for returns",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-01/day-02.md"
+          "lessonPath": "content/week-01/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 01 Day 01: Environment reproducibility and data loading",
+            "previousLessonPath": "content/week-01/day-01.md",
+            "todayDeliverable": "Implement helper functions for return conversion and scaling.",
+            "nextLabel": "Week 01 Day 03: Calculus intuition for optimization",
+            "nextLessonPath": "content/week-01/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Calculus intuition for optimization",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-01/day-03.md"
+          "lessonPath": "content/week-01/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 01 Day 02: Algebraic transformations for returns",
+            "previousLessonPath": "content/week-01/day-02.md",
+            "todayDeliverable": "Plot objective values across different risk-aversion parameters.",
+            "nextLabel": "Week 01 Day 04: Market structure and asset classes",
+            "nextLessonPath": "content/week-01/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Market structure and asset classes",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-01/day-04.md"
+          "lessonPath": "content/week-01/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 01 Day 03: Calculus intuition for optimization",
+            "previousLessonPath": "content/week-01/day-03.md",
+            "todayDeliverable": "Create a comparative table of OHLCV statistics for three instruments.",
+            "nextLabel": "Week 01 Day 05: Risk and performance metrics",
+            "nextLessonPath": "content/week-01/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Risk and performance metrics",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-01/day-05.md"
+          "lessonPath": "content/week-01/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 01 Day 04: Market structure and asset classes",
+            "previousLessonPath": "content/week-01/day-04.md",
+            "todayDeliverable": "Build reusable metrics functions with input validation.",
+            "nextLabel": "Week 01 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-01/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-01/day-06.md"
+          "lessonPath": "content/week-01/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 01 Day 05: Risk and performance metrics",
+            "previousLessonPath": "content/week-01/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 01 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-01/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-01/day-07.md"
+          "lessonPath": "content/week-01/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 01 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-01/day-06.md",
+            "todayDeliverable": "Three-asset risk-return comparison",
+            "nextLabel": "Week 02 Day 01: Random variables and key distributions",
+            "nextLessonPath": "content/week-02/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-01/week-01-learning.ipynb",
+        "overviewPath": "resources/week-01/overview.md",
+        "quizPath": "resources/week-01/quiz.md",
+        "revisionChecklistPath": "resources/week-01/revision-checklist.md",
+        "miniProjectPath": "resources/week-01/mini-project-template.md"
+      }
     },
     {
       "week": 2,
@@ -68,51 +124,107 @@
           "title": "Random variables and key distributions",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-02/day-01.md"
+          "lessonPath": "content/week-02/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 01 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-01/day-07.md",
+            "todayDeliverable": "Simulate returns from multiple distributions and compare tail events.",
+            "nextLabel": "Week 02 Day 02: Expectation, variance, and covariance",
+            "nextLessonPath": "content/week-02/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Expectation, variance, and covariance",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-02/day-02.md"
+          "lessonPath": "content/week-02/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 02 Day 01: Random variables and key distributions",
+            "previousLessonPath": "content/week-02/day-01.md",
+            "todayDeliverable": "Write a covariance diagnostics function with pairwise interpretation.",
+            "nextLabel": "Week 02 Day 03: Sampling and estimation",
+            "nextLessonPath": "content/week-02/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Sampling and estimation",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-02/day-03.md"
+          "lessonPath": "content/week-02/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 02 Day 02: Expectation, variance, and covariance",
+            "previousLessonPath": "content/week-02/day-02.md",
+            "todayDeliverable": "Bootstrap sample means and visualize confidence spread.",
+            "nextLabel": "Week 02 Day 04: Confidence intervals and hypothesis testing",
+            "nextLessonPath": "content/week-02/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Confidence intervals and hypothesis testing",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-02/day-04.md"
+          "lessonPath": "content/week-02/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 02 Day 03: Sampling and estimation",
+            "previousLessonPath": "content/week-02/day-03.md",
+            "todayDeliverable": "Implement one-sided and two-sided tests on synthetic strategy returns.",
+            "nextLabel": "Week 02 Day 05: Statistical communication for finance decisions",
+            "nextLessonPath": "content/week-02/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Statistical communication for finance decisions",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-02/day-05.md"
+          "lessonPath": "content/week-02/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 02 Day 04: Confidence intervals and hypothesis testing",
+            "previousLessonPath": "content/week-02/day-04.md",
+            "todayDeliverable": "Create a short decision report generator from test outputs.",
+            "nextLabel": "Week 02 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-02/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-02/day-06.md"
+          "lessonPath": "content/week-02/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 02 Day 05: Statistical communication for finance decisions",
+            "previousLessonPath": "content/week-02/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 02 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-02/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-02/day-07.md"
+          "lessonPath": "content/week-02/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 02 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-02/day-06.md",
+            "todayDeliverable": "Bootstrap confidence interval study",
+            "nextLabel": "Week 03 Day 01: Vectors, matrices, and transformations",
+            "nextLessonPath": "content/week-03/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-02/week-02-learning.ipynb",
+        "overviewPath": "resources/week-02/overview.md",
+        "quizPath": "resources/week-02/quiz.md",
+        "revisionChecklistPath": "resources/week-02/revision-checklist.md",
+        "miniProjectPath": "resources/week-02/mini-project-template.md"
+      }
     },
     {
       "week": 3,
@@ -125,51 +237,107 @@
           "title": "Vectors, matrices, and transformations",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-03/day-01.md"
+          "lessonPath": "content/week-03/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 02 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-02/day-07.md",
+            "todayDeliverable": "Implement matrix operations and shape checks using NumPy.",
+            "nextLabel": "Week 03 Day 02: Eigenvalues, eigenvectors, and PCA intuition",
+            "nextLessonPath": "content/week-03/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Eigenvalues, eigenvectors, and PCA intuition",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-03/day-02.md"
+          "lessonPath": "content/week-03/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 03 Day 01: Vectors, matrices, and transformations",
+            "previousLessonPath": "content/week-03/day-01.md",
+            "todayDeliverable": "Build PCA diagnostic plots and explained-variance table.",
+            "nextLabel": "Week 03 Day 03: Optimization fundamentals",
+            "nextLessonPath": "content/week-03/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Optimization fundamentals",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-03/day-03.md"
+          "lessonPath": "content/week-03/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 03 Day 02: Eigenvalues, eigenvectors, and PCA intuition",
+            "previousLessonPath": "content/week-03/day-02.md",
+            "todayDeliverable": "Code constrained optimization with objective logging.",
+            "nextLabel": "Week 03 Day 04: Pandas data engineering workflow",
+            "nextLessonPath": "content/week-03/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Pandas data engineering workflow",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-03/day-04.md"
+          "lessonPath": "content/week-03/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 03 Day 03: Optimization fundamentals",
+            "previousLessonPath": "content/week-03/day-03.md",
+            "todayDeliverable": "Create a reusable data cleaning pipeline function.",
+            "nextLabel": "Week 03 Day 05: SQL basics for quant datasets",
+            "nextLessonPath": "content/week-03/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "SQL basics for quant datasets",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-03/day-05.md"
+          "lessonPath": "content/week-03/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 03 Day 04: Pandas data engineering workflow",
+            "previousLessonPath": "content/week-03/day-04.md",
+            "todayDeliverable": "Write SQL queries for instrument-level and portfolio-level summaries.",
+            "nextLabel": "Week 03 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-03/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-03/day-06.md"
+          "lessonPath": "content/week-03/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 03 Day 05: SQL basics for quant datasets",
+            "previousLessonPath": "content/week-03/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 03 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-03/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-03/day-07.md"
+          "lessonPath": "content/week-03/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 03 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-03/day-06.md",
+            "todayDeliverable": "Market data pipeline prototype",
+            "nextLabel": "Week 04 Day 01: Return decomposition and compounding effects",
+            "nextLessonPath": "content/week-04/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-03/week-03-learning.ipynb",
+        "overviewPath": "resources/week-03/overview.md",
+        "quizPath": "resources/week-03/quiz.md",
+        "revisionChecklistPath": "resources/week-03/revision-checklist.md",
+        "miniProjectPath": "resources/week-03/mini-project-template.md"
+      }
     },
     {
       "week": 4,
@@ -182,51 +350,107 @@
           "title": "Return decomposition and compounding effects",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-04/day-01.md"
+          "lessonPath": "content/week-04/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 03 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-03/day-07.md",
+            "todayDeliverable": "Implement return decomposition diagnostics in a reusable notebook section.",
+            "nextLabel": "Week 04 Day 02: Risk distribution diagnostics",
+            "nextLessonPath": "content/week-04/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Risk distribution diagnostics",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-04/day-02.md"
+          "lessonPath": "content/week-04/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 04 Day 01: Return decomposition and compounding effects",
+            "previousLessonPath": "content/week-04/day-01.md",
+            "todayDeliverable": "Build a downside-risk summary table including semi-variance.",
+            "nextLabel": "Week 04 Day 03: Correlation structure and diversification",
+            "nextLessonPath": "content/week-04/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Correlation structure and diversification",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-04/day-03.md"
+          "lessonPath": "content/week-04/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 04 Day 02: Risk distribution diagnostics",
+            "previousLessonPath": "content/week-04/day-02.md",
+            "todayDeliverable": "Generate rolling-correlation heatmaps over time windows.",
+            "nextLabel": "Week 04 Day 04: Exploratory visualization for strategy intuition",
+            "nextLessonPath": "content/week-04/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Exploratory visualization for strategy intuition",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-04/day-04.md"
+          "lessonPath": "content/week-04/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 04 Day 03: Correlation structure and diversification",
+            "previousLessonPath": "content/week-04/day-03.md",
+            "todayDeliverable": "Produce clean charts with labeled assumptions and caveats.",
+            "nextLabel": "Week 04 Day 05: Capstone design and reporting",
+            "nextLessonPath": "content/week-04/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Capstone design and reporting",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-04/day-05.md"
+          "lessonPath": "content/week-04/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 04 Day 04: Exploratory visualization for strategy intuition",
+            "previousLessonPath": "content/week-04/day-04.md",
+            "todayDeliverable": "Create a report template with metric tables and key plots.",
+            "nextLabel": "Week 04 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-04/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-04/day-06.md"
+          "lessonPath": "content/week-04/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 04 Day 05: Capstone design and reporting",
+            "previousLessonPath": "content/week-04/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 04 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-04/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-04/day-07.md"
+          "lessonPath": "content/week-04/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 04 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-04/day-06.md",
+            "todayDeliverable": "Capstone 1: Market risk dashboard",
+            "nextLabel": "Week 05 Day 01: Supervised learning setup and leakage controls",
+            "nextLessonPath": "content/week-05/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-04/week-04-learning.ipynb",
+        "overviewPath": "resources/week-04/overview.md",
+        "quizPath": "resources/week-04/quiz.md",
+        "revisionChecklistPath": "resources/week-04/revision-checklist.md",
+        "miniProjectPath": "resources/week-04/mini-project-template.md"
+      }
     },
     {
       "week": 5,
@@ -239,51 +463,107 @@
           "title": "Supervised learning setup and leakage controls",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-05/day-01.md"
+          "lessonPath": "content/week-05/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 04 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-04/day-07.md",
+            "todayDeliverable": "Create split utilities for time-aware model evaluation.",
+            "nextLabel": "Week 05 Day 02: Linear regression baselines",
+            "nextLessonPath": "content/week-05/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Linear regression baselines",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-05/day-02.md"
+          "lessonPath": "content/week-05/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 05 Day 01: Supervised learning setup and leakage controls",
+            "previousLessonPath": "content/week-05/day-01.md",
+            "todayDeliverable": "Train and evaluate a baseline regression with residual plots.",
+            "nextLabel": "Week 05 Day 03: Logistic regression for directional signals",
+            "nextLessonPath": "content/week-05/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Logistic regression for directional signals",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-05/day-03.md"
+          "lessonPath": "content/week-05/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 05 Day 02: Linear regression baselines",
+            "previousLessonPath": "content/week-05/day-02.md",
+            "todayDeliverable": "Build confusion matrix and threshold sweep diagnostics.",
+            "nextLabel": "Week 05 Day 04: Model evaluation metrics",
+            "nextLessonPath": "content/week-05/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Model evaluation metrics",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-05/day-04.md"
+          "lessonPath": "content/week-05/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 05 Day 03: Logistic regression for directional signals",
+            "previousLessonPath": "content/week-05/day-03.md",
+            "todayDeliverable": "Implement metric dashboard functions for model comparison.",
+            "nextLabel": "Week 05 Day 05: Regularization and generalization",
+            "nextLessonPath": "content/week-05/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Regularization and generalization",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-05/day-05.md"
+          "lessonPath": "content/week-05/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 05 Day 04: Model evaluation metrics",
+            "previousLessonPath": "content/week-05/day-04.md",
+            "todayDeliverable": "Tune regularization parameters and record out-of-sample behavior.",
+            "nextLabel": "Week 05 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-05/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-05/day-06.md"
+          "lessonPath": "content/week-05/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 05 Day 05: Regularization and generalization",
+            "previousLessonPath": "content/week-05/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 05 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-05/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-05/day-07.md"
+          "lessonPath": "content/week-05/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 05 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-05/day-06.md",
+            "todayDeliverable": "Directional baseline model",
+            "nextLabel": "Week 06 Day 01: Decision trees and feature interactions",
+            "nextLessonPath": "content/week-06/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-05/week-05-learning.ipynb",
+        "overviewPath": "resources/week-05/overview.md",
+        "quizPath": "resources/week-05/quiz.md",
+        "revisionChecklistPath": "resources/week-05/revision-checklist.md",
+        "miniProjectPath": "resources/week-05/mini-project-template.md"
+      }
     },
     {
       "week": 6,
@@ -296,51 +576,107 @@
           "title": "Decision trees and feature interactions",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-06/day-01.md"
+          "lessonPath": "content/week-06/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 05 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-05/day-07.md",
+            "todayDeliverable": "Fit and visualize shallow vs deep trees with validation scores.",
+            "nextLabel": "Week 06 Day 02: Random forests",
+            "nextLessonPath": "content/week-06/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Random forests",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-06/day-02.md"
+          "lessonPath": "content/week-06/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 06 Day 01: Decision trees and feature interactions",
+            "previousLessonPath": "content/week-06/day-01.md",
+            "todayDeliverable": "Train random forest and analyze feature importance shifts over time.",
+            "nextLabel": "Week 06 Day 03: Gradient boosting intuition",
+            "nextLessonPath": "content/week-06/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Gradient boosting intuition",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-06/day-03.md"
+          "lessonPath": "content/week-06/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 06 Day 02: Random forests",
+            "previousLessonPath": "content/week-06/day-02.md",
+            "todayDeliverable": "Run a small boosting hyperparameter grid and log results.",
+            "nextLabel": "Week 06 Day 04: Feature engineering and selection",
+            "nextLessonPath": "content/week-06/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Feature engineering and selection",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-06/day-04.md"
+          "lessonPath": "content/week-06/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 06 Day 03: Gradient boosting intuition",
+            "previousLessonPath": "content/week-06/day-03.md",
+            "todayDeliverable": "Create feature ablation experiment table.",
+            "nextLabel": "Week 06 Day 05: Model diagnostics and monitoring",
+            "nextLessonPath": "content/week-06/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Model diagnostics and monitoring",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-06/day-05.md"
+          "lessonPath": "content/week-06/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 06 Day 04: Feature engineering and selection",
+            "previousLessonPath": "content/week-06/day-04.md",
+            "todayDeliverable": "Implement drift diagnostics on feature distributions.",
+            "nextLabel": "Week 06 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-06/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-06/day-06.md"
+          "lessonPath": "content/week-06/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 06 Day 05: Model diagnostics and monitoring",
+            "previousLessonPath": "content/week-06/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 06 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-06/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-06/day-07.md"
+          "lessonPath": "content/week-06/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 06 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-06/day-06.md",
+            "todayDeliverable": "Ensemble model comparison",
+            "nextLabel": "Week 07 Day 01: Unsupervised problem framing",
+            "nextLessonPath": "content/week-07/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-06/week-06-learning.ipynb",
+        "overviewPath": "resources/week-06/overview.md",
+        "quizPath": "resources/week-06/quiz.md",
+        "revisionChecklistPath": "resources/week-06/revision-checklist.md",
+        "miniProjectPath": "resources/week-06/mini-project-template.md"
+      }
     },
     {
       "week": 7,
@@ -353,51 +689,107 @@
           "title": "Unsupervised problem framing",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-07/day-01.md"
+          "lessonPath": "content/week-07/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 06 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-06/day-07.md",
+            "todayDeliverable": "Prepare normalized feature space for unsupervised analysis.",
+            "nextLabel": "Week 07 Day 02: K-means and hierarchical clustering",
+            "nextLessonPath": "content/week-07/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "K-means and hierarchical clustering",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-07/day-02.md"
+          "lessonPath": "content/week-07/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 07 Day 01: Unsupervised problem framing",
+            "previousLessonPath": "content/week-07/day-01.md",
+            "todayDeliverable": "Run k-means for multiple k values and evaluate silhouette trend.",
+            "nextLabel": "Week 07 Day 03: PCA for regime and factor hints",
+            "nextLessonPath": "content/week-07/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "PCA for regime and factor hints",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-07/day-03.md"
+          "lessonPath": "content/week-07/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 07 Day 02: K-means and hierarchical clustering",
+            "previousLessonPath": "content/week-07/day-02.md",
+            "todayDeliverable": "Project features into principal-component space and label clusters.",
+            "nextLabel": "Week 07 Day 04: Anomaly detection basics",
+            "nextLessonPath": "content/week-07/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Anomaly detection basics",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-07/day-04.md"
+          "lessonPath": "content/week-07/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 07 Day 03: PCA for regime and factor hints",
+            "previousLessonPath": "content/week-07/day-03.md",
+            "todayDeliverable": "Build a simple anomaly score and threshold report.",
+            "nextLabel": "Week 07 Day 05: Regime interpretation and actionability",
+            "nextLessonPath": "content/week-07/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Regime interpretation and actionability",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-07/day-05.md"
+          "lessonPath": "content/week-07/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 07 Day 04: Anomaly detection basics",
+            "previousLessonPath": "content/week-07/day-04.md",
+            "todayDeliverable": "Create a regime summary table with strategy implications.",
+            "nextLabel": "Week 07 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-07/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-07/day-06.md"
+          "lessonPath": "content/week-07/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 07 Day 05: Regime interpretation and actionability",
+            "previousLessonPath": "content/week-07/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 07 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-07/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-07/day-07.md"
+          "lessonPath": "content/week-07/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 07 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-07/day-06.md",
+            "todayDeliverable": "Regime clustering notebook",
+            "nextLabel": "Week 08 Day 01: Pipeline architecture and feature store design",
+            "nextLessonPath": "content/week-08/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-07/week-07-learning.ipynb",
+        "overviewPath": "resources/week-07/overview.md",
+        "quizPath": "resources/week-07/quiz.md",
+        "revisionChecklistPath": "resources/week-07/revision-checklist.md",
+        "miniProjectPath": "resources/week-07/mini-project-template.md"
+      }
     },
     {
       "week": 8,
@@ -410,51 +802,107 @@
           "title": "Pipeline architecture and feature store design",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-08/day-01.md"
+          "lessonPath": "content/week-08/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 07 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-07/day-07.md",
+            "todayDeliverable": "Implement feature generation pipeline with reproducible transforms.",
+            "nextLabel": "Week 08 Day 02: Temporal cross-validation and walk-forward tests",
+            "nextLessonPath": "content/week-08/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Temporal cross-validation and walk-forward tests",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-08/day-02.md"
+          "lessonPath": "content/week-08/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 08 Day 01: Pipeline architecture and feature store design",
+            "previousLessonPath": "content/week-08/day-01.md",
+            "todayDeliverable": "Implement reusable walk-forward evaluation utility.",
+            "nextLabel": "Week 08 Day 03: Thresholding and decision rules",
+            "nextLessonPath": "content/week-08/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Thresholding and decision rules",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-08/day-03.md"
+          "lessonPath": "content/week-08/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 08 Day 02: Temporal cross-validation and walk-forward tests",
+            "previousLessonPath": "content/week-08/day-02.md",
+            "todayDeliverable": "Create threshold sweep report including turnover proxy.",
+            "nextLabel": "Week 08 Day 04: Explainability and model governance",
+            "nextLessonPath": "content/week-08/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Explainability and model governance",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-08/day-04.md"
+          "lessonPath": "content/week-08/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 08 Day 03: Thresholding and decision rules",
+            "previousLessonPath": "content/week-08/day-03.md",
+            "todayDeliverable": "Build a model card template capturing assumptions and risk controls.",
+            "nextLabel": "Week 08 Day 05: Capstone packaging and reproducibility",
+            "nextLessonPath": "content/week-08/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Capstone packaging and reproducibility",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-08/day-05.md"
+          "lessonPath": "content/week-08/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 08 Day 04: Explainability and model governance",
+            "previousLessonPath": "content/week-08/day-04.md",
+            "todayDeliverable": "Automate generation of results tables for final capstone memo.",
+            "nextLabel": "Week 08 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-08/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-08/day-06.md"
+          "lessonPath": "content/week-08/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 08 Day 05: Capstone packaging and reproducibility",
+            "previousLessonPath": "content/week-08/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 08 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-08/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-08/day-07.md"
+          "lessonPath": "content/week-08/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 08 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-08/day-06.md",
+            "todayDeliverable": "Capstone 2: Robust signal pipeline",
+            "nextLabel": "Week 09 Day 01: Stationarity and transformations",
+            "nextLessonPath": "content/week-09/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-08/week-08-learning.ipynb",
+        "overviewPath": "resources/week-08/overview.md",
+        "quizPath": "resources/week-08/quiz.md",
+        "revisionChecklistPath": "resources/week-08/revision-checklist.md",
+        "miniProjectPath": "resources/week-08/mini-project-template.md"
+      }
     },
     {
       "week": 9,
@@ -467,51 +915,107 @@
           "title": "Stationarity and transformations",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-09/day-01.md"
+          "lessonPath": "content/week-09/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 08 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-08/day-07.md",
+            "todayDeliverable": "Implement stationarity diagnostic checks and transformation pipeline.",
+            "nextLabel": "Week 09 Day 02: Autocorrelation and partial autocorrelation",
+            "nextLessonPath": "content/week-09/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Autocorrelation and partial autocorrelation",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-09/day-02.md"
+          "lessonPath": "content/week-09/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 09 Day 01: Stationarity and transformations",
+            "previousLessonPath": "content/week-09/day-01.md",
+            "todayDeliverable": "Generate ACF/PACF plots and annotate candidate lags.",
+            "nextLabel": "Week 09 Day 03: AR, MA, and ARMA intuition",
+            "nextLessonPath": "content/week-09/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "AR, MA, and ARMA intuition",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-09/day-03.md"
+          "lessonPath": "content/week-09/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 09 Day 02: Autocorrelation and partial autocorrelation",
+            "previousLessonPath": "content/week-09/day-02.md",
+            "todayDeliverable": "Train AR/MA baselines and evaluate one-step forecast errors.",
+            "nextLabel": "Week 09 Day 04: ARIMA workflow",
+            "nextLessonPath": "content/week-09/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "ARIMA workflow",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-09/day-04.md"
+          "lessonPath": "content/week-09/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 09 Day 03: AR, MA, and ARMA intuition",
+            "previousLessonPath": "content/week-09/day-03.md",
+            "todayDeliverable": "Automate ARIMA candidate comparison table.",
+            "nextLabel": "Week 09 Day 05: Forecast evaluation and communication",
+            "nextLessonPath": "content/week-09/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Forecast evaluation and communication",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-09/day-05.md"
+          "lessonPath": "content/week-09/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 09 Day 04: ARIMA workflow",
+            "previousLessonPath": "content/week-09/day-04.md",
+            "todayDeliverable": "Create forecast comparison report with intervals and caveats.",
+            "nextLabel": "Week 09 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-09/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-09/day-06.md"
+          "lessonPath": "content/week-09/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 09 Day 05: Forecast evaluation and communication",
+            "previousLessonPath": "content/week-09/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 09 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-09/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-09/day-07.md"
+          "lessonPath": "content/week-09/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 09 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-09/day-06.md",
+            "todayDeliverable": "Time-series baseline forecasting notebook",
+            "nextLabel": "Week 10 Day 01: Volatility stylized facts",
+            "nextLessonPath": "content/week-10/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-09/week-09-learning.ipynb",
+        "overviewPath": "resources/week-09/overview.md",
+        "quizPath": "resources/week-09/quiz.md",
+        "revisionChecklistPath": "resources/week-09/revision-checklist.md",
+        "miniProjectPath": "resources/week-09/mini-project-template.md"
+      }
     },
     {
       "week": 10,
@@ -524,51 +1028,107 @@
           "title": "Volatility stylized facts",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-10/day-01.md"
+          "lessonPath": "content/week-10/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 09 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-09/day-07.md",
+            "todayDeliverable": "Compute and plot multiple volatility estimators.",
+            "nextLabel": "Week 10 Day 02: EWMA volatility estimation",
+            "nextLessonPath": "content/week-10/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "EWMA volatility estimation",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-10/day-02.md"
+          "lessonPath": "content/week-10/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 10 Day 01: Volatility stylized facts",
+            "previousLessonPath": "content/week-10/day-01.md",
+            "todayDeliverable": "Implement EWMA estimator with configurable lambda.",
+            "nextLabel": "Week 10 Day 03: GARCH intuition",
+            "nextLessonPath": "content/week-10/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "GARCH intuition",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-10/day-03.md"
+          "lessonPath": "content/week-10/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 10 Day 02: EWMA volatility estimation",
+            "previousLessonPath": "content/week-10/day-02.md",
+            "todayDeliverable": "Estimate GARCH and compare conditional volatility path.",
+            "nextLabel": "Week 10 Day 04: Regime detection and change points",
+            "nextLessonPath": "content/week-10/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Regime detection and change points",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-10/day-04.md"
+          "lessonPath": "content/week-10/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 10 Day 03: GARCH intuition",
+            "previousLessonPath": "content/week-10/day-03.md",
+            "todayDeliverable": "Implement basic change-point detection and regime labels.",
+            "nextLabel": "Week 10 Day 05: Volatility-aware decisioning",
+            "nextLessonPath": "content/week-10/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Volatility-aware decisioning",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-10/day-05.md"
+          "lessonPath": "content/week-10/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 10 Day 04: Regime detection and change points",
+            "previousLessonPath": "content/week-10/day-04.md",
+            "todayDeliverable": "Build a simple volatility-targeting overlay.",
+            "nextLabel": "Week 10 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-10/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-10/day-06.md"
+          "lessonPath": "content/week-10/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 10 Day 05: Volatility-aware decisioning",
+            "previousLessonPath": "content/week-10/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 10 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-10/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-10/day-07.md"
+          "lessonPath": "content/week-10/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 10 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-10/day-06.md",
+            "todayDeliverable": "Volatility regime labeling project",
+            "nextLabel": "Week 11 Day 01: Backtest design patterns",
+            "nextLessonPath": "content/week-11/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-10/week-10-learning.ipynb",
+        "overviewPath": "resources/week-10/overview.md",
+        "quizPath": "resources/week-10/quiz.md",
+        "revisionChecklistPath": "resources/week-10/revision-checklist.md",
+        "miniProjectPath": "resources/week-10/mini-project-template.md"
+      }
     },
     {
       "week": 11,
@@ -581,51 +1141,107 @@
           "title": "Backtest design patterns",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-11/day-01.md"
+          "lessonPath": "content/week-11/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 10 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-10/day-07.md",
+            "todayDeliverable": "Implement a backtest skeleton with clear interfaces.",
+            "nextLabel": "Week 11 Day 02: Data and look-ahead bias controls",
+            "nextLessonPath": "content/week-11/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Data and look-ahead bias controls",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-11/day-02.md"
+          "lessonPath": "content/week-11/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 11 Day 01: Backtest design patterns",
+            "previousLessonPath": "content/week-11/day-01.md",
+            "todayDeliverable": "Add strict timestamp checks to data pipeline.",
+            "nextLabel": "Week 11 Day 03: Transaction costs and slippage",
+            "nextLessonPath": "content/week-11/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Transaction costs and slippage",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-11/day-03.md"
+          "lessonPath": "content/week-11/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 11 Day 02: Data and look-ahead bias controls",
+            "previousLessonPath": "content/week-11/day-02.md",
+            "todayDeliverable": "Integrate cost model into backtest calculations.",
+            "nextLabel": "Week 11 Day 04: Position sizing and risk constraints",
+            "nextLessonPath": "content/week-11/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Position sizing and risk constraints",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-11/day-04.md"
+          "lessonPath": "content/week-11/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 11 Day 03: Transaction costs and slippage",
+            "previousLessonPath": "content/week-11/day-03.md",
+            "todayDeliverable": "Implement risk constraint layer in backtest flow.",
+            "nextLabel": "Week 11 Day 05: Performance attribution and diagnostics",
+            "nextLessonPath": "content/week-11/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Performance attribution and diagnostics",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-11/day-05.md"
+          "lessonPath": "content/week-11/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 11 Day 04: Position sizing and risk constraints",
+            "previousLessonPath": "content/week-11/day-04.md",
+            "todayDeliverable": "Generate attribution report tables for each strategy run.",
+            "nextLabel": "Week 11 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-11/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-11/day-06.md"
+          "lessonPath": "content/week-11/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 11 Day 05: Performance attribution and diagnostics",
+            "previousLessonPath": "content/week-11/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 11 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-11/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-11/day-07.md"
+          "lessonPath": "content/week-11/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 11 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-11/day-06.md",
+            "todayDeliverable": "Cost-aware backtest prototype",
+            "nextLabel": "Week 12 Day 01: Momentum strategy design",
+            "nextLessonPath": "content/week-12/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-11/week-11-learning.ipynb",
+        "overviewPath": "resources/week-11/overview.md",
+        "quizPath": "resources/week-11/quiz.md",
+        "revisionChecklistPath": "resources/week-11/revision-checklist.md",
+        "miniProjectPath": "resources/week-11/mini-project-template.md"
+      }
     },
     {
       "week": 12,
@@ -638,51 +1254,107 @@
           "title": "Momentum strategy design",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-12/day-01.md"
+          "lessonPath": "content/week-12/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 11 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-11/day-07.md",
+            "todayDeliverable": "Implement a momentum signal function with parameter control.",
+            "nextLabel": "Week 12 Day 02: Mean reversion strategy design",
+            "nextLessonPath": "content/week-12/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Mean reversion strategy design",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-12/day-02.md"
+          "lessonPath": "content/week-12/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 12 Day 01: Momentum strategy design",
+            "previousLessonPath": "content/week-12/day-01.md",
+            "todayDeliverable": "Implement a mean-reversion signal with adaptive bands.",
+            "nextLabel": "Week 12 Day 03: Unified backtest comparison",
+            "nextLessonPath": "content/week-12/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Unified backtest comparison",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-12/day-03.md"
+          "lessonPath": "content/week-12/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 12 Day 02: Mean reversion strategy design",
+            "previousLessonPath": "content/week-12/day-02.md",
+            "todayDeliverable": "Create side-by-side strategy comparison table.",
+            "nextLabel": "Week 12 Day 04: Robustness and sensitivity analysis",
+            "nextLessonPath": "content/week-12/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Robustness and sensitivity analysis",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-12/day-04.md"
+          "lessonPath": "content/week-12/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 12 Day 03: Unified backtest comparison",
+            "previousLessonPath": "content/week-12/day-03.md",
+            "todayDeliverable": "Implement parameter grid with robustness summary outputs.",
+            "nextLabel": "Week 12 Day 05: Capstone narrative and decision",
+            "nextLessonPath": "content/week-12/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Capstone narrative and decision",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-12/day-05.md"
+          "lessonPath": "content/week-12/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 12 Day 04: Robustness and sensitivity analysis",
+            "previousLessonPath": "content/week-12/day-04.md",
+            "todayDeliverable": "Generate final capstone report artifact with plots and metrics.",
+            "nextLabel": "Week 12 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-12/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-12/day-06.md"
+          "lessonPath": "content/week-12/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 12 Day 05: Capstone narrative and decision",
+            "previousLessonPath": "content/week-12/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 12 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-12/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-12/day-07.md"
+          "lessonPath": "content/week-12/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 12 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-12/day-06.md",
+            "todayDeliverable": "Capstone 3: Momentum vs mean reversion",
+            "nextLabel": "Week 13 Day 01: Portfolio objective design",
+            "nextLessonPath": "content/week-13/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-12/week-12-learning.ipynb",
+        "overviewPath": "resources/week-12/overview.md",
+        "quizPath": "resources/week-12/quiz.md",
+        "revisionChecklistPath": "resources/week-12/revision-checklist.md",
+        "miniProjectPath": "resources/week-12/mini-project-template.md"
+      }
     },
     {
       "week": 13,
@@ -695,51 +1367,107 @@
           "title": "Portfolio objective design",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-13/day-01.md"
+          "lessonPath": "content/week-13/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 12 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-12/day-07.md",
+            "todayDeliverable": "Implement objective builder for multiple mandate profiles.",
+            "nextLabel": "Week 13 Day 02: Mean-variance optimization",
+            "nextLessonPath": "content/week-13/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Mean-variance optimization",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-13/day-02.md"
+          "lessonPath": "content/week-13/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 13 Day 01: Portfolio objective design",
+            "previousLessonPath": "content/week-13/day-01.md",
+            "todayDeliverable": "Build optimizer with no-short and max-weight constraints.",
+            "nextLabel": "Week 13 Day 03: Risk parity and equal-risk contribution",
+            "nextLessonPath": "content/week-13/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Risk parity and equal-risk contribution",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-13/day-03.md"
+          "lessonPath": "content/week-13/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 13 Day 02: Mean-variance optimization",
+            "previousLessonPath": "content/week-13/day-02.md",
+            "todayDeliverable": "Implement risk-contribution calculator and rebalance logic.",
+            "nextLabel": "Week 13 Day 04: Covariance robustness techniques",
+            "nextLessonPath": "content/week-13/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Covariance robustness techniques",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-13/day-04.md"
+          "lessonPath": "content/week-13/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 13 Day 03: Risk parity and equal-risk contribution",
+            "previousLessonPath": "content/week-13/day-03.md",
+            "todayDeliverable": "Integrate shrinkage covariance estimate into optimizer.",
+            "nextLabel": "Week 13 Day 05: Portfolio monitoring and rebalance policy",
+            "nextLessonPath": "content/week-13/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Portfolio monitoring and rebalance policy",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-13/day-05.md"
+          "lessonPath": "content/week-13/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 13 Day 04: Covariance robustness techniques",
+            "previousLessonPath": "content/week-13/day-04.md",
+            "todayDeliverable": "Build rebalance trigger logic based on drift thresholds.",
+            "nextLabel": "Week 13 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-13/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-13/day-06.md"
+          "lessonPath": "content/week-13/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 13 Day 05: Portfolio monitoring and rebalance policy",
+            "previousLessonPath": "content/week-13/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 13 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-13/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-13/day-07.md"
+          "lessonPath": "content/week-13/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 13 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-13/day-06.md",
+            "todayDeliverable": "Portfolio allocator comparison",
+            "nextLabel": "Week 14 Day 01: Bond cashflows and pricing mechanics",
+            "nextLessonPath": "content/week-14/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-13/week-13-learning.ipynb",
+        "overviewPath": "resources/week-13/overview.md",
+        "quizPath": "resources/week-13/quiz.md",
+        "revisionChecklistPath": "resources/week-13/revision-checklist.md",
+        "miniProjectPath": "resources/week-13/mini-project-template.md"
+      }
     },
     {
       "week": 14,
@@ -752,51 +1480,107 @@
           "title": "Bond cashflows and pricing mechanics",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-14/day-01.md"
+          "lessonPath": "content/week-14/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 13 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-13/day-07.md",
+            "todayDeliverable": "Implement a simple bond pricer for coupon bonds.",
+            "nextLabel": "Week 14 Day 02: Yield curve structure",
+            "nextLessonPath": "content/week-14/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Yield curve structure",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-14/day-02.md"
+          "lessonPath": "content/week-14/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 14 Day 01: Bond cashflows and pricing mechanics",
+            "previousLessonPath": "content/week-14/day-01.md",
+            "todayDeliverable": "Create yield-curve plotting utility and slope diagnostics.",
+            "nextLabel": "Week 14 Day 03: Duration and convexity",
+            "nextLessonPath": "content/week-14/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Duration and convexity",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-14/day-03.md"
+          "lessonPath": "content/week-14/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 14 Day 02: Yield curve structure",
+            "previousLessonPath": "content/week-14/day-02.md",
+            "todayDeliverable": "Build duration-convexity sensitivity calculator.",
+            "nextLabel": "Week 14 Day 04: Rate-risk scenario analysis",
+            "nextLessonPath": "content/week-14/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Rate-risk scenario analysis",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-14/day-04.md"
+          "lessonPath": "content/week-14/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 14 Day 03: Duration and convexity",
+            "previousLessonPath": "content/week-14/day-03.md",
+            "todayDeliverable": "Implement scenario engine for curve shocks.",
+            "nextLabel": "Week 14 Day 05: Fixed-income portfolio interpretation",
+            "nextLessonPath": "content/week-14/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Fixed-income portfolio interpretation",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-14/day-05.md"
+          "lessonPath": "content/week-14/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 14 Day 04: Rate-risk scenario analysis",
+            "previousLessonPath": "content/week-14/day-04.md",
+            "todayDeliverable": "Generate fixed-income risk report with key sensitivities.",
+            "nextLabel": "Week 14 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-14/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-14/day-06.md"
+          "lessonPath": "content/week-14/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 14 Day 05: Fixed-income portfolio interpretation",
+            "previousLessonPath": "content/week-14/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 14 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-14/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-14/day-07.md"
+          "lessonPath": "content/week-14/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 14 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-14/day-06.md",
+            "todayDeliverable": "Bond sensitivity analysis",
+            "nextLabel": "Week 15 Day 01: Option payoff structure",
+            "nextLessonPath": "content/week-15/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-14/week-14-learning.ipynb",
+        "overviewPath": "resources/week-14/overview.md",
+        "quizPath": "resources/week-14/quiz.md",
+        "revisionChecklistPath": "resources/week-14/revision-checklist.md",
+        "miniProjectPath": "resources/week-14/mini-project-template.md"
+      }
     },
     {
       "week": 15,
@@ -809,51 +1593,107 @@
           "title": "Option payoff structure",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-15/day-01.md"
+          "lessonPath": "content/week-15/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 14 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-14/day-07.md",
+            "todayDeliverable": "Implement payoff calculator for vanilla option strategies.",
+            "nextLabel": "Week 15 Day 02: Greeks intuition",
+            "nextLessonPath": "content/week-15/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Greeks intuition",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-15/day-02.md"
+          "lessonPath": "content/week-15/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 15 Day 01: Option payoff structure",
+            "previousLessonPath": "content/week-15/day-01.md",
+            "todayDeliverable": "Create a Greeks approximation table for synthetic option quotes.",
+            "nextLabel": "Week 15 Day 03: Volatility surface basics",
+            "nextLessonPath": "content/week-15/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Volatility surface basics",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-15/day-03.md"
+          "lessonPath": "content/week-15/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 15 Day 02: Greeks intuition",
+            "previousLessonPath": "content/week-15/day-02.md",
+            "todayDeliverable": "Build implied-vol surface toy visualization.",
+            "nextLabel": "Week 15 Day 04: Hedging workflow basics",
+            "nextLessonPath": "content/week-15/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Hedging workflow basics",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-15/day-04.md"
+          "lessonPath": "content/week-15/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 15 Day 03: Volatility surface basics",
+            "previousLessonPath": "content/week-15/day-03.md",
+            "todayDeliverable": "Implement discrete hedging simulation and PnL decomposition.",
+            "nextLabel": "Week 15 Day 05: Options strategy framing",
+            "nextLessonPath": "content/week-15/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Options strategy framing",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-15/day-05.md"
+          "lessonPath": "content/week-15/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 15 Day 04: Hedging workflow basics",
+            "previousLessonPath": "content/week-15/day-04.md",
+            "todayDeliverable": "Build strategy scenario matrix with payoff summaries.",
+            "nextLabel": "Week 15 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-15/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-15/day-06.md"
+          "lessonPath": "content/week-15/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 15 Day 05: Options strategy framing",
+            "previousLessonPath": "content/week-15/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 15 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-15/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-15/day-07.md"
+          "lessonPath": "content/week-15/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 15 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-15/day-06.md",
+            "todayDeliverable": "Options risk intuition notebook",
+            "nextLabel": "Week 16 Day 01: Risk framework architecture",
+            "nextLessonPath": "content/week-16/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-15/week-15-learning.ipynb",
+        "overviewPath": "resources/week-15/overview.md",
+        "quizPath": "resources/week-15/quiz.md",
+        "revisionChecklistPath": "resources/week-15/revision-checklist.md",
+        "miniProjectPath": "resources/week-15/mini-project-template.md"
+      }
     },
     {
       "week": 16,
@@ -866,51 +1706,107 @@
           "title": "Risk framework architecture",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-16/day-01.md"
+          "lessonPath": "content/week-16/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 15 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-15/day-07.md",
+            "todayDeliverable": "Draft risk-engine input/output schema and assumptions log.",
+            "nextLabel": "Week 16 Day 02: VaR approaches",
+            "nextLessonPath": "content/week-16/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "VaR approaches",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-16/day-02.md"
+          "lessonPath": "content/week-16/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 16 Day 01: Risk framework architecture",
+            "previousLessonPath": "content/week-16/day-01.md",
+            "todayDeliverable": "Implement VaR calculator supporting two methods.",
+            "nextLabel": "Week 16 Day 03: CVaR and tail focus",
+            "nextLessonPath": "content/week-16/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "CVaR and tail focus",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-16/day-03.md"
+          "lessonPath": "content/week-16/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 16 Day 02: VaR approaches",
+            "previousLessonPath": "content/week-16/day-02.md",
+            "todayDeliverable": "Add CVaR metrics and tail diagnostics to risk report.",
+            "nextLabel": "Week 16 Day 04: Stress testing framework",
+            "nextLessonPath": "content/week-16/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Stress testing framework",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-16/day-04.md"
+          "lessonPath": "content/week-16/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 16 Day 03: CVaR and tail focus",
+            "previousLessonPath": "content/week-16/day-03.md",
+            "todayDeliverable": "Create stress-testing module with scenario presets.",
+            "nextLabel": "Week 16 Day 05: Risk governance reporting",
+            "nextLessonPath": "content/week-16/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Risk governance reporting",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-16/day-05.md"
+          "lessonPath": "content/week-16/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 16 Day 04: Stress testing framework",
+            "previousLessonPath": "content/week-16/day-04.md",
+            "todayDeliverable": "Generate a risk-governance report artifact for capstone submission.",
+            "nextLabel": "Week 16 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-16/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-16/day-06.md"
+          "lessonPath": "content/week-16/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 16 Day 05: Risk governance reporting",
+            "previousLessonPath": "content/week-16/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 16 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-16/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-16/day-07.md"
+          "lessonPath": "content/week-16/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 16 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-16/day-06.md",
+            "todayDeliverable": "Capstone 4: Portfolio risk engine",
+            "nextLabel": "Week 17 Day 01: Factor investing framework",
+            "nextLessonPath": "content/week-17/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-16/week-16-learning.ipynb",
+        "overviewPath": "resources/week-16/overview.md",
+        "quizPath": "resources/week-16/quiz.md",
+        "revisionChecklistPath": "resources/week-16/revision-checklist.md",
+        "miniProjectPath": "resources/week-16/mini-project-template.md"
+      }
     },
     {
       "week": 17,
@@ -923,51 +1819,107 @@
           "title": "Factor investing framework",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-17/day-01.md"
+          "lessonPath": "content/week-17/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 16 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-16/day-07.md",
+            "todayDeliverable": "Build factor-score computation pipeline.",
+            "nextLabel": "Week 17 Day 02: Cross-sectional regressions",
+            "nextLessonPath": "content/week-17/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Cross-sectional regressions",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-17/day-02.md"
+          "lessonPath": "content/week-17/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 17 Day 01: Factor investing framework",
+            "previousLessonPath": "content/week-17/day-01.md",
+            "todayDeliverable": "Implement weekly cross-sectional regression diagnostics.",
+            "nextLabel": "Week 17 Day 03: Information coefficient and decay",
+            "nextLessonPath": "content/week-17/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Information coefficient and decay",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-17/day-03.md"
+          "lessonPath": "content/week-17/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 17 Day 02: Cross-sectional regressions",
+            "previousLessonPath": "content/week-17/day-02.md",
+            "todayDeliverable": "Build IC and decay report with horizon comparison.",
+            "nextLabel": "Week 17 Day 04: Portfolio construction for factors",
+            "nextLessonPath": "content/week-17/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Portfolio construction for factors",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-17/day-04.md"
+          "lessonPath": "content/week-17/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 17 Day 03: Information coefficient and decay",
+            "previousLessonPath": "content/week-17/day-03.md",
+            "todayDeliverable": "Implement decile portfolio builder with turnover tracking.",
+            "nextLabel": "Week 17 Day 05: Factor robustness",
+            "nextLessonPath": "content/week-17/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Factor robustness",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-17/day-05.md"
+          "lessonPath": "content/week-17/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 17 Day 04: Portfolio construction for factors",
+            "previousLessonPath": "content/week-17/day-04.md",
+            "todayDeliverable": "Generate factor robustness dashboard.",
+            "nextLabel": "Week 17 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-17/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-17/day-06.md"
+          "lessonPath": "content/week-17/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 17 Day 05: Factor robustness",
+            "previousLessonPath": "content/week-17/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 17 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-17/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-17/day-07.md"
+          "lessonPath": "content/week-17/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 17 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-17/day-06.md",
+            "todayDeliverable": "Cross-sectional factor mini-book",
+            "nextLabel": "Week 18 Day 01: Stat-arb problem framing",
+            "nextLessonPath": "content/week-18/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-17/week-17-learning.ipynb",
+        "overviewPath": "resources/week-17/overview.md",
+        "quizPath": "resources/week-17/quiz.md",
+        "revisionChecklistPath": "resources/week-17/revision-checklist.md",
+        "miniProjectPath": "resources/week-17/mini-project-template.md"
+      }
     },
     {
       "week": 18,
@@ -980,51 +1932,107 @@
           "title": "Stat-arb problem framing",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-18/day-01.md"
+          "lessonPath": "content/week-18/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 17 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-17/day-07.md",
+            "todayDeliverable": "Implement spread builder with normalization options.",
+            "nextLabel": "Week 18 Day 02: Cointegration basics",
+            "nextLessonPath": "content/week-18/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Cointegration basics",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-18/day-02.md"
+          "lessonPath": "content/week-18/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 18 Day 01: Stat-arb problem framing",
+            "previousLessonPath": "content/week-18/day-01.md",
+            "todayDeliverable": "Build cointegration screening utility for candidate pairs.",
+            "nextLabel": "Week 18 Day 03: Signal generation and execution rules",
+            "nextLessonPath": "content/week-18/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Signal generation and execution rules",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-18/day-03.md"
+          "lessonPath": "content/week-18/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 18 Day 02: Cointegration basics",
+            "previousLessonPath": "content/week-18/day-02.md",
+            "todayDeliverable": "Implement signal engine for pair spread strategy.",
+            "nextLabel": "Week 18 Day 04: Backtest and cost-aware evaluation",
+            "nextLessonPath": "content/week-18/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Backtest and cost-aware evaluation",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-18/day-04.md"
+          "lessonPath": "content/week-18/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 18 Day 03: Signal generation and execution rules",
+            "previousLessonPath": "content/week-18/day-03.md",
+            "todayDeliverable": "Add financing and slippage assumptions to spread backtest.",
+            "nextLabel": "Week 18 Day 05: Failure modes and safeguards",
+            "nextLessonPath": "content/week-18/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Failure modes and safeguards",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-18/day-05.md"
+          "lessonPath": "content/week-18/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 18 Day 04: Backtest and cost-aware evaluation",
+            "previousLessonPath": "content/week-18/day-04.md",
+            "todayDeliverable": "Implement basic safeguard rules and breach alerts.",
+            "nextLabel": "Week 18 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-18/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-18/day-06.md"
+          "lessonPath": "content/week-18/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 18 Day 05: Failure modes and safeguards",
+            "previousLessonPath": "content/week-18/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 18 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-18/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-18/day-07.md"
+          "lessonPath": "content/week-18/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 18 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-18/day-06.md",
+            "todayDeliverable": "Pairs trading prototype",
+            "nextLabel": "Week 19 Day 01: Agentic workflow design for research",
+            "nextLessonPath": "content/week-19/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-18/week-18-learning.ipynb",
+        "overviewPath": "resources/week-18/overview.md",
+        "quizPath": "resources/week-18/quiz.md",
+        "revisionChecklistPath": "resources/week-18/revision-checklist.md",
+        "miniProjectPath": "resources/week-18/mini-project-template.md"
+      }
     },
     {
       "week": 19,
@@ -1037,51 +2045,107 @@
           "title": "Agentic workflow design for research",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-19/day-01.md"
+          "lessonPath": "content/week-19/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 18 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-18/day-07.md",
+            "todayDeliverable": "Write prompt templates with strict output schema.",
+            "nextLabel": "Week 19 Day 02: Research summarization and retrieval",
+            "nextLessonPath": "content/week-19/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Research summarization and retrieval",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-19/day-02.md"
+          "lessonPath": "content/week-19/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 19 Day 01: Agentic workflow design for research",
+            "previousLessonPath": "content/week-19/day-01.md",
+            "todayDeliverable": "Create a retrieval-and-summary template with citation slots.",
+            "nextLabel": "Week 19 Day 03: Feature idea generation and validation",
+            "nextLessonPath": "content/week-19/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Feature idea generation and validation",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-19/day-03.md"
+          "lessonPath": "content/week-19/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 19 Day 02: Research summarization and retrieval",
+            "previousLessonPath": "content/week-19/day-02.md",
+            "todayDeliverable": "Build a feature ideation checklist from agent outputs.",
+            "nextLabel": "Week 19 Day 04: Code review and experiment tracking agents",
+            "nextLessonPath": "content/week-19/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Code review and experiment tracking agents",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-19/day-04.md"
+          "lessonPath": "content/week-19/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 19 Day 03: Feature idea generation and validation",
+            "previousLessonPath": "content/week-19/day-03.md",
+            "todayDeliverable": "Generate experiment log template with required fields.",
+            "nextLabel": "Week 19 Day 05: Guardrails and risk management for AI use",
+            "nextLessonPath": "content/week-19/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Guardrails and risk management for AI use",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-19/day-05.md"
+          "lessonPath": "content/week-19/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 19 Day 04: Code review and experiment tracking agents",
+            "previousLessonPath": "content/week-19/day-04.md",
+            "todayDeliverable": "Implement an agent-output validation checklist file.",
+            "nextLabel": "Week 19 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-19/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-19/day-06.md"
+          "lessonPath": "content/week-19/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 19 Day 05: Guardrails and risk management for AI use",
+            "previousLessonPath": "content/week-19/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 19 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-19/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-19/day-07.md"
+          "lessonPath": "content/week-19/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 19 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-19/day-06.md",
+            "todayDeliverable": "Agent-assisted research memo pipeline",
+            "nextLabel": "Week 20 Day 01: Market microstructure essentials",
+            "nextLessonPath": "content/week-20/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-19/week-19-learning.ipynb",
+        "overviewPath": "resources/week-19/overview.md",
+        "quizPath": "resources/week-19/quiz.md",
+        "revisionChecklistPath": "resources/week-19/revision-checklist.md",
+        "miniProjectPath": "resources/week-19/mini-project-template.md"
+      }
     },
     {
       "week": 20,
@@ -1094,51 +2158,107 @@
           "title": "Market microstructure essentials",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-20/day-01.md"
+          "lessonPath": "content/week-20/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 19 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-19/day-07.md",
+            "todayDeliverable": "Create synthetic microstructure scenarios and expected slippage estimates.",
+            "nextLabel": "Week 20 Day 02: Execution cost modeling",
+            "nextLessonPath": "content/week-20/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Execution cost modeling",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-20/day-02.md"
+          "lessonPath": "content/week-20/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 20 Day 01: Market microstructure essentials",
+            "previousLessonPath": "content/week-20/day-01.md",
+            "todayDeliverable": "Build cost model including spread and impact assumptions.",
+            "nextLabel": "Week 20 Day 03: Strategy blending and diversification",
+            "nextLessonPath": "content/week-20/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Strategy blending and diversification",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-20/day-03.md"
+          "lessonPath": "content/week-20/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 20 Day 02: Execution cost modeling",
+            "previousLessonPath": "content/week-20/day-02.md",
+            "todayDeliverable": "Implement multi-sleeve blend with adjustable risk budgets.",
+            "nextLabel": "Week 20 Day 04: Rebalancing and execution scheduling",
+            "nextLessonPath": "content/week-20/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Rebalancing and execution scheduling",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-20/day-04.md"
+          "lessonPath": "content/week-20/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 20 Day 03: Strategy blending and diversification",
+            "previousLessonPath": "content/week-20/day-03.md",
+            "todayDeliverable": "Create scheduler simulation for rebalance events.",
+            "nextLabel": "Week 20 Day 05: Capstone assembly and governance",
+            "nextLessonPath": "content/week-20/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Capstone assembly and governance",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-20/day-05.md"
+          "lessonPath": "content/week-20/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 20 Day 04: Rebalancing and execution scheduling",
+            "previousLessonPath": "content/week-20/day-04.md",
+            "todayDeliverable": "Generate final blend dashboard for capstone review.",
+            "nextLabel": "Week 20 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-20/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-20/day-06.md"
+          "lessonPath": "content/week-20/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 20 Day 05: Capstone assembly and governance",
+            "previousLessonPath": "content/week-20/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 20 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-20/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-20/day-07.md"
+          "lessonPath": "content/week-20/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 20 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-20/day-06.md",
+            "todayDeliverable": "Capstone 5: Multi-strategy paper portfolio",
+            "nextLabel": "Week 21 Day 01: Program targeting and fit matrix",
+            "nextLessonPath": "content/week-21/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-20/week-20-learning.ipynb",
+        "overviewPath": "resources/week-20/overview.md",
+        "quizPath": "resources/week-20/quiz.md",
+        "revisionChecklistPath": "resources/week-20/revision-checklist.md",
+        "miniProjectPath": "resources/week-20/mini-project-template.md"
+      }
     },
     {
       "week": 21,
@@ -1151,51 +2271,107 @@
           "title": "Program targeting and fit matrix",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-21/day-01.md"
+          "lessonPath": "content/week-21/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 20 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-20/day-07.md",
+            "todayDeliverable": "Create sortable target-program table with fit scores.",
+            "nextLabel": "Week 21 Day 02: Statement of purpose architecture",
+            "nextLessonPath": "content/week-21/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Statement of purpose architecture",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-21/day-02.md"
+          "lessonPath": "content/week-21/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 21 Day 01: Program targeting and fit matrix",
+            "previousLessonPath": "content/week-21/day-01.md",
+            "todayDeliverable": "Build SOP section template with evidence placeholders.",
+            "nextLabel": "Week 21 Day 03: CV and project storytelling",
+            "nextLessonPath": "content/week-21/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "CV and project storytelling",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-21/day-03.md"
+          "lessonPath": "content/week-21/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 21 Day 02: Statement of purpose architecture",
+            "previousLessonPath": "content/week-21/day-02.md",
+            "todayDeliverable": "Generate CV bullet bank from existing project metadata.",
+            "nextLabel": "Week 21 Day 04: Recommendation and supporting documents",
+            "nextLessonPath": "content/week-21/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Recommendation and supporting documents",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-21/day-04.md"
+          "lessonPath": "content/week-21/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 21 Day 03: CV and project storytelling",
+            "previousLessonPath": "content/week-21/day-03.md",
+            "todayDeliverable": "Create recommendation request tracker with deadlines.",
+            "nextLabel": "Week 21 Day 05: Scholarship optimization workflow",
+            "nextLessonPath": "content/week-21/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Scholarship optimization workflow",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-21/day-05.md"
+          "lessonPath": "content/week-21/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 21 Day 04: Recommendation and supporting documents",
+            "previousLessonPath": "content/week-21/day-04.md",
+            "todayDeliverable": "Build scholarship checklist and submission tracker.",
+            "nextLabel": "Week 21 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-21/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-21/day-06.md"
+          "lessonPath": "content/week-21/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 21 Day 05: Scholarship optimization workflow",
+            "previousLessonPath": "content/week-21/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 21 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-21/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-21/day-07.md"
+          "lessonPath": "content/week-21/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 21 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-21/day-06.md",
+            "todayDeliverable": "Application dossier v1",
+            "nextLabel": "Week 22 Day 01: Probability drill framework",
+            "nextLessonPath": "content/week-22/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-21/week-21-learning.ipynb",
+        "overviewPath": "resources/week-21/overview.md",
+        "quizPath": "resources/week-21/quiz.md",
+        "revisionChecklistPath": "resources/week-21/revision-checklist.md",
+        "miniProjectPath": "resources/week-21/mini-project-template.md"
+      }
     },
     {
       "week": 22,
@@ -1208,51 +2384,107 @@
           "title": "Probability drill framework",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-22/day-01.md"
+          "lessonPath": "content/week-22/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 21 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-21/day-07.md",
+            "todayDeliverable": "Create a probability drill notebook with timed question sets.",
+            "nextLabel": "Week 22 Day 02: Statistics and estimation interview drills",
+            "nextLessonPath": "content/week-22/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Statistics and estimation interview drills",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-22/day-02.md"
+          "lessonPath": "content/week-22/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 22 Day 01: Probability drill framework",
+            "previousLessonPath": "content/week-22/day-01.md",
+            "todayDeliverable": "Generate short stats-question answer templates.",
+            "nextLabel": "Week 22 Day 03: Python coding speed drills",
+            "nextLessonPath": "content/week-22/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Python coding speed drills",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-22/day-03.md"
+          "lessonPath": "content/week-22/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 22 Day 02: Statistics and estimation interview drills",
+            "previousLessonPath": "content/week-22/day-02.md",
+            "todayDeliverable": "Build a local timed coding drill harness.",
+            "nextLabel": "Week 22 Day 04: SQL and data manipulation interview drills",
+            "nextLessonPath": "content/week-22/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "SQL and data manipulation interview drills",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-22/day-04.md"
+          "lessonPath": "content/week-22/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 22 Day 03: Python coding speed drills",
+            "previousLessonPath": "content/week-22/day-03.md",
+            "todayDeliverable": "Create SQL practice file with expected outputs.",
+            "nextLabel": "Week 22 Day 05: Mock round synthesis",
+            "nextLessonPath": "content/week-22/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Mock round synthesis",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-22/day-05.md"
+          "lessonPath": "content/week-22/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 22 Day 04: SQL and data manipulation interview drills",
+            "previousLessonPath": "content/week-22/day-04.md",
+            "todayDeliverable": "Log mock performance and classify errors by type.",
+            "nextLabel": "Week 22 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-22/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-22/day-06.md"
+          "lessonPath": "content/week-22/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 22 Day 05: Mock round synthesis",
+            "previousLessonPath": "content/week-22/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 22 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-22/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-22/day-07.md"
+          "lessonPath": "content/week-22/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 22 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-22/day-06.md",
+            "todayDeliverable": "Interview drill notebook pack",
+            "nextLabel": "Week 23 Day 01: Market intuition drills",
+            "nextLessonPath": "content/week-23/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-22/week-22-learning.ipynb",
+        "overviewPath": "resources/week-22/overview.md",
+        "quizPath": "resources/week-22/quiz.md",
+        "revisionChecklistPath": "resources/week-22/revision-checklist.md",
+        "miniProjectPath": "resources/week-22/mini-project-template.md"
+      }
     },
     {
       "week": 23,
@@ -1265,51 +2497,107 @@
           "title": "Market intuition drills",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-23/day-01.md"
+          "lessonPath": "content/week-23/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 22 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-22/day-07.md",
+            "todayDeliverable": "Create market-scenario note template with impact mapping.",
+            "nextLabel": "Week 23 Day 02: Trade idea structuring",
+            "nextLessonPath": "content/week-23/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "Trade idea structuring",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-23/day-02.md"
+          "lessonPath": "content/week-23/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 23 Day 01: Market intuition drills",
+            "previousLessonPath": "content/week-23/day-01.md",
+            "todayDeliverable": "Build one-page trade idea template.",
+            "nextLabel": "Week 23 Day 03: Risk-first communication",
+            "nextLessonPath": "content/week-23/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Risk-first communication",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-23/day-03.md"
+          "lessonPath": "content/week-23/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 23 Day 02: Trade idea structuring",
+            "previousLessonPath": "content/week-23/day-02.md",
+            "todayDeliverable": "Prepare risk scenario table for one strategy pitch.",
+            "nextLabel": "Week 23 Day 04: Behavioral and fit interview prep",
+            "nextLessonPath": "content/week-23/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Behavioral and fit interview prep",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-23/day-04.md"
+          "lessonPath": "content/week-23/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 23 Day 03: Risk-first communication",
+            "previousLessonPath": "content/week-23/day-03.md",
+            "todayDeliverable": "Draft STAR-style responses for 5 behavioral prompts.",
+            "nextLabel": "Week 23 Day 05: Final mock panel",
+            "nextLessonPath": "content/week-23/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Final mock panel",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-23/day-05.md"
+          "lessonPath": "content/week-23/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 23 Day 04: Behavioral and fit interview prep",
+            "previousLessonPath": "content/week-23/day-04.md",
+            "todayDeliverable": "Compile mock feedback and action plan.",
+            "nextLabel": "Week 23 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-23/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-23/day-06.md"
+          "lessonPath": "content/week-23/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 23 Day 05: Final mock panel",
+            "previousLessonPath": "content/week-23/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 23 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-23/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-23/day-07.md"
+          "lessonPath": "content/week-23/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 23 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-23/day-06.md",
+            "todayDeliverable": "Strategy pitch deck",
+            "nextLabel": "Week 24 Day 01: Portfolio curation and selection",
+            "nextLessonPath": "content/week-24/day-01.md"
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-23/week-23-learning.ipynb",
+        "overviewPath": "resources/week-23/overview.md",
+        "quizPath": "resources/week-23/quiz.md",
+        "revisionChecklistPath": "resources/week-23/revision-checklist.md",
+        "miniProjectPath": "resources/week-23/mini-project-template.md"
+      }
     },
     {
       "week": 24,
@@ -1322,51 +2610,107 @@
           "title": "Portfolio curation and selection",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-24/day-01.md"
+          "lessonPath": "content/week-24/day-01.md",
+          "continuity": {
+            "previousLabel": "Week 23 Day 07: Portfolio Project",
+            "previousLessonPath": "content/week-23/day-07.md",
+            "todayDeliverable": "Create portfolio index with project links and summaries.",
+            "nextLabel": "Week 24 Day 02: End-to-end reproducibility pass",
+            "nextLessonPath": "content/week-24/day-02.md"
+          }
         },
         {
           "day": 2,
           "title": "End-to-end reproducibility pass",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-24/day-02.md"
+          "lessonPath": "content/week-24/day-02.md",
+          "continuity": {
+            "previousLabel": "Week 24 Day 01: Portfolio curation and selection",
+            "previousLessonPath": "content/week-24/day-01.md",
+            "todayDeliverable": "Build reproducibility checklist and execution log.",
+            "nextLabel": "Week 24 Day 03: Final capstone integration",
+            "nextLessonPath": "content/week-24/day-03.md"
+          }
         },
         {
           "day": 3,
           "title": "Final capstone integration",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-24/day-03.md"
+          "lessonPath": "content/week-24/day-03.md",
+          "continuity": {
+            "previousLabel": "Week 24 Day 02: End-to-end reproducibility pass",
+            "previousLessonPath": "content/week-24/day-02.md",
+            "todayDeliverable": "Create final capstone report template with linked artifacts.",
+            "nextLabel": "Week 24 Day 04: Presentation polishing",
+            "nextLessonPath": "content/week-24/day-04.md"
+          }
         },
         {
           "day": 4,
           "title": "Presentation polishing",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-24/day-04.md"
+          "lessonPath": "content/week-24/day-04.md",
+          "continuity": {
+            "previousLabel": "Week 24 Day 03: Final capstone integration",
+            "previousLessonPath": "content/week-24/day-03.md",
+            "todayDeliverable": "Generate clean chart exports and final tables.",
+            "nextLabel": "Week 24 Day 05: Launch checklist and next-90-day roadmap",
+            "nextLessonPath": "content/week-24/day-05.md"
+          }
         },
         {
           "day": 5,
           "title": "Launch checklist and next-90-day roadmap",
           "durationHours": 4,
           "type": "lesson",
-          "lessonPath": "content/week-24/day-05.md"
+          "lessonPath": "content/week-24/day-05.md",
+          "continuity": {
+            "previousLabel": "Week 24 Day 04: Presentation polishing",
+            "previousLessonPath": "content/week-24/day-04.md",
+            "todayDeliverable": "Create post-program tracking board with deadlines.",
+            "nextLabel": "Week 24 Day 06: Revision Sprint",
+            "nextLessonPath": "content/week-24/day-06.md"
+          }
         },
         {
           "day": 6,
           "title": "Revision Sprint",
           "durationHours": 2,
           "type": "revision",
-          "lessonPath": "content/week-24/day-06.md"
+          "lessonPath": "content/week-24/day-06.md",
+          "continuity": {
+            "previousLabel": "Week 24 Day 05: Launch checklist and next-90-day roadmap",
+            "previousLessonPath": "content/week-24/day-05.md",
+            "todayDeliverable": "Revision checklist with corrected errors and next-week retest priorities.",
+            "nextLabel": "Week 24 Day 07: Portfolio Project",
+            "nextLessonPath": "content/week-24/day-07.md"
+          }
         },
         {
           "day": 7,
           "title": "Portfolio Project",
           "durationHours": 2,
           "type": "project",
-          "lessonPath": "content/week-24/day-07.md"
+          "lessonPath": "content/week-24/day-07.md",
+          "continuity": {
+            "previousLabel": "Week 24 Day 06: Revision Sprint",
+            "previousLessonPath": "content/week-24/day-06.md",
+            "todayDeliverable": "Capstone 6: Final quant dossier",
+            "nextLabel": "Program completion: launch your interview-ready quant portfolio and job plan.",
+            "nextLessonPath": null
+          }
         }
-      ]
+      ],
+      "resources": {
+        "notebookPath": "notebooks/week-24/week-24-learning.ipynb",
+        "overviewPath": "resources/week-24/overview.md",
+        "quizPath": "resources/week-24/quiz.md",
+        "revisionChecklistPath": "resources/week-24/revision-checklist.md",
+        "miniProjectPath": "resources/week-24/mini-project-template.md"
+      }
     }
   ]
 }

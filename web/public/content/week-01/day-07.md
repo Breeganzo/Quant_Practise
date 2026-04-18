@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 01 Day 06: Revision Sprint
+- Previous lesson file: content/week-01/day-06.md
+- Today's deliverable: Three-asset risk-return comparison
+- Next handoff target: Week 02 Day 01: Random variables and key distributions
+- Next lesson file: content/week-02/day-01.md
+
 ## Project Title
 Three-asset risk-return comparison
 

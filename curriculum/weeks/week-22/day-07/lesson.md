@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 22 Day 06: Revision Sprint
+- Previous lesson file: content/week-22/day-06.md
+- Today's deliverable: Interview drill notebook pack
+- Next handoff target: Week 23 Day 01: Market intuition drills
+- Next lesson file: content/week-23/day-01.md
+
 ## Project Title
 Interview drill notebook pack
 

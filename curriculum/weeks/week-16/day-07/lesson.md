@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 16 Day 06: Revision Sprint
+- Previous lesson file: content/week-16/day-06.md
+- Today's deliverable: Capstone 4: Portfolio risk engine
+- Next handoff target: Week 17 Day 01: Factor investing framework
+- Next lesson file: content/week-17/day-01.md
+
 ## Project Title
 Capstone 4: Portfolio risk engine
 

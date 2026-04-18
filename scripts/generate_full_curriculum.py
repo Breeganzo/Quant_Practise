@@ -1940,26 +1940,512 @@ def expanded_week_plans() -> list[WeekPlan]:
     return base
 
 
-def concept_explanation(concept: str, week_theme: str) -> str:
+def phase_for_week(week_no: int) -> str:
+    if week_no <= 4:
+        return "foundations"
+    if week_no <= 8:
+        return "ml"
+    if week_no <= 12:
+        return "time_series"
+    if week_no <= 16:
+        return "portfolio"
+    if week_no <= 20:
+        return "advanced"
+    return "launch"
+
+
+def concept_explanation(concept: str, week_theme: str, week_no: int) -> str:
+    phase_focus = {
+        "foundations": "clean data assumptions and stable mathematical transformations",
+        "ml": "causal feature design, leakage control, and robust model validation",
+        "time_series": "temporal dependence structure and out-of-sample forecast discipline",
+        "portfolio": "allocation constraints, risk decomposition, and capital efficiency",
+        "advanced": "alpha stability, execution realism, and risk-governed deployment",
+        "launch": "decision quality, communication rigor, and reproducible evidence",
+    }
+    phase = phase_for_week(week_no)
     return (
-        f"{concept} is treated as a practical tool inside the broader week theme '{week_theme}'. "
-        "Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. "
-        "Always note where this concept can fail under noisy or regime-shifting market data."
+        f"{concept} should be treated as a measurable component of '{week_theme}'. "
+        f"For this week, emphasize {phase_focus[phase]}. "
+        "State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption."
     )
 
 
-def day_markdown(week_no: int, day_no: int, week: WeekPlan, day: DayPlan) -> str:
-    concepts_block = []
+def formula_entries(week_no: int, day_no: int) -> list[tuple[str, str, str]]:
+    phase = phase_for_week(week_no)
+    phase_formulas: dict[str, list[tuple[str, str, str]]] = {
+        "foundations": [
+            ("Simple Return", r"r_t = \frac{P_t - P_{t-1}}{P_{t-1}}", "Normalize raw price moves."),
+            ("Log Return", r"\ell_t = \ln\left(\frac{P_t}{P_{t-1}}\right)", "Additive return representation."),
+            ("Annualized Volatility", r"\sigma_{ann}=\sqrt{252}\,Std(r_t)", "Scale daily uncertainty to annual horizon."),
+            ("Sharpe Ratio", r"S=\frac{R_{ann}-R_f}{\sigma_{ann}}", "Risk-adjusted performance score."),
+            ("Turnover", r"TO_t=\frac{1}{2}\sum_i|w_{i,t}-w_{i,t-1}|", "Execution intensity proxy."),
+        ],
+        "ml": [
+            ("Forward Target", r"y_t=\mathbb{1}[r_{t+1}>0]", "Label must stay forward-looking."),
+            ("Logistic Probability", r"p=\frac{1}{1+e^{-z}}", "Convert score to probability."),
+            ("MSE", r"\mathcal{L}_{MSE}=\frac{1}{n}\sum_i(y_i-\hat{y}_i)^2", "Baseline regression loss."),
+            ("Cross-Entropy", r"\mathcal{L}_{CE}=-\frac{1}{n}\sum_i[y_i\log p_i+(1-y_i)\log(1-p_i)]", "Classification objective."),
+            ("Ridge Penalty", r"\mathcal{L}=\mathcal{L}_{MSE}+\lambda\|\beta\|_2^2", "Regularized stability control."),
+        ],
+        "time_series": [
+            ("First Difference", r"\Delta x_t=x_t-x_{t-1}", "Removes non-stationary level drift."),
+            ("Autocorrelation", r"\rho_k=\frac{Cov(x_t,x_{t-k})}{Var(x_t)}", "Lag-memory measurement."),
+            ("AR(1)", r"x_t=c+\phi x_{t-1}+\epsilon_t", "One-step dependence model."),
+            ("EWMA Vol", r"\sigma_t^2=\lambda\sigma_{t-1}^2+(1-\lambda)r_{t-1}^2", "Adaptive volatility estimate."),
+            ("RMSE", r"RMSE=\sqrt{\frac{1}{n}\sum_t e_t^2}", "Forecast error benchmark."),
+        ],
+        "portfolio": [
+            ("Portfolio Return", r"\mu_p=w^\top\mu", "Expected return from weighted assets."),
+            ("Portfolio Variance", r"\sigma_p^2=w^\top\Sigma w", "Quadratic risk engine."),
+            ("Risk Contribution", r"RC_i=w_i\frac{(\Sigma w)_i}{\sigma_p}", "Per-position risk budget."),
+            ("Duration Shock", r"\frac{\Delta P}{P}\approx-D_{mod}\Delta y", "First-order bond sensitivity."),
+            ("CVaR", r"CVaR_\alpha=E[L\mid L\ge VaR_\alpha]", "Tail-risk expectation."),
+        ],
+        "advanced": [
+            ("Cross-Sectional Z", r"z_{i,t}=\frac{x_{i,t}-\mu_t}{\sigma_t}", "Universe-normalized signal."),
+            ("Information Coefficient", r"IC_t=Corr(score_{i,t},r_{i,t+1})", "Signal/forward-return linkage."),
+            ("IC t-Statistic", r"t_{IC}=\frac{\bar{IC}}{Std(IC)/\sqrt{T}}", "Signal persistence test."),
+            ("Spread Z-Score", r"z_t=\frac{s_t-\mu_s}{\sigma_s}", "Stat-arb entry normalization."),
+            ("Implementation Shortfall", r"IS_{bps}=10^4\frac{p_{exec}-p_{arr}}{p_{arr}}", "Execution loss in bps."),
+        ],
+        "launch": [
+            ("Expected Value", r"EV=p\cdot Gain-(1-p)\cdot Loss", "Decision-quality baseline."),
+            ("Readiness Score", r"S=\sum_j w_js_j", "Weighted progress metric."),
+            ("Bayes Update", r"P(H\mid D)=\frac{P(D\mid H)P(H)}{P(D)}", "Evidence-driven belief update."),
+            ("CAGR", r"CAGR=\left(\frac{V_T}{V_0}\right)^{1/T}-1", "Long-horizon growth target."),
+            ("Gap", r"Gap_j=Target_j-Current_j", "Remaining improvement workload."),
+        ],
+    }
+
+    formulas = phase_formulas[phase]
+    offset = (day_no - 1) % len(formulas)
+    selected = [formulas[offset], formulas[(offset + 1) % len(formulas)], formulas[(offset + 2) % len(formulas)]]
+    return selected
+
+
+def symbol_definitions(week_no: int) -> list[str]:
+    phase = phase_for_week(week_no)
+    common = [
+        "- $P_t$: price at time $t$",
+        "- $r_t$: simple return",
+        "- $\\mu$: expected return",
+        "- $\\sigma$: volatility",
+    ]
+    extras = {
+        "foundations": ["- $R_f$: risk-free rate", "- $TO_t$: portfolio turnover"],
+        "ml": ["- $\\hat{y}$: model prediction", "- $\\lambda$: regularization parameter", "- $TP,FP,FN$: confusion counts"],
+        "time_series": ["- $\\phi$: autoregressive coefficient", "- $e_t$: forecast residual", "- $\\lambda$: EWMA decay"],
+        "portfolio": ["- $w$: portfolio weights", "- $\\Sigma$: covariance matrix", "- $D_{mod}$: modified duration"],
+        "advanced": ["- $IC$: information coefficient", "- $ADV$: average daily volume", "- $IS$: implementation shortfall"],
+        "launch": ["- $S$: readiness score", "- $EV$: expected value", "- $Gap_j$: target gap by skill"],
+    }
+    return common + extras[phase]
+
+
+def render_formula_section(week_no: int, day_no: int) -> list[str]:
+    lines: list[str] = []
+    for idx, (name, latex, interpretation) in enumerate(formula_entries(week_no, day_no), start=1):
+        lines.extend([f"### Formula {idx}: {name}", "$$", latex, "$$", interpretation, ""])
+    return lines
+
+
+def real_trading_example(week_no: int, day_no: int, day: DayPlan) -> list[str]:
+    phase = phase_for_week(week_no)
+    universe = {
+        "foundations": ("SPY, QQQ, AAPL", "DGS10, UNRATE"),
+        "ml": ("SPY, XLK, XLF, XLE", "DFF, VIXCLS"),
+        "time_series": ("SPY, TLT, GLD", "VIXCLS, DGS2"),
+        "portfolio": ("SPY, TLT, GLD, HYG", "DGS10, T10YIE"),
+        "advanced": ("SPY, IWM, EFA, EEM", "DFF, BAMLH0A0HYM2"),
+        "launch": ("SPY, QQQ, TLT", "VIXCLS, TEDRATE"),
+    }
+    tickers, fred = universe[phase]
+    return [
+        f"- Instruments: {tickers}",
+        f"- Macro overlay (FRED): {fred}",
+        "- Suggested window: 2018-01-01 to 2026-03-31",
+        f"- Day objective: {day.worked_example}",
+        "",
+        "Execution narrative:",
+        "1. Pull market data from Yahoo Finance and align calendars.",
+        "2. Pull the listed FRED series and join strictly by release-aware timestamps.",
+        "3. Compute today's formulas and compare behavior in stress sub-periods.",
+        "4. Translate quantitative results into one explicit trading decision and one risk guardrail.",
+        f"5. Validate that the decision is consistent with topic '{day.topic}'.",
+    ]
+
+
+def solved_problems(week_no: int, day_no: int) -> list[tuple[str, list[str], list[str], str]]:
+    phase = phase_for_week(week_no)
+
+    if phase == "foundations":
+        p0 = 100 + 2 * day_no
+        p1 = round(p0 * (1 + 0.011 + 0.001 * day_no), 3)
+        r = (p1 - p0) / p0
+        sigma_d = 0.0105 + 0.0007 * day_no
+        sigma_ann = sigma_d * (252 ** 0.5)
+        return [
+            (
+                "Compute simple return",
+                [f"Price moves from ${p0:.2f} to ${p1:.2f}."],
+                [
+                    r"1. $r_t=\frac{P_t-P_{t-1}}{P_{t-1}}$.",
+                    f"2. r_t = ({p1:.3f}-{p0:.3f})/{p0:.3f} = {r:.6f}.",
+                ],
+                f"Simple return = {r:.2%}.",
+            ),
+            (
+                "Annualize volatility",
+                [f"Daily volatility estimate is {sigma_d:.4f}."],
+                [
+                    r"1. $\sigma_{ann}=\sqrt{252}\cdot\sigma_d$.",
+                    f"2. sigma_ann = sqrt(252)*{sigma_d:.4f} = {sigma_ann:.4f}.",
+                ],
+                f"Annualized volatility = {sigma_ann:.2%}.",
+            ),
+            (
+                "Compute Sharpe ratio",
+                ["Annual return is 14.0%, risk-free rate is 3.0%.", f"Use volatility {sigma_ann:.2%}."],
+                [
+                    r"1. $S=\frac{R_{ann}-R_f}{\sigma_{ann}}$.",
+                    f"2. S = (0.14-0.03)/{sigma_ann:.4f} = {(0.11/sigma_ann):.4f}.",
+                ],
+                f"Sharpe ratio = {(0.11/sigma_ann):.2f}.",
+            ),
+        ]
+
+    if phase == "ml":
+        z = -0.7 + 0.3 * day_no
+        p = 1 / (1 + __import__("math").exp(-z))
+        tp, fp, fn = 50, 12, 18
+        precision = tp / (tp + fp)
+        recall = tp / (tp + fn)
+        f1 = 2 * precision * recall / (precision + recall)
+        return [
+            (
+                "Convert logit to probability",
+                [f"Model score z = {z:.3f}."],
+                [r"1. $p=\frac{1}{1+e^{-z}}$.", f"2. p = 1/(1+exp(-{z:.3f})) = {p:.6f}."],
+                f"Predicted probability = {p:.2%}.",
+            ),
+            (
+                "Compute precision, recall, F1",
+                [f"TP={tp}, FP={fp}, FN={fn}."],
+                [
+                    r"1. $Precision=\frac{TP}{TP+FP}$.",
+                    f"2. Precision={precision:.4f}.",
+                    r"3. $Recall=\frac{TP}{TP+FN}$.",
+                    f"4. Recall={recall:.4f}.",
+                    r"5. $F1=\frac{2PR}{P+R}$.",
+                    f"6. F1={f1:.4f}.",
+                ],
+                f"Precision={precision:.2%}, Recall={recall:.2%}, F1={f1:.2%}.",
+            ),
+            (
+                "Compute ridge objective",
+                ["MSE = 0.0410, ||beta||_2^2 = 1.90, lambda = 0.06."],
+                [r"1. $\mathcal{L}=\mathcal{L}_{MSE}+\lambda\|\beta\|_2^2$.", "2. L = 0.0410 + 0.06*1.90 = 0.1550."],
+                "Ridge objective = 0.1550.",
+            ),
+        ]
+
+    if phase == "time_series":
+        phi = 0.64
+        x_t = 0.015
+        c = 0.001
+        forecast = c + phi * x_t
+        return [
+            (
+                "One-step AR(1) forecast",
+                [f"Use c={c:.3f}, phi={phi:.2f}, x_t={x_t:.3f}."],
+                [r"1. $x_{t+1}=c+\phi x_t$.", f"2. Forecast = {c:.3f} + {phi:.2f}*{x_t:.3f} = {forecast:.6f}."],
+                f"Forecasted value = {forecast:.2%}.",
+            ),
+            (
+                "EWMA volatility update",
+                ["lambda=0.94, sigma_(t-1)=0.020, r_(t-1)=-0.012."],
+                [
+                    r"1. $\sigma_t^2=\lambda\sigma_{t-1}^2+(1-\lambda)r_{t-1}^2$.",
+                    "2. sigma_t^2 = 0.94*(0.020^2) + 0.06*(0.012^2) = 0.00038464.",
+                    "3. sigma_t = sqrt(0.00038464) = 0.01961.",
+                ],
+                "Updated volatility = 1.96%.",
+            ),
+            (
+                "Compute RMSE",
+                ["Errors are [0.004, -0.006, 0.003, -0.002, 0.005]."],
+                [
+                    r"1. $RMSE=\sqrt{\frac{1}{n}\sum e_t^2}$.",
+                    "2. Mean squared error = 0.000018.",
+                    "3. RMSE = sqrt(0.000018) = 0.00424.",
+                ],
+                "RMSE = 0.424%.",
+            ),
+        ]
+
+    if phase == "portfolio":
+        return [
+            (
+                "Portfolio expected return",
+                ["w=[0.6,0.4], mu=[0.12,0.08]."],
+                [r"1. $\mu_p=w^\top\mu$.", "2. mu_p = 0.6*0.12 + 0.4*0.08 = 0.104."],
+                "Portfolio expected return = 10.4%.",
+            ),
+            (
+                "Portfolio volatility",
+                ["sigma1=0.20, sigma2=0.12, rho=0.30, w1=0.6, w2=0.4."],
+                [
+                    r"1. $\sigma_p^2=w_1^2\sigma_1^2+w_2^2\sigma_2^2+2w_1w_2\rho\sigma_1\sigma_2$.",
+                    "2. sigma_p^2 = 0.02048.",
+                    "3. sigma_p = sqrt(0.02048) = 0.1431.",
+                ],
+                "Portfolio volatility = 14.31%.",
+            ),
+            (
+                "Duration shock",
+                ["Modified duration = 5.8, yield shift = +0.25%."],
+                [r"1. $\Delta P/P\approx-D_{mod}\Delta y$.", "2. DeltaP/P = -5.8*0.0025 = -0.0145."],
+                "Approximate bond price change = -1.45%.",
+            ),
+        ]
+
+    if phase == "advanced":
+        return [
+            (
+                "Factor z-score",
+                ["Signal=1.60, mean=0.70, std=0.45."],
+                [r"1. $z=\frac{x-\mu}{\sigma}$.", "2. z=(1.60-0.70)/0.45 = 2.00."],
+                "Signal z-score = 2.00.",
+            ),
+            (
+                "IC t-stat",
+                ["Mean IC=0.045, std(IC)=0.018, T=12 months."],
+                [r"1. $t=\frac{\bar{IC}}{s/\sqrt{T}}$.", "2. t = 0.045/(0.018/sqrt(12)) = 8.66."],
+                "IC t-stat = 8.66.",
+            ),
+            (
+                "Implementation shortfall",
+                ["Arrival=101.20, execution=101.36."],
+                [r"1. $IS_{bps}=10^4\frac{p_{exec}-p_{arr}}{p_{arr}}$.", "2. IS_bps = 10000*(0.16/101.20) = 15.81."],
+                "Implementation shortfall = 15.81 bps.",
+            ),
+        ]
+
+    return [
+        (
+            "Expected value",
+            ["Win probability=0.58, gain=1.5R, loss=1R."],
+            [r"1. $EV=p\cdot Gain-(1-p)\cdot Loss$.", "2. EV = 0.58*1.5 - 0.42*1.0 = 0.45R."],
+            "Expected value = 0.45R per trade.",
+        ),
+        (
+            "Readiness score",
+            ["Weights=[0.45,0.35,0.20], scores=[82,87,80]."],
+            [r"1. $S=\sum_jw_js_j$.", "2. S = 0.45*82 + 0.35*87 + 0.20*80 = 83.35."],
+            "Readiness score = 83.35/100.",
+        ),
+        (
+            "CAGR target",
+            ["V0=1.00, VT=1.32, T=3 years."],
+            [r"1. $CAGR=(V_T/V_0)^{1/T}-1$.", "2. CAGR = (1.32/1.00)^(1/3)-1 = 0.0969."],
+            "Required CAGR = 9.69%.",
+        ),
+    ]
+
+
+def render_solved_problems(week_no: int, day_no: int) -> list[str]:
+    lines: list[str] = []
+    for idx, (title, given, steps, answer) in enumerate(solved_problems(week_no, day_no), start=1):
+        lines.append(f"### Solved Problem {idx}: {title}")
+        lines.append("Given:")
+        lines.extend(f"- {item}" for item in given)
+        lines.append("Solution:")
+        lines.extend(steps)
+        lines.append(f"Final answer: {answer}")
+        lines.append("")
+    return lines
+
+
+def coding_walkthrough(week_no: int, day: DayPlan) -> list[str]:
+    phase = phase_for_week(week_no)
+    snippets = {
+        "foundations": [
+            "```python",
+            "prices = load_prices(['SPY', 'QQQ', 'AAPL'])",
+            "returns = prices.pct_change().dropna()",
+            "metrics = compute_risk_metrics(returns)",
+            "assert metrics['max_drawdown'] <= 0",
+            "```",
+        ],
+        "ml": [
+            "```python",
+            "X_train, X_valid, y_train, y_valid = temporal_split(features, target)",
+            "model = fit_logistic_regression(X_train, y_train, l2=0.1)",
+            "proba = model.predict_proba(X_valid)[:, 1]",
+            "report = classification_report_from_thresholds(y_valid, proba)",
+            "```",
+        ],
+        "time_series": [
+            "```python",
+            "series = build_stationary_series(price_df['Close'])",
+            "forecast = walk_forward_arima(series, order=(1, 1, 1))",
+            "errors = series.loc[forecast.index] - forecast",
+            "rmse = np.sqrt(np.mean(errors**2))",
+            "```",
+        ],
+        "portfolio": [
+            "```python",
+            "mu, cov = estimate_moments(asset_returns)",
+            "weights = solve_constrained_mv(mu, cov, max_weight=0.35)",
+            "risk_budget = risk_contributions(weights, cov)",
+            "rebalance_flag = should_rebalance(weights, target_weights, threshold=0.03)",
+            "```",
+        ],
+        "advanced": [
+            "```python",
+            "factor_scores = compute_factor_scores(universe_frame)",
+            "signals = build_long_short_buckets(factor_scores, q=0.2)",
+            "execution_cost = estimate_slippage(signals, adv_frame)",
+            "net_pnl = backtest_with_costs(signals, returns, execution_cost)",
+            "```",
+        ],
+        "launch": [
+            "```python",
+            "readiness = score_readiness(quiz_scores, mock_scores, project_rubrics)",
+            "posterior = bayes_update(prior=0.55, likelihood=0.72, evidence=0.61)",
+            "roadmap = build_90_day_plan(readiness, posterior)",
+            "export_launch_checklist(roadmap)",
+            "```",
+        ],
+    }
+
+    return [
+        "1. Build an explicit data-ingestion layer with timestamp and schema checks.",
+        f"2. Implement today's objective as reusable functions: {day.coding_task}",
+        "3. Add validation tests for leakage, NaNs, and unrealistic outliers.",
+        "4. Produce diagnostic plots and summarize one actionable trading rule.",
+        "5. Record one failure mode and one mitigation in comments.",
+        "",
+        "Reference implementation sketch:",
+        *snippets[phase],
+    ]
+
+
+def lesson_path(week_no: int, day_no: int) -> str:
+    return f"content/week-{week_no:02d}/day-{day_no:02d}.md"
+
+
+def day_title(plans: list[WeekPlan], week_no: int, day_no: int) -> str:
+    plan = plans[week_no - 1]
+    if day_no <= 5:
+        return plan.weekday_days[day_no - 1].topic
+    if day_no == 6:
+        return "Revision Sprint"
+    return "Portfolio Project"
+
+
+def day_deliverable(plans: list[WeekPlan], week_no: int, day_no: int) -> str:
+    plan = plans[week_no - 1]
+    if day_no <= 5:
+        return plan.weekday_days[day_no - 1].coding_task
+    if day_no == 6:
+        return "Revision checklist with corrected errors and next-week retest priorities."
+    return plan.project_title
+
+
+def continuity_context(plans: list[WeekPlan], week_no: int, day_no: int) -> dict[str, str | None]:
+    if week_no == 1 and day_no == 1:
+        previous_label = "Program kickoff: environment, data loader, and assumption baseline."
+        previous_path = None
+    elif day_no == 1:
+        previous_label = f"Week {week_no - 1:02d} Day 07: Portfolio Project"
+        previous_path = lesson_path(week_no - 1, 7)
+    else:
+        previous_day = day_no - 1
+        previous_label = f"Week {week_no:02d} Day {previous_day:02d}: {day_title(plans, week_no, previous_day)}"
+        previous_path = lesson_path(week_no, previous_day)
+
+    if week_no == 24 and day_no == 7:
+        next_label = "Program completion: launch your interview-ready quant portfolio and job plan."
+        next_path = None
+    elif day_no == 7:
+        next_label = f"Week {week_no + 1:02d} Day 01: {day_title(plans, week_no + 1, 1)}"
+        next_path = lesson_path(week_no + 1, 1)
+    else:
+        next_day = day_no + 1
+        next_label = f"Week {week_no:02d} Day {next_day:02d}: {day_title(plans, week_no, next_day)}"
+        next_path = lesson_path(week_no, next_day)
+
+    return {
+        "previousLabel": previous_label,
+        "previousLessonPath": previous_path,
+        "todayDeliverable": day_deliverable(plans, week_no, day_no),
+        "nextLabel": next_label,
+        "nextLessonPath": next_path,
+    }
+
+
+def continuity_section(continuity: dict[str, str | None]) -> list[str]:
+    previous = continuity.get("previousLabel") or "N/A"
+    previous_path = continuity.get("previousLessonPath")
+    deliverable = continuity.get("todayDeliverable") or "N/A"
+    nxt = continuity.get("nextLabel") or "N/A"
+    next_path = continuity.get("nextLessonPath")
+
+    lines = [
+        "## Continuity and Handoff",
+        f"- Previous checkpoint: {previous}",
+    ]
+    if previous_path:
+        lines.append(f"- Previous lesson file: {previous_path}")
+    lines.extend(
+        [
+            f"- Today's deliverable: {deliverable}",
+            f"- Next handoff target: {nxt}",
+        ]
+    )
+    if next_path:
+        lines.append(f"- Next lesson file: {next_path}")
+    return lines
+
+
+def week_resource_paths(week_no: int) -> dict[str, str]:
+    week_id = f"week-{week_no:02d}"
+    return {
+        "notebookPath": f"notebooks/{week_id}/{week_id}-learning.ipynb",
+        "overviewPath": f"resources/{week_id}/overview.md",
+        "quizPath": f"resources/{week_id}/quiz.md",
+        "revisionChecklistPath": f"resources/{week_id}/revision-checklist.md",
+        "miniProjectPath": f"resources/{week_id}/mini-project-template.md",
+    }
+
+
+def day_markdown(
+    week_no: int,
+    day_no: int,
+    week: WeekPlan,
+    day: DayPlan,
+    continuity: dict[str, str | None],
+) -> str:
+    concepts_block: list[str] = []
     for idx, concept in enumerate(day.concepts, start=1):
         concepts_block.append(f"### Concept {idx}: {concept}")
-        concepts_block.append(concept_explanation(concept, week.theme))
+        concepts_block.append(concept_explanation(concept, week.theme, week_no))
         concepts_block.append("")
 
-    practice = [
-        "1. Define each concept in your own words with one finance example.",
-        "2. Solve two short numerical/logic exercises related to today's topic.",
-        "3. Write one failure-case assumption and one mitigation step.",
-        "4. Summarize what you would test before using this in paper trading.",
+    hour_plan: list[str] = [
+        "- 60 minutes: concept breakdown and formula derivation",
+        "- 75 minutes: real-market case study with data alignment checks",
+        "- 60 minutes: step-by-step quantitative problem solving",
+        "- 45 minutes: coding walkthrough and output verification",
+    ]
+
+    practice: list[str] = [
+        "1. Re-derive all formulas manually and explain each variable.",
+        "2. Re-run the real trading example using one alternate ticker.",
+        "3. Stress-test one assumption and write a risk-control rule.",
+        "4. Extend the code walkthrough with one new validation test.",
     ]
 
     return "\n".join(
@@ -1969,40 +2455,55 @@ def day_markdown(week_no: int, day_no: int, week: WeekPlan, day: DayPlan) -> str
             "## Study Duration",
             "- Planned effort: 4 hours",
             "",
+            "## 4-Hour Lesson Flow",
+            *hour_plan,
+            "",
             "## Why It Matters in Quant",
-            f"{week.objective}",
+            week.objective,
+            "",
+            *continuity_section(continuity),
             "",
             "## Theory Concepts",
             "",
             *concepts_block,
-            "## Worked Example",
-            day.worked_example,
+            "## Mathematical Foundations (LaTeX)",
+            *render_formula_section(week_no, day_no),
+            "## Symbol Definitions",
+            *symbol_definitions(week_no),
+            "",
+            "## Real Trading Example",
+            *real_trading_example(week_no, day_no, day),
+            "",
+            "## Step-by-Step Solved Problems",
+            *render_solved_problems(week_no, day_no),
+            "## Coding Walkthrough",
+            *coding_walkthrough(week_no, day),
             "",
             "## Practice Problems",
             *practice,
-            "",
-            "## Coding Task",
-            day.coding_task,
             "",
             "## Reflection Question",
             day.reflection,
             "",
             "## Completion Checklist",
-            "- [ ] Theory studied with notes",
-            "- [ ] Worked example replicated",
-            "- [ ] Coding task completed",
+            "- [ ] Formula derivations re-worked manually",
+            "- [ ] Real trading example reproduced with data checks",
+            "- [ ] Solved problems reviewed and understood",
+            "- [ ] Coding walkthrough executed and verified",
             "- [ ] Reflection logged in progress tracker",
         ]
     ) + "\n"
 
 
-def revision_markdown(week_no: int, week: WeekPlan) -> str:
+def revision_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | None]) -> str:
     return "\n".join(
         [
             f"# Week {week_no:02d} Day 06: Revision Sprint",
             "",
             "## Study Duration",
             "- Planned effort: 2 hours",
+            "",
+            *continuity_section(continuity),
             "",
             "## Revision Plan",
             "- 30 minutes: active recall of weekday concepts",
@@ -2021,13 +2522,15 @@ def revision_markdown(week_no: int, week: WeekPlan) -> str:
     ) + "\n"
 
 
-def project_markdown(week_no: int, week: WeekPlan) -> str:
+def project_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | None]) -> str:
     return "\n".join(
         [
             f"# Week {week_no:02d} Day 07: Portfolio Project",
             "",
             "## Study Duration",
             "- Planned effort: 2 hours",
+            "",
+            *continuity_section(continuity),
             "",
             f"## Project Title\n{week.project_title}",
             "",
@@ -2052,7 +2555,7 @@ def project_markdown(week_no: int, week: WeekPlan) -> str:
 
 
 def week_readme(week_no: int, week: WeekPlan) -> str:
-    day_rows = []
+    day_rows: list[str] = []
     for day_no, day in enumerate(week.weekday_days, start=1):
         day_rows.append(f"| Day {day_no:02d} | {day.topic} | 4h |")
     day_rows.append("| Day 06 | Revision Sprint | 2h |")
@@ -2082,7 +2585,7 @@ def week_readme(week_no: int, week: WeekPlan) -> str:
 
 
 def week_quiz(week_no: int, week: WeekPlan) -> str:
-    questions = []
+    questions: list[str] = []
     for idx, day in enumerate(week.weekday_days, start=1):
         questions.append(f"{idx}. Explain the practical purpose of '{day.topic}' in quant workflows.")
     questions.extend(
@@ -2191,44 +2694,44 @@ def roadmap_markdown(plans: list[WeekPlan]) -> str:
 
 
 def write_json_index(root: Path, plans: list[WeekPlan]) -> None:
-    index = {"weeks": []}
+    index: dict[str, list[dict[str, object]]] = {"weeks": []}
     for week_no, plan in enumerate(plans, start=1):
         week_id = f"week-{week_no:02d}"
-        week_entry = {
+        day_entries: list[dict[str, object]] = []
+        resources = week_resource_paths(week_no)
+        week_entry: dict[str, object] = {
             "week": week_no,
             "id": week_id,
             "theme": plan.theme,
             "objective": plan.objective,
-            "days": [],
+            "days": day_entries,
+            "resources": resources,
         }
-        for day_no, day in enumerate(plan.weekday_days, start=1):
-            week_entry["days"].append(
+        for day_no in range(1, 8):
+            if day_no <= 5:
+                title = plan.weekday_days[day_no - 1].topic
+                day_type = "lesson"
+                duration = 4
+            elif day_no == 6:
+                title = "Revision Sprint"
+                day_type = "revision"
+                duration = 2
+            else:
+                title = "Portfolio Project"
+                day_type = "project"
+                duration = 2
+
+            continuity = continuity_context(plans, week_no, day_no)
+            day_entries.append(
                 {
                     "day": day_no,
-                    "title": day.topic,
-                    "durationHours": 4,
-                    "type": "lesson",
-                    "lessonPath": f"content/{week_id}/day-{day_no:02d}.md",
+                    "title": title,
+                    "durationHours": duration,
+                    "type": day_type,
+                    "lessonPath": lesson_path(week_no, day_no),
+                    "continuity": continuity,
                 }
             )
-        week_entry["days"].append(
-            {
-                "day": 6,
-                "title": "Revision Sprint",
-                "durationHours": 2,
-                "type": "revision",
-                "lessonPath": f"content/{week_id}/day-06.md",
-            }
-        )
-        week_entry["days"].append(
-            {
-                "day": 7,
-                "title": "Portfolio Project",
-                "durationHours": 2,
-                "type": "project",
-                "lessonPath": f"content/{week_id}/day-07.md",
-            }
-        )
         index["weeks"].append(week_entry)
 
     (root / "curriculum" / "curriculum-index.json").write_text(
@@ -2243,13 +2746,33 @@ def write_json_index(root: Path, plans: list[WeekPlan]) -> None:
 def build_web_content_copy(root: Path) -> None:
     source_root = root / "curriculum" / "weeks"
     target_root = root / "web" / "public" / "content"
+    resources_root = root / "web" / "public" / "resources"
     target_root.mkdir(parents=True, exist_ok=True)
+    resources_root.mkdir(parents=True, exist_ok=True)
 
     for week_no in range(1, 25):
         week_id = f"week-{week_no:02d}"
         src_week = source_root / week_id
         tgt_week = target_root / week_id
+        tgt_resources = resources_root / week_id
         tgt_week.mkdir(parents=True, exist_ok=True)
+        tgt_resources.mkdir(parents=True, exist_ok=True)
+
+        (tgt_resources / "overview.md").write_text(
+            (src_week / "README.md").read_text(encoding="utf-8"), encoding="utf-8"
+        )
+        (tgt_resources / "quiz.md").write_text(
+            (src_week / f"{week_id}-quiz.md").read_text(encoding="utf-8"), encoding="utf-8"
+        )
+        (tgt_resources / "revision-checklist.md").write_text(
+            (src_week / f"{week_id}-revision-checklist.md").read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+        (tgt_resources / "mini-project-template.md").write_text(
+            (src_week / f"{week_id}-mini-project-template.md").read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+
         for day_no in range(1, 8):
             src = src_week / f"day-{day_no:02d}" / "lesson.md"
             tgt = tgt_week / f"day-{day_no:02d}.md"
@@ -2290,17 +2813,24 @@ def generate_curriculum(root: Path) -> None:
         for day_no, day_plan in enumerate(plan.weekday_days, start=1):
             day_dir = week_dir / f"day-{day_no:02d}"
             day_dir.mkdir(parents=True, exist_ok=True)
+            continuity = continuity_context(plans, week_no, day_no)
             (day_dir / "lesson.md").write_text(
-                day_markdown(week_no, day_no, plan, day_plan), encoding="utf-8"
+                day_markdown(week_no, day_no, plan, day_plan, continuity), encoding="utf-8"
             )
 
         day6_dir = week_dir / "day-06"
         day6_dir.mkdir(parents=True, exist_ok=True)
-        (day6_dir / "lesson.md").write_text(revision_markdown(week_no, plan), encoding="utf-8")
+        (day6_dir / "lesson.md").write_text(
+            revision_markdown(week_no, plan, continuity_context(plans, week_no, 6)),
+            encoding="utf-8",
+        )
 
         day7_dir = week_dir / "day-07"
         day7_dir.mkdir(parents=True, exist_ok=True)
-        (day7_dir / "lesson.md").write_text(project_markdown(week_no, plan), encoding="utf-8")
+        (day7_dir / "lesson.md").write_text(
+            project_markdown(week_no, plan, continuity_context(plans, week_no, 7)),
+            encoding="utf-8",
+        )
 
         admissions_dir = root / "admissions" / week_id
         admissions_dir.mkdir(parents=True, exist_ok=True)

@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 02 Day 06: Revision Sprint
+- Previous lesson file: content/week-02/day-06.md
+- Today's deliverable: Bootstrap confidence interval study
+- Next handoff target: Week 03 Day 01: Vectors, matrices, and transformations
+- Next lesson file: content/week-03/day-01.md
+
 ## Project Title
 Bootstrap confidence interval study
 

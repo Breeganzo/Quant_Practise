@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 19 Day 06: Revision Sprint
+- Previous lesson file: content/week-19/day-06.md
+- Today's deliverable: Agent-assisted research memo pipeline
+- Next handoff target: Week 20 Day 01: Market microstructure essentials
+- Next lesson file: content/week-20/day-01.md
+
 ## Project Title
 Agent-assisted research memo pipeline
 

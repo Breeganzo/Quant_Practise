@@ -3,6 +3,12 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 24 Day 06: Revision Sprint
+- Previous lesson file: content/week-24/day-06.md
+- Today's deliverable: Capstone 6: Final quant dossier
+- Next handoff target: Program completion: launch your interview-ready quant portfolio and job plan.
+
 ## Project Title
 Capstone 6: Final quant dossier
 

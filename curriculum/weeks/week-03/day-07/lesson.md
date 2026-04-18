@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 03 Day 06: Revision Sprint
+- Previous lesson file: content/week-03/day-06.md
+- Today's deliverable: Market data pipeline prototype
+- Next handoff target: Week 04 Day 01: Return decomposition and compounding effects
+- Next lesson file: content/week-04/day-01.md
+
 ## Project Title
 Market data pipeline prototype
 

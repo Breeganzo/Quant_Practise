@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 08 Day 06: Revision Sprint
+- Previous lesson file: content/week-08/day-06.md
+- Today's deliverable: Capstone 2: Robust signal pipeline
+- Next handoff target: Week 09 Day 01: Stationarity and transformations
+- Next lesson file: content/week-09/day-01.md
+
 ## Project Title
 Capstone 2: Robust signal pipeline
 

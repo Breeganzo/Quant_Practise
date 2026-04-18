@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 04 Day 06: Revision Sprint
+- Previous lesson file: content/week-04/day-06.md
+- Today's deliverable: Capstone 1: Market risk dashboard
+- Next handoff target: Week 05 Day 01: Supervised learning setup and leakage controls
+- Next lesson file: content/week-05/day-01.md
+
 ## Project Title
 Capstone 1: Market risk dashboard
 

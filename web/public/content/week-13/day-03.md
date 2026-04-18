@@ -3,37 +3,127 @@
 ## Study Duration
 - Planned effort: 4 hours
 
+## 4-Hour Lesson Flow
+- 60 minutes: concept breakdown and formula derivation
+- 75 minutes: real-market case study with data alignment checks
+- 60 minutes: step-by-step quantitative problem solving
+- 45 minutes: coding walkthrough and output verification
+
 ## Why It Matters in Quant
 Transition from single-strategy analysis to portfolio-level construction and risk allocation.
+
+## Continuity and Handoff
+- Previous checkpoint: Week 13 Day 02: Mean-variance optimization
+- Previous lesson file: content/week-13/day-02.md
+- Today's deliverable: Implement risk-contribution calculator and rebalance logic.
+- Next handoff target: Week 13 Day 04: Covariance robustness techniques
+- Next lesson file: content/week-13/day-04.md
 
 ## Theory Concepts
 
 ### Concept 1: Risk contribution decomposition
-Risk contribution decomposition is treated as a practical tool inside the broader week theme 'Portfolio construction and optimization'. Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. Always note where this concept can fail under noisy or regime-shifting market data.
+Risk contribution decomposition should be treated as a measurable component of 'Portfolio construction and optimization'. For this week, emphasize allocation constraints, risk decomposition, and capital efficiency. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
 
 ### Concept 2: Balancing volatility contributions
-Balancing volatility contributions is treated as a practical tool inside the broader week theme 'Portfolio construction and optimization'. Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. Always note where this concept can fail under noisy or regime-shifting market data.
+Balancing volatility contributions should be treated as a measurable component of 'Portfolio construction and optimization'. For this week, emphasize allocation constraints, risk decomposition, and capital efficiency. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
 
 ### Concept 3: Implementation tradeoffs
-Implementation tradeoffs is treated as a practical tool inside the broader week theme 'Portfolio construction and optimization'. Focus on intuition first, then map the concept to formulas, assumptions, and implementation constraints. Always note where this concept can fail under noisy or regime-shifting market data.
+Implementation tradeoffs should be treated as a measurable component of 'Portfolio construction and optimization'. For this week, emphasize allocation constraints, risk decomposition, and capital efficiency. State the formula, verify units, test edge cases, and explain exactly how market regime shifts could break the assumption.
 
-## Worked Example
-Construct a risk-parity portfolio and compare to equal-weight.
+## Mathematical Foundations (LaTeX)
+### Formula 1: Risk Contribution
+$$
+RC_i=w_i\frac{(\Sigma w)_i}{\sigma_p}
+$$
+Per-position risk budget.
+
+### Formula 2: Duration Shock
+$$
+\frac{\Delta P}{P}\approx-D_{mod}\Delta y
+$$
+First-order bond sensitivity.
+
+### Formula 3: CVaR
+$$
+CVaR_\alpha=E[L\mid L\ge VaR_\alpha]
+$$
+Tail-risk expectation.
+
+## Symbol Definitions
+- $P_t$: price at time $t$
+- $r_t$: simple return
+- $\mu$: expected return
+- $\sigma$: volatility
+- $w$: portfolio weights
+- $\Sigma$: covariance matrix
+- $D_{mod}$: modified duration
+
+## Real Trading Example
+- Instruments: SPY, TLT, GLD, HYG
+- Macro overlay (FRED): DGS10, T10YIE
+- Suggested window: 2018-01-01 to 2026-03-31
+- Day objective: Construct a risk-parity portfolio and compare to equal-weight.
+
+Execution narrative:
+1. Pull market data from Yahoo Finance and align calendars.
+2. Pull the listed FRED series and join strictly by release-aware timestamps.
+3. Compute today's formulas and compare behavior in stress sub-periods.
+4. Translate quantitative results into one explicit trading decision and one risk guardrail.
+5. Validate that the decision is consistent with topic 'Risk parity and equal-risk contribution'.
+
+## Step-by-Step Solved Problems
+### Solved Problem 1: Portfolio expected return
+Given:
+- w=[0.6,0.4], mu=[0.12,0.08].
+Solution:
+1. $\mu_p=w^\top\mu$.
+2. mu_p = 0.6*0.12 + 0.4*0.08 = 0.104.
+Final answer: Portfolio expected return = 10.4%.
+
+### Solved Problem 2: Portfolio volatility
+Given:
+- sigma1=0.20, sigma2=0.12, rho=0.30, w1=0.6, w2=0.4.
+Solution:
+1. $\sigma_p^2=w_1^2\sigma_1^2+w_2^2\sigma_2^2+2w_1w_2\rho\sigma_1\sigma_2$.
+2. sigma_p^2 = 0.02048.
+3. sigma_p = sqrt(0.02048) = 0.1431.
+Final answer: Portfolio volatility = 14.31%.
+
+### Solved Problem 3: Duration shock
+Given:
+- Modified duration = 5.8, yield shift = +0.25%.
+Solution:
+1. $\Delta P/P\approx-D_{mod}\Delta y$.
+2. DeltaP/P = -5.8*0.0025 = -0.0145.
+Final answer: Approximate bond price change = -1.45%.
+
+## Coding Walkthrough
+1. Build an explicit data-ingestion layer with timestamp and schema checks.
+2. Implement today's objective as reusable functions: Implement risk-contribution calculator and rebalance logic.
+3. Add validation tests for leakage, NaNs, and unrealistic outliers.
+4. Produce diagnostic plots and summarize one actionable trading rule.
+5. Record one failure mode and one mitigation in comments.
+
+Reference implementation sketch:
+```python
+mu, cov = estimate_moments(asset_returns)
+weights = solve_constrained_mv(mu, cov, max_weight=0.35)
+risk_budget = risk_contributions(weights, cov)
+rebalance_flag = should_rebalance(weights, target_weights, threshold=0.03)
+```
 
 ## Practice Problems
-1. Define each concept in your own words with one finance example.
-2. Solve two short numerical/logic exercises related to today's topic.
-3. Write one failure-case assumption and one mitigation step.
-4. Summarize what you would test before using this in paper trading.
-
-## Coding Task
-Implement risk-contribution calculator and rebalance logic.
+1. Re-derive all formulas manually and explain each variable.
+2. Re-run the real trading example using one alternate ticker.
+3. Stress-test one assumption and write a risk-control rule.
+4. Extend the code walkthrough with one new validation test.
 
 ## Reflection Question
 When can risk parity overweight low-return assets?
 
 ## Completion Checklist
-- [ ] Theory studied with notes
-- [ ] Worked example replicated
-- [ ] Coding task completed
+- [ ] Formula derivations re-worked manually
+- [ ] Real trading example reproduced with data checks
+- [ ] Solved problems reviewed and understood
+- [ ] Coding walkthrough executed and verified
 - [ ] Reflection logged in progress tracker

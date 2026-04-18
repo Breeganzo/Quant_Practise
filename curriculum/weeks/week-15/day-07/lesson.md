@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 15 Day 06: Revision Sprint
+- Previous lesson file: content/week-15/day-06.md
+- Today's deliverable: Options risk intuition notebook
+- Next handoff target: Week 16 Day 01: Risk framework architecture
+- Next lesson file: content/week-16/day-01.md
+
 ## Project Title
 Options risk intuition notebook
 

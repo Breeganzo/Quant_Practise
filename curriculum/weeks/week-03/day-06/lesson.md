@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 03 Day 05: SQL basics for quant datasets
+- Previous lesson file: content/week-03/day-05.md
+- Today's deliverable: Revision checklist with corrected errors and next-week retest priorities.
+- Next handoff target: Week 03 Day 07: Portfolio Project
+- Next lesson file: content/week-03/day-07.md
+
 ## Revision Plan
 - 30 minutes: active recall of weekday concepts
 - 40 minutes: rebuild one code workflow from memory

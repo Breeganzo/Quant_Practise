@@ -6,8 +6,8 @@ import AuthPanel from "./components/AuthPanel";
 import DayDetail from "./components/DayDetail";
 import LearningDashboard from "./components/LearningDashboard";
 import { loadCurriculum } from "./lib/content";
-import { fetchProgress, upsertProgress } from "./lib/progress";
-import { hasSupabaseConfig, supabase } from "./lib/supabase";
+import { fetchProgress, flushPendingWrites, upsertProgress } from "./lib/progress";
+import { hasSupabaseConfig, requiresPersistentBackend, supabase } from "./lib/supabase";
 import type { CurriculumIndex, DailyProgress, ProgressMap } from "./types";
 
 export default function App(): JSX.Element {
@@ -77,6 +77,31 @@ export default function App(): JSX.Element {
     void loadUserProgress();
   }, [userId]);
 
+  useEffect(() => {
+    if (!hasSupabaseConfig) {
+      return;
+    }
+
+    function handleReconnect(): void {
+      void (async () => {
+        try {
+          const flushed = await flushPendingWrites(userId);
+          if (flushed > 0) {
+            const p = await fetchProgress(userId);
+            setProgress(p);
+          }
+        } catch (err) {
+          setError(String(err));
+        }
+      })();
+    }
+
+    window.addEventListener("online", handleReconnect);
+    return () => {
+      window.removeEventListener("online", handleReconnect);
+    };
+  }, [userId]);
+
   async function handleSaveProgress(
     weekNo: number,
     dayNo: number,
@@ -100,6 +125,20 @@ export default function App(): JSX.Element {
 
   if (loading && hasSupabaseConfig) {
     return <main className="container">Loading authentication...</main>;
+  }
+
+  if (requiresPersistentBackend && !hasSupabaseConfig) {
+    return (
+      <main className="container">
+        <section className="card warning">
+          <h1>Supabase Configuration Required</h1>
+          <p>
+            This production build requires VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY. Configure
+            repository secrets and redeploy.
+          </p>
+        </section>
+      </main>
+    );
   }
 
   if (!curriculum) {
@@ -128,7 +167,7 @@ export default function App(): JSX.Element {
         </div>
       </header>
 
-      {!hasSupabaseConfig ? (
+      {!hasSupabaseConfig && !requiresPersistentBackend ? (
         <section className="card warning">
           <h2>Supabase Not Configured</h2>
           <p>

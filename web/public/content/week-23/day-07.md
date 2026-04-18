@@ -3,6 +3,13 @@
 ## Study Duration
 - Planned effort: 2 hours
 
+## Continuity and Handoff
+- Previous checkpoint: Week 23 Day 06: Revision Sprint
+- Previous lesson file: content/week-23/day-06.md
+- Today's deliverable: Strategy pitch deck
+- Next handoff target: Week 24 Day 01: Portfolio curation and selection
+- Next lesson file: content/week-24/day-01.md
+
 ## Project Title
 Strategy pitch deck
 
