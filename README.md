@@ -52,7 +52,7 @@ Use the full click-by-click guide:
 Quick version:
 
 1. Create a Supabase project.
-2. Run `supabase/schema.sql` in Supabase SQL Editor.
+2. Run `supabase/schema.sql` in Supabase SQL Editor (non-destructive and safe to re-run).
 3. Enable Email provider under Supabase Authentication.
 4. In Supabase Settings -> API, copy:
    - Project URL -> `VITE_SUPABASE_URL`
@@ -66,6 +66,8 @@ Quick version:
 
 Local development allows fallback demo mode without Supabase.
 Production deployment to GitHub Pages is Supabase-required.
+
+If SQL Editor shows `Failed to fetch (api.supabase.com)`, follow the recovery flow in [docs/SUPABASE_SETUP_BEGINNER.md](docs/SUPABASE_SETUP_BEGINNER.md).
 
 ## 4) Run React Tracker Locally
 

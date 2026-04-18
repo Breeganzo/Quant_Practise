@@ -1,4 +1,5 @@
 -- Supabase schema for lifelong quant-learning progress persistence.
+-- Non-destructive and idempotent: safe to run multiple times.
 
 create table if not exists public.user_profiles (
   user_id uuid primary key references auth.users(id) on delete cascade,
@@ -59,20 +60,59 @@ begin
 end;
 $$;
 
-drop trigger if exists trg_user_profiles_updated_at on public.user_profiles;
-create trigger trg_user_profiles_updated_at
-before update on public.user_profiles
-for each row execute function public.set_updated_at();
+do $$
+begin
+  if not exists (
+    select 1
+    from pg_trigger t
+    join pg_class c on c.oid = t.tgrelid
+    join pg_namespace n on n.oid = c.relnamespace
+    where n.nspname = 'public'
+      and c.relname = 'user_profiles'
+      and t.tgname = 'trg_user_profiles_updated_at'
+  ) then
+    create trigger trg_user_profiles_updated_at
+    before update on public.user_profiles
+    for each row execute function public.set_updated_at();
+  end if;
+end;
+$$;
 
-drop trigger if exists trg_daily_progress_updated_at on public.daily_progress;
-create trigger trg_daily_progress_updated_at
-before update on public.daily_progress
-for each row execute function public.set_updated_at();
+do $$
+begin
+  if not exists (
+    select 1
+    from pg_trigger t
+    join pg_class c on c.oid = t.tgrelid
+    join pg_namespace n on n.oid = c.relnamespace
+    where n.nspname = 'public'
+      and c.relname = 'daily_progress'
+      and t.tgname = 'trg_daily_progress_updated_at'
+  ) then
+    create trigger trg_daily_progress_updated_at
+    before update on public.daily_progress
+    for each row execute function public.set_updated_at();
+  end if;
+end;
+$$;
 
-drop trigger if exists trg_project_submissions_updated_at on public.project_submissions;
-create trigger trg_project_submissions_updated_at
-before update on public.project_submissions
-for each row execute function public.set_updated_at();
+do $$
+begin
+  if not exists (
+    select 1
+    from pg_trigger t
+    join pg_class c on c.oid = t.tgrelid
+    join pg_namespace n on n.oid = c.relnamespace
+    where n.nspname = 'public'
+      and c.relname = 'project_submissions'
+      and t.tgname = 'trg_project_submissions_updated_at'
+  ) then
+    create trigger trg_project_submissions_updated_at
+    before update on public.project_submissions
+    for each row execute function public.set_updated_at();
+  end if;
+end;
+$$;
 
 alter table public.user_profiles enable row level security;
 alter table public.daily_progress enable row level security;
@@ -80,32 +120,87 @@ alter table public.quiz_scores enable row level security;
 alter table public.project_submissions enable row level security;
 alter table public.revision_logs enable row level security;
 
-create policy "user_profiles_owner_only"
-on public.user_profiles
-for all
-using (auth.uid() = user_id)
-with check (auth.uid() = user_id);
+do $$
+begin
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public'
+      and tablename = 'user_profiles'
+      and policyname = 'user_profiles_owner_only'
+  ) then
+    create policy "user_profiles_owner_only"
+    on public.user_profiles
+    for all
+    using (auth.uid() = user_id)
+    with check (auth.uid() = user_id);
+  end if;
+end;
+$$;
 
-create policy "daily_progress_owner_only"
-on public.daily_progress
-for all
-using (auth.uid() = user_id)
-with check (auth.uid() = user_id);
+do $$
+begin
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public'
+      and tablename = 'daily_progress'
+      and policyname = 'daily_progress_owner_only'
+  ) then
+    create policy "daily_progress_owner_only"
+    on public.daily_progress
+    for all
+    using (auth.uid() = user_id)
+    with check (auth.uid() = user_id);
+  end if;
+end;
+$$;
 
-create policy "quiz_scores_owner_only"
-on public.quiz_scores
-for all
-using (auth.uid() = user_id)
-with check (auth.uid() = user_id);
+do $$
+begin
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public'
+      and tablename = 'quiz_scores'
+      and policyname = 'quiz_scores_owner_only'
+  ) then
+    create policy "quiz_scores_owner_only"
+    on public.quiz_scores
+    for all
+    using (auth.uid() = user_id)
+    with check (auth.uid() = user_id);
+  end if;
+end;
+$$;
 
-create policy "project_submissions_owner_only"
-on public.project_submissions
-for all
-using (auth.uid() = user_id)
-with check (auth.uid() = user_id);
+do $$
+begin
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public'
+      and tablename = 'project_submissions'
+      and policyname = 'project_submissions_owner_only'
+  ) then
+    create policy "project_submissions_owner_only"
+    on public.project_submissions
+    for all
+    using (auth.uid() = user_id)
+    with check (auth.uid() = user_id);
+  end if;
+end;
+$$;
 
-create policy "revision_logs_owner_only"
-on public.revision_logs
-for all
-using (auth.uid() = user_id)
-with check (auth.uid() = user_id);
+do $$
+begin
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public'
+      and tablename = 'revision_logs'
+      and policyname = 'revision_logs_owner_only'
+  ) then
+    create policy "revision_logs_owner_only"
+    on public.revision_logs
+    for all
+    using (auth.uid() = user_id)
+    with check (auth.uid() = user_id);
+  end if;
+end;
+$$;

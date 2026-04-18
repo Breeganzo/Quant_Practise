@@ -24,6 +24,22 @@ This guide shows exactly where to find your Supabase URL and key, how to run the
 6. Click Run.
 7. Confirm tables and policies are created (look for no errors in output).
 
+Important safety note:
+
+- The current schema is non-destructive and idempotent.
+- It does not drop tables or user data.
+- It is safe to re-run if setup is interrupted.
+
+Preflight check before pasting full schema:
+
+1. Run this in SQL Editor first:
+
+```sql
+select now();
+```
+
+2. If this simple query fails with a network error, fix connectivity first (see troubleshooting section below) and then run the full schema.
+
 ## 3) Enable Email/Password Auth
 
 1. In Supabase, go to Authentication.
@@ -95,6 +111,23 @@ In your GitHub repository:
    automatically when connectivity returns.
 
 ## 9) Quick Troubleshooting
+
+- Error in SQL Editor: Failed to fetch (api.supabase.com)
+   - This is usually browser/network related, not SQL syntax.
+   - Fix sequence:
+      1. Hard refresh the Supabase tab.
+      2. Sign out of Supabase, then sign in again.
+      3. Open Supabase in an incognito/private window.
+      4. Disable ad blockers/privacy extensions for both `supabase.com` and `api.supabase.com`.
+      5. Disable VPN/proxy temporarily, or try a different network (for example mobile hotspot).
+      6. Run `select now();` in SQL Editor.
+      7. If it succeeds, run full `supabase/schema.sql` again.
+   - If it still fails, wait 2-5 minutes and retry (temporary service/CDN issues can happen).
+
+- SQL Editor warns about destructive code
+   - Use the latest repository version of `supabase/schema.sql`.
+   - The current script is non-destructive and safe to re-run.
+   - If you still see warning text, inspect for old pasted content and clear editor before re-pasting.
 
 - Error: Invalid API key
   - Confirm you used anon public key, not service_role.
