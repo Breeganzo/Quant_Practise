@@ -1,0 +1,35 @@
+[project]
+name = "quant-learning-roadmap"
+version = "0.1.0"
+description = "24-week quant trading, ML, and finance learning system"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "ipykernel>=6.29.5,<7",
+  "jupyterlab>=4.2.6",
+  "markdown>=3.7",
+  "matplotlib>=3.10.1",
+  "nbclient>=0.10.2",
+  "nbconvert>=7.16.6",
+  "numpy>=2.2.4",
+  "pandas>=2.2.3",
+  "pandas-datareader>=0.10.0",
+  "plotly>=6.0.1",
+  "reportlab>=4.2.5",
+  "rich>=13.9.4",
+  "scikit-learn>=1.6.1",
+  "scipy>=1.15.2",
+  "seaborn>=0.13.2",
+  "statsmodels>=0.14.4",
+  "streamlit>=1.44.1",
+  "yfinance>=0.2.55"
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

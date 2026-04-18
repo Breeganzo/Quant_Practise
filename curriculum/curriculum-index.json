@@ -1,0 +1,1372 @@
+{
+  "weeks": [
+    {
+      "week": 1,
+      "id": "week-01",
+      "theme": "Python setup, math refresh, and market basics",
+      "objective": "Rebuild core quant workflow habits and foundational finance vocabulary.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Environment reproducibility and data loading",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-01/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Algebraic transformations for returns",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-01/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Calculus intuition for optimization",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-01/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Market structure and asset classes",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-01/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Risk and performance metrics",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-01/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-01/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-01/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "id": "week-02",
+      "theme": "Probability and statistics for market data",
+      "objective": "Strengthen statistical reasoning needed for quant inference and model validation.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Random variables and key distributions",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-02/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Expectation, variance, and covariance",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-02/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Sampling and estimation",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-02/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Confidence intervals and hypothesis testing",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-02/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Statistical communication for finance decisions",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-02/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-02/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-02/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "id": "week-03",
+      "theme": "Linear algebra, optimization, and data engineering",
+      "objective": "Build matrix and optimization intuition while strengthening practical data handling skills.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Vectors, matrices, and transformations",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-03/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Eigenvalues, eigenvectors, and PCA intuition",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-03/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Optimization fundamentals",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-03/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Pandas data engineering workflow",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-03/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "SQL basics for quant datasets",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-03/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-03/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-03/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "id": "week-04",
+      "theme": "Return/risk analytics and exploratory capstone",
+      "objective": "Integrate foundational math and data skills into a complete exploratory market analysis.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Return decomposition and compounding effects",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-04/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Risk distribution diagnostics",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-04/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Correlation structure and diversification",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-04/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Exploratory visualization for strategy intuition",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-04/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Capstone design and reporting",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-04/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-04/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-04/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "id": "week-05",
+      "theme": "Supervised ML I: regression and classification",
+      "objective": "Rebuild core supervised learning intuition with finance-aware validation discipline.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Supervised learning setup and leakage controls",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-05/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Linear regression baselines",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-05/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Logistic regression for directional signals",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-05/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Model evaluation metrics",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-05/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Regularization and generalization",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-05/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-05/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-05/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "id": "week-06",
+      "theme": "Supervised ML II: trees, ensembles, and diagnostics",
+      "objective": "Advance supervised modeling with non-linear learners and robust model diagnostics.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Decision trees and feature interactions",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-06/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Random forests",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-06/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Gradient boosting intuition",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-06/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Feature engineering and selection",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-06/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Model diagnostics and monitoring",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-06/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-06/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-06/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "id": "week-07",
+      "theme": "Unsupervised learning and market regimes",
+      "objective": "Use unsupervised methods to detect latent structure and regime behavior in financial data.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Unsupervised problem framing",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-07/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "K-means and hierarchical clustering",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-07/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "PCA for regime and factor hints",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-07/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Anomaly detection basics",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-07/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Regime interpretation and actionability",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-07/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-07/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-07/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "id": "week-08",
+      "theme": "ML pipeline capstone and robustness",
+      "objective": "Integrate supervised and unsupervised components into a robust research pipeline.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Pipeline architecture and feature store design",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-08/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Temporal cross-validation and walk-forward tests",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-08/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Thresholding and decision rules",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-08/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Explainability and model governance",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-08/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Capstone packaging and reproducibility",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-08/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-08/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-08/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "id": "week-09",
+      "theme": "Time-series foundations and stationarity",
+      "objective": "Build practical time-series intuition for forecasting and diagnostic workflows.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Stationarity and transformations",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-09/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Autocorrelation and partial autocorrelation",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-09/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "AR, MA, and ARMA intuition",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-09/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "ARIMA workflow",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-09/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Forecast evaluation and communication",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-09/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-09/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-09/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "id": "week-10",
+      "theme": "Volatility modeling and regime shifts",
+      "objective": "Understand volatility dynamics and regime-change handling for risk-aware strategies.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Volatility stylized facts",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-10/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "EWMA volatility estimation",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-10/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "GARCH intuition",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-10/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Regime detection and change points",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-10/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Volatility-aware decisioning",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-10/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-10/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-10/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "id": "week-11",
+      "theme": "Backtesting architecture and implementation realism",
+      "objective": "Design backtests that avoid common biases and include realistic costs and constraints.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Backtest design patterns",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-11/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Data and look-ahead bias controls",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-11/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Transaction costs and slippage",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-11/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Position sizing and risk constraints",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-11/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Performance attribution and diagnostics",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-11/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-11/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-11/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "id": "week-12",
+      "theme": "Momentum vs mean reversion strategy capstone",
+      "objective": "Evaluate two classic strategy families under unified, realistic testing conditions.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Momentum strategy design",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-12/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Mean reversion strategy design",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-12/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Unified backtest comparison",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-12/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Robustness and sensitivity analysis",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-12/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Capstone narrative and decision",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-12/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-12/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-12/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "id": "week-13",
+      "theme": "Portfolio construction and optimization",
+      "objective": "Transition from single-strategy analysis to portfolio-level construction and risk allocation.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Portfolio objective design",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-13/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Mean-variance optimization",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-13/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Risk parity and equal-risk contribution",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-13/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Covariance robustness techniques",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-13/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Portfolio monitoring and rebalance policy",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-13/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-13/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-13/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 14,
+      "id": "week-14",
+      "theme": "Fixed income basics for quant workflows",
+      "objective": "Develop working fixed-income intuition for pricing, curve dynamics, and interest-rate risk.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Bond cashflows and pricing mechanics",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-14/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Yield curve structure",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-14/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Duration and convexity",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-14/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Rate-risk scenario analysis",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-14/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Fixed-income portfolio interpretation",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-14/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-14/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-14/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 15,
+      "id": "week-15",
+      "theme": "Derivatives and options basics",
+      "objective": "Build options intuition for payoffs, Greeks, and hedging workflows.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Option payoff structure",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-15/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Greeks intuition",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-15/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Volatility surface basics",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-15/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Hedging workflow basics",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-15/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Options strategy framing",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-15/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-15/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-15/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "id": "week-16",
+      "theme": "Risk engine capstone (VaR/CVaR and stress)",
+      "objective": "Integrate market, model, and scenario risk into a coherent risk engine workflow.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Risk framework architecture",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-16/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "VaR approaches",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-16/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "CVaR and tail focus",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-16/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Stress testing framework",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-16/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Risk governance reporting",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-16/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-16/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-16/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 17,
+      "id": "week-17",
+      "theme": "Factor models and cross-sectional alpha",
+      "objective": "Develop cross-sectional signal research skills using factor-style workflows.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Factor investing framework",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-17/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Cross-sectional regressions",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-17/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Information coefficient and decay",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-17/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Portfolio construction for factors",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-17/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Factor robustness",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-17/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-17/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-17/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 18,
+      "id": "week-18",
+      "theme": "Statistical arbitrage intuition",
+      "objective": "Learn stat-arb foundations including spreads, cointegration, and execution-aware controls.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Stat-arb problem framing",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-18/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Cointegration basics",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-18/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Signal generation and execution rules",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-18/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Backtest and cost-aware evaluation",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-18/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Failure modes and safeguards",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-18/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-18/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-18/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 19,
+      "id": "week-19",
+      "theme": "Agentic AI for quant research",
+      "objective": "Use agentic workflows to accelerate research while enforcing guardrails for reliability.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Agentic workflow design for research",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-19/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Research summarization and retrieval",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-19/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Feature idea generation and validation",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-19/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Code review and experiment tracking agents",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-19/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Guardrails and risk management for AI use",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-19/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-19/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-19/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 20,
+      "id": "week-20",
+      "theme": "Execution, microstructure, and multi-strategy blend",
+      "objective": "Incorporate execution realism and microstructure awareness into a blended strategy portfolio.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Market microstructure essentials",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-20/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Execution cost modeling",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-20/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Strategy blending and diversification",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-20/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Rebalancing and execution scheduling",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-20/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Capstone assembly and governance",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-20/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-20/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-20/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 21,
+      "id": "week-21",
+      "theme": "Admissions package development",
+      "objective": "Convert technical progress into a competitive, scholarship-focused application package.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Program targeting and fit matrix",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-21/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Statement of purpose architecture",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-21/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "CV and project storytelling",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-21/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Recommendation and supporting documents",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-21/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Scholarship optimization workflow",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-21/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-21/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-21/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 22,
+      "id": "week-22",
+      "theme": "Quant interview prep I",
+      "objective": "Build speed and accuracy for core quantitative interview domains.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Probability drill framework",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-22/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Statistics and estimation interview drills",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-22/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Python coding speed drills",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-22/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "SQL and data manipulation interview drills",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-22/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Mock round synthesis",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-22/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-22/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-22/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 23,
+      "id": "week-23",
+      "theme": "Quant interview prep II and strats communication",
+      "objective": "Sharpen front-office communication and strategy discussion readiness.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Market intuition drills",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-23/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "Trade idea structuring",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-23/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Risk-first communication",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-23/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Behavioral and fit interview prep",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-23/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Final mock panel",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-23/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-23/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-23/day-07.md"
+        }
+      ]
+    },
+    {
+      "week": 24,
+      "id": "week-24",
+      "theme": "Final integration and launch-ready portfolio",
+      "objective": "Integrate all learning outputs into a final capstone dossier ready for applications and interviews.",
+      "days": [
+        {
+          "day": 1,
+          "title": "Portfolio curation and selection",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-24/day-01.md"
+        },
+        {
+          "day": 2,
+          "title": "End-to-end reproducibility pass",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-24/day-02.md"
+        },
+        {
+          "day": 3,
+          "title": "Final capstone integration",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-24/day-03.md"
+        },
+        {
+          "day": 4,
+          "title": "Presentation polishing",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-24/day-04.md"
+        },
+        {
+          "day": 5,
+          "title": "Launch checklist and next-90-day roadmap",
+          "durationHours": 4,
+          "type": "lesson",
+          "lessonPath": "content/week-24/day-05.md"
+        },
+        {
+          "day": 6,
+          "title": "Revision Sprint",
+          "durationHours": 2,
+          "type": "revision",
+          "lessonPath": "content/week-24/day-06.md"
+        },
+        {
+          "day": 7,
+          "title": "Portfolio Project",
+          "durationHours": 2,
+          "type": "project",
+          "lessonPath": "content/week-24/day-07.md"
+        }
+      ]
+    }
+  ]
+}

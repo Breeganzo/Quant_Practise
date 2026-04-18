@@ -1,0 +1,279 @@
+:root {
+  --bg: #f4f4ef;
+  --panel: #ffffff;
+  --ink: #1f2933;
+  --muted: #52606d;
+  --accent: #0b6bcb;
+  --accent-soft: #dceeff;
+  --ok: #0f9d58;
+  --warn-bg: #fff7db;
+  --warn-ink: #8a5b00;
+  --border: #d9e2ec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #fdf6e3, var(--bg));
+  color: var(--ink);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.top-header h1 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.top-header p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+.warning {
+  border-left: 6px solid #f9bf45;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+}
+
+.auth-card {
+  max-width: 460px;
+}
+
+.auth-form {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.auth-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+button.secondary,
+.secondary {
+  background: #334e68;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.status {
+  margin-top: 0.65rem;
+  font-size: 0.9rem;
+}
+
+.status.error {
+  color: #a61b29;
+}
+
+.status.ok {
+  color: var(--ok);
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+
+.week-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.week-card p {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+.week-progress {
+  margin: 0.8rem 0;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background: #e7edf3;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1c7ed6, #00a6a6);
+}
+
+.day-links {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.day-link {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.day-link.complete {
+  border-color: #9dd9b5;
+  background: #eefaf2;
+  color: #1f7a3f;
+}
+
+.day-link.pending {
+  background: #fafbfc;
+  color: var(--ink);
+}
+
+.lesson-layout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.75fr 1fr;
+}
+
+.lesson-main {
+  min-height: 60vh;
+}
+
+.lesson-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.lesson-header h2 {
+  margin: 0;
+}
+
+.lesson-header p {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+
+.secondary-link {
+  align-self: flex-start;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  color: var(--ink);
+}
+
+.lesson-side {
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.checkbox-row input {
+  width: auto;
+}
+
+.resource-links {
+  display: grid;
+  gap: 0.4rem;
+}
+
+@media (max-width: 980px) {
+  .lesson-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-side {
+    position: static;
+  }
+}

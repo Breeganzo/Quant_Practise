@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment and uv
+.venv/
+
+# Node/Vite
+web/node_modules/
+web/dist/
+web/.env
+web/.env.local
+web/.env.*.local
+
+# Notebooks and outputs
+.ipynb_checkpoints/
+exports/
+*.nbconvert.ipynb
+
+# Data artifacts
+data/raw/
+data/processed/
+
+# OS/editor
+.DS_Store
+.vscode/
