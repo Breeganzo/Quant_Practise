@@ -6,13 +6,13 @@ Advance supervised modeling with non-linear learners and robust model diagnostic
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Decision trees and feature interactions | 4h |
-| Day 02 | Random forests | 4h |
-| Day 03 | Gradient boosting intuition | 4h |
-| Day 04 | Feature engineering and selection | 4h |
-| Day 05 | Model diagnostics and monitoring | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Decision trees and feature interactions | 6-10h |
+| Day 02 | Random forests | 6-10h |
+| Day 03 | Gradient boosting intuition | 6-10h |
+| Day 04 | Feature engineering and selection | 6-10h |
+| Day 05 | Model diagnostics and monitoring | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Ensemble model comparison

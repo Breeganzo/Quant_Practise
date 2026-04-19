@@ -6,13 +6,13 @@ Build matrix and optimization intuition while strengthening practical data handl
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Vectors, matrices, and transformations | 4h |
-| Day 02 | Eigenvalues, eigenvectors, and PCA intuition | 4h |
-| Day 03 | Optimization fundamentals | 4h |
-| Day 04 | Pandas data engineering workflow | 4h |
-| Day 05 | SQL basics for quant datasets | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Vectors, matrices, and transformations | 6-10h |
+| Day 02 | Eigenvalues, eigenvectors, and PCA intuition | 6-10h |
+| Day 03 | Optimization fundamentals | 6-10h |
+| Day 04 | Pandas data engineering workflow | 6-10h |
+| Day 05 | SQL basics for quant datasets | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Market data pipeline prototype

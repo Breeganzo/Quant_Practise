@@ -9,7 +9,7 @@ import remarkMath from "remark-math";
 import "katex/dist/katex.min.css";
 
 import { loadLessonMarkdown } from "../lib/content";
-import { withBase } from "../lib/path";
+import { githubBlobUrl, githubDevUrl, withBase } from "../lib/path";
 import type { CurriculumIndex, DailyProgress, ProgressMap } from "../types";
 
 interface DayDetailProps {
@@ -97,6 +97,14 @@ export default function DayDetail({
     day.notebookPath ??
     `notebooks/week-${weekNo.toString().padStart(2, "0")}/day-${dayNo.toString().padStart(2, "0")}-learning.ipynb`;
   const webDayNotebookPath = dayNotebookPath;
+  const weekId = `week-${weekNo.toString().padStart(2, "0")}`;
+  const dayId = `day-${dayNo.toString().padStart(2, "0")}`;
+  const sectionPdfBasePath = `pdf/sections/${weekId}`;
+  const readingPdfPath = `${sectionPdfBasePath}/${dayId}-reading.pdf`;
+  const quizPdfPath = `${sectionPdfBasePath}/${dayId}-quiz.pdf`;
+  const interviewPdfPath = `${sectionPdfBasePath}/${dayId}-interview.pdf`;
+  const notebookGithubPath = githubBlobUrl(dayNotebookPath);
+  const notebookVsCodePath = githubDevUrl(dayNotebookPath);
   const continuity = day.continuity;
   const previousRoute = routeFromLessonPath(continuity?.previousLessonPath);
   const nextRoute = routeFromLessonPath(continuity?.nextLessonPath);
@@ -169,18 +177,75 @@ export default function DayDetail({
 
         <section className="daily-actions">
           <h3>Daily Study Actions</h3>
-          <a className="action-link" href="#lesson-content">
-            Read Daily Content
-          </a>
-          <a className="action-link" href="#daily-quiz-realistic-interview-style">
-            Open Daily Quiz
-          </a>
-          <a className="action-link" href="#interview-drill">
-            Open Interview Drill
-          </a>
-          <a className="action-link" href={withBase(webDayNotebookPath)} target="_blank" rel="noreferrer">
-            Open Daily Notebook
-          </a>
+
+          <div className="action-menu">
+            <button type="button" className="action-trigger" aria-haspopup="true">
+              Daily Reading
+            </button>
+            <div className="action-menu-panel" role="menu" aria-label="Daily Reading Actions">
+              <a className="action-menu-item" href="#lesson-content">
+                Read here
+              </a>
+              <a
+                className="action-menu-item"
+                href={withBase(readingPdfPath)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open PDF
+              </a>
+            </div>
+          </div>
+
+          <div className="action-menu">
+            <button type="button" className="action-trigger" aria-haspopup="true">
+              Daily Quiz
+            </button>
+            <div className="action-menu-panel" role="menu" aria-label="Daily Quiz Actions">
+              <a className="action-menu-item" href="#daily-quiz-realistic-interview-style">
+                Read here
+              </a>
+              <a className="action-menu-item" href={withBase(quizPdfPath)} target="_blank" rel="noreferrer">
+                Open PDF
+              </a>
+            </div>
+          </div>
+
+          <div className="action-menu">
+            <button type="button" className="action-trigger" aria-haspopup="true">
+              Interview Drill
+            </button>
+            <div className="action-menu-panel" role="menu" aria-label="Interview Drill Actions">
+              <a className="action-menu-item" href="#interview-drill">
+                Read here
+              </a>
+              <a
+                className="action-menu-item"
+                href={withBase(interviewPdfPath)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open PDF
+              </a>
+            </div>
+          </div>
+
+          <div className="action-menu">
+            <button type="button" className="action-trigger" aria-haspopup="true">
+              Open Notebook
+            </button>
+            <div className="action-menu-panel" role="menu" aria-label="Notebook Open Actions">
+              <a className="action-menu-item" href={withBase(webDayNotebookPath)} target="_blank" rel="noreferrer">
+                Open in app
+              </a>
+              <a className="action-menu-item" href={notebookGithubPath} target="_blank" rel="noreferrer">
+                Open on GitHub
+              </a>
+              <a className="action-menu-item" href={notebookVsCodePath} target="_blank" rel="noreferrer">
+                Open in VS Code
+              </a>
+            </div>
+          </div>
         </section>
 
         <h3>Progress Controls</h3>

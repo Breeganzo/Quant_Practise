@@ -3,9 +3,9 @@
 Start date: 20 April 2026
 
 ## Time Commitment
-- Monday to Friday: 4 hours/day
-- Saturday: 2 hours revision
-- Sunday: 2 hours portfolio project
+- Daily model (Day 1-7): 6-10 hours/day
+- Required minimum: 6 hours/day (core + required extension)
+- Optional deep work: up to 10 hours/day for advanced practice and interview prep
 
 ## Weekly Themes
 | Week | Theme | Outcome |

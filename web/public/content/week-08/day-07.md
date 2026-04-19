@@ -1,7 +1,8 @@
 # Week 08 Day 07: Portfolio Project
 
 ## Study Duration
-- Planned effort: 2 hours
+- Planned effort: 6-10 hours/day
+- Required minimum: 6 hours for implementation, validation, and communication drills.
 
 ## Continuity and Handoff
 - Previous checkpoint: Week 08 Day 06: Revision Sprint
@@ -33,6 +34,11 @@ Build a full signal-generation pipeline with robust validation and governance ar
 - Threshold efficiency
 - Reproducibility
 - Governance completeness
+
+## Execution Standard
+- [ ] Notebook/script runs from clean start without hidden state
+- [ ] Outputs include at least one diagnostic table and one chart
+- [ ] One explicit risk guardrail and fallback action are documented
 
 ## Deliverables
 - Notebook or script output

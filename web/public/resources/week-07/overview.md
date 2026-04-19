@@ -6,13 +6,13 @@ Use unsupervised methods to detect latent structure and regime behavior in finan
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Unsupervised problem framing | 4h |
-| Day 02 | K-means and hierarchical clustering | 4h |
-| Day 03 | PCA for regime and factor hints | 4h |
-| Day 04 | Anomaly detection basics | 4h |
-| Day 05 | Regime interpretation and actionability | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Unsupervised problem framing | 6-10h |
+| Day 02 | K-means and hierarchical clustering | 6-10h |
+| Day 03 | PCA for regime and factor hints | 6-10h |
+| Day 04 | Anomaly detection basics | 6-10h |
+| Day 05 | Regime interpretation and actionability | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Regime clustering notebook

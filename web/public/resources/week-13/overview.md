@@ -6,13 +6,13 @@ Transition from single-strategy analysis to portfolio-level construction and ris
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Portfolio objective design | 4h |
-| Day 02 | Mean-variance optimization | 4h |
-| Day 03 | Risk parity and equal-risk contribution | 4h |
-| Day 04 | Covariance robustness techniques | 4h |
-| Day 05 | Portfolio monitoring and rebalance policy | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Portfolio objective design | 6-10h |
+| Day 02 | Mean-variance optimization | 6-10h |
+| Day 03 | Risk parity and equal-risk contribution | 6-10h |
+| Day 04 | Covariance robustness techniques | 6-10h |
+| Day 05 | Portfolio monitoring and rebalance policy | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Portfolio allocator comparison

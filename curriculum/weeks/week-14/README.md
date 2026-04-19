@@ -6,13 +6,13 @@ Develop working fixed-income intuition for pricing, curve dynamics, and interest
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Bond cashflows and pricing mechanics | 4h |
-| Day 02 | Yield curve structure | 4h |
-| Day 03 | Duration and convexity | 4h |
-| Day 04 | Rate-risk scenario analysis | 4h |
-| Day 05 | Fixed-income portfolio interpretation | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Bond cashflows and pricing mechanics | 6-10h |
+| Day 02 | Yield curve structure | 6-10h |
+| Day 03 | Duration and convexity | 6-10h |
+| Day 04 | Rate-risk scenario analysis | 6-10h |
+| Day 05 | Fixed-income portfolio interpretation | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Bond sensitivity analysis

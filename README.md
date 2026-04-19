@@ -4,9 +4,9 @@ This repository contains a complete 6-month quant roadmap with day-level lessons
 
 Schedule design:
 
-- Weekdays (Day 1-5): 4-hour focused learning blocks
-- Weekend Day 6: 2-hour revision and spaced recall
-- Weekend Day 7: 2-hour mini-project and reflection
+- Daily model (Day 1-7): 6-10 hours/day
+- Required minimum: 6 hours/day (core learning + required extension)
+- Optional deep work: up to 10 hours/day for advanced practice and interview prep
 
 ## What Is Included
 
@@ -43,6 +43,28 @@ Optional validation:
   - `uv run python scripts/run_notebooks.py --all`
 - Export any week to PDF/HTML:
   - `uv run python scripts/export_assets.py --week week-01`
+
+Pilot workflow (weeks 01-04) for realistic content + section PDFs:
+
+- Regenerate curriculum content:
+   - `uv run python scripts/generate_full_curriculum.py`
+- Regenerate notebooks for pilot weeks:
+   - `uv run python scripts/generate_all_week_notebooks.py --week week-01`
+   - `uv run python scripts/generate_all_week_notebooks.py --week week-02`
+   - `uv run python scripts/generate_all_week_notebooks.py --week week-03`
+   - `uv run python scripts/generate_all_week_notebooks.py --week week-04`
+- Execute pilot notebooks:
+   - `uv run python scripts/run_notebooks.py --week week-01`
+   - `uv run python scripts/run_notebooks.py --week week-02`
+   - `uv run python scripts/run_notebooks.py --week week-03`
+   - `uv run python scripts/run_notebooks.py --week week-04`
+- Export pilot PDFs and HTML:
+   - `uv run python scripts/export_assets.py --week week-01`
+   - `uv run python scripts/export_assets.py --week week-02`
+   - `uv run python scripts/export_assets.py --week week-03`
+   - `uv run python scripts/export_assets.py --week week-04`
+- Sync web assets:
+   - `uv run python scripts/sync_web_assets.py`
 
 ## 3) Supabase Setup (SQL Persistence)
 
@@ -86,7 +108,11 @@ The tracker provides:
 - week/day navigation
 - lesson rendering from markdown
 - completion + notes persistence in PostgreSQL
-- daily day page actions: Read Daily Content, Open Daily Quiz, Open Interview Drill, Open Daily Notebook
+- daily day page actions with hover/focus menus:
+   - Daily Reading -> Read here | Open PDF
+   - Daily Quiz -> Read here | Open PDF
+   - Interview Drill -> Read here | Open PDF
+   - Open Notebook -> Open in app | Open on GitHub | Open in VS Code
 - KaTeX-rendered formulas and properly formatted symbol tables
 
 ## 5) Deploy to GitHub Pages

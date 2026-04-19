@@ -6,13 +6,13 @@ Understand volatility dynamics and regime-change handling for risk-aware strateg
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Volatility stylized facts | 4h |
-| Day 02 | EWMA volatility estimation | 4h |
-| Day 03 | GARCH intuition | 4h |
-| Day 04 | Regime detection and change points | 4h |
-| Day 05 | Volatility-aware decisioning | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Volatility stylized facts | 6-10h |
+| Day 02 | EWMA volatility estimation | 6-10h |
+| Day 03 | GARCH intuition | 6-10h |
+| Day 04 | Regime detection and change points | 6-10h |
+| Day 05 | Volatility-aware decisioning | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Volatility regime labeling project

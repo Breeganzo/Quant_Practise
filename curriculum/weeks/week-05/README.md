@@ -6,13 +6,13 @@ Rebuild core supervised learning intuition with finance-aware validation discipl
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Supervised learning setup and leakage controls | 4h |
-| Day 02 | Linear regression baselines | 4h |
-| Day 03 | Logistic regression for directional signals | 4h |
-| Day 04 | Model evaluation metrics | 4h |
-| Day 05 | Regularization and generalization | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Supervised learning setup and leakage controls | 6-10h |
+| Day 02 | Linear regression baselines | 6-10h |
+| Day 03 | Logistic regression for directional signals | 6-10h |
+| Day 04 | Model evaluation metrics | 6-10h |
+| Day 05 | Regularization and generalization | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Directional baseline model

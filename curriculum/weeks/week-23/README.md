@@ -6,13 +6,13 @@ Sharpen front-office communication and strategy discussion readiness.
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Market intuition drills | 4h |
-| Day 02 | Trade idea structuring | 4h |
-| Day 03 | Risk-first communication | 4h |
-| Day 04 | Behavioral and fit interview prep | 4h |
-| Day 05 | Final mock panel | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Market intuition drills | 6-10h |
+| Day 02 | Trade idea structuring | 6-10h |
+| Day 03 | Risk-first communication | 6-10h |
+| Day 04 | Behavioral and fit interview prep | 6-10h |
+| Day 05 | Final mock panel | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Strategy pitch deck

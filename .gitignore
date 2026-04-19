@@ -27,3 +27,8 @@ data/processed/
 # OS/editor
 .DS_Store
 .vscode/
+
+# Root Node artifacts
+node_modules/
+package-lock.json
+/package.json

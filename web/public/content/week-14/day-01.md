@@ -1,14 +1,18 @@
 # Week 14 Day 01: Bond cashflows and pricing mechanics
 
 ## Study Duration
-- Planned effort: 4 hours
+- Planned effort: 6-10 hours/day
+- Required minimum: 6 hours (core + required extension); optional deep work extends to 10 hours.
 
-## 5-Block Daily Structure
-- **Block 1 (45 min):** Reset notation (prices, returns, percentages, symbols, units).
-- **Block 2 (60 min):** Core formulas and compounding intuition with plain-language explanations.
-- **Block 3 (45 min):** Hand-calculated solved examples plus common traps.
-- **Block 4 (60 min):** Python/pandas implementation and output verification.
-- **Block 5 (30 min):** Practice questions, interview drill, and reflection.
+## 6-10 Hour Daily Structure
+- **Core Block 1 (45 min):** Reset notation (prices, returns, percentages, symbols, units).
+- **Core Block 2 (60 min):** Core formulas and compounding intuition with plain-language explanations.
+- **Core Block 3 (45 min):** Hand-calculated solved examples plus common traps.
+- **Core Block 4 (60 min):** Python/pandas implementation and output verification.
+- **Core Block 5 (30 min):** Practice questions, interview drill, and reflection.
+- **Required Extension Block A (60 min):** Re-run the real trading example with one alternate ticker and one stress window.
+- **Required Extension Block B (60 min):** Restart kernel and rerun all coding cells end-to-end, then add one extra validation test.
+- **Optional Deep Work (0-4 hours):** Expand diagnostics, add edge-case tests, and improve interview-ready explanations.
 
 ## Why It Matters in Quant
 Develop working fixed-income intuition for pricing, curve dynamics, and interest-rate risk.
@@ -71,13 +75,15 @@ $$
 - Instruments: SPY, TLT, GLD, HYG
 - Macro overlay (FRED): DGS10, T10YIE
 - Suggested window: 2018-01-01 to 2026-03-31
+- Stress windows to inspect: 2020-02 to 2020-04, 2022-01 to 2022-10
+- Scenario context: cross-asset drawdown with correlation spikes
 - Day objective: Price a fixed-coupon bond across multiple yield assumptions.
 
 Execution narrative:
 1. Pull market data from Yahoo Finance and align calendars.
-2. Pull the listed FRED series and join strictly by release-aware timestamps.
-3. Compute today's formulas and compare behavior in stress sub-periods.
-4. Translate quantitative results into one explicit trading decision and one risk guardrail.
+2. Pull listed FRED series and join strictly by release-aware timestamps (no look-ahead).
+3. Compute today's formulas and compare calm vs stress-window behavior.
+4. Translate outputs into one explicit trade action and one hard risk guardrail.
 5. Validate that the decision is consistent with topic 'Bond cashflows and pricing mechanics'.
 
 ## Step-by-Step Solved Problems
@@ -112,18 +118,6 @@ Final answer: Approximate bond price change = -1.45%.
 Common trap: Ignoring covariance and focusing only on expected return, which underestimates portfolio risk.
 Interpretation: Write one sentence describing how this result would change a real trading decision.
 
-### Solved Problem 4: Position sizing with volatility guardrail
-Given:
-- Strategy annualized volatility estimate is 0.189.
-- Portfolio risk budget target is 0.20.
-- Position multiplier rule: scale = target_vol / strategy_vol, clipped to [0.20, 1.00].
-Solution:
-1. Compute raw scale = target_vol / strategy_vol.
-2. raw_scale = 0.20/0.189 = 1.0582.
-3. clipped_scale = min(1.00, max(0.20, 1.0582)) = 1.0000.
-Final answer: Position multiplier = 1.0000.
-Common trap: Ignoring volatility regime shifts and applying static position size in stressed markets.
-Interpretation: State how this guardrail changes gross exposure before deployment.
 ## Coding Walkthrough
 1. Build an explicit data-ingestion layer with timestamp and schema checks.
 2. Implement today's objective as reusable functions: Implement a simple bond pricer for coupon bonds.
@@ -149,45 +143,38 @@ rebalance_flag = should_rebalance(weights, target_weights, threshold=0.03)
 5. Record one interview-ready explanation in less than 60 seconds.
 
 ### Daily Quiz (Realistic Interview Style)
-1. PM interview question (Week 14 Day 01): Explain Portfolio Return and define every symbol clearly.
-   - Model answer: "I use Portfolio Return to convert raw prices into a decision-ready metric. The formula is $\mu_p=w^\top\mu$. I define each symbol before computing it, verify units, and then interpret the output as a risk-adjusted trading input rather than a standalone signal."
-2. Risk manager question: Using one real ticker from this lesson, what risk guardrail would you enforce?
-   - Model answer: "I would run the metric on SPY and one higher-volatility asset, then enforce a volatility or drawdown cap. If the metric degrades in stressed regimes, I reduce gross exposure and require confirmation from a second risk check."
+1. PM interview question (Week 14 Day 01): Explain Portfolio Return and define every symbol clearly for a cross-asset drawdown week with correlation spikes.
+   - Model answer: "I use Portfolio Return as a decision bridge from market observations to position sizing. The formula is $\mu_p=w^\top\mu$. I define each symbol with units first, then compute one concrete value, and finally state what trade action changes because of the result in this regime."
+2. Risk manager question: Using one real ticker from this lesson, what hard guardrail would you enforce before live deployment?
+   - Model answer: "I would run the workflow on SPY and a stress-sensitive peer, then force rebalance when risk-budget contribution of one sleeve exceeds 40%. If the guardrail triggers, I switch to paper-trade monitoring and block new risk until diagnostics re-pass."
 3. Production question: Why does 'Bond cashflows and pricing mechanics' matter in live trading systems?
-   - Model answer: "Bond cashflows and pricing mechanics matters because it links model logic to real execution constraints. In production, I need reproducible calculations, explicit guardrails, and decision rules that stay stable when regime conditions change."
+   - Model answer: "Bond cashflows and pricing mechanics matters because portfolio choices are constrained by covariance instability, transaction costs, and risk budgets. In production I need reproducible calculations, explicit control limits, and escalation rules that survive stress windows."
 
 Scoring rubric:
-- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and a production decision statement.
+- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and one production escalation rule.
 
 ### Interview Drill
-- Prompt: "Walk me through Bond cashflows and pricing mechanics as if you are presenting to a PM who cares about risk-adjusted returns."
+- Prompt: "Walk me through Bond cashflows and pricing mechanics in an investment committee session after correlation breakdown."
 - What interviewers look for:
   1. Correct notation and units.
-  2. Ability to connect theory to a real trade decision.
+  2. Ability to connect theory to a real trade decision under constraints.
   3. Awareness of edge cases, costs, and failure modes.
+  4. Clear escalation rule when guardrails are breached.
 - Model answer framework:
   - Context: define business objective and market regime.
-  - Method: state formula and variables clearly.
-  - Decision: explain one actionable rule and one risk guardrail.
+  - Method: state formula, assumptions, and validation checks clearly.
+  - Decision: explain one actionable rule, one risk guardrail, and one fallback action.
 
-## 2-Hour Extension Track (Required)
-
-This section upgrades the day to a full 6-hour study model: 4-hour core lesson + 2-hour required extension.
-
-- **Extension Block A (45 min):** Real-market case expansion.
-  - Re-run today's workflow on one additional asset and one stress regime window.
-  - Document one regime-specific failure mode and one mitigation rule.
-- **Extension Block B (45 min):** Production-quality coding refinement.
-  - Add one assertion for data integrity and one assertion for risk limits.
-  - Save a short result table with assumptions, metric values, and decision rationale.
-- **Extension Block C (30 min):** Interview simulation and review.
-  - Deliver a 60-second PM pitch and a 60-second risk-manager response.
-  - Include one numeric example from Week 14 Day 01 to prove notation fluency.
+## Required Extension Track (2+ Hours)
+- Re-run today's notebook from a fresh kernel so outputs are reproducible without hidden state.
+- Add one additional risk guardrail and verify how it changes trade/no-trade decisions.
+- Document one failure mode, one mitigation, and one escalation rule for production use.
 
 Extension completion checks:
-- [ ] Stress-regime comparison completed
-- [ ] Production guardrail assertions added and passed
-- [ ] Interview simulation recorded with one numeric example
+- [ ] Notebook restarted and all coding cells rerun successfully
+- [ ] At least one extra validation/edge-case test added
+- [ ] Risk guardrail and fallback action documented
+
 ## Reflection Question
 How does reinvestment assumption affect interpretation of yield?
 
@@ -196,4 +183,5 @@ How does reinvestment assumption affect interpretation of yield?
 - [ ] Real trading example reproduced with data checks
 - [ ] Solved problems reviewed and understood
 - [ ] Coding walkthrough executed and verified
+- [ ] Full notebook rerun completed from clean kernel
 - [ ] Reflection logged in progress tracker

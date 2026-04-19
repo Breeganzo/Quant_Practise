@@ -6,13 +6,13 @@ Design backtests that avoid common biases and include realistic costs and constr
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Backtest design patterns | 4h |
-| Day 02 | Data and look-ahead bias controls | 4h |
-| Day 03 | Transaction costs and slippage | 4h |
-| Day 04 | Position sizing and risk constraints | 4h |
-| Day 05 | Performance attribution and diagnostics | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Backtest design patterns | 6-10h |
+| Day 02 | Data and look-ahead bias controls | 6-10h |
+| Day 03 | Transaction costs and slippage | 6-10h |
+| Day 04 | Position sizing and risk constraints | 6-10h |
+| Day 05 | Performance attribution and diagnostics | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Cost-aware backtest prototype

@@ -2118,18 +2118,39 @@ def real_trading_example(week_no: int, day_no: int, day: DayPlan) -> list[str]:
         "advanced": ("SPY, IWM, EFA, EEM", "DFF, BAMLH0A0HYM2"),
         "launch": ("SPY, QQQ, TLT", "VIXCLS, TEDRATE"),
     }
+    scenario_by_phase = {
+        "foundations": "inflation surprise and policy-rate repricing",
+        "ml": "post-earnings dispersion with elevated feature drift",
+        "time_series": "volatility clustering after macro shock",
+        "portfolio": "cross-asset drawdown with correlation spikes",
+        "advanced": "crowded-factor unwind and liquidity stress",
+        "launch": "live-paper trading under risk committee oversight",
+    }
+    stress_windows = {
+        "foundations": ["2020-02 to 2020-04", "2022-01 to 2022-10"],
+        "ml": ["2020-11 to 2021-03", "2022-06 to 2022-11"],
+        "time_series": ["2020-03 to 2020-06", "2022-09 to 2023-03"],
+        "portfolio": ["2020-02 to 2020-04", "2022-01 to 2022-10"],
+        "advanced": ["2020-03 to 2020-05", "2023-03 to 2023-06"],
+        "launch": ["2020-03 to 2020-04", "2022-09 to 2022-12"],
+    }
     tickers, fred = universe[phase]
+    windows = ", ".join(stress_windows[phase])
+    scenario = scenario_by_phase[phase]
+
     return [
         f"- Instruments: {tickers}",
         f"- Macro overlay (FRED): {fred}",
         "- Suggested window: 2018-01-01 to 2026-03-31",
+        f"- Stress windows to inspect: {windows}",
+        f"- Scenario context: {scenario}",
         f"- Day objective: {day.worked_example}",
         "",
         "Execution narrative:",
         "1. Pull market data from Yahoo Finance and align calendars.",
-        "2. Pull the listed FRED series and join strictly by release-aware timestamps.",
-        "3. Compute today's formulas and compare behavior in stress sub-periods.",
-        "4. Translate quantitative results into one explicit trading decision and one risk guardrail.",
+        "2. Pull listed FRED series and join strictly by release-aware timestamps (no look-ahead).",
+        "3. Compute today's formulas and compare calm vs stress-window behavior.",
+        "4. Translate outputs into one explicit trade action and one hard risk guardrail.",
         f"5. Validate that the decision is consistent with topic '{day.topic}'.",
     ]
 
@@ -2404,34 +2425,77 @@ def coding_walkthrough(week_no: int, day: DayPlan) -> list[str]:
 def daily_quiz_questions(week_no: int, day_no: int, day: DayPlan) -> list[str]:
     week_label = f"Week {week_no:02d} Day {day_no:02d}"
     formula_name, formula_latex, _ = formula_entries(week_no, day_no)[0]
+    phase = phase_for_week(week_no)
+
+    scenario_by_phase = {
+        "foundations": "an inflation surprise week with simultaneous equity and rate volatility",
+        "ml": "a post-earnings momentum regime where feature drift is elevated",
+        "time_series": "a volatility-clustering regime after a macro policy shock",
+        "portfolio": "a cross-asset drawdown week with correlation spikes",
+        "advanced": "a crowded-factor unwind with liquidity deterioration",
+        "launch": "a live-paper trading month with strict risk committee oversight",
+    }
+
+    risk_by_phase = {
+        "foundations": "cap gross exposure when rolling 20-day volatility exceeds backtest 90th percentile",
+        "ml": "freeze new model entries when calibration error worsens for 3 consecutive windows",
+        "time_series": "de-risk when realized volatility breaks above the model training regime",
+        "portfolio": "force rebalance when risk-budget contribution of one sleeve exceeds 40%",
+        "advanced": "throttle position sizing when estimated implementation shortfall rises above threshold",
+        "launch": "halt promotions when daily max drawdown breaches the approved loss budget",
+    }
+
+    production_by_phase = {
+        "foundations": "because reliable notation and units prevent silent compounding and scaling errors in production PnL reporting",
+        "ml": "because model decisions fail quickly without leakage controls, drift monitoring, and threshold governance",
+        "time_series": "because regime changes break naive stationarity assumptions and invalidate fixed-parameter forecasts",
+        "portfolio": "because portfolio choices are constrained by covariance instability, transaction costs, and risk budgets",
+        "advanced": "because signal quality is meaningless unless net-of-cost and capacity-aware in live execution",
+        "launch": "because deployment decisions must combine edge estimates with operational and risk controls",
+    }
+
+    scenario = scenario_by_phase[phase]
+    guardrail = risk_by_phase[phase]
+    production_reason = production_by_phase[phase]
+
     return [
-        f"1. PM interview question ({week_label}): Explain {formula_name} and define every symbol clearly.",
-        f"   - Model answer: \"I use {formula_name} to convert raw prices into a decision-ready metric. "
-        f"The formula is ${formula_latex}$. I define each symbol before computing it, verify units, and then interpret "
-        "the output as a risk-adjusted trading input rather than a standalone signal.\"",
-        "2. Risk manager question: Using one real ticker from this lesson, what risk guardrail would you enforce?",
-        "   - Model answer: \"I would run the metric on SPY and one higher-volatility asset, then enforce a volatility or drawdown cap. "
-        "If the metric degrades in stressed regimes, I reduce gross exposure and require confirmation from a second risk check.\"",
+        f"1. PM interview question ({week_label}): Explain {formula_name} and define every symbol clearly for {scenario}.",
+        f"   - Model answer: \"I use {formula_name} as a decision bridge from market observations to position sizing. "
+        f"The formula is ${formula_latex}$. I define each symbol with units first, then compute one concrete value, and finally state what trade action changes because of the result in this regime.\"",
+        "2. Risk manager question: Using one real ticker from this lesson, what hard guardrail would you enforce before live deployment?",
+        f"   - Model answer: \"I would run the workflow on SPY and a stress-sensitive peer, then {guardrail}. "
+        "If the guardrail triggers, I switch to paper-trade monitoring and block new risk until diagnostics re-pass.\"",
         f"3. Production question: Why does '{day.topic}' matter in live trading systems?",
-        f"   - Model answer: \"{day.topic} matters because it links model logic to real execution constraints. "
-        "In production, I need reproducible calculations, explicit guardrails, and decision rules that stay stable when regime conditions change.\"",
+        f"   - Model answer: \"{day.topic} matters {production_reason}. "
+        "In production I need reproducible calculations, explicit control limits, and escalation rules that survive stress windows.\"",
         "",
         "Scoring rubric:",
-        "- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and a production decision statement.",
+        "- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and one production escalation rule.",
     ]
 
 
-def interview_drill_prompt(day: DayPlan) -> list[str]:
+def interview_drill_prompt(week_no: int, day: DayPlan) -> list[str]:
+    phase = phase_for_week(week_no)
+    scenario_by_phase = {
+        "foundations": "a PM review after CPI surprise where benchmark drawdown accelerated",
+        "ml": "a model-risk review after prediction drift and weaker precision",
+        "time_series": "a risk meeting during volatility clustering after policy shock",
+        "portfolio": "an investment committee session after correlation breakdown",
+        "advanced": "an execution review with rising slippage and crowding risk",
+        "launch": "a launch readiness panel before promoting from paper-trade",
+    }
+    scenario = scenario_by_phase[phase]
     return [
-        f"- Prompt: \"Walk me through {day.topic} as if you are presenting to a PM who cares about risk-adjusted returns.\"",
+        f"- Prompt: \"Walk me through {day.topic} in {scenario}.\"",
         "- What interviewers look for:",
         "  1. Correct notation and units.",
-        "  2. Ability to connect theory to a real trade decision.",
+        "  2. Ability to connect theory to a real trade decision under constraints.",
         "  3. Awareness of edge cases, costs, and failure modes.",
+        "  4. Clear escalation rule when guardrails are breached.",
         "- Model answer framework:",
         "  - Context: define business objective and market regime.",
-        "  - Method: state formula and variables clearly.",
-        "  - Decision: explain one actionable rule and one risk guardrail.",
+        "  - Method: state formula, assumptions, and validation checks clearly.",
+        "  - Decision: explain one actionable rule, one risk guardrail, and one fallback action.",
     ]
 
 
@@ -2538,11 +2602,14 @@ def day_markdown(
         concepts_block.append("")
 
     hour_plan: list[str] = [
-        "- **Block 1 (45 min):** Reset notation (prices, returns, percentages, symbols, units).",
-        "- **Block 2 (60 min):** Core formulas and compounding intuition with plain-language explanations.",
-        "- **Block 3 (45 min):** Hand-calculated solved examples plus common traps.",
-        "- **Block 4 (60 min):** Python/pandas implementation and output verification.",
-        "- **Block 5 (30 min):** Practice questions, interview drill, and reflection.",
+        "- **Core Block 1 (45 min):** Reset notation (prices, returns, percentages, symbols, units).",
+        "- **Core Block 2 (60 min):** Core formulas and compounding intuition with plain-language explanations.",
+        "- **Core Block 3 (45 min):** Hand-calculated solved examples plus common traps.",
+        "- **Core Block 4 (60 min):** Python/pandas implementation and output verification.",
+        "- **Core Block 5 (30 min):** Practice questions, interview drill, and reflection.",
+        "- **Required Extension Block A (60 min):** Re-run the real trading example with one alternate ticker and one stress window.",
+        "- **Required Extension Block B (60 min):** Restart kernel and rerun all coding cells end-to-end, then add one extra validation test.",
+        "- **Optional Deep Work (0-4 hours):** Expand diagnostics, add edge-case tests, and improve interview-ready explanations.",
     ]
 
     practice: list[str] = [
@@ -2558,9 +2625,10 @@ def day_markdown(
             f"# Week {week_no:02d} Day {day_no:02d}: {day.topic}",
             "",
             "## Study Duration",
-            "- Planned effort: 4 hours",
+            "- Planned effort: 6-10 hours/day",
+            "- Required minimum: 6 hours (core + required extension); optional deep work extends to 10 hours.",
             "",
-            "## 5-Block Daily Structure",
+            "## 6-10 Hour Daily Structure",
             *hour_plan,
             "",
             "## Why It Matters in Quant",
@@ -2593,7 +2661,17 @@ def day_markdown(
             *daily_quiz_questions(week_no, day_no, day),
             "",
             "### Interview Drill",
-            *interview_drill_prompt(day),
+            *interview_drill_prompt(week_no, day),
+            "",
+            "## Required Extension Track (2+ Hours)",
+            "- Re-run today's notebook from a fresh kernel so outputs are reproducible without hidden state.",
+            "- Add one additional risk guardrail and verify how it changes trade/no-trade decisions.",
+            "- Document one failure mode, one mitigation, and one escalation rule for production use.",
+            "",
+            "Extension completion checks:",
+            "- [ ] Notebook restarted and all coding cells rerun successfully",
+            "- [ ] At least one extra validation/edge-case test added",
+            "- [ ] Risk guardrail and fallback action documented",
             "",
             "## Reflection Question",
             day.reflection,
@@ -2603,6 +2681,7 @@ def day_markdown(
             "- [ ] Real trading example reproduced with data checks",
             "- [ ] Solved problems reviewed and understood",
             "- [ ] Coding walkthrough executed and verified",
+            "- [ ] Full notebook rerun completed from clean kernel",
             "- [ ] Reflection logged in progress tracker",
         ]
     ) + "\n"
@@ -2614,15 +2693,17 @@ def revision_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | 
             f"# Week {week_no:02d} Day 06: Revision Sprint",
             "",
             "## Study Duration",
-            "- Planned effort: 2 hours",
+            "- Planned effort: 6-10 hours/day",
+            "- Required minimum: 6 hours across recall, rebuild, rerun, and retest blocks.",
             "",
             *continuity_section(continuity),
             "",
             "## Revision Plan",
-            "- 30 minutes: active recall of weekday concepts",
-            "- 40 minutes: rebuild one code workflow from memory",
-            "- 30 minutes: error log triage and retest plan",
-            "- 20 minutes: update progress tracker and notes",
+            "- 90 minutes: active recall of weekday concepts and manual formula rewrite.",
+            "- 90 minutes: rebuild one weekday code workflow from memory.",
+            "- 90 minutes: restart kernel and rerun at least two day notebooks end-to-end.",
+            "- 90 minutes: error-log triage, retest plan, and guardrail refinement.",
+            "- Optional 0-4 hours: deepen weak areas with extra interview drill and code hardening.",
             "",
             "## Focus Areas",
             *(f"- {item}" for item in week.revision_focus),
@@ -2630,6 +2711,7 @@ def revision_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | 
             "## Revision Output",
             "- [ ] Updated error log entries",
             "- [ ] Weak concepts re-tested",
+            "- [ ] Two notebooks rerun from fresh kernel",
             "- [ ] Next-week risk list prepared",
         ]
     ) + "\n"
@@ -2641,7 +2723,8 @@ def project_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | N
             f"# Week {week_no:02d} Day 07: Portfolio Project",
             "",
             "## Study Duration",
-            "- Planned effort: 2 hours",
+            "- Planned effort: 6-10 hours/day",
+            "- Required minimum: 6 hours for implementation, validation, and communication drills.",
             "",
             *continuity_section(continuity),
             "",
@@ -2659,6 +2742,11 @@ def project_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | N
             "## Evaluation Metrics",
             *(f"- {metric}" for metric in week.project_metrics),
             "",
+            "## Execution Standard",
+            "- [ ] Notebook/script runs from clean start without hidden state",
+            "- [ ] Outputs include at least one diagnostic table and one chart",
+            "- [ ] One explicit risk guardrail and fallback action are documented",
+            "",
             "## Deliverables",
             "- Notebook or script output",
             "- One-page summary memo",
@@ -2670,9 +2758,9 @@ def project_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | N
 def week_readme(week_no: int, week: WeekPlan) -> str:
     day_rows: list[str] = []
     for day_no, day in enumerate(week.weekday_days, start=1):
-        day_rows.append(f"| Day {day_no:02d} | {day.topic} | 4h |")
-    day_rows.append("| Day 06 | Revision Sprint | 2h |")
-    day_rows.append("| Day 07 | Portfolio Project | 2h |")
+        day_rows.append(f"| Day {day_no:02d} | {day.topic} | 6-10h |")
+    day_rows.append("| Day 06 | Revision Sprint | 6-10h |")
+    day_rows.append("| Day 07 | Portfolio Project | 6-10h |")
 
     return "\n".join(
         [
@@ -2828,9 +2916,9 @@ def roadmap_markdown(plans: list[WeekPlan]) -> str:
         "Start date: 20 April 2026",
         "",
         "## Time Commitment",
-        "- Monday to Friday: 4 hours/day",
-        "- Saturday: 2 hours revision",
-        "- Sunday: 2 hours portfolio project",
+        "- Daily model (Day 1-7): 6-10 hours/day",
+        "- Required minimum: 6 hours/day (core + required extension)",
+        "- Optional deep work: up to 10 hours/day for advanced practice and interview prep",
         "",
         "## Weekly Themes",
         "| Week | Theme | Outcome |",
@@ -2859,15 +2947,15 @@ def write_json_index(root: Path, plans: list[WeekPlan]) -> None:
             if day_no <= 5:
                 title = plan.weekday_days[day_no - 1].topic
                 day_type = "lesson"
-                duration = 4
+                duration = "6-10"
             elif day_no == 6:
                 title = "Revision Sprint"
                 day_type = "revision"
-                duration = 2
+                duration = "6-10"
             else:
                 title = "Portfolio Project"
                 day_type = "project"
-                duration = 2
+                duration = "6-10"
 
             continuity = continuity_context(plans, week_no, day_no)
             day_entries.append(

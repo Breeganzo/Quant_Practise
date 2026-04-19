@@ -47,6 +47,7 @@ def main() -> None:
     copied_lessons = 0
     copied_notebooks = 0
     copied_resources = 0
+    copied_section_pdfs = 0
 
     for week_no in range(1, 25):
         week_id = f"week-{week_no:02d}"
@@ -82,9 +83,16 @@ def main() -> None:
             copy_file(lesson_src, lesson_dst)
             copied_lessons += 1
 
+        sections_src = root / "exports" / "pdf" / "sections" / week_id
+        if sections_src.exists():
+            for pdf_src in sorted(sections_src.glob("*.pdf")):
+                pdf_dst = root / "web" / "public" / "pdf" / "sections" / week_id / pdf_src.name
+                copy_file(pdf_src, pdf_dst)
+                copied_section_pdfs += 1
+
     print(
         "Synchronized web content and notebook assets. "
-        f"lessons={copied_lessons} notebooks={copied_notebooks} resources={copied_resources}"
+        f"lessons={copied_lessons} notebooks={copied_notebooks} resources={copied_resources} section_pdfs={copied_section_pdfs}"
     )
 
 

@@ -6,13 +6,13 @@ Incorporate execution realism and microstructure awareness into a blended strate
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Market microstructure essentials | 4h |
-| Day 02 | Execution cost modeling | 4h |
-| Day 03 | Strategy blending and diversification | 4h |
-| Day 04 | Rebalancing and execution scheduling | 4h |
-| Day 05 | Capstone assembly and governance | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Market microstructure essentials | 6-10h |
+| Day 02 | Execution cost modeling | 6-10h |
+| Day 03 | Strategy blending and diversification | 6-10h |
+| Day 04 | Rebalancing and execution scheduling | 6-10h |
+| Day 05 | Capstone assembly and governance | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Capstone 5: Multi-strategy paper portfolio

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 from nbconvert import HTMLExporter
@@ -82,11 +83,68 @@ def notebook_to_html_and_pdf(nb_path: Path, html_path: Path, pdf_path: Path) -> 
     write_text_pdf(lines, pdf_path, title=nb_path.name)
 
 
+def sanitize_slug(value: str) -> str:
+    slug = value.strip().lower()
+    slug = re.sub(r"[^a-z0-9\s-]", "", slug)
+    slug = re.sub(r"\s+", "-", slug)
+    slug = re.sub(r"-+", "-", slug)
+    return slug
+
+
+def extract_day_sections(md_path: Path) -> dict[str, list[str]]:
+    lines = md_path.read_text(encoding="utf-8").splitlines()
+    reading: list[str] = []
+    quiz: list[str] = []
+    interview: list[str] = []
+
+    current = "reading"
+    for line in lines:
+        if line.startswith("### Daily Quiz"):
+            current = "quiz"
+        elif line.startswith("### Interview Drill"):
+            current = "interview"
+
+        if current == "reading":
+            reading.append(line)
+        elif current == "quiz":
+            quiz.append(line)
+        else:
+            interview.append(line)
+
+    return {
+        "reading": reading,
+        "quiz": quiz,
+        "interview": interview,
+    }
+
+
+def export_day_section_pdfs(md_path: Path, section_output_dir: Path) -> dict[str, str]:
+    section_output_dir.mkdir(parents=True, exist_ok=True)
+    sections = extract_day_sections(md_path)
+    day_label = md_path.parent.name if md_path.parent.name.startswith("day-") else md_path.stem
+    stem = sanitize_slug(day_label)
+
+    reading_pdf = section_output_dir / f"{stem}-reading.pdf"
+    quiz_pdf = section_output_dir / f"{stem}-quiz.pdf"
+    interview_pdf = section_output_dir / f"{stem}-interview.pdf"
+
+    write_text_pdf(sections["reading"], reading_pdf, title=f"{md_path.stem} - Reading")
+    write_text_pdf(sections["quiz"], quiz_pdf, title=f"{md_path.stem} - Quiz")
+    write_text_pdf(sections["interview"], interview_pdf, title=f"{md_path.stem} - Interview Drill")
+
+    return {
+        "reading": str(reading_pdf),
+        "quiz": str(quiz_pdf),
+        "interview": str(interview_pdf),
+    }
+
+
 def export_week(root: Path, week: str) -> None:
     md_week_dir = root / "curriculum" / "weeks" / week
     nb_week_dir = root / "notebooks" / week
 
     md_output = root / "exports" / "pdf" / week / "markdown"
+    section_output = root / "exports" / "pdf" / "sections" / week
     nb_pdf_output = root / "exports" / "pdf" / week / "notebooks"
     nb_html_output = root / "exports" / "html" / week
 
@@ -99,6 +157,8 @@ def export_week(root: Path, week: str) -> None:
     for md in md_files:
         rel = md.relative_to(md_week_dir)
         markdown_to_pdf(md, md_output / rel.with_suffix(".pdf"))
+        if md.name == "lesson.md" and md.parent.name.startswith("day-"):
+            export_day_section_pdfs(md, section_output)
 
     for nb in nb_files:
         notebook_to_html_and_pdf(

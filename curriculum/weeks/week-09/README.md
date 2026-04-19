@@ -6,13 +6,13 @@ Build practical time-series intuition for forecasting and diagnostic workflows.
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Stationarity and transformations | 4h |
-| Day 02 | Autocorrelation and partial autocorrelation | 4h |
-| Day 03 | AR, MA, and ARMA intuition | 4h |
-| Day 04 | ARIMA workflow | 4h |
-| Day 05 | Forecast evaluation and communication | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Stationarity and transformations | 6-10h |
+| Day 02 | Autocorrelation and partial autocorrelation | 6-10h |
+| Day 03 | AR, MA, and ARMA intuition | 6-10h |
+| Day 04 | ARIMA workflow | 6-10h |
+| Day 05 | Forecast evaluation and communication | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Time-series baseline forecasting notebook

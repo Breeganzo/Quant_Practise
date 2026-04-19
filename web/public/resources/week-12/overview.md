@@ -6,13 +6,13 @@ Evaluate two classic strategy families under unified, realistic testing conditio
 ## Time Budget
 | Day | Focus | Planned Hours |
 | --- | --- | --- |
-| Day 01 | Momentum strategy design | 4h |
-| Day 02 | Mean reversion strategy design | 4h |
-| Day 03 | Unified backtest comparison | 4h |
-| Day 04 | Robustness and sensitivity analysis | 4h |
-| Day 05 | Capstone narrative and decision | 4h |
-| Day 06 | Revision Sprint | 2h |
-| Day 07 | Portfolio Project | 2h |
+| Day 01 | Momentum strategy design | 6-10h |
+| Day 02 | Mean reversion strategy design | 6-10h |
+| Day 03 | Unified backtest comparison | 6-10h |
+| Day 04 | Robustness and sensitivity analysis | 6-10h |
+| Day 05 | Capstone narrative and decision | 6-10h |
+| Day 06 | Revision Sprint | 6-10h |
+| Day 07 | Portfolio Project | 6-10h |
 
 ## Weekly Outcome
 - Deliverable: Capstone 3: Momentum vs mean reversion

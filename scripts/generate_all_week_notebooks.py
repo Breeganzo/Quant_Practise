@@ -280,6 +280,39 @@ def quiz_solution_code_for_day(week_no: int, day_no: int, topic: str) -> str:
     next_price = round(base_price * (1 + 0.008 + 0.0005 * day_no), 3)
     simple_return = (next_price - base_price) / base_price
     gross_return = 1 + simple_return
+    phase = "foundations"
+    if week_no <= 4:
+        phase = "foundations"
+    elif week_no <= 8:
+        phase = "ml"
+    elif week_no <= 12:
+        phase = "time_series"
+    elif week_no <= 16:
+        phase = "portfolio"
+    elif week_no <= 20:
+        phase = "advanced"
+    else:
+        phase = "launch"
+
+    scenario_by_phase = {
+        "foundations": "inflation surprise week",
+        "ml": "post-earnings drift regime",
+        "time_series": "volatility-clustering window",
+        "portfolio": "cross-asset drawdown phase",
+        "advanced": "crowded-factor unwind",
+        "launch": "live paper-trade month",
+    }
+    guardrail_by_phase = {
+        "foundations": "cap exposure if rolling volatility breaches training 90th percentile",
+        "ml": "freeze entries if calibration error worsens across three checks",
+        "time_series": "de-risk when realized volatility exceeds model regime",
+        "portfolio": "rebalance when one sleeve contributes over 40% of risk",
+        "advanced": "throttle sizing when implementation shortfall exceeds threshold",
+        "launch": "halt promotions when max drawdown breaches policy budget",
+    }
+
+    scenario = scenario_by_phase[phase]
+    guardrail = guardrail_by_phase[phase]
     return f"""# Quiz model answers (auto-generated)
 price_t_minus_1 = {base_price:.3f}
 price_t = {next_price:.3f}
@@ -287,7 +320,7 @@ r_t = (price_t - price_t_minus_1) / price_t_minus_1
 gross = 1 + r_t
 
 print('Interview Question 1 (model answer):')
-print('  I would use simple return to convert price moves into decision-ready percentages.')
+print('  I would use simple return to convert price moves into decision-ready percentages under {scenario}.')
 print('  Formula: r_t = (P_t - P_(t-1)) / P_(t-1)')
 print('  P_(t-1):', price_t_minus_1)
 print('  P_t    :', price_t)
@@ -295,13 +328,13 @@ print('  r_t    :', round(r_t, 6), '=>', f'{{r_t*100:.2f}}%')
 print('  1+r_t  :', round(gross, 6))
 
 print('\\nInterview Question 2 (model answer):')
-print('  For a real ticker like SPY, I would enforce a volatility guardrail: reduce position size')
-print('  when realized volatility rises above regime threshold, then re-validate the signal logic.')
+print('  For a real ticker like SPY, I would enforce this guardrail before deployment:')
+print('  {guardrail}.')
 
 print('\\nInterview Question 3 (model answer):')
 print('  Topic:', {topic!r})
-print('  This matters because production systems need reproducible metrics, explicit risk controls,')
-print('  and clear decision rules that survive stressed market regimes.')
+print('  This matters because production systems need reproducible metrics, explicit controls,')
+print('  and a fallback decision path when stress conditions invalidate baseline assumptions.')
 
 print('\\nNumeric verification:')
 print('  simple_return_expected =', {simple_return:.6f})
