@@ -6,6 +6,7 @@ const PENDING_WRITES_KEY = "quant-progress-pending-writes";
 const MAX_NOTES_LENGTH = 4000;
 const RETRY_ATTEMPTS = 3;
 const RETRY_BASE_DELAY_MS = 250;
+const LOCAL_ONLY_USER_PREFIX = "local-demo-user";
 
 interface PendingWrite {
   userId: string;
@@ -23,6 +24,10 @@ function progressKey(weekNo: number, dayNo: number): string {
 
 function localStorageKey(userId: string): string {
   return `${LOCAL_KEY_PREFIX}-${userId}`;
+}
+
+function isLocalOnlyUser(userId: string): boolean {
+  return userId.startsWith(LOCAL_ONLY_USER_PREFIX);
 }
 
 function sleep(ms: number): Promise<void> {
@@ -177,6 +182,10 @@ async function upsertSupabaseProgress(
 }
 
 export async function flushPendingWrites(userId?: string): Promise<number> {
+  if (userId && isLocalOnlyUser(userId)) {
+    return 0;
+  }
+
   if (!supabase) {
     return 0;
   }
@@ -217,6 +226,10 @@ export async function flushPendingWrites(userId?: string): Promise<number> {
 }
 
 export async function fetchProgress(userId: string): Promise<ProgressMap> {
+  if (isLocalOnlyUser(userId)) {
+    return readLocalProgress(userId);
+  }
+
   if (!supabase) {
     if (requiresPersistentBackend) {
       throw new Error("Supabase configuration is required in production mode.");
@@ -252,6 +265,20 @@ export async function upsertProgress(
 ): Promise<DailyProgress> {
   validateProgressWrite(weekNo, dayNo, notes);
   const normalizedNotes = normalizeNotes(notes);
+
+  if (isLocalOnlyUser(userId)) {
+    const map = readLocalProgress(userId);
+    const item: DailyProgress = {
+      weekNo,
+      dayNo,
+      completed,
+      notes: normalizedNotes,
+      updatedAt: new Date().toISOString(),
+    };
+    map[progressKey(weekNo, dayNo)] = item;
+    writeLocalProgress(userId, map);
+    return item;
+  }
 
   if (!supabase) {
     if (requiresPersistentBackend) {

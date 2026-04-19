@@ -7,7 +7,12 @@ import DayDetail from "./components/DayDetail";
 import LearningDashboard from "./components/LearningDashboard";
 import { loadCurriculum } from "./lib/content";
 import { fetchProgress, flushPendingWrites, upsertProgress } from "./lib/progress";
-import { hasSupabaseConfig, requiresPersistentBackend, supabase } from "./lib/supabase";
+import {
+  hasSupabaseConfig,
+  requiresPersistentBackend,
+  supabase,
+  supabaseConfigIssue,
+} from "./lib/supabase";
 import type { CurriculumIndex, DailyProgress, ProgressMap } from "./types";
 
 export default function App(): JSX.Element {
@@ -16,6 +21,9 @@ export default function App(): JSX.Element {
   const [progress, setProgress] = useState<ProgressMap>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [forceLocalMode, setForceLocalMode] = useState(false);
+
+  const supabaseEnabled = hasSupabaseConfig && !forceLocalMode;
 
   const userId = useMemo(() => {
     if (session?.user.id) {
@@ -38,7 +46,7 @@ export default function App(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    const client = supabase;
+    const client = supabaseEnabled ? supabase : null;
     if (!client) {
       setLoading(false);
       return;
@@ -48,9 +56,23 @@ export default function App(): JSX.Element {
       if (!client) {
         return;
       }
-      const { data } = await client.auth.getSession();
-      setSession(data.session);
-      setLoading(false);
+
+      try {
+        const { data, error: sessionError } = await client.auth.getSession();
+        if (sessionError) {
+          setError(`Supabase auth is unavailable (${sessionError.message}). Running in local mode.`);
+          setForceLocalMode(true);
+          setSession(null);
+          return;
+        }
+        setSession(data.session);
+      } catch (err) {
+        setError(`Supabase auth failed (${String(err)}). Running in local mode.`);
+        setForceLocalMode(true);
+        setSession(null);
+      } finally {
+        setLoading(false);
+      }
     }
 
     void loadAuth();
@@ -62,7 +84,7 @@ export default function App(): JSX.Element {
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [supabaseEnabled]);
 
   useEffect(() => {
     async function loadUserProgress(): Promise<void> {
@@ -78,7 +100,7 @@ export default function App(): JSX.Element {
   }, [userId]);
 
   useEffect(() => {
-    if (!hasSupabaseConfig) {
+    if (!supabaseEnabled) {
       return;
     }
 
@@ -100,7 +122,7 @@ export default function App(): JSX.Element {
     return () => {
       window.removeEventListener("online", handleReconnect);
     };
-  }, [userId]);
+  }, [supabaseEnabled, userId]);
 
   async function handleSaveProgress(
     weekNo: number,
@@ -123,11 +145,11 @@ export default function App(): JSX.Element {
     await supabase.auth.signOut();
   }
 
-  if (loading && hasSupabaseConfig) {
+  if (loading && supabaseEnabled) {
     return <main className="container">Loading authentication...</main>;
   }
 
-  if (requiresPersistentBackend && !hasSupabaseConfig) {
+  if (requiresPersistentBackend && !supabaseEnabled) {
     return (
       <main className="container">
         <section className="card warning">
@@ -159,7 +181,7 @@ export default function App(): JSX.Element {
         </div>
         <div className="header-actions">
           <span className="badge">User: {userId.slice(0, 12)}</span>
-          {hasSupabaseConfig && session ? (
+          {supabaseEnabled && session ? (
             <button className="secondary" onClick={handleSignOut}>
               Sign Out
             </button>
@@ -167,35 +189,35 @@ export default function App(): JSX.Element {
         </div>
       </header>
 
-      {!hasSupabaseConfig && !requiresPersistentBackend ? (
+      {!supabaseEnabled && !requiresPersistentBackend ? (
         <section className="card warning">
           <h2>Supabase Not Configured</h2>
           <p>
             Configure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to enable lifelong SQL persistence.
             Until then, this app runs in local demo mode.
           </p>
+          {supabaseConfigIssue ? <p>Details: {supabaseConfigIssue}</p> : null}
+          {forceLocalMode ? <p>Auth was temporarily unavailable, so local mode is active.</p> : null}
         </section>
       ) : null}
 
-      {hasSupabaseConfig && !session ? (
-        <AuthPanel onAuthSuccess={() => void 0} />
-      ) : (
-        <Routes>
-          <Route path="/" element={<LearningDashboard curriculum={curriculum} progress={progress} />} />
-          <Route
-            path="/week/:weekNo/day/:dayNo"
-            element={
-              <DayDetail
-                curriculum={curriculum}
-                userId={userId}
-                progress={progress}
-                onSave={handleSaveProgress}
-              />
-            }
-          />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      )}
+      {supabaseEnabled && !session ? <AuthPanel onAuthSuccess={() => void 0} /> : null}
+
+      <Routes>
+        <Route path="/" element={<LearningDashboard curriculum={curriculum} progress={progress} />} />
+        <Route
+          path="/week/:weekNo/day/:dayNo"
+          element={
+            <DayDetail
+              curriculum={curriculum}
+              userId={userId}
+              progress={progress}
+              onSave={handleSaveProgress}
+            />
+          }
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </main>
   );
 }
