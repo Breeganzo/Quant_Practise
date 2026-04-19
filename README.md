@@ -68,7 +68,8 @@ Quick version:
    - `VITE_REPO_URL=https://github.com/Breeganzo/Quant_Practise`
 
 Local development allows fallback demo mode without Supabase.
-Production deployment to GitHub Pages is Supabase-required.
+Production deployment to GitHub Pages also supports local-mode fallback when Supabase is not configured.
+For static-host runtime injection, edit `web/public/runtime-config.js`.
 
 If SQL Editor shows `Failed to fetch (api.supabase.com)`, follow the recovery flow in [docs/SUPABASE_SETUP_BEGINNER.md](docs/SUPABASE_SETUP_BEGINNER.md).
 
@@ -85,7 +86,8 @@ The tracker provides:
 - week/day navigation
 - lesson rendering from markdown
 - completion + notes persistence in PostgreSQL
-- links to lesson and notebook resources
+- daily day page actions: Read Daily Content, Open Daily Quiz, Open Interview Drill, Open Daily Notebook
+- KaTeX-rendered formulas and properly formatted symbol tables
 
 ## 5) Deploy to GitHub Pages
 
@@ -112,8 +114,8 @@ Vite base path is configured for `Quant_Practise`.
    - if Supabase env vars are set, progress is written to PostgreSQL via Supabase.
    - if Supabase env vars are missing, app runs in local demo mode for quick testing.
 - Production build (GitHub Pages):
-   - Supabase configuration is mandatory.
-   - missing `VITE_SUPABASE_URL` or `VITE_SUPABASE_ANON_KEY` shows a configuration-required screen instead of local fallback.
+   - if Supabase config exists (env or runtime-config), progress sync uses PostgreSQL.
+   - if Supabase config is missing, app still runs in local demo mode (no hard-block screen).
    - save failures are queued locally and retried automatically when network reconnects.
 
 ## 7) Open Notebooks in VS Code or Jupyter

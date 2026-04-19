@@ -1,9 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+
+import "katex/dist/katex.min.css";
 
 import { loadLessonMarkdown } from "../lib/content";
-import { githubBlobUrl, withBase } from "../lib/path";
+import { withBase } from "../lib/path";
 import type { CurriculumIndex, DailyProgress, ProgressMap } from "../types";
 
 interface DayDetailProps {
@@ -87,18 +93,10 @@ export default function DayDetail({
     );
   }
 
-  const weekNotebookPath = `notebooks/week-${weekNo.toString().padStart(2, "0")}/week-${weekNo
-    .toString()
-    .padStart(2, "0")}-learning.ipynb`;
   const dayNotebookPath =
     day.notebookPath ??
     `notebooks/week-${weekNo.toString().padStart(2, "0")}/day-${dayNo.toString().padStart(2, "0")}-learning.ipynb`;
   const webDayNotebookPath = dayNotebookPath;
-  const webWeekNotebookPath = week.resources?.notebookPath ?? weekNotebookPath;
-  const weekRepoRoot = `curriculum/weeks/week-${weekNo.toString().padStart(2, "0")}`;
-  const lessonRepoPath = `curriculum/weeks/week-${weekNo
-    .toString()
-    .padStart(2, "0")}/day-${dayNo.toString().padStart(2, "0")}/lesson.md`;
   const continuity = day.continuity;
   const previousRoute = routeFromLessonPath(continuity?.previousLessonPath);
   const nextRoute = routeFromLessonPath(continuity?.nextLessonPath);
@@ -121,7 +119,7 @@ export default function DayDetail({
 
   return (
     <section className="lesson-layout">
-      <article className="card lesson-main">
+      <article id="lesson-content" className="card lesson-main">
         <header className="lesson-header">
           <div>
             <h2>
@@ -135,7 +133,12 @@ export default function DayDetail({
             Back to dashboard
           </Link>
         </header>
-        <ReactMarkdown>{markdown}</ReactMarkdown>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeSlug, rehypeKatex]}
+        >
+          {markdown}
+        </ReactMarkdown>
       </article>
 
       <aside className="card lesson-side">
@@ -164,6 +167,22 @@ export default function DayDetail({
           </section>
         ) : null}
 
+        <section className="daily-actions">
+          <h3>Daily Study Actions</h3>
+          <a className="action-link" href="#lesson-content">
+            Read Daily Content
+          </a>
+          <a className="action-link" href="#daily-quiz-realistic-interview-style">
+            Open Daily Quiz
+          </a>
+          <a className="action-link" href="#interview-drill">
+            Open Interview Drill
+          </a>
+          <a className="action-link" href={withBase(webDayNotebookPath)} target="_blank" rel="noreferrer">
+            Open Daily Notebook
+          </a>
+        </section>
+
         <h3>Progress Controls</h3>
         <p>User: {userId}</p>
 
@@ -185,54 +204,6 @@ export default function DayDetail({
           {saving ? "Saving..." : "Save Progress"}
         </button>
         {status ? <p className={`status ${statusTone}`}>{status}</p> : null}
-
-        <div className="resource-links">
-          <h4>Open Resources</h4>
-          <a href={githubBlobUrl(lessonRepoPath)} target="_blank" rel="noreferrer">
-            Open lesson source (GitHub)
-          </a>
-          <a href={githubBlobUrl(dayNotebookPath)} target="_blank" rel="noreferrer">
-            Open day notebook (GitHub, executed)
-          </a>
-          <a href={withBase(webDayNotebookPath)} target="_blank" rel="noreferrer">
-            Open day notebook (local file, executed)
-          </a>
-          <a href={githubBlobUrl(weekNotebookPath)} target="_blank" rel="noreferrer">
-            Open week notebook (GitHub)
-          </a>
-          <a href={withBase(webWeekNotebookPath)} target="_blank" rel="noreferrer">
-            Open week notebook (local file)
-          </a>
-          <a href={withBase(day.lessonPath)} target="_blank" rel="noreferrer">
-            Open rendered lesson file
-          </a>
-          {week.resources ? (
-            <>
-              <a href={withBase(week.resources.overviewPath)} target="_blank" rel="noreferrer">
-                Open weekly overview
-              </a>
-              <a href={withBase(week.resources.quizPath)} target="_blank" rel="noreferrer">
-                Open weekly quiz
-              </a>
-              <a href={withBase(week.resources.revisionChecklistPath)} target="_blank" rel="noreferrer">
-                Open revision checklist
-              </a>
-              <a href={withBase(week.resources.miniProjectPath)} target="_blank" rel="noreferrer">
-                Open mini-project template
-              </a>
-              <a href={githubBlobUrl(`${weekRepoRoot}/README.md`)} target="_blank" rel="noreferrer">
-                Open weekly overview source (GitHub)
-              </a>
-              <a
-                href={githubBlobUrl(`${weekRepoRoot}/week-${weekNo.toString().padStart(2, "0")}-quiz.md`)}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open weekly quiz source (GitHub)
-              </a>
-            </>
-          ) : null}
-        </div>
       </aside>
     </section>
   );
