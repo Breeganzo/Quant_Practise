@@ -312,6 +312,27 @@ button:disabled {
   margin: 0 0 0.2rem;
 }
 
+.loop-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.loop-nav a {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.36rem 0.5rem;
+  text-align: center;
+  color: var(--ink);
+  background: #f8fbff;
+  font-size: 0.86rem;
+}
+
+.loop-nav a:hover {
+  background: #eef6ff;
+  text-decoration: none;
+}
+
 .action-menu {
   position: relative;
 }
@@ -333,6 +354,10 @@ button:disabled {
   color: var(--muted);
 }
 
+.action-menu.open .action-trigger::after {
+  content: "▴";
+}
+
 .action-trigger:hover {
   background: #eef6ff;
 }
@@ -351,10 +376,13 @@ button:disabled {
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
 }
 
-.action-menu:hover .action-menu-panel,
-.action-menu:focus-within .action-menu-panel {
+.action-menu.open .action-menu-panel {
   display: grid;
   gap: 0.25rem;
+}
+
+.action-menu-panel[hidden] {
+  display: none !important;
 }
 
 .action-menu-item {
@@ -412,6 +440,12 @@ button:disabled {
   width: auto;
 }
 
+.lesson-main input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.4rem;
+  cursor: pointer;
+}
+
 .resource-links {
   display: grid;
   gap: 0.4rem;
@@ -430,5 +464,9 @@ button:disabled {
     position: static;
     margin-top: 0.25rem;
     box-shadow: none;
+  }
+
+  .loop-nav {
+    grid-template-columns: 1fr;
   }
 }

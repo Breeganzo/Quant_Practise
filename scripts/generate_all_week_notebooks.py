@@ -258,7 +258,54 @@ def topic_from_lesson(lesson_text: str, week_no: int, day_no: int) -> str:
     return default_topic
 
 
+def phase_for_week(week_no: int) -> str:
+    if week_no <= 4:
+        return "foundations"
+    if week_no <= 8:
+        return "ml"
+    if week_no <= 12:
+        return "time_series"
+    if week_no <= 16:
+        return "portfolio"
+    if week_no <= 20:
+        return "advanced"
+    return "launch"
+
+
+def phase_quiz_formula(phase: str) -> tuple[str, str]:
+    formulas = {
+        "foundations": ("Simple Return", "r_t = (P_t - P_(t-1)) / P_(t-1)"),
+        "ml": ("Logistic Probability", "p = 1 / (1 + exp(-z))"),
+        "time_series": ("AR(1) Forecast", "x_(t+1) = c + phi * x_t"),
+        "portfolio": ("Portfolio Return", "mu_p = w^T * mu"),
+        "advanced": ("Cross-Sectional Z-Score", "z = (x - mu) / sigma"),
+        "launch": ("Expected Value", "EV = p * Gain - (1-p) * Loss"),
+    }
+    return formulas[phase]
+
+
 def quiz_markdown_for_day(week_no: int, day_no: int, topic: str) -> str:
+    phase = phase_for_week(week_no)
+    formula_name, formula_expr = phase_quiz_formula(phase)
+
+    guardrail_by_phase = {
+        "foundations": "cut gross exposure when realized volatility exceeds your training range.",
+        "ml": "pause new model entries when calibration error degrades for three windows.",
+        "time_series": "de-risk when forecast error spikes above historical confidence bands.",
+        "portfolio": "rebalance when any sleeve exceeds its risk-budget threshold.",
+        "advanced": "throttle sizing when implementation shortfall worsens beyond policy.",
+        "launch": "halt promotions when max drawdown breaches deployment policy.",
+    }
+
+    data_check_by_phase = {
+        "foundations": "timestamp alignment and split-adjusted prices",
+        "ml": "feature freshness and no target leakage",
+        "time_series": "stationarity checks and consistent rolling windows",
+        "portfolio": "covariance-window consistency and stale-price filters",
+        "advanced": "capacity and borrow constraints before execution",
+        "launch": "execution timestamp reconciliation and policy logging",
+    }
+
     return "\n".join(
         [
             f"## Week {week_no:02d} Day {day_no:02d} Quiz",
@@ -266,33 +313,22 @@ def quiz_markdown_for_day(week_no: int, day_no: int, topic: str) -> str:
             f"Topic: **{topic}**",
             "",
             "Real-world interview questions (answer first, then run the next cell for model answers):",
-            "1. PM question: Which formula from today's lesson directly drives a trade decision, and what does each symbol mean?",
-            "2. Risk question: Using one real ticker from today's example, what hard guardrail would you enforce before live deployment?",
-            "3. Communication question: In one minute, explain why this topic matters for production trading systems.",
+            f"1. PM question: Explain {formula_name} ({formula_expr}) and define every symbol clearly.",
+            f"2. Risk question: What hard guardrail would you enforce before deployment?",
+            f"3. Data question: Which validation checks must pass before trusting this output?",
+            "4. Production question: Why does this topic matter in live systems, not just in notebooks?",
+            "5. Escalation question: If the metric degrades for three sessions, what is your fallback action?",
             "",
-            "Scoring: full credit requires notation correctness, one numeric example, and one explicit risk control.",
+            f"Hint for Q2: {guardrail_by_phase[phase]}",
+            f"Hint for Q3: {data_check_by_phase[phase]}",
+            "Scoring: full credit requires notation correctness, one numeric example, explicit guardrail, and fallback path.",
         ]
     )
 
 
 def quiz_solution_code_for_day(week_no: int, day_no: int, topic: str) -> str:
-    base_price = 100 + week_no + day_no
-    next_price = round(base_price * (1 + 0.008 + 0.0005 * day_no), 3)
-    simple_return = (next_price - base_price) / base_price
-    gross_return = 1 + simple_return
-    phase = "foundations"
-    if week_no <= 4:
-        phase = "foundations"
-    elif week_no <= 8:
-        phase = "ml"
-    elif week_no <= 12:
-        phase = "time_series"
-    elif week_no <= 16:
-        phase = "portfolio"
-    elif week_no <= 20:
-        phase = "advanced"
-    else:
-        phase = "launch"
+    phase = phase_for_week(week_no)
+    formula_name, formula_expr = phase_quiz_formula(phase)
 
     scenario_by_phase = {
         "foundations": "inflation surprise week",
@@ -311,34 +347,97 @@ def quiz_solution_code_for_day(week_no: int, day_no: int, topic: str) -> str:
         "launch": "halt promotions when max drawdown breaches policy budget",
     }
 
+    fallback_by_phase = {
+        "foundations": "reduce gross exposure by 30% and rerun diagnostics",
+        "ml": "revert to baseline model and block new entries",
+        "time_series": "shorten lookback and cut leverage until error stabilizes",
+        "portfolio": "move to defensive benchmark weights and rerun stress tests",
+        "advanced": "halve sizing and tighten execution limits",
+        "launch": "freeze promotion and escalate to committee with replay evidence",
+    }
+
+    if phase == "foundations":
+        base_price = 100 + week_no + day_no
+        next_price = round(base_price * (1 + 0.008 + 0.0005 * day_no), 3)
+        metric_setup = (
+            f"price_t_minus_1 = {base_price:.3f}\n"
+            f"price_t = {next_price:.3f}\n"
+            "metric_value = (price_t - price_t_minus_1) / price_t_minus_1\n"
+            "metric_name = 'simple_return'"
+        )
+    elif phase == "ml":
+        logit = -0.35 + 0.08 * day_no
+        metric_setup = (
+            f"z = {logit:.4f}\n"
+            "metric_value = 1 / (1 + np.exp(-z))\n"
+            "metric_name = 'up_probability'"
+        )
+    elif phase == "time_series":
+        c_val = 0.0012
+        phi_val = 0.63
+        x_val = 0.0045 + 0.0004 * day_no
+        metric_setup = (
+            f"c = {c_val:.4f}\n"
+            f"phi = {phi_val:.4f}\n"
+            f"x_t = {x_val:.4f}\n"
+            "metric_value = c + phi * x_t\n"
+            "metric_name = 'ar1_forecast'"
+        )
+    elif phase == "portfolio":
+        metric_setup = (
+            "w = np.array([0.55, 0.30, 0.15])\n"
+            "mu = np.array([0.12, 0.08, 0.05])\n"
+            "metric_value = float(w @ mu)\n"
+            "metric_name = 'portfolio_expected_return'"
+        )
+    elif phase == "advanced":
+        metric_setup = (
+            "signal_x = 1.48\n"
+            "signal_mu = 0.92\n"
+            "signal_sigma = 0.28\n"
+            "metric_value = (signal_x - signal_mu) / signal_sigma\n"
+            "metric_name = 'cross_sectional_z'"
+        )
+    else:
+        metric_setup = (
+            "p = 0.58\n"
+            "gain = 1.4\n"
+            "loss = 1.0\n"
+            "metric_value = p * gain - (1 - p) * loss\n"
+            "metric_name = 'expected_value'"
+        )
+
     scenario = scenario_by_phase[phase]
     guardrail = guardrail_by_phase[phase]
+    fallback = fallback_by_phase[phase]
+
     return f"""# Quiz model answers (auto-generated)
-price_t_minus_1 = {base_price:.3f}
-price_t = {next_price:.3f}
-r_t = (price_t - price_t_minus_1) / price_t_minus_1
-gross = 1 + r_t
+{metric_setup}
 
 print('Interview Question 1 (model answer):')
-print('  I would use simple return to convert price moves into decision-ready percentages under {scenario}.')
-print('  Formula: r_t = (P_t - P_(t-1)) / P_(t-1)')
-print('  P_(t-1):', price_t_minus_1)
-print('  P_t    :', price_t)
-print('  r_t    :', round(r_t, 6), '=>', f'{{r_t*100:.2f}}%')
-print('  1+r_t  :', round(gross, 6))
+print('  Formula focus: {formula_name}')
+print('  Formula text : {formula_expr}')
+print('  Scenario     : {scenario}')
+print('  Numeric value:', round(float(metric_value), 6))
 
 print('\\nInterview Question 2 (model answer):')
 print('  For a real ticker like SPY, I would enforce this guardrail before deployment:')
 print('  {guardrail}.')
 
 print('\\nInterview Question 3 (model answer):')
+print('  I validate timestamps, missing data handling, and assumption consistency before taking risk.')
+
+print('\\nInterview Question 4 (model answer):')
 print('  Topic:', {topic!r})
 print('  This matters because production systems need reproducible metrics, explicit controls,')
 print('  and a fallback decision path when stress conditions invalidate baseline assumptions.')
 
+print('\\nInterview Question 5 (model answer):')
+print('  Fallback action: {fallback}.')
+
 print('\\nNumeric verification:')
-print('  simple_return_expected =', {simple_return:.6f})
-print('  gross_return_expected  =', {gross_return:.6f})
+print('  metric_name  =', metric_name)
+print('  metric_value =', round(float(metric_value), 6))
 """
 
 

@@ -147,11 +147,18 @@ rebalance_flag = should_rebalance(weights, target_weights, threshold=0.03)
    - Model answer: "I use Duration Shock as a decision bridge from market observations to position sizing. The formula is $\frac{\Delta P}{P}\approx-D_{mod}\Delta y$. I define each symbol with units first, then compute one concrete value, and finally state what trade action changes because of the result in this regime."
 2. Risk manager question: Using one real ticker from this lesson, what hard guardrail would you enforce before live deployment?
    - Model answer: "I would run the workflow on SPY and a stress-sensitive peer, then force rebalance when risk-budget contribution of one sleeve exceeds 40%. If the guardrail triggers, I switch to paper-trade monitoring and block new risk until diagnostics re-pass."
-3. Production question: Why does 'Covariance robustness techniques' matter in live trading systems?
+3. Data integrity question: Which checks must pass before you trust the output and place risk?
+   - Model answer: "Before trading I verify covariance window consistency, stale-price filtering, and exposure normalization checks. If any check fails, I classify the run as non-tradable and log the incident."
+4. Production question: Why does 'Covariance robustness techniques' matter in live trading systems?
    - Model answer: "Covariance robustness techniques matters because portfolio choices are constrained by covariance instability, transaction costs, and risk budgets. In production I need reproducible calculations, explicit control limits, and escalation rules that survive stress windows."
+5. Decision question: If your key metric degrades for three consecutive sessions, what is your fallback plan?
+   - Model answer: "I de-risk to benchmark weights, rerun stress tests, and re-enable risk only after guardrails pass. I only restore risk after rerun evidence confirms that assumptions are stable again."
 
 Scoring rubric:
-- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and one production escalation rule.
+- 10/10: correct notation, one numeric example, explicit guardrail, data checks, and escalation path.
+- 8/10: mostly correct notation plus a clear guardrail and fallback action.
+- 6/10: partial correctness but vague controls or missing data validation.
+- Below 6/10: formula recall without decision-quality risk controls.
 
 ### Interview Drill
 - Prompt: "Walk me through Covariance robustness techniques in an investment committee session after correlation breakdown."

@@ -3,6 +3,7 @@
 Start date: 20 April 2026
 
 ## Time Commitment
+- Program horizon: 24 weeks (~6 months)
 - Daily model (Day 1-7): 6-10 hours/day
 - Required minimum: 6 hours/day (core + required extension)
 - Optional deep work: up to 10 hours/day for advanced practice and interview prep

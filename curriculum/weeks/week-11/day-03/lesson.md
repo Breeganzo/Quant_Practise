@@ -148,11 +148,18 @@ rmse = np.sqrt(np.mean(errors**2))
    - Model answer: "I use AR(1) as a decision bridge from market observations to position sizing. The formula is $x_t=c+\phi x_{t-1}+\epsilon_t$. I define each symbol with units first, then compute one concrete value, and finally state what trade action changes because of the result in this regime."
 2. Risk manager question: Using one real ticker from this lesson, what hard guardrail would you enforce before live deployment?
    - Model answer: "I would run the workflow on SPY and a stress-sensitive peer, then de-risk when realized volatility breaks above the model training regime. If the guardrail triggers, I switch to paper-trade monitoring and block new risk until diagnostics re-pass."
-3. Production question: Why does 'Transaction costs and slippage' matter in live trading systems?
+3. Data integrity question: Which checks must pass before you trust the output and place risk?
+   - Model answer: "Before trading I verify stationarity diagnostics, holiday-gap handling, and rolling-window recalculation checks. If any check fails, I classify the run as non-tradable and log the incident."
+4. Production question: Why does 'Transaction costs and slippage' matter in live trading systems?
    - Model answer: "Transaction costs and slippage matters because regime changes break naive stationarity assumptions and invalidate fixed-parameter forecasts. In production I need reproducible calculations, explicit control limits, and escalation rules that survive stress windows."
+5. Decision question: If your key metric degrades for three consecutive sessions, what is your fallback plan?
+   - Model answer: "I switch to shorter lookback controls, reduce leverage, and require stability across two windows. I only restore risk after rerun evidence confirms that assumptions are stable again."
 
 Scoring rubric:
-- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and one production escalation rule.
+- 10/10: correct notation, one numeric example, explicit guardrail, data checks, and escalation path.
+- 8/10: mostly correct notation plus a clear guardrail and fallback action.
+- 6/10: partial correctness but vague controls or missing data validation.
+- Below 6/10: formula recall without decision-quality risk controls.
 
 ### Interview Drill
 - Prompt: "Walk me through Transaction costs and slippage in a risk meeting during volatility clustering after policy shock."

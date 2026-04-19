@@ -2454,9 +2454,29 @@ def daily_quiz_questions(week_no: int, day_no: int, day: DayPlan) -> list[str]:
         "launch": "because deployment decisions must combine edge estimates with operational and risk controls",
     }
 
+    data_check_by_phase = {
+        "foundations": "timezone alignment, split/dividend adjustments, and missing-close handling",
+        "ml": "strict train/validation timestamp split, no forward-filled target leakage, and feature freshness checks",
+        "time_series": "stationarity diagnostics, holiday-gap handling, and rolling-window recalculation checks",
+        "portfolio": "covariance window consistency, stale-price filtering, and exposure normalization checks",
+        "advanced": "survivorship-bias controls, borrow/shortability flags, and capacity-aware data completeness checks",
+        "launch": "broker feed latency checks, execution timestamp reconciliation, and policy-rule audit logs",
+    }
+
+    fallback_by_phase = {
+        "foundations": "cut gross exposure by 30%, rerun diagnostics, and only resume when risk metrics normalize",
+        "ml": "pause new signals, revert to baseline model, and relaunch only after calibration recovers",
+        "time_series": "switch to shorter lookback controls, reduce leverage, and require stability across two windows",
+        "portfolio": "de-risk to benchmark weights, rerun stress tests, and re-enable risk only after guardrails pass",
+        "advanced": "halve position sizes, widen execution limits, and re-open capacity only after slippage improves",
+        "launch": "freeze promotions, continue paper-trade only, and escalate to committee with replay evidence",
+    }
+
     scenario = scenario_by_phase[phase]
     guardrail = risk_by_phase[phase]
     production_reason = production_by_phase[phase]
+    data_check = data_check_by_phase[phase]
+    fallback = fallback_by_phase[phase]
 
     return [
         f"1. PM interview question ({week_label}): Explain {formula_name} and define every symbol clearly for {scenario}.",
@@ -2465,12 +2485,19 @@ def daily_quiz_questions(week_no: int, day_no: int, day: DayPlan) -> list[str]:
         "2. Risk manager question: Using one real ticker from this lesson, what hard guardrail would you enforce before live deployment?",
         f"   - Model answer: \"I would run the workflow on SPY and a stress-sensitive peer, then {guardrail}. "
         "If the guardrail triggers, I switch to paper-trade monitoring and block new risk until diagnostics re-pass.\"",
-        f"3. Production question: Why does '{day.topic}' matter in live trading systems?",
+        "3. Data integrity question: Which checks must pass before you trust the output and place risk?",
+        f"   - Model answer: \"Before trading I verify {data_check}. If any check fails, I classify the run as non-tradable and log the incident.\"",
+        f"4. Production question: Why does '{day.topic}' matter in live trading systems?",
         f"   - Model answer: \"{day.topic} matters {production_reason}. "
         "In production I need reproducible calculations, explicit control limits, and escalation rules that survive stress windows.\"",
+        "5. Decision question: If your key metric degrades for three consecutive sessions, what is your fallback plan?",
+        f"   - Model answer: \"I {fallback}. I only restore risk after rerun evidence confirms that assumptions are stable again.\"",
         "",
         "Scoring rubric:",
-        "- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and one production escalation rule.",
+        "- 10/10: correct notation, one numeric example, explicit guardrail, data checks, and escalation path.",
+        "- 8/10: mostly correct notation plus a clear guardrail and fallback action.",
+        "- 6/10: partial correctness but vague controls or missing data validation.",
+        "- Below 6/10: formula recall without decision-quality risk controls.",
     ]
 
 
@@ -2688,6 +2715,37 @@ def day_markdown(
 
 
 def revision_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | None]) -> str:
+    day = DayPlan(
+        topic="Revision Sprint",
+        concepts=(
+            "Recall under time pressure",
+            "Error-log driven remediation",
+            "Deployment readiness retest",
+        ),
+        worked_example="Rebuild two weekday workflows and compare decision outputs after a clean rerun.",
+        coding_task="Rebuild one workflow from memory, rerun from clean kernel, and document one corrected failure mode.",
+        reflection="Which failure mode still appears after reruns, and what concrete control will prevent it next week?",
+    )
+
+    revision_hour_plan = [
+        "- **Core Block 1 (60 min):** Recall formulas, notation, and units without notes.",
+        "- **Core Block 2 (75 min):** Rebuild one weekday workflow from memory and compare with reference output.",
+        "- **Core Block 3 (60 min):** Rerun at least two notebooks from a clean kernel and capture mismatches.",
+        "- **Core Block 4 (60 min):** Diagnose root causes and update safeguards in code/comments.",
+        "- **Core Block 5 (45 min):** Interview drill, quiz, and escalation-rule rehearsal.",
+        "- **Required Extension Block A (60 min):** Re-test on one alternate ticker universe and one stress window.",
+        "- **Required Extension Block B (60 min):** Produce a remediation log with before/after evidence.",
+        "- **Optional Deep Work (0-4 hours):** Add robustness tests, monitor drift controls, and harden reporting.",
+    ]
+
+    practice = [
+        "1. Re-derive two key formulas from this week with units and constraints.",
+        "2. Rebuild one weekday notebook workflow from memory and verify output parity.",
+        "3. Replay one stress regime and document one changed decision rule.",
+        "4. Add one extra validation test that would have caught a prior mistake.",
+        "5. Record a 60-second explanation of one corrected failure mode.",
+    ]
+
     return "\n".join(
         [
             f"# Week {week_no:02d} Day 06: Revision Sprint",
@@ -2695,6 +2753,12 @@ def revision_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | 
             "## Study Duration",
             "- Planned effort: 6-10 hours/day",
             "- Required minimum: 6 hours across recall, rebuild, rerun, and retest blocks.",
+            "",
+            "## 6-10 Hour Daily Structure",
+            *revision_hour_plan,
+            "",
+            "## Why It Matters in Quant",
+            "Revision day converts fragile understanding into deployment-ready reliability by forcing recall, rebuild, and guardrail validation.",
             "",
             *continuity_section(continuity),
             "",
@@ -2708,16 +2772,85 @@ def revision_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | 
             "## Focus Areas",
             *(f"- {item}" for item in week.revision_focus),
             "",
-            "## Revision Output",
+            "## Mathematical Foundations (LaTeX)",
+            *render_formula_section(week_no, 6),
+            "## Symbol Definitions",
+            *symbol_definitions(week_no),
+            "",
+            "## Real Trading Example",
+            *real_trading_example(week_no, 6, day),
+            "",
+            "## Step-by-Step Solved Problems",
+            *render_solved_problems(week_no, 6),
+            "## Coding Walkthrough",
+            *coding_walkthrough(week_no, day),
+            "",
+            "## Block 5: Practice, Quiz, and Interview Drill",
+            "",
+            "### Practice Problems",
+            *practice,
+            "",
+            "### Daily Quiz (Realistic Interview Style)",
+            *daily_quiz_questions(week_no, 6, day),
+            "",
+            "### Interview Drill",
+            *interview_drill_prompt(week_no, day),
+            "",
+            "## Required Extension Track (2+ Hours)",
+            "- Re-run today's notebook from a fresh kernel so outputs are reproducible without hidden state.",
+            "- Add one additional risk guardrail and verify how it changes trade/no-trade decisions.",
+            "- Document one failure mode, one mitigation, and one escalation rule for production use.",
+            "",
+            "Extension completion checks:",
+            "- [ ] Notebook restarted and all coding cells rerun successfully",
+            "- [ ] At least one extra validation/edge-case test added",
+            "- [ ] Risk guardrail and fallback action documented",
+            "",
+            "## Reflection Question",
+            day.reflection,
+            "",
+            "## Completion Checklist",
             "- [ ] Updated error log entries",
             "- [ ] Weak concepts re-tested",
             "- [ ] Two notebooks rerun from fresh kernel",
             "- [ ] Next-week risk list prepared",
+            "- [ ] Interview drill recorded with one fallback action",
         ]
     ) + "\n"
 
 
 def project_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | None]) -> str:
+    day = DayPlan(
+        topic="Portfolio Project",
+        concepts=(
+            "Problem framing and assumptions log",
+            "Risk-first execution design",
+            "Production communication under uncertainty",
+        ),
+        worked_example="Deliver a capstone-quality notebook and summarize one trade-off under stress assumptions.",
+        coding_task="Ship the project notebook with reproducible outputs, controls, and one escalation rule.",
+        reflection="What single risk control would block launch today, and what evidence would clear it?",
+    )
+
+    project_hour_plan = [
+        "- **Core Block 1 (60 min):** Restate objective, assumptions, and measurable success criteria.",
+        "- **Core Block 2 (75 min):** Build/clean data pipeline and verify timestamp integrity.",
+        "- **Core Block 3 (75 min):** Implement project logic and validate formulas against spot checks.",
+        "- **Core Block 4 (60 min):** Produce diagnostics, stress checks, and fallback pathways.",
+        "- **Core Block 5 (45 min):** Deliver interview-style defense with risk controls and escalation.",
+        "- **Required Extension Block A (60 min):** Re-run project on alternate assumptions and compare drift.",
+        "- **Required Extension Block B (60 min):** Prepare production memo and launch/no-launch decision log.",
+        "- **Optional Deep Work (0-4 hours):** Expand tests, improve monitoring, and polish stakeholder narrative.",
+    ]
+
+    practice = [
+        "1. State project objective and one hard failure condition in under 45 seconds.",
+        "2. Validate one formula output against a manual spot-check.",
+        "3. Show one stress scenario where your decision changes and explain why.",
+        "4. Add one edge-case test and one fallback rule to the notebook.",
+        "5. Deliver a one-minute PM summary with one risk guardrail.",
+    ]
+
     return "\n".join(
         [
             f"# Week {week_no:02d} Day 07: Portfolio Project",
@@ -2726,31 +2859,82 @@ def project_markdown(week_no: int, week: WeekPlan, continuity: dict[str, str | N
             "- Planned effort: 6-10 hours/day",
             "- Required minimum: 6 hours for implementation, validation, and communication drills.",
             "",
+            "## 6-10 Hour Daily Structure",
+            *project_hour_plan,
+            "",
+            "## Why It Matters in Quant",
+            "Project day is where research quality meets execution discipline and communication quality under risk constraints.",
+            "",
             *continuity_section(continuity),
             "",
-            f"## Project Title\n{week.project_title}",
+            "## Project Blueprint",
+            f"### Project Title\n{week.project_title}",
             "",
-            "## Problem Statement",
+            "### Problem Statement",
             week.project_problem,
             "",
-            "## Data Sources",
+            "### Data Sources",
             *(f"- {src}" for src in week.project_data),
             "",
-            "## Implementation Steps",
+            "### Implementation Steps",
             *(f"{idx}. {step}" for idx, step in enumerate(week.project_steps, start=1)),
             "",
-            "## Evaluation Metrics",
+            "### Evaluation Metrics",
             *(f"- {metric}" for metric in week.project_metrics),
             "",
-            "## Execution Standard",
+            "### Execution Standard",
             "- [ ] Notebook/script runs from clean start without hidden state",
             "- [ ] Outputs include at least one diagnostic table and one chart",
             "- [ ] One explicit risk guardrail and fallback action are documented",
             "",
-            "## Deliverables",
+            "### Deliverables",
             "- Notebook or script output",
             "- One-page summary memo",
             "- Tracker update with completion and lessons learned",
+            "",
+            "## Mathematical Foundations (LaTeX)",
+            *render_formula_section(week_no, 7),
+            "## Symbol Definitions",
+            *symbol_definitions(week_no),
+            "",
+            "## Real Trading Example",
+            *real_trading_example(week_no, 7, day),
+            "",
+            "## Step-by-Step Solved Problems",
+            *render_solved_problems(week_no, 7),
+            "## Coding Walkthrough",
+            *coding_walkthrough(week_no, day),
+            "",
+            "## Block 5: Practice, Quiz, and Interview Drill",
+            "",
+            "### Practice Problems",
+            *practice,
+            "",
+            "### Daily Quiz (Realistic Interview Style)",
+            *daily_quiz_questions(week_no, 7, day),
+            "",
+            "### Interview Drill",
+            *interview_drill_prompt(week_no, day),
+            "",
+            "## Required Extension Track (2+ Hours)",
+            "- Re-run today's notebook from a fresh kernel so outputs are reproducible without hidden state.",
+            "- Add one additional risk guardrail and verify how it changes trade/no-trade decisions.",
+            "- Document one failure mode, one mitigation, and one escalation rule for production use.",
+            "",
+            "Extension completion checks:",
+            "- [ ] Notebook restarted and all coding cells rerun successfully",
+            "- [ ] At least one extra validation/edge-case test added",
+            "- [ ] Risk guardrail and fallback action documented",
+            "",
+            "## Reflection Question",
+            day.reflection,
+            "",
+            "## Completion Checklist",
+            "- [ ] Project notebook runs cleanly from fresh kernel",
+            "- [ ] Risk guardrail and fallback action documented",
+            "- [ ] Stress scenario comparison completed",
+            "- [ ] One-page summary memo finalized",
+            "- [ ] Launch/no-launch decision recorded with evidence",
         ]
     ) + "\n"
 
@@ -2786,16 +2970,40 @@ def week_readme(week_no: int, week: WeekPlan) -> str:
 
 
 def week_quiz(week_no: int, week: WeekPlan) -> str:
+    phase = phase_for_week(week_no)
+
+    scenario_by_phase = {
+        "foundations": "inflation and policy-rate repricing",
+        "ml": "feature drift after earnings dispersion",
+        "time_series": "volatility clustering after policy shocks",
+        "portfolio": "correlation spikes during cross-asset drawdowns",
+        "advanced": "liquidity stress and crowding unwind",
+        "launch": "live-paper governance and promotion criteria",
+    }
+
+    guardrail_by_phase = {
+        "foundations": "cap gross exposure and re-check compounding assumptions",
+        "ml": "pause entries when calibration drift breaches threshold",
+        "time_series": "de-risk when realized volatility exits training regime",
+        "portfolio": "rebalance when one sleeve dominates risk budget",
+        "advanced": "throttle sizing when implementation shortfall worsens",
+        "launch": "freeze promotions when drawdown breaches policy budget",
+    }
+
+    scenario = scenario_by_phase[phase]
+    guardrail = guardrail_by_phase[phase]
+
     qas: list[tuple[str, str]] = []
     for idx, day in enumerate(week.weekday_days, start=1):
         qas.append(
             (
                 f"{idx}. Real interview question: How would you explain '{day.topic}' to a PM in under one minute?",
                 (
-                    f"\"I frame {day.topic.lower()} as a production decision tool, not just a classroom concept. "
-                    "First, I define the core notation and units. Second, I run one real-market example and state the numeric result. "
-                    "Third, I translate the output into a trade action plus one explicit risk guardrail. "
-                    f"For implementation, I build reusable code to {day.coding_task.lower()} and log edge cases.\""
+                    f"\"I present {day.topic} as a decision workflow for {scenario}. "
+                    "Step one: define notation, units, and assumptions clearly. "
+                    "Step two: show one numeric result on a real ticker and state its decision impact. "
+                    f"Step three: enforce a guardrail ({guardrail}) and explain the fallback path if it fails. "
+                    f"For implementation, I would {day.coding_task[0].lower() + day.coding_task[1:]}\""
                 ),
             )
         )
@@ -2916,6 +3124,7 @@ def roadmap_markdown(plans: list[WeekPlan]) -> str:
         "Start date: 20 April 2026",
         "",
         "## Time Commitment",
+        "- Program horizon: 24 weeks (~6 months)",
         "- Daily model (Day 1-7): 6-10 hours/day",
         "- Required minimum: 6 hours/day (core + required extension)",
         "- Optional deep work: up to 10 hours/day for advanced practice and interview prep",

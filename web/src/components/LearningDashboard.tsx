@@ -70,11 +70,17 @@ export default function LearningDashboard({
                   <a href={withBase(week.resources.quizPath)} target="_blank" rel="noreferrer">
                     Open weekly quiz
                   </a>
+                  <Link to={`/week/${week.week}/day/6#completion-checklist`}>
+                    Open revision checklist (interactive)
+                  </Link>
+                  <Link to={`/week/${week.week}/day/7#completion-checklist`}>
+                    Open mini-project checklist (interactive)
+                  </Link>
                   <a href={withBase(week.resources.revisionChecklistPath)} target="_blank" rel="noreferrer">
-                    Open revision checklist
+                    Open revision checklist source
                   </a>
                   <a href={withBase(week.resources.miniProjectPath)} target="_blank" rel="noreferrer">
-                    Open mini-project template
+                    Open mini-project template source
                   </a>
                   <a href={githubBlobUrl(weekNotebookRepoPath)} target="_blank" rel="noreferrer">
                     Open week notebook source (GitHub)

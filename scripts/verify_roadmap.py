@@ -15,7 +15,12 @@ REQUIRED_WEEKDAY_SECTIONS = [
     "### Daily Quiz (Realistic Interview Style)",
 ]
 
-REQUIRED_ALL_DAYS_SECTIONS = ["## Continuity and Handoff"]
+REQUIRED_ALL_DAYS_SECTIONS = [
+    "## Continuity and Handoff",
+    "### Daily Quiz (Realistic Interview Style)",
+    "### Interview Drill",
+    "## Completion Checklist",
+]
 
 REQUIRED_WEEK_RESOURCE_KEYS = [
     "notebookPath",

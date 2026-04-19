@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
@@ -18,6 +18,8 @@ interface DayDetailProps {
   progress: ProgressMap;
   onSave: (weekNo: number, dayNo: number, completed: boolean, notes: string) => Promise<DailyProgress>;
 }
+
+type ActionMenuName = "reading" | "quiz" | "interview" | "notebook";
 
 function progressKey(weekNo: number, dayNo: number): string {
   return `${weekNo}-${dayNo}`;
@@ -59,6 +61,16 @@ export default function DayDetail({
   const [status, setStatus] = useState("");
   const [statusTone, setStatusTone] = useState<"ok" | "error" | "">("");
   const [saving, setSaving] = useState(false);
+  const [openActionMenu, setOpenActionMenu] = useState<ActionMenuName | null>(null);
+  const actionsRef = useRef<HTMLElement | null>(null);
+
+  function toggleActionMenu(menu: ActionMenuName): void {
+    setOpenActionMenu((previous) => (previous === menu ? null : menu));
+  }
+
+  function closeActionMenu(): void {
+    setOpenActionMenu(null);
+  }
 
   useEffect(() => {
     if (!day) {
@@ -66,7 +78,25 @@ export default function DayDetail({
     }
     setCompleted(Boolean(currentProgress?.completed));
     setNotes(currentProgress?.notes ?? "");
+    setOpenActionMenu(null);
   }, [day, currentProgress]);
+
+  useEffect(() => {
+    function handleOutsidePointer(event: PointerEvent): void {
+      const target = event.target as Node | null;
+      if (!target || !actionsRef.current) {
+        return;
+      }
+      if (!actionsRef.current.contains(target)) {
+        setOpenActionMenu(null);
+      }
+    }
+
+    document.addEventListener("pointerdown", handleOutsidePointer);
+    return () => {
+      document.removeEventListener("pointerdown", handleOutsidePointer);
+    };
+  }, []);
 
   useEffect(() => {
     async function run(): Promise<void> {
@@ -144,6 +174,24 @@ export default function DayDetail({
         <ReactMarkdown
           remarkPlugins={[remarkGfm, remarkMath]}
           rehypePlugins={[rehypeSlug, rehypeKatex]}
+          components={{
+            input: ({ ...props }: any) => {
+              if (props.type !== "checkbox") {
+                return <input {...props} />;
+              }
+
+              const { checked: _checked, disabled: _disabled, ...rest } = props;
+
+              return (
+                <input
+                  {...rest}
+                  type="checkbox"
+                  defaultChecked={Boolean(props.checked)}
+                  aria-label="Lesson checklist item"
+                />
+              );
+            },
+          }}
         >
           {markdown}
         </ReactMarkdown>
@@ -175,15 +223,38 @@ export default function DayDetail({
           </section>
         ) : null}
 
-        <section className="daily-actions">
+        <section className="daily-actions" ref={actionsRef}>
           <h3>Daily Study Actions</h3>
 
-          <div className="action-menu">
-            <button type="button" className="action-trigger" aria-haspopup="true">
+          <nav className="loop-nav" aria-label="Lesson flow loop">
+            <a href="#lesson-content" onClick={closeActionMenu}>
+              Reading
+            </a>
+            <a href="#daily-quiz-realistic-interview-style" onClick={closeActionMenu}>
+              Quiz
+            </a>
+            <a href="#interview-drill" onClick={closeActionMenu}>
+              Interview
+            </a>
+          </nav>
+
+          <div className={`action-menu ${openActionMenu === "reading" ? "open" : ""}`}>
+            <button
+              type="button"
+              className="action-trigger"
+              aria-haspopup="true"
+              aria-expanded={openActionMenu === "reading"}
+              onClick={() => toggleActionMenu("reading")}
+            >
               Daily Reading
             </button>
-            <div className="action-menu-panel" role="menu" aria-label="Daily Reading Actions">
-              <a className="action-menu-item" href="#lesson-content">
+            <div
+              className="action-menu-panel"
+              role="menu"
+              aria-label="Daily Reading Actions"
+              hidden={openActionMenu !== "reading"}
+            >
+              <a className="action-menu-item" href="#lesson-content" onClick={closeActionMenu}>
                 Read here
               </a>
               <a
@@ -191,32 +262,65 @@ export default function DayDetail({
                 href={withBase(readingPdfPath)}
                 target="_blank"
                 rel="noreferrer"
+                onClick={closeActionMenu}
               >
                 Open PDF
               </a>
             </div>
           </div>
 
-          <div className="action-menu">
-            <button type="button" className="action-trigger" aria-haspopup="true">
+          <div className={`action-menu ${openActionMenu === "quiz" ? "open" : ""}`}>
+            <button
+              type="button"
+              className="action-trigger"
+              aria-haspopup="true"
+              aria-expanded={openActionMenu === "quiz"}
+              onClick={() => toggleActionMenu("quiz")}
+            >
               Daily Quiz
             </button>
-            <div className="action-menu-panel" role="menu" aria-label="Daily Quiz Actions">
-              <a className="action-menu-item" href="#daily-quiz-realistic-interview-style">
+            <div
+              className="action-menu-panel"
+              role="menu"
+              aria-label="Daily Quiz Actions"
+              hidden={openActionMenu !== "quiz"}
+            >
+              <a
+                className="action-menu-item"
+                href="#daily-quiz-realistic-interview-style"
+                onClick={closeActionMenu}
+              >
                 Read here
               </a>
-              <a className="action-menu-item" href={withBase(quizPdfPath)} target="_blank" rel="noreferrer">
+              <a
+                className="action-menu-item"
+                href={withBase(quizPdfPath)}
+                target="_blank"
+                rel="noreferrer"
+                onClick={closeActionMenu}
+              >
                 Open PDF
               </a>
             </div>
           </div>
 
-          <div className="action-menu">
-            <button type="button" className="action-trigger" aria-haspopup="true">
+          <div className={`action-menu ${openActionMenu === "interview" ? "open" : ""}`}>
+            <button
+              type="button"
+              className="action-trigger"
+              aria-haspopup="true"
+              aria-expanded={openActionMenu === "interview"}
+              onClick={() => toggleActionMenu("interview")}
+            >
               Interview Drill
             </button>
-            <div className="action-menu-panel" role="menu" aria-label="Interview Drill Actions">
-              <a className="action-menu-item" href="#interview-drill">
+            <div
+              className="action-menu-panel"
+              role="menu"
+              aria-label="Interview Drill Actions"
+              hidden={openActionMenu !== "interview"}
+            >
+              <a className="action-menu-item" href="#interview-drill" onClick={closeActionMenu}>
                 Read here
               </a>
               <a
@@ -224,24 +328,54 @@ export default function DayDetail({
                 href={withBase(interviewPdfPath)}
                 target="_blank"
                 rel="noreferrer"
+                onClick={closeActionMenu}
               >
                 Open PDF
               </a>
             </div>
           </div>
 
-          <div className="action-menu">
-            <button type="button" className="action-trigger" aria-haspopup="true">
+          <div className={`action-menu ${openActionMenu === "notebook" ? "open" : ""}`}>
+            <button
+              type="button"
+              className="action-trigger"
+              aria-haspopup="true"
+              aria-expanded={openActionMenu === "notebook"}
+              onClick={() => toggleActionMenu("notebook")}
+            >
               Open Notebook
             </button>
-            <div className="action-menu-panel" role="menu" aria-label="Notebook Open Actions">
-              <a className="action-menu-item" href={withBase(webDayNotebookPath)} target="_blank" rel="noreferrer">
+            <div
+              className="action-menu-panel"
+              role="menu"
+              aria-label="Notebook Open Actions"
+              hidden={openActionMenu !== "notebook"}
+            >
+              <a
+                className="action-menu-item"
+                href={withBase(webDayNotebookPath)}
+                target="_blank"
+                rel="noreferrer"
+                onClick={closeActionMenu}
+              >
                 Open in app
               </a>
-              <a className="action-menu-item" href={notebookGithubPath} target="_blank" rel="noreferrer">
+              <a
+                className="action-menu-item"
+                href={notebookGithubPath}
+                target="_blank"
+                rel="noreferrer"
+                onClick={closeActionMenu}
+              >
                 Open on GitHub
               </a>
-              <a className="action-menu-item" href={notebookVsCodePath} target="_blank" rel="noreferrer">
+              <a
+                className="action-menu-item"
+                href={notebookVsCodePath}
+                target="_blank"
+                rel="noreferrer"
+                onClick={closeActionMenu}
+              >
                 Open in VS Code
               </a>
             </div>

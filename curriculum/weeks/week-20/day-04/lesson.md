@@ -146,11 +146,18 @@ net_pnl = backtest_with_costs(signals, returns, execution_cost)
    - Model answer: "I use Spread Z-Score as a decision bridge from market observations to position sizing. The formula is $z_t=\frac{s_t-\mu_s}{\sigma_s}$. I define each symbol with units first, then compute one concrete value, and finally state what trade action changes because of the result in this regime."
 2. Risk manager question: Using one real ticker from this lesson, what hard guardrail would you enforce before live deployment?
    - Model answer: "I would run the workflow on SPY and a stress-sensitive peer, then throttle position sizing when estimated implementation shortfall rises above threshold. If the guardrail triggers, I switch to paper-trade monitoring and block new risk until diagnostics re-pass."
-3. Production question: Why does 'Rebalancing and execution scheduling' matter in live trading systems?
+3. Data integrity question: Which checks must pass before you trust the output and place risk?
+   - Model answer: "Before trading I verify survivorship-bias controls, borrow/shortability flags, and capacity-aware data completeness checks. If any check fails, I classify the run as non-tradable and log the incident."
+4. Production question: Why does 'Rebalancing and execution scheduling' matter in live trading systems?
    - Model answer: "Rebalancing and execution scheduling matters because signal quality is meaningless unless net-of-cost and capacity-aware in live execution. In production I need reproducible calculations, explicit control limits, and escalation rules that survive stress windows."
+5. Decision question: If your key metric degrades for three consecutive sessions, what is your fallback plan?
+   - Model answer: "I halve position sizes, widen execution limits, and re-open capacity only after slippage improves. I only restore risk after rerun evidence confirms that assumptions are stable again."
 
 Scoring rubric:
-- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and one production escalation rule.
+- 10/10: correct notation, one numeric example, explicit guardrail, data checks, and escalation path.
+- 8/10: mostly correct notation plus a clear guardrail and fallback action.
+- 6/10: partial correctness but vague controls or missing data validation.
+- Below 6/10: formula recall without decision-quality risk controls.
 
 ### Interview Drill
 - Prompt: "Walk me through Rebalancing and execution scheduling in an execution review with rising slippage and crowding risk."

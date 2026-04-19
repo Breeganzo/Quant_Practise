@@ -150,11 +150,18 @@ report = classification_report_from_thresholds(y_valid, proba)
    - Model answer: "I use Cross-Entropy as a decision bridge from market observations to position sizing. The formula is $\mathcal{L}_{CE}=-\frac{1}{n}\sum_i[y_i\log p_i+(1-y_i)\log(1-p_i)]$. I define each symbol with units first, then compute one concrete value, and finally state what trade action changes because of the result in this regime."
 2. Risk manager question: Using one real ticker from this lesson, what hard guardrail would you enforce before live deployment?
    - Model answer: "I would run the workflow on SPY and a stress-sensitive peer, then freeze new model entries when calibration error worsens for 3 consecutive windows. If the guardrail triggers, I switch to paper-trade monitoring and block new risk until diagnostics re-pass."
-3. Production question: Why does 'Anomaly detection basics' matter in live trading systems?
+3. Data integrity question: Which checks must pass before you trust the output and place risk?
+   - Model answer: "Before trading I verify strict train/validation timestamp split, no forward-filled target leakage, and feature freshness checks. If any check fails, I classify the run as non-tradable and log the incident."
+4. Production question: Why does 'Anomaly detection basics' matter in live trading systems?
    - Model answer: "Anomaly detection basics matters because model decisions fail quickly without leakage controls, drift monitoring, and threshold governance. In production I need reproducible calculations, explicit control limits, and escalation rules that survive stress windows."
+5. Decision question: If your key metric degrades for three consecutive sessions, what is your fallback plan?
+   - Model answer: "I pause new signals, revert to baseline model, and relaunch only after calibration recovers. I only restore risk after rerun evidence confirms that assumptions are stable again."
 
 Scoring rubric:
-- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and one production escalation rule.
+- 10/10: correct notation, one numeric example, explicit guardrail, data checks, and escalation path.
+- 8/10: mostly correct notation plus a clear guardrail and fallback action.
+- 6/10: partial correctness but vague controls or missing data validation.
+- Below 6/10: formula recall without decision-quality risk controls.
 
 ### Interview Drill
 - Prompt: "Walk me through Anomaly detection basics in a model-risk review after prediction drift and weaker precision."

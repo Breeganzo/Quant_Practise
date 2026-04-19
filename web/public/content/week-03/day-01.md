@@ -146,11 +146,18 @@ assert metrics['max_drawdown'] <= 0
    - Model answer: "I use Simple Return as a decision bridge from market observations to position sizing. The formula is $r_t = \frac{P_t - P_{t-1}}{P_{t-1}}$. I define each symbol with units first, then compute one concrete value, and finally state what trade action changes because of the result in this regime."
 2. Risk manager question: Using one real ticker from this lesson, what hard guardrail would you enforce before live deployment?
    - Model answer: "I would run the workflow on SPY and a stress-sensitive peer, then cap gross exposure when rolling 20-day volatility exceeds backtest 90th percentile. If the guardrail triggers, I switch to paper-trade monitoring and block new risk until diagnostics re-pass."
-3. Production question: Why does 'Vectors, matrices, and transformations' matter in live trading systems?
+3. Data integrity question: Which checks must pass before you trust the output and place risk?
+   - Model answer: "Before trading I verify timezone alignment, split/dividend adjustments, and missing-close handling. If any check fails, I classify the run as non-tradable and log the incident."
+4. Production question: Why does 'Vectors, matrices, and transformations' matter in live trading systems?
    - Model answer: "Vectors, matrices, and transformations matters because reliable notation and units prevent silent compounding and scaling errors in production PnL reporting. In production I need reproducible calculations, explicit control limits, and escalation rules that survive stress windows."
+5. Decision question: If your key metric degrades for three consecutive sessions, what is your fallback plan?
+   - Model answer: "I cut gross exposure by 30%, rerun diagnostics, and only resume when risk metrics normalize. I only restore risk after rerun evidence confirms that assumptions are stable again."
 
 Scoring rubric:
-- Full credit requires: correct notation, one numeric example, one explicit risk guardrail, and one production escalation rule.
+- 10/10: correct notation, one numeric example, explicit guardrail, data checks, and escalation path.
+- 8/10: mostly correct notation plus a clear guardrail and fallback action.
+- 6/10: partial correctness but vague controls or missing data validation.
+- Below 6/10: formula recall without decision-quality risk controls.
 
 ### Interview Drill
 - Prompt: "Walk me through Vectors, matrices, and transformations in a PM review after CPI surprise where benchmark drawdown accelerated."
