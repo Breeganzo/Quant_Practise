@@ -6,11 +6,13 @@ from pathlib import Path
 
 REQUIRED_WEEKDAY_SECTIONS = [
     "## 5-Block Daily Structure",
+    "## 2-Hour Extension Track (Required)",
     "## Mathematical Foundations (LaTeX)",
     "## Symbol Definitions",
     "## Real Trading Example",
     "## Step-by-Step Solved Problems",
     "## Coding Walkthrough",
+    "### Daily Quiz (Realistic Interview Style)",
 ]
 
 REQUIRED_ALL_DAYS_SECTIONS = ["## Continuity and Handoff"]
@@ -172,9 +174,18 @@ def main() -> None:
                         f"week-{week_no:02d} day-{day_no:02d} missing LaTeX block delimiters ($$)"
                     )
                 solved_problem_count = lesson_text.count("### Solved Problem")
-                if solved_problem_count < 3:
+                if solved_problem_count < 4:
                     content_issues.append(
-                        f"week-{week_no:02d} day-{day_no:02d} has {solved_problem_count} solved problems (expected >=3)"
+                        f"week-{week_no:02d} day-{day_no:02d} has {solved_problem_count} solved problems (expected >=4)"
+                    )
+                model_answer_count = lesson_text.count("- Model answer:")
+                if model_answer_count < 3:
+                    content_issues.append(
+                        f"week-{week_no:02d} day-{day_no:02d} has {model_answer_count} model answers (expected >=3)"
+                    )
+                if "6-hour" not in lesson_text.lower() and "6 hour" not in lesson_text.lower():
+                    content_issues.append(
+                        f"week-{week_no:02d} day-{day_no:02d} missing explicit 6-hour extension language"
                     )
 
     if duration_issues:
@@ -206,7 +217,7 @@ def main() -> None:
 
     print("[OK] Validation passed")
     print(f"weeks={len(weeks)}")
-    print("durations=weekday-4h/weekend-2h")
+    print("durations=weekday-4h-core-plus-2h-extension/weekend-2h")
     print(f"web_lessons={168 - missing_lessons}")
     print(f"weekday_lessons_with_quality_checks={checked_weekday_lessons}")
     print(f"weekly_notebooks={len(weekly_notebooks)}")

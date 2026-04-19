@@ -108,14 +108,50 @@ def export_week(root: Path, week: str) -> None:
         )
 
 
+def export_all_weeks(root: Path) -> dict[str, object]:
+    weeks_root = root / "curriculum" / "weeks"
+    week_dirs = sorted(p for p in weeks_root.glob("week-*") if p.is_dir())
+
+    exported: list[str] = []
+    for week_dir in week_dirs:
+        export_week(root, week_dir.name)
+        exported.append(week_dir.name)
+
+    return {
+        "target": "all",
+        "weeks_exported": exported,
+        "count": len(exported),
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Export markdown and notebooks to PDF/HTML.")
-    parser.add_argument("--week", type=str, default="week-01", help="Week folder, e.g. week-01")
+    parser.add_argument("--week", type=str, default="week-01", help="Week folder, e.g. week-01 or all")
+    parser.add_argument(
+        "--write-manifest",
+        type=str,
+        default="",
+        help="Optional JSON manifest output path",
+    )
     args = parser.parse_args()
 
     root = Path(__file__).resolve().parents[1]
-    export_week(root, args.week)
-    print(f"Export completed for {args.week}.")
+    manifest: dict[str, object]
+    if args.week == "all":
+        manifest = export_all_weeks(root)
+        print("Export completed for all weeks.")
+    else:
+        export_week(root, args.week)
+        manifest = {"target": args.week, "count": 1}
+        print(f"Export completed for {args.week}.")
+
+    if args.write_manifest:
+        manifest_path = Path(args.write_manifest)
+        if not manifest_path.is_absolute():
+            manifest_path = root / manifest_path
+        manifest_path.parent.mkdir(parents=True, exist_ok=True)
+        manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+        print(f"Manifest written to {manifest_path.relative_to(root)}")
 
 
 if __name__ == "__main__":

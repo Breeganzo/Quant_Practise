@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 import nbformat
@@ -355,6 +356,41 @@ print(f"\\nSuggested focus asset for follow-up research: {{top_asset}}")
 """
 
 
+def verification_code_for_day(week_no: int, day_no: int, topic: str) -> str:
+    seed = week_no * 100 + day_no + 9000
+    return f"""# ReAct-style verification: observe -> reason -> act -> verify
+np.random.seed({seed})
+
+observe_tickers = ['SPY', 'QQQ', 'TLT']
+observe_prices = load_market_prices(observe_tickers, start='2020-01-01')
+observe_returns = observe_prices.pct_change().dropna()
+
+if observe_returns.empty:
+    raise ValueError('No returns available for verification checks')
+
+ann_vol = float(observe_returns['SPY'].std() * np.sqrt(252))
+ann_ret = float((1 + observe_returns['SPY']).prod() ** (252 / len(observe_returns)) - 1)
+sharpe_proxy = float((ann_ret - 0.03) / max(ann_vol, 1e-8))
+
+# Risk-first deployment gate used in realistic interview responses.
+guardrail = 'de-risk' if ann_vol > 0.30 else 'monitor'
+decision = 'deploy-paper-trade' if sharpe_proxy > 0.40 and guardrail == 'monitor' else 'hold-and-review'
+
+verification = {{
+    'topic': {topic!r},
+    'week': {week_no},
+    'day': {day_no},
+    'observe_annual_return': ann_ret,
+    'observe_annual_vol': ann_vol,
+    'reason_sharpe_proxy': sharpe_proxy,
+    'act_guardrail': guardrail,
+    'verify_decision': decision,
+}}
+
+verification
+"""
+
+
 def create_day_notebook(
     week_no: int,
     day_no: int,
@@ -377,6 +413,11 @@ def create_day_notebook(
             f"Run this example for Week {week_no:02d} Day {day_no:02d}, inspect outputs, then complete the quiz."
         ),
         new_code_cell(demo_code_for_day(week_no, day_no)),
+        new_markdown_cell(
+            "## ReAct Verification Cell\n"
+            "Use this execution cell to validate one trade decision with an explicit risk guardrail."
+        ),
+        new_code_cell(verification_code_for_day(week_no, day_no, topic)),
         new_markdown_cell(quiz_markdown_for_day(week_no, day_no, topic)),
         new_code_cell(quiz_solution_code_for_day(week_no, day_no, topic)),
     ]
@@ -384,7 +425,11 @@ def create_day_notebook(
     nb = new_notebook(
         cells=cells,
         metadata={
-            "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+            "kernelspec": {
+                "display_name": "quant-learning-roadmap",
+                "language": "python",
+                "name": "python3",
+            },
             "language_info": {"name": "python", "version": "3.12"},
         },
     )
@@ -414,13 +459,24 @@ def create_week_notebook(week_no: int, week_dir: Path, notebook_path: Path) -> N
             )
         )
         cells.append(new_code_cell(demo_code_for_day(week_no, day_no)))
+        cells.append(
+            new_markdown_cell(
+                "## ReAct Verification Cell\n"
+                "Validate trade logic with a risk guardrail before reading the model quiz answers."
+            )
+        )
+        cells.append(new_code_cell(verification_code_for_day(week_no, day_no, topic)))
         cells.append(new_markdown_cell(quiz_markdown_for_day(week_no, day_no, topic)))
         cells.append(new_code_cell(quiz_solution_code_for_day(week_no, day_no, topic)))
 
     nb = new_notebook(
         cells=cells,
         metadata={
-            "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+            "kernelspec": {
+                "display_name": "quant-learning-roadmap",
+                "language": "python",
+                "name": "python3",
+            },
             "language_info": {"name": "python", "version": "3.12"},
         },
     )
@@ -430,11 +486,34 @@ def create_week_notebook(week_no: int, week_dir: Path, notebook_path: Path) -> N
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate week/day notebooks for quant curriculum")
+    parser.add_argument(
+        "--week",
+        type=str,
+        default="all",
+        help="Target week (e.g., week-01) or 'all'",
+    )
+    args = parser.parse_args()
+
     root = Path(__file__).resolve().parents[1]
     weeks_root = root / "curriculum" / "weeks"
     notebooks_root = root / "notebooks"
 
-    for week_no in range(1, 25):
+    target_weeks: list[int]
+    if args.week == "all":
+        target_weeks = list(range(1, 25))
+    else:
+        if not args.week.startswith("week-"):
+            raise SystemExit("--week must be in format week-XX or 'all'")
+        try:
+            week_no = int(args.week.split("-")[-1])
+        except ValueError as exc:
+            raise SystemExit("Invalid week value") from exc
+        if week_no < 1 or week_no > 24:
+            raise SystemExit("Week must be between week-01 and week-24")
+        target_weeks = [week_no]
+
+    for week_no in target_weeks:
         week_id = f"week-{week_no:02d}"
         week_dir = weeks_root / week_id
         nb_path = notebooks_root / week_id / f"{week_id}-learning.ipynb"
@@ -443,7 +522,10 @@ def main() -> None:
             day_nb_path = notebooks_root / week_id / f"day-{day_no:02d}-learning.ipynb"
             create_day_notebook(week_no, day_no, week_dir, day_nb_path)
 
-    print("Generated week and day notebooks for weeks 01-24.")
+    if len(target_weeks) == 24:
+        print("Generated week and day notebooks for weeks 01-24.")
+    else:
+        print(f"Generated week and day notebooks for {args.week}.")
 
 
 if __name__ == "__main__":

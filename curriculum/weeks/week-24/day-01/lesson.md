@@ -111,6 +111,18 @@ Final answer: Required CAGR = 9.69%.
 Common trap: Using one metric in isolation instead of combining expected value, risk limits, and readiness score.
 Interpretation: Write one sentence describing how this result would change a real trading decision.
 
+### Solved Problem 4: Position sizing with volatility guardrail
+Given:
+- Strategy annualized volatility estimate is 0.209.
+- Portfolio risk budget target is 0.20.
+- Position multiplier rule: scale = target_vol / strategy_vol, clipped to [0.20, 1.00].
+Solution:
+1. Compute raw scale = target_vol / strategy_vol.
+2. raw_scale = 0.20/0.209 = 0.9569.
+3. clipped_scale = min(1.00, max(0.20, 0.9569)) = 0.9569.
+Final answer: Position multiplier = 0.9569.
+Common trap: Ignoring volatility regime shifts and applying static position size in stressed markets.
+Interpretation: State how this guardrail changes gross exposure before deployment.
 ## Coding Walkthrough
 1. Build an explicit data-ingestion layer with timestamp and schema checks.
 2. Implement today's objective as reusable functions: Create portfolio index with project links and summaries.
@@ -157,6 +169,24 @@ Scoring rubric:
   - Method: state formula and variables clearly.
   - Decision: explain one actionable rule and one risk guardrail.
 
+## 2-Hour Extension Track (Required)
+
+This section upgrades the day to a full 6-hour study model: 4-hour core lesson + 2-hour required extension.
+
+- **Extension Block A (45 min):** Real-market case expansion.
+  - Re-run today's workflow on one additional asset and one stress regime window.
+  - Document one regime-specific failure mode and one mitigation rule.
+- **Extension Block B (45 min):** Production-quality coding refinement.
+  - Add one assertion for data integrity and one assertion for risk limits.
+  - Save a short result table with assumptions, metric values, and decision rationale.
+- **Extension Block C (30 min):** Interview simulation and review.
+  - Deliver a 60-second PM pitch and a 60-second risk-manager response.
+  - Include one numeric example from Week 24 Day 01 to prove notation fluency.
+
+Extension completion checks:
+- [ ] Stress-regime comparison completed
+- [ ] Production guardrail assertions added and passed
+- [ ] Interview simulation recorded with one numeric example
 ## Reflection Question
 Which project best demonstrates end-to-end quant maturity?
 
