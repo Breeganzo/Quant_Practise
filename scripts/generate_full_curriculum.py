@@ -2036,7 +2036,7 @@ def formula_entries(week_no: int, day_no: int) -> list[tuple[str, str, str]]:
 def symbol_definitions(week_no: int) -> list[str]:
     phase = phase_for_week(week_no)
     common = [
-        ("$P_t$", "Price at time $t$", "USD/share", "$110.50"),
+        ("$P_t$", "Price at time $t$", "USD/share", "$110.50$"),
         ("$r_t$", "Simple return", "decimal or %", "0.012 = 1.2%"),
         ("$\\mu$", "Expected return", "annualized decimal", "0.14"),
         ("$\\sigma$", "Volatility (std. dev.)", "annualized decimal", "0.18"),
@@ -2084,15 +2084,40 @@ def symbol_definitions(week_no: int) -> list[str]:
 def render_formula_section(week_no: int, day_no: int) -> list[str]:
     phase = phase_for_week(week_no)
     anchor = {
-        "foundations": "Compute this on SPY and QQQ daily closes, then compare how one volatile day changes the metric.",
-        "ml": "Use a walk-forward split and verify the metric does not leak future labels into feature construction.",
-        "time_series": "Run the formula on rolling windows and inspect whether the value is stable across calm and stress periods.",
-        "portfolio": "Evaluate the metric on at least three assets and document which constraint changes the final portfolio most.",
-        "advanced": "Measure pre-cost and post-cost values to verify execution frictions do not erase signal edge.",
-        "launch": "Translate the metric into a go/no-go decision with explicit thresholds and risk guardrails.",
+        "foundations": [
+            "Compute this on SPY and QQQ daily closes, then compare how one volatile day changes the metric.",
+            "Recalculate after a 1 standard deviation shock and explain the intuition in one sentence.",
+            "Use two lookback windows and justify which window would be safer for deployment.",
+        ],
+        "ml": [
+            "Use a walk-forward split and verify the metric does not leak future labels into feature construction.",
+            "Run the same metric on train and out-of-sample windows and explain any degradation.",
+            "Stress this metric under class imbalance and describe one mitigation you would implement.",
+        ],
+        "time_series": [
+            "Run the formula on rolling windows and inspect whether the value is stable across calm and stress periods.",
+            "Check sensitivity to lag length and report when the signal stops being statistically useful.",
+            "Compare two forecast horizons and pick one based on error stability, not just point accuracy.",
+        ],
+        "portfolio": [
+            "Evaluate the metric on at least three assets and document which constraint changes the final portfolio most.",
+            "Measure allocation drift before and after rebalancing to confirm risk controls are effective.",
+            "Record one scenario where diversification fails and describe the contingency hedge.",
+        ],
+        "advanced": [
+            "Measure pre-cost and post-cost values to verify execution frictions do not erase signal edge.",
+            "Run the same setup across two stress windows and compare robustness of the resulting trade decision.",
+            "Document one microstructure risk that could invalidate this metric in live execution.",
+        ],
+        "launch": [
+            "Translate the metric into a go/no-go decision with explicit thresholds and risk guardrails.",
+            "Convert this result into a one-page stakeholder update with decision, risk, and follow-up actions.",
+            "Define a monitoring trigger that would force a strategy pause and manual review.",
+        ],
     }
     lines: list[str] = []
     for idx, (name, latex, interpretation) in enumerate(formula_entries(week_no, day_no), start=1):
+        anchor_text = anchor[phase][(idx - 1) % len(anchor[phase])]
         lines.extend(
             [
                 f"### Formula {idx}: {name}",
@@ -2101,7 +2126,7 @@ def render_formula_section(week_no: int, day_no: int) -> list[str]:
                 "$$",
                 f"**Plain-English interpretation:** {interpretation}",
                 "**Notation check:** Identify each symbol and its units before coding this formula.",
-                f"**Real-world anchor:** {anchor[phase]}",
+                f"**Real-world anchor:** {anchor_text}",
                 "",
             ]
         )

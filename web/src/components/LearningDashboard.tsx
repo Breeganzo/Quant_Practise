@@ -24,9 +24,10 @@ export default function LearningDashboard({
 
         return (
           <article key={week.id} className="card week-card">
-            <header>
+            <header className="week-head">
+              <p className="week-kicker">Week {week.week.toString().padStart(2, "0")}</p>
               <h3>
-                Week {week.week.toString().padStart(2, "0")}: {week.theme}
+                {week.theme}
               </h3>
               <p>{week.objective}</p>
             </header>
@@ -51,41 +52,43 @@ export default function LearningDashboard({
                     to={`/week/${week.week}/day/${day.day}`}
                     className={`day-link ${complete ? "complete" : "pending"}`}
                   >
-                    D{day.day}: {day.title} ({day.durationHours}h)
+                    <span className="day-index">Day {day.day}</span>
+                    <span className="day-title">{day.title}</span>
+                    <span className="day-hours">{day.durationHours}h</span>
                   </Link>
                 );
               })}
             </div>
 
             <div className="week-resources">
-              <h4>Week Resources</h4>
+              <h4>Week Deliverables</h4>
               {week.resources ? (
-                <>
-                  <a href={withBase(week.resources.notebookPath)} target="_blank" rel="noreferrer">
-                    Open week notebook (web)
+                <div className="resource-links">
+                  <a className="resource-link" href={withBase(week.resources.notebookPath)} target="_blank" rel="noreferrer">
+                    Interactive week notebook
                   </a>
-                  <a href={withBase(week.resources.overviewPath)} target="_blank" rel="noreferrer">
-                    Open weekly overview
+                  <a className="resource-link" href={withBase(week.resources.overviewPath)} target="_blank" rel="noreferrer">
+                    Weekly overview brief
                   </a>
-                  <a href={withBase(week.resources.quizPath)} target="_blank" rel="noreferrer">
-                    Open weekly quiz
+                  <a className="resource-link" href={withBase(week.resources.quizPath)} target="_blank" rel="noreferrer">
+                    Weekly quiz pack
                   </a>
-                  <Link to={`/week/${week.week}/day/6#completion-checklist`}>
-                    Open revision checklist (interactive)
+                  <Link className="resource-link" to={`/week/${week.week}/day/6#completion-checklist`}>
+                    Revision checklist (interactive)
                   </Link>
-                  <Link to={`/week/${week.week}/day/7#completion-checklist`}>
-                    Open mini-project checklist (interactive)
+                  <Link className="resource-link" to={`/week/${week.week}/day/7#completion-checklist`}>
+                    Mini-project checklist (interactive)
                   </Link>
-                  <a href={withBase(week.resources.revisionChecklistPath)} target="_blank" rel="noreferrer">
-                    Open revision checklist source
+                  <a className="resource-link" href={withBase(week.resources.revisionChecklistPath)} target="_blank" rel="noreferrer">
+                    Revision checklist source
                   </a>
-                  <a href={withBase(week.resources.miniProjectPath)} target="_blank" rel="noreferrer">
-                    Open mini-project template source
+                  <a className="resource-link" href={withBase(week.resources.miniProjectPath)} target="_blank" rel="noreferrer">
+                    Mini-project template source
                   </a>
-                  <a href={githubBlobUrl(weekNotebookRepoPath)} target="_blank" rel="noreferrer">
-                    Open week notebook source (GitHub)
+                  <a className="resource-link" href={githubBlobUrl(weekNotebookRepoPath)} target="_blank" rel="noreferrer">
+                    Open-source notebook source (GitHub)
                   </a>
-                </>
+                </div>
               ) : (
                 <p className="resource-muted">Week resource links will appear after curriculum sync.</p>
               )}

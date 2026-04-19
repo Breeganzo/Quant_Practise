@@ -50,7 +50,7 @@ $$
 $$
 **Plain-English interpretation:** Lag-memory measurement.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Run the formula on rolling windows and inspect whether the value is stable across calm and stress periods.
+**Real-world anchor:** Check sensitivity to lag length and report when the signal stops being statistically useful.
 
 ### Formula 3: AR(1)
 $$
@@ -58,12 +58,12 @@ x_t=c+\phi x_{t-1}+\epsilon_t
 $$
 **Plain-English interpretation:** One-step dependence model.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Run the formula on rolling windows and inspect whether the value is stable across calm and stress periods.
+**Real-world anchor:** Compare two forecast horizons and pick one based on error stability, not just point accuracy.
 
 ## Symbol Definitions
 | Symbol | Meaning | Units | Example |
 | --- | --- | --- | --- |
-| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $P_t$ | Price at time $t$ | USD/share | $110.50$ |
 | $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
 | $\mu$ | Expected return | annualized decimal | 0.14 |
 | $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |

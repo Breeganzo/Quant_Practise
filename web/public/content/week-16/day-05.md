@@ -50,7 +50,7 @@ $$
 $$
 **Plain-English interpretation:** Expected return from weighted assets.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Evaluate the metric on at least three assets and document which constraint changes the final portfolio most.
+**Real-world anchor:** Measure allocation drift before and after rebalancing to confirm risk controls are effective.
 
 ### Formula 3: Portfolio Variance
 $$
@@ -58,12 +58,12 @@ $$
 $$
 **Plain-English interpretation:** Quadratic risk engine.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Evaluate the metric on at least three assets and document which constraint changes the final portfolio most.
+**Real-world anchor:** Record one scenario where diversification fails and describe the contingency hedge.
 
 ## Symbol Definitions
 | Symbol | Meaning | Units | Example |
 | --- | --- | --- | --- |
-| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $P_t$ | Price at time $t$ | USD/share | $110.50$ |
 | $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
 | $\mu$ | Expected return | annualized decimal | 0.14 |
 | $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |

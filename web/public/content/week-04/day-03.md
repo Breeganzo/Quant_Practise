@@ -50,7 +50,7 @@ S=\frac{R_{ann}-R_f}{\sigma_{ann}}
 $$
 **Plain-English interpretation:** Risk-adjusted performance score.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Compute this on SPY and QQQ daily closes, then compare how one volatile day changes the metric.
+**Real-world anchor:** Recalculate after a 1 standard deviation shock and explain the intuition in one sentence.
 
 ### Formula 3: Turnover
 $$
@@ -58,12 +58,12 @@ TO_t=\frac{1}{2}\sum_i|w_{i,t}-w_{i,t-1}|
 $$
 **Plain-English interpretation:** Execution intensity proxy.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Compute this on SPY and QQQ daily closes, then compare how one volatile day changes the metric.
+**Real-world anchor:** Use two lookback windows and justify which window would be safer for deployment.
 
 ## Symbol Definitions
 | Symbol | Meaning | Units | Example |
 | --- | --- | --- | --- |
-| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $P_t$ | Price at time $t$ | USD/share | $110.50$ |
 | $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
 | $\mu$ | Expected return | annualized decimal | 0.14 |
 | $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |

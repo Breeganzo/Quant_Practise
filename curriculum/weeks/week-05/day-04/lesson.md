@@ -50,7 +50,7 @@ $$
 $$
 **Plain-English interpretation:** Regularized stability control.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Use a walk-forward split and verify the metric does not leak future labels into feature construction.
+**Real-world anchor:** Run the same metric on train and out-of-sample windows and explain any degradation.
 
 ### Formula 3: Forward Target
 $$
@@ -58,12 +58,12 @@ y_t=\mathbb{1}[r_{t+1}>0]
 $$
 **Plain-English interpretation:** Label must stay forward-looking.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Use a walk-forward split and verify the metric does not leak future labels into feature construction.
+**Real-world anchor:** Stress this metric under class imbalance and describe one mitigation you would implement.
 
 ## Symbol Definitions
 | Symbol | Meaning | Units | Example |
 | --- | --- | --- | --- |
-| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $P_t$ | Price at time $t$ | USD/share | $110.50$ |
 | $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
 | $\mu$ | Expected return | annualized decimal | 0.14 |
 | $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |

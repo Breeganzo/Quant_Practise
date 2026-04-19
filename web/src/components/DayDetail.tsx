@@ -9,7 +9,7 @@ import remarkMath from "remark-math";
 import "katex/dist/katex.min.css";
 
 import { loadLessonMarkdown } from "../lib/content";
-import { githubBlobUrl, githubDevUrl, withBase } from "../lib/path";
+import { githubBlobUrl, withBase } from "../lib/path";
 import type { CurriculumIndex, DailyProgress, ProgressMap } from "../types";
 
 interface DayDetailProps {
@@ -134,7 +134,6 @@ export default function DayDetail({
   const quizPdfPath = `${sectionPdfBasePath}/${dayId}-quiz.pdf`;
   const interviewPdfPath = `${sectionPdfBasePath}/${dayId}-interview.pdf`;
   const notebookGithubPath = githubBlobUrl(dayNotebookPath);
-  const notebookVsCodePath = githubDevUrl(dayNotebookPath);
   const continuity = day.continuity;
   const previousRoute = routeFromLessonPath(continuity?.previousLessonPath);
   const nextRoute = routeFromLessonPath(continuity?.nextLessonPath);
@@ -159,13 +158,15 @@ export default function DayDetail({
     <section className="lesson-layout">
       <article id="lesson-content" className="card lesson-main">
         <header className="lesson-header">
-          <div>
-            <h2>
-              Week {weekNo.toString().padStart(2, "0")} Day {dayNo.toString().padStart(2, "0")}: {day.title}
-            </h2>
-            <p>
-              Planned duration: {day.durationHours} hour(s) | Track type: {day.type}
+          <div className="lesson-headline">
+            <p className="lesson-eyebrow">
+              Week {weekNo.toString().padStart(2, "0")} Day {dayNo.toString().padStart(2, "0")}
             </p>
+            <h2>{day.title}</h2>
+            <div className="lesson-meta-row">
+              <span className="meta-pill">{day.durationHours}h study block</span>
+              <span className="meta-pill secondary">{day.type.replace(/-/g, " ")}</span>
+            </div>
           </div>
           <Link to="/" className="secondary-link">
             Back to dashboard
@@ -358,7 +359,7 @@ export default function DayDetail({
                 rel="noreferrer"
                 onClick={closeActionMenu}
               >
-                Open in app
+                Open notebook
               </a>
               <a
                 className="action-menu-item"
@@ -367,42 +368,35 @@ export default function DayDetail({
                 rel="noreferrer"
                 onClick={closeActionMenu}
               >
-                Open on GitHub
-              </a>
-              <a
-                className="action-menu-item"
-                href={notebookVsCodePath}
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeActionMenu}
-              >
-                Open in VS Code
+                Open source on GitHub
               </a>
             </div>
           </div>
         </section>
 
-        <h3>Progress Controls</h3>
-        <p>User: {userId}</p>
+        <section className="progress-panel">
+          <h3>Progress Controls</h3>
+          <p className="resource-muted">Profile: {userId.slice(0, 12)}</p>
 
-        <label className="checkbox-row">
-          <input type="checkbox" checked={completed} onChange={(event) => setCompleted(event.target.checked)} />
-          Mark this day as completed
-        </label>
+          <label className="checkbox-row">
+            <input type="checkbox" checked={completed} onChange={(event) => setCompleted(event.target.checked)} />
+            Mark this day as completed
+          </label>
 
-        <label htmlFor="notes">Notes</label>
-        <textarea
-          id="notes"
-          rows={10}
-          value={notes}
-          onChange={(event) => setNotes(event.target.value)}
-          placeholder="Write summary, blockers, and next actions..."
-        />
+          <label htmlFor="notes">Notes</label>
+          <textarea
+            id="notes"
+            rows={10}
+            value={notes}
+            onChange={(event) => setNotes(event.target.value)}
+            placeholder="Write summary, blockers, and next actions..."
+          />
 
-        <button onClick={handleSave} disabled={saving}>
-          {saving ? "Saving..." : "Save Progress"}
-        </button>
-        {status ? <p className={`status ${statusTone}`}>{status}</p> : null}
+          <button onClick={handleSave} disabled={saving}>
+            {saving ? "Saving..." : "Save Progress"}
+          </button>
+          {status ? <p className={`status ${statusTone}`}>{status}</p> : null}
+        </section>
       </aside>
     </section>
   );

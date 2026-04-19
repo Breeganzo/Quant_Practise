@@ -32,6 +32,29 @@ export default function App(): JSX.Element {
     return "local-demo-user";
   }, [session]);
 
+  const overallProgress = useMemo(() => {
+    if (!curriculum) {
+      return {
+        completedDays: 0,
+        totalDays: 0,
+        completionRate: 0,
+      };
+    }
+
+    const totalDays = curriculum.weeks.reduce((sum, week) => sum + week.days.length, 0);
+    const completedDays = curriculum.weeks.reduce((sum, week) => {
+      const completeInWeek = week.days.filter((day) => progress[`${week.week}-${day.day}`]?.completed).length;
+      return sum + completeInWeek;
+    }, 0);
+    const completionRate = totalDays > 0 ? Math.round((completedDays / totalDays) * 100) : 0;
+
+    return {
+      completedDays,
+      totalDays,
+      completionRate,
+    };
+  }, [curriculum, progress]);
+
   useEffect(() => {
     async function boot(): Promise<void> {
       try {
@@ -174,13 +197,27 @@ export default function App(): JSX.Element {
 
   return (
     <main className="container">
-      <header className="top-header card">
-        <div>
-          <h1>Quant Learning Path Tracker</h1>
-          <p>24-week day-by-day learning path with persistent progress and direct lesson links.</p>
+      <header className="top-header card premium-hero">
+        <div className="hero-copy">
+          <p className="hero-eyebrow">Quant Research Academy</p>
+          <h1>Institution-Grade Quant Learning Path</h1>
+          <p>
+            24-week desk-style curriculum with applied modeling, risk, execution, and interview
+            preparation.
+          </p>
+          <div className="hero-metrics">
+            <span className="metric-pill">
+              <strong>{overallProgress.completedDays}</strong> / {overallProgress.totalDays} days completed
+            </span>
+            <span className="metric-pill">{overallProgress.completionRate}% program complete</span>
+            <span className="metric-pill">6-10h daily cadence</span>
+          </div>
         </div>
         <div className="header-actions">
-          <span className="badge">User: {userId.slice(0, 12)}</span>
+          <span className={`badge ${supabaseEnabled ? "badge-ok" : "badge-muted"}`}>
+            {supabaseEnabled ? "Cloud progress active" : "Local mode active"}
+          </span>
+          <span className="badge badge-muted">User: {userId.slice(0, 12)}</span>
           {supabaseEnabled && session ? (
             <button className="secondary" onClick={handleSignOut}>
               Sign Out
@@ -189,15 +226,13 @@ export default function App(): JSX.Element {
         </div>
       </header>
 
-      {!supabaseEnabled && !requiresPersistentBackend ? (
-        <section className="card warning">
-          <h2>Supabase Not Configured</h2>
+      {!supabaseEnabled && !requiresPersistentBackend && (supabaseConfigIssue || forceLocalMode) ? (
+        <section className="card mode-note">
           <p>
-            Configure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to enable lifelong SQL persistence.
-            Until then, this app runs in local demo mode.
+            Progress is currently stored locally for this browser session.
+            {supabaseConfigIssue ? ` Config issue: ${supabaseConfigIssue}` : ""}
+            {forceLocalMode ? " Auth fallback mode is active." : ""}
           </p>
-          {supabaseConfigIssue ? <p>Details: {supabaseConfigIssue}</p> : null}
-          {forceLocalMode ? <p>Auth was temporarily unavailable, so local mode is active.</p> : null}
         </section>
       ) : null}
 

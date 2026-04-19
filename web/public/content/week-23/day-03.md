@@ -50,7 +50,7 @@ CAGR=\left(\frac{V_T}{V_0}\right)^{1/T}-1
 $$
 **Plain-English interpretation:** Long-horizon growth target.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Translate the metric into a go/no-go decision with explicit thresholds and risk guardrails.
+**Real-world anchor:** Convert this result into a one-page stakeholder update with decision, risk, and follow-up actions.
 
 ### Formula 3: Gap
 $$
@@ -58,12 +58,12 @@ Gap_j=Target_j-Current_j
 $$
 **Plain-English interpretation:** Remaining improvement workload.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Translate the metric into a go/no-go decision with explicit thresholds and risk guardrails.
+**Real-world anchor:** Define a monitoring trigger that would force a strategy pause and manual review.
 
 ## Symbol Definitions
 | Symbol | Meaning | Units | Example |
 | --- | --- | --- | --- |
-| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $P_t$ | Price at time $t$ | USD/share | $110.50$ |
 | $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
 | $\mu$ | Expected return | annualized decimal | 0.14 |
 | $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |

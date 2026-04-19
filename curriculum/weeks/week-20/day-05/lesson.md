@@ -50,7 +50,7 @@ z_{i,t}=\frac{x_{i,t}-\mu_t}{\sigma_t}
 $$
 **Plain-English interpretation:** Universe-normalized signal.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Measure pre-cost and post-cost values to verify execution frictions do not erase signal edge.
+**Real-world anchor:** Run the same setup across two stress windows and compare robustness of the resulting trade decision.
 
 ### Formula 3: Information Coefficient
 $$
@@ -58,12 +58,12 @@ IC_t=Corr(score_{i,t},r_{i,t+1})
 $$
 **Plain-English interpretation:** Signal/forward-return linkage.
 **Notation check:** Identify each symbol and its units before coding this formula.
-**Real-world anchor:** Measure pre-cost and post-cost values to verify execution frictions do not erase signal edge.
+**Real-world anchor:** Document one microstructure risk that could invalidate this metric in live execution.
 
 ## Symbol Definitions
 | Symbol | Meaning | Units | Example |
 | --- | --- | --- | --- |
-| $P_t$ | Price at time $t$ | USD/share | $110.50 |
+| $P_t$ | Price at time $t$ | USD/share | $110.50$ |
 | $r_t$ | Simple return | decimal or % | 0.012 = 1.2% |
 | $\mu$ | Expected return | annualized decimal | 0.14 |
 | $\sigma$ | Volatility (std. dev.) | annualized decimal | 0.18 |
